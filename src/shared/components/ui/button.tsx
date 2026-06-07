@@ -23,12 +23,9 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         outline:
           "border border-primary text-primary bg-transparent hover:bg-primary hover:text-primary-foreground",
-        ghost:
-          "text-foreground hover:bg-muted",
-        link:
-          "text-primary underline-offset-4 hover:underline p-0 h-auto",
-        destructive:
-          "bg-destructive/10 text-destructive hover:bg-destructive/20",
+        ghost: "text-foreground hover:bg-muted",
+        link: "text-primary underline-offset-4 hover:underline p-0 h-auto",
+        destructive: "bg-destructive/10 text-destructive hover:bg-destructive/20",
       },
       size: {
         sm:   "h-8 px-4 text-xs rounded-lg",
@@ -45,6 +42,19 @@ const buttonVariants = cva(
   }
 );
 
+const Spinner = () => (
+  <svg
+    className="size-4 animate-spin"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+  </svg>
+);
+
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
@@ -53,35 +63,33 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, loading = false, children, disabled, ...props }, ref) => {
-    const Comp = asChild ? Slot.Root : "button";
+  (
+    { className, variant, size, asChild = false, loading = false, children, disabled, ...props },
+    ref
+  ) => {
+    const sharedClass = cn(buttonVariants({ variant, size, className }));
+
+    // When asChild, Slot.Root requires exactly one child — render the child as-is.
+    // Loading state is not supported with asChild (no spinner rendered).
+    if (asChild) {
+      return (
+        <Slot.Root ref={ref} className={sharedClass} {...props}>
+          {children}
+        </Slot.Root>
+      );
+    }
 
     return (
-      <Comp
+      <button
         ref={ref}
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={sharedClass}
         disabled={disabled || loading}
         aria-busy={loading}
         {...props}
       >
-        {loading && (
-          <svg
-            className="size-4 animate-spin"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-            <path
-              className="opacity-75"
-              fill="currentColor"
-              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-            />
-          </svg>
-        )}
+        {loading && <Spinner />}
         {children}
-      </Comp>
+      </button>
     );
   }
 );
