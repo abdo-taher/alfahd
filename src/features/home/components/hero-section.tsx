@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 
 export function HeroSection() {
@@ -9,79 +8,114 @@ export function HeroSection() {
   const locale = useLocale();
 
   return (
-    <section className="relative min-h-[88vh] flex items-center overflow-hidden" aria-label={t("title")}>
-      {/* Background video/image */}
-      <div className="absolute inset-0 z-0">
-        <video
-          className="w-full h-full object-cover"
-          autoPlay muted loop playsInline preload="none"
-          aria-hidden="true"
-        >
-          <source src="/hero.mp4" type="video/mp4" />
-        </video>
-        {/* Gradient overlay — from primary on one side to transparent */}
-        <div className="absolute inset-0 bg-gradient-to-l from-[#002868]/95 via-[#002868]/60 to-transparent" aria-hidden="true" />
-      </div>
+    <section
+      className="relative h-screen w-full flex items-center overflow-hidden"
+      aria-label={t("title")}
+    >
+      {/* Background video */}
+      <video
+        className="absolute inset-0 z-0 w-full h-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+      >
+        <source src="/hero.mp4" type="video/mp4" />
+      </video>
+
+      {/* hero-vignette overlay */}
+      <div
+        className="absolute inset-0 z-[1]"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,40,104,0.4) 100%), linear-gradient(to left, rgba(10,61,145,0.9), rgba(10,61,145,0.2))",
+        }}
+        aria-hidden="true"
+      />
 
       {/* Content */}
       <div className="relative z-10 container-brand w-full">
-        <div className="max-w-2xl text-white">
-          {/* Gold badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="gold-bar" aria-hidden="true" />
-              <span className="text-label-bold text-[#dae2ff] uppercase tracking-widest">
-                {t("tagline")}
-              </span>
-            </div>
-          </motion.div>
+        <div className="max-w-4xl text-right">
+
+          {/* Tagline row: gold label + gold line */}
+          <div className="flex items-center gap-4 justify-end mb-8">
+            <span className="text-[--color-brand-gold] font-bold tracking-[0.3em] uppercase text-xs">
+              Architectural Excellence
+            </span>
+            <span className="h-[1px] w-12 bg-[--color-brand-gold]/50" aria-hidden="true" />
+          </div>
 
           {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-display-mobile lg:text-display font-bold leading-tight text-white mb-6 text-balance"
+          <h1
+            className="font-bold text-white mb-8"
+            style={{ fontSize: "clamp(48px, 7vw, 84px)", lineHeight: 1 }}
           >
             {t("title")}{" "}
+            <br />
             <span className="text-[--color-brand-gold]">{t("titleHighlight")}</span>
-          </motion.h1>
+          </h1>
 
           {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-body-lg text-[#dae2ff]/90 mb-10 leading-relaxed max-w-xl"
-          >
+          <p className="text-white/80 text-lg md:text-xl max-w-2xl ms-auto mb-14 font-light leading-relaxed">
             {t("description")}
-          </motion.p>
+          </p>
 
           {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-wrap gap-4"
+          <div
+            className={`flex gap-8 items-center ${
+              locale === "ar" ? "flex-row-reverse justify-start" : "flex-row justify-start"
+            }`}
           >
+            {/* Primary — gold filled */}
             <Link
               href={`/${locale}/request-quote`}
-              className="inline-flex items-center justify-center bg-[--color-brand-gold] text-[#001947] px-10 py-4 text-label-bold rounded hover:brightness-110 hover:-translate-y-0.5 transition-all duration-300 luxury-shadow active:scale-95"
+              className="bg-[--color-brand-gold] text-[#001947] font-bold px-12 py-6 rounded-sm text-lg hover:bg-white hover:text-[--color-brand-primary] transition-all duration-500 shadow-2xl shadow-[#C8A75D]/20 active:scale-95"
             >
               {t("ctaPrimary")}
             </Link>
+
+            {/* Secondary — ghost with play icon */}
             <Link
               href={`/${locale}/projects`}
-              className="inline-flex items-center justify-center border border-white/30 bg-white/10 backdrop-blur-sm text-white px-10 py-4 text-label-bold rounded hover:bg-white/20 transition-all duration-300 active:scale-95"
+              className="group flex items-center gap-4 text-white font-medium text-lg hover:text-[--color-brand-gold] transition-colors"
             >
+              {/* Play circle icon (SVG, no external font dependency) */}
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="size-10 group-hover:scale-110 transition-transform"
+                aria-hidden="true"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113z"
+                  clipRule="evenodd"
+                />
+              </svg>
               {t("ctaSecondary")}
             </Link>
-          </motion.div>
+          </div>
         </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-40 z-10"
+        aria-hidden="true"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="size-8 text-white"
+        >
+          <path
+            fillRule="evenodd"
+            d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z"
+            clipRule="evenodd"
+          />
+        </svg>
       </div>
     </section>
   );

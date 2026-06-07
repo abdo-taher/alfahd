@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans_Arabic, Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "@/app/globals.css";
 
 const ibmPlexArabic = IBM_Plex_Sans_Arabic({
@@ -35,6 +36,9 @@ export default function RootLayout({
       className={`${ibmPlexArabic.variable} ${inter.variable}`}
     >
       <body suppressHydrationWarning>{children}</body>
+      {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+      )}
     </html>
   );
 }
