@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="light" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#dae2ff",
+                        "on-error-container": "#93000a",
+                        "outline": "#747783",
+                        "on-surface-variant": "#434652",
+                        "on-error": "#ffffff",
+                        "surface": "#faf8ff",
+                        "surface-tint": "#345baf",
+                        "on-background": "#1a1b21",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-surface": "#1a1b21",
+                        "surface-bright": "#faf8ff",
+                        "secondary": "#4b5d8e",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#2f3036",
+                        "surface-container-highest": "#e2e2e9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f3f3fb",
+                        "secondary-fixed-dim": "#b3c5fd",
+                        "primary": "#002868",
+                        "on-primary-container": "#8dadff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb597",
+                        "surface-variant": "#e2e2e9",
+                        "on-primary-fixed-variant": "#144296",
+                        "tertiary": "#521a00",
+                        "inverse-on-surface": "#f1f0f8",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#ffdbcd",
+                        "primary-fixed-dim": "#b1c5ff",
+                        "primary-container": "#0a3d91",
+                        "surface-container-high": "#e8e7ef",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#eeedf5",
+                        "secondary-fixed": "#dae2ff",
+                        "on-secondary-fixed": "#011847",
+                        "on-tertiary-container": "#ff9162",
+                        "on-secondary-fixed-variant": "#334574",
+                        "inverse-primary": "#b1c5ff",
+                        "surface-dim": "#dad9e1",
+                        "on-primary-fixed": "#001947",
+                        "secondary-container": "#b6c8ff",
+                        "tertiary-container": "#762900",
+                        "on-secondary-container": "#405383",
+                        "outline-variant": "#c4c6d3",
+                        "on-tertiary-fixed-variant": "#7c2e04",
+                        "background": "#faf8ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "section-padding-mobile": "64px",
+                        "section-padding-desktop": "120px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["IBM Plex Sans Arabic"],
+                        "label-bold": ["IBM Plex Sans Arabic"],
+                        "headline-md": ["IBM Plex Sans Arabic"],
+                        "display-lg-mobile": ["IBM Plex Sans Arabic"],
+                        "body-lg": ["IBM Plex Sans Arabic"],
+                        "body-md": ["IBM Plex Sans Arabic"],
+                        "caption": ["IBM Plex Sans Arabic"],
+                        "headline-sm": ["IBM Plex Sans Arabic"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "60px", "fontWeight": "700"}],
+                        "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-md": ["32px", {"lineHeight": "44px", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'IBM Plex Sans Arabic', sans-serif; background-color: #faf8ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-header { backdrop-filter: blur(12px); background: rgba(250, 248, 255, 0.8); }
+        
+        /* Editorial Masonry Grid */
+        .masonry-grid { 
+            columns: 1; 
+            column-gap: 32px; 
+        }
+        @media (min-width: 768px) { .masonry-grid { columns: 2; } }
+        @media (min-width: 1280px) { .masonry-grid { columns: 3; } }
+        
+        .masonry-item { 
+            break-inside: avoid; 
+            margin-bottom: 32px;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            background: white;
+        }
+
+        .project-image-wrapper {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+            filter: grayscale(0);
+        }
+
+        .project-details {
+            padding-top: 1.5rem;
+            transition: transform 0.4s ease;
+        }
+
+        .filter-btn-active {
+            color: #002868;
+            border-bottom: 2px solid #002868;
+        }
+    </style>
+</head>
+<body class="text-on-background selection:bg-primary selection:text-white">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 border-b border-outline-variant/30 glass-header">
+<div class="flex flex-row-reverse justify-between items-center px-gutter py-5 max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<img alt="Al-Fahd Contracting Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3wyp1q77urPyZrexH0SBcx2VjWCJg0nLHucNBhe9bzEtp3QzJF3yiQZid9JGQGHyEK7E-3_YGhgYw4oWEImTPDhXVwD1dmms61u3So8TV4rMJ3SSKng4YIm-xZrSdNiHnVaGIVStko_EcoXmb-LFxEPxb666Lw3GxMahXhzvvwSmMClkZ2g2VZ3HU0wpn00bhZOtalfTyX8QVDppIQJZA-j02VHWmeey2LdPMZ0lhoOs11Ov4hFolgosd3M6I3sw5Q1cT-ZDBAuaeaVM"/>
+</div>
+<div class="hidden md:flex flex-row-reverse items-center gap-10 font-label-bold text-label-bold uppercase tracking-wider">
+<a class="text-on-surface hover:text-primary transition-colors" href="#">الرئيسية</a>
+<a class="text-on-surface hover:text-primary transition-colors" href="#">من نحن</a>
+<a class="text-on-surface hover:text-primary transition-colors" href="#">خدماتنا</a>
+<a class="text-primary border-b border-primary" href="#">مشاريعنا</a>
+<a class="text-on-surface hover:text-primary transition-colors" href="#">المدونة</a>
+</div>
+<button class="bg-primary text-white px-8 py-2.5 rounded-sm font-label-bold hover:bg-on-primary-fixed-variant transition-all active:scale-95">
+            اطلب عرض سعر
+        </button>
+</div>
+</nav>
+<!-- Editorial Header -->
+<header class="pt-48 pb-20 px-gutter max-w-container-max mx-auto">
+<div class="max-w-4xl">
+<span class="text-primary font-label-bold uppercase tracking-[0.2em] mb-4 block">محفظة الأعمال</span>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-background mb-8 leading-tight">
+            نحن لا نبني هياكل، <br/>نحن نصمم معالم معمارية.
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+            استكشاف دقيق لمجموعة مختارة من المشاريع التي تعيد تعريف حدود الهندسة المعمارية في المملكة، من ناطحات السحاب الزجاجية إلى التصاميم المعدنية المعقدة.
+        </p>
+</div>
+</header>
+<!-- Minimal Filter Section -->
+<section class="px-gutter max-w-container-max mx-auto mb-16">
+<div class="flex flex-wrap items-center gap-x-12 gap-y-6 border-b border-outline-variant/30 pb-4">
+<button class="filter-btn filter-btn-active font-label-bold text-sm tracking-widest transition-all pb-4 -mb-4" onclick="filterProjects('all', this)">الكل</button>
+<button class="filter-btn text-on-surface-variant font-label-bold text-sm tracking-widest transition-all pb-4 -mb-4 hover:text-primary" onclick="filterProjects('aluminium', this)">واجهات ألمنيوم</button>
+<button class="filter-btn text-on-surface-variant font-label-bold text-sm tracking-widest transition-all pb-4 -mb-4 hover:text-primary" onclick="filterProjects('glass', this)">هياكل زجاجية</button>
+<button class="filter-btn text-on-surface-variant font-label-bold text-sm tracking-widest transition-all pb-4 -mb-4 hover:text-primary" onclick="filterProjects('iron', this)">أعمال حديد</button>
+</div>
+</section>
+<!-- Project Grid (Staggered Masonry) -->
+<main class="px-gutter max-w-container-max mx-auto mb-section-padding-desktop">
+<div class="masonry-grid" id="projectGrid">
+<!-- Project 1 -->
+<div class="masonry-item project-card group" data-category="aluminium">
+<div class="project-image-wrapper">
+<img class="project-image w-full h-auto object-cover grayscale brightness-95" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqlrwHcNt2VRqEMfO73px9Vmxt-L3lqQkb9Z9Ic8wI-Ni5nbyg3EdqYEcALDRyItBnvlZdhT3R0REdFKYGBxZ_dNQ7-q52XpgCuaoczp3r943lDomB3ge4cjixLDCBDVBTaJeRU3uCpEnAC8urEUKHRb-EsF0lCd_s4yBLak2G6eWTt1gDuhifEqG8bwolOmqlCludTY2XiyP0UU4trFEqMcXSvPqT3ISW-j6ikGon39ZKm0JfC22hGJUVpoZx6L0zBim6zzseeqJr"/>
+</div>
+<div class="project-details">
+<p class="text-primary font-label-bold text-xs uppercase tracking-widest mb-2">الرياض</p>
+<h3 class="font-headline-sm text-on-background mb-1">برج الكريستال التجاري</h3>
+<p class="text-on-surface-variant font-body-md">أنظمة واجهات ألمنيوم متطورة</p>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="masonry-item project-card group" data-category="glass">
+<div class="project-image-wrapper">
+<img class="project-image w-full h-auto object-cover grayscale brightness-95" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvNMXhx_PtZEjUvGER6vEwXdB5cRdkvrltMht8WC9l3SEbK28C07yPkcox9J-zjOUlBCKx9oW4smjdPDKeaXIpjWAgJy3ZnoCagzkfdJjlZ9bOviZBCRjR2Mz-JHQf6rpE0bA6Jf6NxI1oJDauUGz7QT3OxPTqIbJAc--XiSVUcy9fe_W0rzPOitHObQsXeDUscnLk143ZL-RXCIqLGuSOuaWtrpLFgC5Thy8YAJeu0ijswRmR5Uzmnybshd_sVTo8bBAcI0w6NkQY"/>
+</div>
+<div class="project-details">
+<p class="text-primary font-label-bold text-xs uppercase tracking-widest mb-2">جدة</p>
+<h3 class="font-headline-sm text-on-background mb-1">أتريوم مجمع النخيل</h3>
+<p class="text-on-surface-variant font-body-md">هياكل زجاجية شفافة بدون فواصل</p>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="masonry-item project-card group" data-category="iron">
+<div class="project-image-wrapper">
+<img class="project-image w-full h-auto object-cover grayscale brightness-95" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlI6giCcQB-rUvweBJJ-EAjJ2Qq6h0olzrcPKvnwcrqQw436rXYn789VL75xMSuDImoLKJAyQvjfA4_-aVeGjpW95RHsvMDV_RrhzN3jsRpcJ0T2nj7kudYoe99c5Ns8jw0PSiPB8Z_1uvcnrrU6-IHJqKzCyZtBp2f2t6NiwlgM-c5xP23fie1Qa25Fp6Vd8g72xTnqxMvUmqVqrAG2_pMHYOECspMCI4H8E4TZt-pp-X-ZWEy6v1hjs2cziW2PcYaBY-77teAFKU"/>
+</div>
+<div class="project-details">
+<p class="text-primary font-label-bold text-xs uppercase tracking-widest mb-2">الخبر</p>
+<h3 class="font-headline-sm text-on-background mb-1">فيلا النسيم الخاصة</h3>
+<p class="text-on-surface-variant font-body-md">أعمال حديد مزخرف بتصميم كلاسيكي حديث</p>
+</div>
+</div>
+<!-- Project 4 -->
+<div class="masonry-item project-card group" data-category="aluminium">
+<div class="project-image-wrapper">
+<img class="project-image w-full h-auto object-cover grayscale brightness-95" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDThd-WgATXSWPGf34k60Y9gU_Fp5HXLZf9TQfJZfcdJFAQ0FojZZnbYkHWv4XzgMCwt47kAawrCIcZWA01A9xFLFyfSk4-YUaFfVFG0wtYfufH5Qqc-nP_CicFqhX3L73xEnZYZpu1Vi-KCjyNmo9gEoHWaQLsv5XNYJvQqm9aRZJU7eorQiAJSfAVDXqPAUR7dC2GPLGPOj2UyMTaZetg_ih6B9GLc_uW9_gksFCeIUSxQtIP4CVgmIN2aeILdqSSflW2Z2g_P-Xa"/>
+</div>
+<div class="project-details">
+<p class="text-primary font-label-bold text-xs uppercase tracking-widest mb-2">الجبيل</p>
+<h3 class="font-headline-sm text-on-background mb-1">مجمع الابتكار الصناعي</h3>
+<p class="text-on-surface-variant font-body-md">تكسية ألمنيوم مقاومة للظروف البيئية</p>
+</div>
+</div>
+<!-- Project 5 -->
+<div class="masonry-item project-card group" data-category="glass">
+<div class="project-image-wrapper">
+<img class="project-image w-full h-auto object-cover grayscale brightness-95" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCj6ujoVoJrgwr7_SM4IkWKmQ0g-6xEaO8h3m6OYGus18fY-bNHGDPAF4jph6YbhDIcjqZ67ek6D-cKKRsaZas0HJIsQyuWwGjY_luHLwyZze3kPRg0KQwcM7MLCcT0Hq0rAgrqDb485qtDrWPbt-Kz66pGU66ztQD0e5LFvGWmWdzxlpF7qcPsleej42OL-X2qgZrbYQKhQNZCxNte3z28ACD6e-G6Im9DEsSlXh4YPfk_-K0arDD5TVE0g1wvSkWC2oue_QRDN0co"/>
+</div>
+<div class="project-details">
+<p class="text-primary font-label-bold text-xs uppercase tracking-widest mb-2">الرياض</p>
+<h3 class="font-headline-sm text-on-background mb-1">معرض رولز رويس</h3>
+<p class="text-on-surface-variant font-body-md">واجهات Spider Glass فائقة الوضوح</p>
+</div>
+</div>
+<!-- Project 6 -->
+<div class="masonry-item project-card group" data-category="iron">
+<div class="project-image-wrapper">
+<img class="project-image w-full h-auto object-cover grayscale brightness-95" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7AbIbz53C_YURvbfL7IVSBiFB8YdS561Z73FqKXBlFaETJZReMjGUVLk6cfSR8JekGMFmxaZB5lXI9VX2q-iR0FGonumLvrKjT31CY9w4d1dY4ODxTEqwf9MRU5D_bphcM7zk3tigIPqVEC6cAjuIsIf4L-J1iDlUMXjWPfGB9mTkAHxKfcFTXITHDg1rSoS9GQQex0XAskrher-7TsLzL76NR6EbbMnAir8v3HKA3h9s6gt6-QpeLASxXuZ5qjDx2I6TinBVkv3g"/>
+</div>
+<div class="project-details">
+<p class="text-primary font-label-bold text-xs uppercase tracking-widest mb-2">KAFD</p>
+<h3 class="font-headline-sm text-on-background mb-1">جسر المشاة الذكي</h3>
+<p class="text-on-surface-variant font-body-md">هيكل فولاذي مدمج بزخارف ليزر هندسية</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Call to Action -->
+<section class="bg-primary text-white py-32 px-gutter text-center overflow-hidden">
+<div class="max-w-4xl mx-auto">
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-8">لنحول رؤيتك إلى واقع.</h2>
+<p class="font-body-lg text-body-lg mb-12 text-primary-fixed max-w-2xl mx-auto opacity-90">
+            فريقنا من المهندسين والمصممين جاهز لمناقشة مشروعك القادم وتوفير الحلول التقنية الأكثر تطوراً.
+        </p>
+<div class="flex flex-col md:flex-row justify-center gap-6">
+<button class="bg-white text-primary px-12 py-4 font-label-bold hover:bg-secondary-fixed transition-all tracking-widest">تواصل معنا الآن</button>
+<button class="border border-white/30 text-white px-12 py-4 font-label-bold hover:bg-white hover:text-primary transition-all tracking-widest">تحميل الملف التعريفي</button>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-on-background text-surface py-20 px-gutter">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+<div class="col-span-1">
+<div class="text-headline-sm font-bold mb-6 tracking-tight">الفهد للمقاولات</div>
+<p class="text-outline-variant font-body-md leading-relaxed">
+                    خبراء الواجهات والهياكل الهندسية في المملكة العربية السعودية، نصنع المستقبل من الألمنيوم والزجاج.
+                </p>
+</div>
+<div>
+<h4 class="font-label-bold uppercase tracking-widest mb-8 text-primary-fixed-dim">روابط سريعة</h4>
+<ul class="space-y-4 font-body-md text-outline-variant">
+<li><a class="hover:text-white transition-colors" href="#">عن الشركة</a></li>
+<li><a class="text-white" href="#">المشاريع المنفذة</a></li>
+<li><a class="hover:text-white transition-colors" href="#">خدماتنا الهندسية</a></li>
+<li><a class="hover:text-white transition-colors" href="#">المدونة</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-bold uppercase tracking-widest mb-8 text-primary-fixed-dim">التخصصات</h4>
+<ul class="space-y-4 font-body-md text-outline-variant">
+<li>الواجهات الزجاجية</li>
+<li>أنظمة الألمنيوم</li>
+<li>الهياكل المعدنية</li>
+<li>التصاميم الخاصة</li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-bold uppercase tracking-widest mb-8 text-primary-fixed-dim">اتصل بنا</h4>
+<div class="space-y-4 font-body-md text-outline-variant">
+<p>الرياض، المملكة العربية السعودية</p>
+<p dir="ltr">+966 11 123 4567</p>
+<p>info@al-fahd.com</p>
+</div>
+</div>
+</div>
+<div class="border-t border-white/10 pt-10 text-center text-outline-variant text-caption">
+            © ٢٠٢٤ الفهد للمقاولات. جميع الحقوق محفوظة.
+        </div>
+</div>
+</footer>
+<script>
+    function filterProjects(category, btn) {
+        const items = document.querySelectorAll('.masonry-item');
+        const btns = document.querySelectorAll('.filter-btn');
+        
+        // Update button styles
+        btns.forEach(b => {
+            b.classList.remove('filter-btn-active', 'text-primary');
+            b.classList.add('text-on-surface-variant');
+        });
+        btn.classList.add('filter-btn-active', 'text-primary');
+        btn.classList.remove('text-on-surface-variant');
+
+        // Apply filter with smooth transition
+        items.forEach(item => {
+            if (category === 'all' || item.getAttribute('data-category') === category) {
+                item.style.display = 'block';
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'scale(1)';
+                }, 10);
+            } else {
+                item.style.opacity = '0';
+                item.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    item.style.display = 'none';
+                }, 400);
+            }
+        });
+    }
+</script>
+</body></html>

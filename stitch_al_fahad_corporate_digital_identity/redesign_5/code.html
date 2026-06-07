@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>الفهد للمقاولات | Al-Fahd Contracting</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "primary": "#002868",
+                "primary-container": "#0a3d91",
+                "on-primary": "#ffffff",
+                "secondary": "#4b5d8e",
+                "brand-gold": "#C8A75D",
+                "brand-navy": "#0A3D91",
+                "surface": "#faf8ff",
+                "surface-container": "#eeedf5",
+                "surface-container-low": "#f3f3fb",
+                "on-surface": "#1a1b21",
+                "on-surface-variant": "#434652",
+                "outline": "#747783",
+                "outline-variant": "#c4c6d3"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "unit": "8px",
+                "gutter": "24px",
+                "section-padding-mobile": "80px",
+                "section-padding-desktop": "160px",
+                "container-max": "1280px"
+            },
+            "fontFamily": {
+                "display": ["IBM Plex Sans Arabic", "sans-serif"],
+                "body": ["IBM Plex Sans Arabic", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'IBM Plex Sans Arabic', sans-serif; background-color: #faf8ff; scroll-behavior: smooth; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-dark { background: rgba(10, 61, 145, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(10, 61, 145, 0.05); }
+        .hero-vignette { background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,40,104,0.4) 100%), linear-gradient(to left, rgba(10, 61, 145, 0.9), rgba(10, 61, 145, 0.2)); }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .stagger-item { transition-delay: calc(var(--i) * 0.1s); }
+        
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        .gold-accent-line {
+            position: relative;
+        }
+        .gold-accent-line::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background: #C8A75D;
+        }
+        
+        .text-balanced { text-wrap: balance; }
+    </style>
+</head>
+<body class="text-on-surface selection:bg-brand-gold selection:text-brand-navy">
+<!-- Modern Navigation -->
+<nav class="fixed top-0 w-full z-50 transition-all duration-500 py-6" id="main-nav">
+<div class="max-w-container-max mx-auto px-gutter flex flex-row-reverse justify-between items-center">
+<div class="flex items-center gap-4">
+<img alt="الفهد للمقاولات" class="h-10 md:h-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC58PyyExuu1VXthVCiiwMwDSpTFmhs0Jq3FCThYg5erXpBZJAhKF-olzLvu7nTuz2LYnuR4jRMBoaDd9wSNFG8vVqthwaRxTpN6oVRThgHPV2FAR2sjiG0grATy0V2wp6gAqh4jEpfePz1n1daYzBuLTIbVh8BETb1kwsFmgPLQL4iLMZMslsJY9zvkMO6B16ENLAK8yBzWTz3avImp15ddl5sIj0QxI3Phup7Lrg-6EyM3ef4hNyW73dwSGd-qUX9SPkgu3JtuJ1t9s4"/>
+</div>
+<div class="hidden lg:flex flex-row-reverse items-center gap-12">
+<a class="text-brand-navy font-semibold text-sm tracking-wide relative group" href="#">
+                الرئيسية
+                <span class="absolute -bottom-1 right-0 w-full h-0.5 bg-brand-gold scale-x-100 transition-transform origin-right"></span>
+</a>
+<a class="text-on-surface-variant hover:text-brand-navy font-medium text-sm tracking-wide transition-colors group relative" href="#about">
+                عن الشركة
+                <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-brand-gold group-hover:w-full transition-all duration-300 origin-right"></span>
+</a>
+<a class="text-on-surface-variant hover:text-brand-navy font-medium text-sm tracking-wide transition-colors group relative" href="#services">
+                خدماتنا الهندسية
+                <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-brand-gold group-hover:w-full transition-all duration-300 origin-right"></span>
+</a>
+<a class="text-on-surface-variant hover:text-brand-navy font-medium text-sm tracking-wide transition-colors group relative" href="#projects">
+                المشاريع
+                <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-brand-gold group-hover:w-full transition-all duration-300 origin-right"></span>
+</a>
+</div>
+<div class="flex items-center gap-8">
+<button class="hidden md:block bg-brand-navy text-white px-8 py-3 rounded-sm text-sm font-bold hover:bg-brand-navy/90 transition-all shadow-lg shadow-brand-navy/10 border border-brand-navy">
+                طلب استشارة
+            </button>
+<div class="flex items-center gap-2 text-brand-navy cursor-pointer group">
+<span class="text-xs font-bold uppercase tracking-widest group-hover:text-brand-gold transition-colors">EN</span>
+<span class="material-symbols-outlined text-xl group-hover:text-brand-gold transition-colors">language</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Immersive Hero -->
+<header class="relative h-screen w-full flex items-center overflow-hidden">
+<video autoplay="" class="video-bg" loop="" muted="" playsinline="">
+<source src="https://assets.mixkit.co/videos/preview/mixkit-modern-building-with-glass-facade-under-the-clouds-43301-large.mp4" type="video/mp4"/>
+</video>
+<div class="absolute inset-0 hero-vignette"></div>
+<div class="relative z-10 max-w-container-max mx-auto px-gutter w-full">
+<div class="max-w-4xl text-right">
+<div class="reveal active" style="--i: 1">
+<div class="flex items-center gap-4 justify-end mb-8">
+<span class="text-brand-gold font-bold tracking-[0.3em] uppercase text-xs">Architectural Excellence</span>
+<span class="h-[1px] w-12 bg-brand-gold/50"></span>
+</div>
+<h1 class="font-display text-6xl md:text-[84px] md:leading-[1] text-white mb-8 font-bold text-balanced">
+                    نصيغ الفراغ <br/><span class="text-brand-gold">بفن الهندسة</span>
+</h1>
+<p class="text-white/80 text-lg md:text-xl max-w-2xl ml-auto mb-14 font-light leading-relaxed text-balanced">
+                    رواد الواجهات المعمارية المتكاملة وأنظمة الألمنيوم والزجاج فائقة الدقة للمشاريع الإنشائية الكبرى في المملكة.
+                </p>
+<div class="flex flex-row-reverse gap-8 justify-start items-center">
+<button class="bg-brand-gold text-brand-navy font-bold px-12 py-6 rounded-sm text-lg hover:bg-white hover:text-brand-navy transition-all duration-500 shadow-2xl shadow-brand-gold/20">
+                        اكتشف حلولنا
+                    </button>
+<button class="group flex items-center gap-4 text-white font-medium text-lg hover:text-brand-gold transition-colors">
+<span class="material-symbols-outlined text-4xl group-hover:scale-110 transition-transform">play_circle</span>
+                        شاهد سابقة أعمالنا
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
+<span class="material-symbols-outlined text-white text-3xl">expand_more</span>
+</div>
+</header>
+<!-- Modern Stats -->
+<section class="relative z-20 py-24 bg-white border-b border-outline-variant/10">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-8">
+<div class="text-center reveal" style="--i: 1">
+<div class="text-xs font-bold text-brand-gold uppercase tracking-widest mb-4">Completed Projects</div>
+<div class="text-6xl font-bold text-brand-navy tracking-tight mb-2">+500</div>
+<div class="text-sm text-outline font-medium">مشروع هندسي متميز</div>
+</div>
+<div class="text-center reveal" style="--i: 2">
+<div class="text-xs font-bold text-brand-gold uppercase tracking-widest mb-4">Years of Expertise</div>
+<div class="text-6xl font-bold text-brand-navy tracking-tight mb-2">25+</div>
+<div class="text-sm text-outline font-medium">سنة من الريادة المحلية</div>
+</div>
+<div class="text-center reveal" style="--i: 3">
+<div class="text-xs font-bold text-brand-gold uppercase tracking-widest mb-4">Precision Guarantee</div>
+<div class="text-6xl font-bold text-brand-navy tracking-tight mb-2">100%</div>
+<div class="text-sm text-outline font-medium">دقة تنفيذية معتمدة</div>
+</div>
+<div class="text-center reveal" style="--i: 4">
+<div class="text-xs font-bold text-brand-gold uppercase tracking-widest mb-4">Partner Satisfaction</div>
+<div class="text-6xl font-bold text-brand-navy tracking-tight mb-2">99%</div>
+<div class="text-sm text-outline font-medium">معدل رضا الشركاء</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Architectural Services -->
+<section class="py-section-padding-desktop bg-surface" id="services">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="flex flex-col md:flex-row-reverse justify-between items-end mb-24 gap-8 reveal">
+<div class="text-right max-w-2xl">
+<span class="text-brand-gold font-bold tracking-[0.2em] text-xs uppercase mb-4 block">What We Do</span>
+<h2 class="text-4xl md:text-5xl font-bold text-brand-navy mb-8 gold-accent-line inline-block">خدماتنا التخصصية</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed opacity-80">نقدم منظومة متكاملة من الحلول المعمارية التي تدمج بين الابتكار التقني والقوة الإنشائية، مصممة لتلائم تطلعات المشاريع المستقبلية.</p>
+</div>
+<a class="text-brand-navy font-bold flex items-center gap-3 border-b-2 border-brand-navy/10 pb-2 hover:border-brand-gold transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                تصفح كافة الخدمات
+            </a>
+</div>
+<!-- Architectural Staggered Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+<!-- Service 1: Large Featured -->
+<div class="md:col-span-7 reveal" style="--i: 1">
+<div class="group relative aspect-[16/10] overflow-hidden bg-brand-navy">
+<img alt="Curtain Walls" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjdHDQk1uM0CC-DYT5tu_bmCMBwyLQLfj5NZbLMEhFK1q3WNk49mOjoT13T0O7rpWJ_9vJ-ydfa1vQzutirOXCDY45im-seV6MijV1J2Y52trgNpQHQ5aNPvWkaI8VfZMMD0ftd_Rldj-0kgscocLcoZIuavMGaTm2raN9B-RvOpEmRuuhcagKQnVwfk2g0qADohCSE01UJfn3YoC_3zInrkVJWyETpOVHTGc6Hqd_LGsQ4QigTNT5Ms7X5fbXtH7CyDS7WM4KGufq"/>
+<div class="absolute inset-0 bg-gradient-to-t from-brand-navy via-transparent to-transparent opacity-60"></div>
+<div class="absolute bottom-0 right-0 p-12 text-right">
+<h3 class="text-white text-3xl font-bold mb-4">أنظمة الواجهات الزجاجية</h3>
+<p class="text-white/70 max-w-sm ml-auto text-sm leading-relaxed mb-8">حلول Curtain Wall و Spider المتطورة التي تمنح المشاريع الشفافية المطلقة مع أعلى معايير العزل الحراري والأمان.</p>
+<button class="bg-white text-brand-navy px-8 py-3 text-sm font-bold hover:bg-brand-gold hover:text-white transition-all">استكشف التفاصيل</button>
+</div>
+</div>
+</div>
+<!-- Service 2: Smaller -->
+<div class="md:col-span-5 md:mt-24 reveal" style="--i: 2">
+<div class="group relative aspect-square overflow-hidden bg-brand-navy">
+<img alt="Aluminum" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtHa8TN0U_EPCCMKEXYXLmwcf3pkyJjDO8RtgZmj2cwgDXGgtbV7FYqE7ow7qNn2fi194Kc8mOQJ10bKUszoUPHtbZdtJT4Xm3yEmM2Vg7-4xSx3qb_gUGyhUO7T2f-ksrTjWe2AI4TT1u2RCc49ssSXHnu1-MZsaDmrVZ8tEuDDXi7HTweTy_SMm4qQ7BiiVAp7UBSFGfHmvp_QIoqSGw3Zt-PvCUGJxLf0XEAu6AQJ4412DJCgP6BxnuEVS2HupO-T9b78dNkxrm"/>
+<div class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 to-transparent"></div>
+<div class="absolute bottom-0 right-0 p-10 text-right">
+<h3 class="text-white text-2xl font-bold mb-3">أعمال الألمنيوم الفاخرة</h3>
+<p class="text-white/70 text-sm mb-6">نوافذ وأبواب بقطاعات عالمية عازلة.</p>
+<a class="text-brand-gold font-bold text-sm flex items-center justify-end gap-2 group" href="#">
+                            المزيد
+                            <span class="material-symbols-outlined text-xs group-hover:-translate-x-1 transition-transform">arrow_back</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Service 3: Offset -->
+<div class="md:col-span-5 md:-mt-12 reveal" style="--i: 3">
+<div class="group relative aspect-square overflow-hidden bg-brand-navy">
+<img alt="Steel" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBni_QnoWyL1kThGKLq9VBFpG7f5x3ZX6X06O2ksJmv5erSqcl35qPVmMu42RYpvCxI8iRgVApTwsYGN3DAMcbxlf_aVHIXAIH3GfCIz0jNzHJZqzvjjuwUE-XURSNhvDa18189fLrQ6L9LteuVSI2gQ7NfjJaZiuKm_neEhRhy05bX9inPNa_9XKSe2NBlKyGNqx_B59fcAH9rlVlmI8Kvt7FMG9boqZ0TGA_nR5D5gel_-QX_j09wiSD4MDjwUxntIM4SQgRJzAvi"/>
+<div class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 to-transparent"></div>
+<div class="absolute bottom-0 right-0 p-10 text-right">
+<h3 class="text-white text-2xl font-bold mb-3">أعمال الحديد والستانلس</h3>
+<p class="text-white/70 text-sm mb-6">حلول إنشائية فنية وتصاميم معدنية دقيقة.</p>
+<a class="text-brand-gold font-bold text-sm flex items-center justify-end gap-2 group" href="#">
+                            المزيد
+                            <span class="material-symbols-outlined text-xs group-hover:-translate-x-1 transition-transform">arrow_back</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Service 4: Grid Filler -->
+<div class="md:col-span-7 reveal" style="--i: 4">
+<div class="h-full bg-white border border-outline-variant/20 p-16 flex flex-col justify-center text-right">
+<span class="material-symbols-outlined text-5xl text-brand-gold mb-8">precision_manufacturing</span>
+<h3 class="text-2xl font-bold text-brand-navy mb-4">التصنيع الرقمي المتقدم</h3>
+<p class="text-on-surface-variant leading-relaxed opacity-80 max-w-md ml-auto">نعتمد على تقنيات CNC والروبوتات في مصانعنا لضمان تطابق كامل بين المخططات الهندسية والواقع الملموس، مما يقلل الهدر ويزيد من دقة التنفيذ.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Editorial Projects Gallery -->
+<section class="py-section-padding-desktop bg-white overflow-hidden" id="projects">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-32 reveal">
+<span class="text-brand-gold font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Portfolio</span>
+<h2 class="text-4xl md:text-5xl font-bold text-brand-navy mb-6">بصماتنا المعمارية</h2>
+<div class="w-20 h-1 bg-brand-gold mx-auto"></div>
+</div>
+<div class="space-y-40">
+<!-- Project 1 -->
+<div class="flex flex-col lg:flex-row gap-20 items-center reveal">
+<div class="lg:w-3/5 overflow-hidden group shadow-2xl">
+<img alt="Project 1" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmp2w20bScuSvtMnA1xc_iu_-4UkcEkm8HTGRxElpNSecJ3QH5_L9KoHfG2wro6l_sRkVLE9rKvktW4sFVhZXB5YQBVrlXKMs6PJEFjniz51kbbSx-a0VZ9it-9ixFq5qgceQtXq5wl4Ugxa_khuNPakN7YHH4xnStJP4qLfPWsiRZNZAHfwNxh4B9lDTGuPuLdH_tp5qwSby5huC7-FDGjyUFUu0oN5AxlxhGakmgYDS3IIRs8RjDOdmuw6rPDBXzNcKOJDXWqrZv"/>
+</div>
+<div class="lg:w-2/5 text-right">
+<span class="text-brand-gold font-bold text-sm mb-4 block">Commercial Hub</span>
+<h3 class="text-3xl font-bold text-brand-navy mb-6">مركز تداول للأعمال - الرياض</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-10 opacity-80">تنفيذ الواجهات الزجاجية المتطورة (Double Glazed) وأنظمة الأبواب الذكية لمبنى إداري يمثل واجهة حضارية في قلب العاصمة.</p>
+<div class="flex flex-row-reverse gap-10 border-t border-outline-variant/30 pt-8">
+<div>
+<div class="text-xs text-outline mb-1">المنطقة</div>
+<div class="text-brand-navy font-bold">الرياض</div>
+</div>
+<div>
+<div class="text-xs text-outline mb-1">السنة</div>
+<div class="text-brand-navy font-bold">٢٠٢٣</div>
+</div>
+<div>
+<div class="text-xs text-outline mb-1">المساحة</div>
+<div class="text-brand-navy font-bold">١٢,٠٠٠ م٢</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="flex flex-col lg:flex-row-reverse gap-20 items-center reveal">
+<div class="lg:w-3/5 overflow-hidden group shadow-2xl">
+<img alt="Project 2" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmE8wZB7P8Sab1pWTnv_8Prz-2dfQ_ziSfKKkyYqdnBPtIOWsv0a0CVlEmL4BQojuHslkUb8pSbrBEonfryU3wNjEt4k9-03DGc88Ug8w0-KqmZiuRteah0JVavsRwL1qpyjZIVVJpbIDVCstn5Bko8XsEQtVD3hJYLkpfRKdlysansN9WabZJGB6cgt7Q-BDwdQW7DqfKh_dTMq-CBbQ6JD8fonbfAvfuqCrN2o9vKMFrpcNICCIkwYMJI5_GmLFURIyVWl110qDA"/>
+</div>
+<div class="lg:w-2/5 text-right">
+<span class="text-brand-gold font-bold text-sm mb-4 block">Residential Luxury</span>
+<h3 class="text-3xl font-bold text-brand-navy mb-6">قصور الملقا السكنية</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-10 opacity-80">دمج أنظمة الألمنيوم البانورامية مع تصاميم معمارية فريدة، تمنح إطلالات واسعة مع حماية كاملة من العوامل المناخية.</p>
+<div class="flex flex-row-reverse gap-10 border-t border-outline-variant/30 pt-8">
+<div>
+<div class="text-xs text-outline mb-1">المنطقة</div>
+<div class="text-brand-navy font-bold">الرياض</div>
+</div>
+<div>
+<div class="text-xs text-outline mb-1">السنة</div>
+<div class="text-brand-navy font-bold">٢٠٢٢</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-40 text-center">
+<button class="border-2 border-brand-navy text-brand-navy px-12 py-5 rounded-sm font-bold text-lg hover:bg-brand-navy hover:text-white transition-all">مشاهدة المعرض الكامل</button>
+</div>
+</div>
+</section>
+<!-- Final CTA with Glassmorphism -->
+<section class="py-section-padding-desktop relative bg-brand-navy overflow-hidden">
+<div class="absolute inset-0 opacity-20">
+<img alt="Background" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkKg3S5DXXNHaTDCCVcIuNCVPAoa9eBzz4poxRdtTNjMNH4S0kUKuwIeZiTvawxByCfBtIXn2uoI3aRUYZJ1MKfYmtk98HfqFvQA-NjWjIGDJlwdt8ztQUPyoLEWR03TuUODXqp6p99m8ajzH6MPxzFrJC4qp9i_lPvKourhb2PMCtZMwDmemkPKu5_CEQf0FjvX-z5cbaWyMmw7vUh4B1xz7hiLv2EfJHRPXL_Yq-HbODPkRpi4_6prr534mwVY4rL8jG5FL0g58L"/>
+</div>
+<div class="absolute inset-0 bg-brand-navy/90"></div>
+<div class="max-w-container-max mx-auto px-gutter relative z-10">
+<div class="glass p-12 md:p-24 text-center border-white/5">
+<h2 class="text-4xl md:text-6xl font-bold text-white mb-10 leading-tight">جاهز لبدء رحلتك الهندسية؟</h2>
+<p class="text-white/70 text-lg md:text-xl max-w-3xl mx-auto mb-16 font-light leading-relaxed">نحن هنا لتحويل رؤيتك المعمارية إلى واقع ملموس يجمع بين الجودة المطلقة والجمال الفائق. تواصل مع خبرائنا اليوم للحصول على استشارة متخصصة.</p>
+<div class="flex flex-col sm:flex-row-reverse justify-center gap-6">
+<button class="bg-brand-gold text-brand-navy px-14 py-6 rounded-sm font-bold text-xl hover:scale-105 transition-all shadow-2xl shadow-brand-gold/20">ابدأ مشروعك الآن</button>
+<button class="border border-white/30 text-white px-12 py-6 rounded-sm font-bold text-xl hover:bg-white/10 transition-all backdrop-blur">تحميل البروفايل التعريفي</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Modern Refined Footer -->
+<footer class="bg-white pt-32 pb-12 border-t border-outline-variant/10">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-20 mb-32">
+<div class="md:col-span-5 text-right">
+<img alt="الفهد للمقاولات" class="h-12 mb-10 mr-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC58PyyExuu1VXthVCiiwMwDSpTFmhs0Jq3FCThYg5erXpBZJAhKF-olzLvu7nTuz2LYnuR4jRMBoaDd9wSNFG8vVqthwaRxTpN6oVRThgHPV2FAR2sjiG0grATy0V2wp6gAqh4jEpfePz1n1daYzBuLTIbVh8BETb1kwsFmgPLQL4iLMZMslsJY9zvkMO6B16ENLAK8yBzWTz3avImp15ddl5sIj0QxI3Phup7Lrg-6EyM3ef4hNyW73dwSGd-qUX9SPkgu3JtuJ1t9s4"/>
+<p class="text-on-surface-variant text-lg leading-relaxed opacity-70 mb-10 max-w-md ml-auto">بنينا سمعتنا على مدار عقود من الالتزام بالدقة الهندسية والابتكار المستمر في سوق الإنشاءات السعودي، لنكون الشريك الأول للمشاريع التي تطلب التميز.</p>
+<div class="flex gap-4 flex-row-reverse">
+<a class="w-12 h-12 glass-dark rounded-sm flex items-center justify-center text-brand-navy hover:bg-brand-gold hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-xl">share</span></a>
+<a class="w-12 h-12 glass-dark rounded-sm flex items-center justify-center text-brand-navy hover:bg-brand-gold hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-xl">mail</span></a>
+<a class="w-12 h-12 glass-dark rounded-sm flex items-center justify-center text-brand-navy hover:bg-brand-gold hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-xl">call</span></a>
+</div>
+</div>
+<div class="md:col-span-3 text-right">
+<h6 class="text-brand-navy font-bold text-sm uppercase tracking-widest mb-10">استكشف</h6>
+<ul class="space-y-6">
+<li><a class="text-on-surface-variant hover:text-brand-gold transition-colors text-sm font-medium" href="#">عن الفهد للمقاولات</a></li>
+<li><a class="text-on-surface-variant hover:text-brand-gold transition-colors text-sm font-medium" href="#">خدمات الواجهات</a></li>
+<li><a class="text-on-surface-variant hover:text-brand-gold transition-colors text-sm font-medium" href="#">معرض المشاريع</a></li>
+<li><a class="text-on-surface-variant hover:text-brand-gold transition-colors text-sm font-medium" href="#">المدونة المعمارية</a></li>
+<li><a class="text-on-surface-variant hover:text-brand-gold transition-colors text-sm font-medium" href="#">فرص التوظيف</a></li>
+</ul>
+</div>
+<div class="md:col-span-4 text-right">
+<h6 class="text-brand-navy font-bold text-sm uppercase tracking-widest mb-10">تواصل معنا</h6>
+<ul class="space-y-8">
+<li class="flex items-start justify-end gap-5">
+<span class="text-sm text-on-surface-variant leading-relaxed font-medium">المملكة العربية السعودية، الرياض<br/>حي السلي، المنطقة الصناعية</span>
+<span class="material-symbols-outlined text-brand-gold">location_on</span>
+</li>
+<li class="flex items-center justify-end gap-5">
+<span class="text-sm text-on-surface-variant font-bold" dir="ltr">+966 500 000 000</span>
+<span class="material-symbols-outlined text-brand-gold">call</span>
+</li>
+<li class="flex items-center justify-end gap-5">
+<span class="text-sm text-on-surface-variant font-bold">info@alfahd.com.sa</span>
+<span class="material-symbols-outlined text-brand-gold">mail</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-12 border-t border-outline-variant/10 flex flex-col md:flex-row-reverse justify-between items-center gap-6">
+<div class="text-xs text-outline font-medium tracking-wide">© ٢٠٢٤ الفهد للمقاولات. جميع الحقوق محفوظة. س.ت: ٠٠٠٠٠٠٠٠٠٠</div>
+<div class="flex gap-10">
+<a class="text-xs text-outline hover:text-brand-navy transition-colors font-medium" href="#">سياسة الخصوصية</a>
+<a class="text-xs text-outline hover:text-brand-navy transition-colors font-medium" href="#">الشروط والأحكام</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+    // Navigation Scroll Effect
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('main-nav');
+        if (window.scrollY > 80) {
+            nav.classList.add('bg-white/95', 'shadow-xl', 'py-4', 'backdrop-blur-md');
+            nav.classList.remove('py-6');
+        } else {
+            nav.classList.remove('bg-white/95', 'shadow-xl', 'py-4', 'backdrop-blur-md');
+            nav.classList.add('py-6');
+        }
+    });
+
+    // Reveal on Scroll Animation
+    const reveal = () => {
+        const reveals = document.querySelectorAll('.reveal');
+        reveals.forEach((element) => {
+            const windowHeight = window.innerHeight;
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 100;
+            if (elementTop < windowHeight - elementVisible) {
+                element.classList.add('active');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', reveal);
+    window.onload = reveal;
+</script>
+</body></html>

@@ -1,4 +1,4 @@
-import { useTranslations, useLocale } from "next-intl";
+import { getTranslations, getLocale } from "next-intl/server";
 import { Star } from "lucide-react";
 import { Container } from "@/shared/components/ui/container";
 import { Section } from "@/shared/components/ui/section";
@@ -12,7 +12,6 @@ function TestimonialCard({ item }: { item: Testimonial }) {
       className="flex flex-col rounded-2xl border border-border bg-card p-7 shadow-sm"
       aria-label={`${item.name} — ${item.company}`}
     >
-      {/* Stars */}
       <div className="flex gap-1 mb-4" aria-label={`${item.rating} out of 5 stars`}>
         {Array.from({ length: 5 }).map((_, i) => (
           <Star
@@ -39,14 +38,13 @@ function TestimonialCard({ item }: { item: Testimonial }) {
 }
 
 export async function Testimonials() {
-  const t = useTranslations("home.testimonials");
-  const locale = useLocale();
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "home.testimonials" });
   const testimonials = await contentRepository.getTestimonials(locale);
 
   return (
     <Section>
       <Container>
-        {/* Header */}
         <div className="mx-auto max-w-2xl text-center mb-14">
           <Badge variant="default" className="mb-3">{t("title")}</Badge>
           <h2 className="heading-lg">{t("title")}</h2>

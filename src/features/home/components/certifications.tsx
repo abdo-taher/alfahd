@@ -1,3 +1,4 @@
+"use client";
 import { useTranslations } from "next-intl";
 import { ShieldCheck, Award, BadgeCheck, Stamp } from "lucide-react";
 import { Container } from "@/shared/components/ui/container";

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useTranslations, useLocale } from "next-intl";
+import { getTranslations, getLocale } from "next-intl/server";
 import { ArrowLeft, ArrowRight, MapPin, Calendar } from "lucide-react";
 import { Container } from "@/shared/components/ui/container";
 import { Section } from "@/shared/components/ui/section";
@@ -9,9 +9,9 @@ import { Button } from "@/shared/components/ui/button";
 import { contentRepository } from "@/lib/content/content-repository";
 
 export async function FeaturedProjects() {
-  const locale = useLocale();
-  const t = useTranslations("home.projects");
-  const pt = useTranslations("projects");
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "home.projects" });
+  const pt = await getTranslations({ locale, namespace: "projects" });
   const isRTL = locale === "ar";
   const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
@@ -69,7 +69,7 @@ export async function FeaturedProjects() {
                 </div>
                 <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
                   {pt("viewProject")}
-                  <ArrowIcon className="size-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowIcon className="size-4" />
                 </span>
               </div>
             </Link>
