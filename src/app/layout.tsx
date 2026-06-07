@@ -35,6 +35,13 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${ibmPlexArabic.variable} ${inter.variable}`}
     >
+      <head>
+        {/* Material Symbols Outlined — used by service cards, certifications, etc. */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block"
+        />
+      </head>
       <body suppressHydrationWarning>{children}</body>
       <GoogleAnalytics gaId="G-7MMSL4M3CH" />
     </html>

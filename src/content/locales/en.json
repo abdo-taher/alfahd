@@ -27,64 +27,70 @@
     "stats": {
       "title": "Numbers That Speak for Themselves",
       "items": [
+        { "value": "25",  "suffix": "+", "label": "Years of Experience" },
         { "value": "500", "suffix": "+", "label": "Projects Completed" },
-        { "value": "15",  "suffix": "+", "label": "Years of Experience" },
-        { "value": "200", "suffix": "+", "label": "Satisfied Clients" },
-        { "value": "98",  "suffix": "%", "label": "Client Satisfaction" }
+        { "value": "100", "suffix": "+", "label": "Strategic Clients" },
+        { "value": "ISO", "suffix": "",  "label": "Certified Quality" }
       ]
     },
     "services": {
       "title": "Our Services",
-      "subtitle": "Comprehensive solutions in Aluminum, Glass & Steel for residential, commercial, and industrial projects",
+      "subtitle": "Comprehensive engineering solutions for modern architectural facades — combining structural integrity with precision craftsmanship",
       "viewAll": "View All Services",
       "items": [
         {
           "id": "aluminum",
-          "title": "Aluminum Works",
-          "description": "Premium aluminum facades, doors, and windows with modern, contemporary designs",
-          "icon": "squares-2x2"
+          "title": "Aluminium Systems",
+          "description": "Premium window, door and curtain-wall aluminium profiles with top-grade thermal and acoustic insulation",
+          "icon": "architecture"
         },
         {
           "id": "glass",
-          "title": "Glass Works",
-          "description": "Comprehensive glass solutions for facades, partitions, and glass entrances",
-          "icon": "view-columns"
+          "title": "Structural Glass",
+          "description": "Continuous glass facade systems for towers and major administrative buildings, frameless and point-fixed",
+          "icon": "window"
+        },
+        {
+          "id": "curtain-wall",
+          "title": "Curtain Walls",
+          "description": "Design and installation of seamless glazed curtain-wall systems for high-rise buildings and corporate headquarters",
+          "icon": "domain"
         },
         {
           "id": "steel",
-          "title": "Steel Works",
-          "description": "Durable steel structures and installations for large industrial and commercial projects",
-          "icon": "building-office-2"
+          "title": "Steel Structures",
+          "description": "Fabrication and erection of complex steel structures for factories, warehouses and hybrid buildings",
+          "icon": "format_shapes"
         }
       ]
     },
     "whyChoose": {
-      "title": "Why Choose Al Fahd?",
-      "subtitle": "We combine decades of experience with modern technology to deliver projects that exceed your expectations",
+      "title": "Why Leading Developers Trust Al-Fahad?",
+      "subtitle": "We combine decades of specialised experience with modern engineering technology to deliver projects that exceed expectations",
       "items": [
         {
-          "title": "Certified Quality",
-          "description": "We adhere to the highest quality standards per Saudi and international specifications"
+          "title": "Engineering Precision",
+          "description": "We use the latest design and simulation software to guarantee execution of the finest structural details"
         },
         {
-          "title": "Expert Team",
-          "description": "Seasoned engineering and technical staff with 15+ years of industry experience"
+          "title": "Material Quality",
+          "description": "Sourced from the world's finest manufacturers with comprehensive weatherproofing warranties"
         },
         {
-          "title": "On-Time Delivery",
-          "description": "We commit to precise timelines and deliver every project on the agreed schedule"
+          "title": "Expert Teams",
+          "description": "A team of engineers and technicians with deep expertise in large-scale, sensitive projects"
         },
         {
-          "title": "Competitive Pricing",
-          "description": "We offer the best value for money while maintaining the highest quality levels"
+          "title": "Speed of Execution",
+          "description": "We adhere to strict timelines while maintaining global safety and quality standards"
         },
         {
-          "title": "After-Sales Support",
-          "description": "Comprehensive warranties and ongoing maintenance service after delivery"
+          "title": "Safety First",
+          "description": "Strict safety protocols are applied on every site to protect people and projects"
         },
         {
-          "title": "Custom Solutions",
-          "description": "Tailored solutions designed specifically for your project needs and budget"
+          "title": "Sustainable Partnership",
+          "description": "Our client relationships extend from design all the way through post-handover maintenance"
         }
       ]
     },
@@ -94,28 +100,28 @@
       "viewAll": "View All Projects"
     },
     "process": {
-      "title": "How We Work",
-      "subtitle": "A clear, structured methodology to ensure your project's success from concept to handover",
+      "title": "How We Deliver Projects",
+      "subtitle": "A clear, structured methodology that guarantees your project's success from initial consultation to final handover",
       "steps": [
         {
           "step": 1,
-          "title": "Consultation",
-          "description": "We discuss your project requirements and fully understand your vision"
+          "title": "Consultation & Analysis",
+          "description": "We study your project requirements and present suitable preliminary engineering solutions"
         },
         {
           "step": 2,
-          "title": "Design",
-          "description": "We prepare engineering designs and execution plans"
+          "title": "Technical Design",
+          "description": "We prepare execution drawings and approve samples and materials before commencing"
         },
         {
           "step": 3,
-          "title": "Execution",
-          "description": "A professional team executes the project to the highest quality standards"
+          "title": "Fabrication & Installation",
+          "description": "Precision manufacturing and site installation by specialised engineering crews"
         },
         {
           "step": 4,
-          "title": "Handover",
-          "description": "We deliver your project on time with comprehensive warranties"
+          "title": "Handover & Warranty",
+          "description": "Comprehensive final inspection and handover with warranty certificates and maintenance programme"
         }
       ]
     },

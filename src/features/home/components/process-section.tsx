@@ -31,11 +31,18 @@ export function ProcessSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative flex flex-col items-center text-center p-8 bg-white border border-[#c4c6d3] rounded-lg luxury-shadow group hover:border-[--color-brand-primary] transition-colors duration-300"
+              className="relative flex flex-col items-center text-center p-8 bg-white border border-[#c4c6d3] rounded-xl luxury-shadow group hover:border-[--color-brand-primary] transition-colors duration-300"
             >
-              {/* Step number circle */}
-              <span className="mb-6 flex size-16 items-center justify-center rounded-full enterprise-gradient text-white text-2xl font-bold shadow-md group-hover:scale-110 transition-transform duration-300">
-                {step.step < 10 ? `0${step.step}` : step.step}
+              {/* Step number — alternates navy / gold like reference */}
+              <span
+                className={[
+                  "mb-6 flex size-16 items-center justify-center rounded-full text-2xl font-bold shadow-md group-hover:scale-110 transition-transform duration-300",
+                  i % 2 === 0
+                    ? "enterprise-gradient text-white"
+                    : "bg-[#C8A75D] text-[#001947]",
+                ].join(" ")}
+              >
+                {String(step.step).padStart(2, "0")}
               </span>
               <h3 className="text-headline-sm text-[#1a1b21] mb-3">{step.title}</h3>
               <p className="text-body-md text-[#434652] leading-relaxed">{step.description}</p>

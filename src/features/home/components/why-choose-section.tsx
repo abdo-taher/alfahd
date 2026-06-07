@@ -63,10 +63,10 @@ export function WhyChooseSection() {
         {/* Stats row */}
         <div className="mt-20 grid grid-cols-2 gap-6 sm:grid-cols-4 pt-16 border-t border-white/10">
           {[
-            { value: "١٥+", label: locale === "ar" ? "عاماً من الخبرة" : "Years Experience" },
-            { value: "٥٠٠+", label: locale === "ar" ? "مشروع منجز" : "Projects Completed" },
-            { value: "٢٠٠+", label: locale === "ar" ? "عميل راضٍ" : "Satisfied Clients" },
-            { value: "٩٨٪", label: locale === "ar" ? "نسبة رضا العملاء" : "Client Satisfaction" },
+            { value: "25+",  label: locale === "ar" ? "عاماً من الخبرة"    : "Years Experience" },
+            { value: "500+", label: locale === "ar" ? "مشروع منجز"         : "Projects Completed" },
+            { value: "100+", label: locale === "ar" ? "عميل استراتيجي"     : "Strategic Clients" },
+            { value: "ISO",  label: locale === "ar" ? "شهادات جودة معتمدة" : "Quality Certified" },
           ].map((stat, i) => (
             <div key={i} className="text-center">
               <div className="text-display-mobile font-bold text-[--color-brand-gold]">{stat.value}</div>

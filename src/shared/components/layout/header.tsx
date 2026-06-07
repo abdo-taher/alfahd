@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Container } from "@/shared/components/ui/container";
 import { LanguageSwitcher } from "./language-switcher";
 import { MobileMenu } from "./mobile-menu";
@@ -11,6 +12,7 @@ import { MobileMenu } from "./mobile-menu";
 export function Header() {
   const t = useTranslations("nav");
   const locale = useLocale();
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -37,22 +39,18 @@ export function Header() {
           : "bg-[--color-brand-surface]/80 backdrop-blur-md border-transparent py-4",
       ].join(" ")}
     >
-      {/* Skip to content */}
-     <a
+      {/* Skip to content — text only, no image inside */}
+      <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-4 focus:z-50 focus:rounded focus:bg-primary focus:px-4 focus:py-2"
+        className="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-4 focus:z-50 focus:rounded focus:bg-primary focus:px-4 focus:py-2 focus:text-white"
         aria-label={locale === "ar" ? "انتقل للمحتوى" : "Skip to content"}
       >
-        <img
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuC58PyyExuu1VXthVCiiwMwDSpTFmhs0Jq3FCThYg5erXpBZJAhKF-olzLvu7nTuz2LYnuR4jRMBoaDd9wSNFG8vVqthwaRxTpN6oVRThgHPV2FAR2sjiG0grATy0V2wp6gAqh4jEpfePz1n1daYzBuLTIbVh8BETb1kwsFmgPLQL4iLMZMslsJY9zvkMO6B16ENLAK8yBzWTz3avImp15ddl5sIj0QxI3Phup7Lrg-6EyM3ef4hNyW73dwSGd-qUX9SPkgu3JtuJ1t9s4"
-          alt="الفهد للمقاولات"
-          className="h-10 md:h-12 object-contain"
-        />
+        {locale === "ar" ? "انتقل للمحتوى" : "Skip to content"}
       </a>
 
       <Container>
         <div className="flex items-center justify-between gap-6">
-          {/* Logo — RTL: right side */}
+          {/* Logo — RTL: rendered last visually but first in DOM */}
           <div className={locale === "ar" ? "order-last" : "order-first"}>
             <Link
               href={`/${locale}`}
@@ -79,27 +77,42 @@ export function Header() {
             role="navigation"
             aria-label={t("menu")}
           >
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-label-bold text-[--color-muted-foreground] hover:text-[--color-brand-primary] transition-colors duration-200 relative py-1"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive =
+                link.href === `/${locale}`
+                  ? pathname === link.href
+                  : pathname.startsWith(link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={[
+                    "text-label-bold relative py-1 transition-colors duration-200",
+                    isActive
+                      ? "text-[--color-brand-primary] nav-active"
+                      : "text-[--color-muted-foreground] hover:text-[--color-brand-primary]",
+                  ].join(" ")}
+                  aria-current={isActive ? "page" : undefined}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Actions */}
-          <div className={[
-            "flex items-center gap-3",
-            locale === "ar" ? "order-first flex-row-reverse" : "order-last",
-          ].join(" ")}>
+          <div
+            className={[
+              "flex items-center gap-3",
+              locale === "ar" ? "order-first flex-row-reverse" : "order-last",
+            ].join(" ")}
+          >
             <LanguageSwitcher />
 
+            {/* Gold CTA button — matching reference */}
             <Link
               href={`/${locale}/request-quote`}
-              className="hidden sm:inline-flex items-center justify-center bg-[--color-brand-primary] text-white px-5 py-2.5 text-label-bold rounded hover:bg-[--color-brand-container] transition-all duration-200 active:scale-95"
+              className="hidden sm:inline-flex items-center justify-center bg-[#C8A75D] text-[#001947] px-5 py-2.5 text-label-bold rounded-lg hover:bg-white hover:text-[--color-brand-primary] transition-all duration-300 active:scale-95 shadow-sm"
             >
               {t("requestQuote")}
             </Link>
