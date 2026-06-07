@@ -36,9 +36,7 @@ export default function RootLayout({
       className={`${ibmPlexArabic.variable} ${inter.variable}`}
     >
       <body suppressHydrationWarning>{children}</body>
-      {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
-      )}
+      <GoogleAnalytics gaId="G-7MMSL4M3CH" />
     </html>
   );
 }
