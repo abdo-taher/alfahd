@@ -1,5 +1,265 @@
 {
+  "meta": {
+    "siteTitle": "Al Fahd Contracting",
+    "siteDescription": "Al Fahd Contracting — Specialists in Aluminum, Glass & Steel Works across Saudi Arabia. Premium quality, trusted expertise, and professional execution."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact",
+    "requestQuote": "Request Quote",
+    "menu": "Menu",
+    "closeMenu": "Close menu"
+  },
   "home": {
-    "title": "Welcome"
+    "hero": {
+      "tagline": "Your trusted contracting partner",
+      "title": "Building the Future",
+      "titleHighlight": "with Precision & Excellence",
+      "description": "Al Fahd Contracting — a leader in Aluminum, Glass & Steel works across Saudi Arabia. We turn your vision into reality with the highest quality standards.",
+      "ctaPrimary": "Request a Quote",
+      "ctaSecondary": "View Our Projects",
+      "scrollDown": "Scroll down"
+    },
+    "stats": {
+      "title": "Numbers That Speak for Themselves",
+      "items": [
+        { "value": "500", "suffix": "+", "label": "Projects Completed" },
+        { "value": "15",  "suffix": "+", "label": "Years of Experience" },
+        { "value": "200", "suffix": "+", "label": "Satisfied Clients" },
+        { "value": "98",  "suffix": "%", "label": "Client Satisfaction" }
+      ]
+    },
+    "services": {
+      "title": "Our Services",
+      "subtitle": "Comprehensive solutions in Aluminum, Glass & Steel for residential, commercial, and industrial projects",
+      "viewAll": "View All Services",
+      "items": [
+        {
+          "id": "aluminum",
+          "title": "Aluminum Works",
+          "description": "Premium aluminum facades, doors, and windows with modern, contemporary designs",
+          "icon": "squares-2x2"
+        },
+        {
+          "id": "glass",
+          "title": "Glass Works",
+          "description": "Comprehensive glass solutions for facades, partitions, and glass entrances",
+          "icon": "view-columns"
+        },
+        {
+          "id": "steel",
+          "title": "Steel Works",
+          "description": "Durable steel structures and installations for large industrial and commercial projects",
+          "icon": "building-office-2"
+        }
+      ]
+    },
+    "whyChoose": {
+      "title": "Why Choose Al Fahd?",
+      "subtitle": "We combine decades of experience with modern technology to deliver projects that exceed your expectations",
+      "items": [
+        {
+          "title": "Certified Quality",
+          "description": "We adhere to the highest quality standards per Saudi and international specifications"
+        },
+        {
+          "title": "Expert Team",
+          "description": "Seasoned engineering and technical staff with 15+ years of industry experience"
+        },
+        {
+          "title": "On-Time Delivery",
+          "description": "We commit to precise timelines and deliver every project on the agreed schedule"
+        },
+        {
+          "title": "Competitive Pricing",
+          "description": "We offer the best value for money while maintaining the highest quality levels"
+        },
+        {
+          "title": "After-Sales Support",
+          "description": "Comprehensive warranties and ongoing maintenance service after delivery"
+        },
+        {
+          "title": "Custom Solutions",
+          "description": "Tailored solutions designed specifically for your project needs and budget"
+        }
+      ]
+    },
+    "projects": {
+      "title": "Featured Projects",
+      "subtitle": "A selection of projects we are proud to have delivered across Saudi Arabia",
+      "viewAll": "View All Projects"
+    },
+    "process": {
+      "title": "How We Work",
+      "subtitle": "A clear, structured methodology to ensure your project's success from concept to handover",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Consultation",
+          "description": "We discuss your project requirements and fully understand your vision"
+        },
+        {
+          "step": 2,
+          "title": "Design",
+          "description": "We prepare engineering designs and execution plans"
+        },
+        {
+          "step": 3,
+          "title": "Execution",
+          "description": "A professional team executes the project to the highest quality standards"
+        },
+        {
+          "step": 4,
+          "title": "Handover",
+          "description": "We deliver your project on time with comprehensive warranties"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Clients Say",
+      "subtitle": "Our clients' trust is the greatest reward we strive for"
+    },
+    "certifications": {
+      "title": "Certifications & Accreditations",
+      "subtitle": "Accredited to the highest Saudi and international professional standards"
+    },
+    "cta": {
+      "title": "Ready to Start Your Project?",
+      "description": "Contact us today for a free consultation and detailed quote for your project",
+      "primary": "Request a Free Quote",
+      "secondary": "Chat on WhatsApp"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "description": "Al Fahd Contracting is a leading Saudi company specializing in Aluminum, Glass & Steel works. With over 15 years of experience delivering residential, commercial, and industrial projects to the highest quality standards.",
+    "mission": "Our Mission",
+    "missionText": "To provide comprehensive contracting solutions that combine quality, innovation, and commitment — being the first partner our clients choose when building their future.",
+    "vision": "Our Vision",
+    "visionText": "To be the leading company in the Aluminum, Glass & Steel contracting sector in Saudi Arabia.",
+    "values": "Our Values"
+  },
+  "services": {
+    "title": "Our Services",
+    "description": "We offer a wide range of specialized contracting services",
+    "learnMore": "Learn More",
+    "getQuote": "Get a Quote",
+    "relatedProjects": "Related Projects"
+  },
+  "projects": {
+    "title": "Our Projects",
+    "description": "A selection of our completed projects across the Kingdom",
+    "viewProject": "View Project",
+    "allCategories": "All",
+    "challenge": "Challenge",
+    "solution": "Solution",
+    "scope": "Scope of Work",
+    "technologies": "Materials & Technologies",
+    "results": "Results"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Specialized articles and insights in construction and contracting",
+    "readMore": "Read More",
+    "allCategories": "All",
+    "publishedAt": "Published on",
+    "readingTime": "min read",
+    "categories": {
+      "aluminum": "Aluminum",
+      "glass": "Glass",
+      "steel": "Steel",
+      "construction": "Construction",
+      "project-management": "Project Management",
+      "building-regulations": "Building Regulations",
+      "case-studies": "Case Studies"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "We are here to answer your questions and help you with your project",
+    "address": "Saudi Arabia",
+    "phone": "Call Us",
+    "email": "Email",
+    "workingHours": "Working Hours",
+    "workingHoursValue": "Sunday – Thursday, 8:00 AM – 5:00 PM",
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "Enter your full name",
+      "email": "Email Address",
+      "emailPlaceholder": "example@domain.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+966 5X XXX XXXX",
+      "message": "Your Message",
+      "messagePlaceholder": "Write your message here...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully! We will contact you shortly.",
+      "error": "An error occurred. Please try again."
+    }
+  },
+  "quote": {
+    "title": "Request a Quote",
+    "description": "Tell us about your project and we will get back to you as quickly as possible",
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "Enter your full name",
+      "company": "Company Name",
+      "companyPlaceholder": "Your company name (optional)",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+966 5X XXX XXXX",
+      "email": "Email Address",
+      "emailPlaceholder": "example@domain.com",
+      "service": "Service Type",
+      "servicePlaceholder": "Select service type",
+      "projectLocation": "Project Location",
+      "projectLocationPlaceholder": "City / Region",
+      "projectSize": "Project Size",
+      "projectSizePlaceholder": "Approximate area in square meters",
+      "projectDescription": "Project Description",
+      "projectDescriptionPlaceholder": "Describe your project requirements in detail...",
+      "submit": "Submit Quote Request",
+      "sending": "Sending...",
+      "success": "Request received! Our team will contact you within 24 hours.",
+      "error": "An error occurred. Please try again.",
+      "services": {
+        "aluminum": "Aluminum Works",
+        "glass": "Glass Works",
+        "steel": "Steel Works",
+        "other": "Other"
+      }
+    }
+  },
+  "footer": {
+    "description": "Al Fahd Contracting — your trusted partner for Aluminum, Glass & Steel works across Saudi Arabia.",
+    "quickLinks": "Quick Links",
+    "ourServices": "Our Services",
+    "contactUs": "Contact Us",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "notFound": "Page not found",
+    "backHome": "Back to Home",
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "learnMore": "Learn More",
+    "contactUs": "Contact Us",
+    "whatsapp": "WhatsApp",
+    "required": "Required",
+    "optional": "Optional",
+    "search": "Search",
+    "close": "Close",
+    "open": "Open",
+    "yes": "Yes",
+    "no": "No",
+    "skipToContent": "Skip to main content"
   }
 }

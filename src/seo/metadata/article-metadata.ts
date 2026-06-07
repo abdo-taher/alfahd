@@ -1,19 +1,35 @@
+import type { Metadata } from "next";
+import { generatePageMetadata } from "./page-metadata";
+
 export function generateArticleMetadata({
   title,
   excerpt,
   path,
+  locale,
+  publishedAt,
+  ogImage,
 }: {
   title: string;
   excerpt: string;
   path: string;
-}) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
-
-  return {
+  locale: string;
+  publishedAt?: string;
+  ogImage?: string;
+}): Metadata {
+  const base = generatePageMetadata({
     title,
     description: excerpt,
-    alternates: {
-      canonical: `${baseUrl}${path}`,
+    path,
+    locale,
+    ogImage,
+  });
+
+  return {
+    ...base,
+    openGraph: {
+      ...base.openGraph,
+      type: "article",
+      publishedTime: publishedAt,
     },
   };
 }

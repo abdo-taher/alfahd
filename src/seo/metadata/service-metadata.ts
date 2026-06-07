@@ -1,25 +1,26 @@
+import type { Metadata } from "next";
+import { generatePageMetadata } from "./page-metadata";
+
 export function generateServiceMetadata({
   service,
   locale,
-  path
+  path,
 }: {
   service: string;
-  locale: "en" | "ar";
+  locale: string;
   path: string;
-}) {
-  const isArabic = locale === "ar";
+}): Metadata {
+  const isAr = locale === "ar";
+  const companyName = isAr ? "شركة الفهد للمقاولات" : "Al Fahd Contracting";
 
-  return {
-    title: isArabic
-      ? `${service} | شركة سكايا التينا`
-      : `${service} | Sakeya Altina Contracting`,
+  const title = `${service} | ${companyName}`;
+  const description = isAr
+    ? `خدمات ${service} في المملكة العربية السعودية بأعلى جودة وأفضل سعر — ${companyName}`
+    : `${service} services across Saudi Arabia with premium quality — ${companyName}`;
 
-    description: isArabic
-      ? `خدمات ${service} في الرياض بأعلى جودة`
-      : `${service} services in Riyadh with premium quality`,
+  const keywords = isAr
+    ? [`${service}`, "مقاولات", "المملكة العربية السعودية", "الرياض", "جدة"]
+    : [service, "contracting", "Saudi Arabia", "Riyadh", "Jeddah"];
 
-    alternates: {
-      canonical: path
-    }
-  };
+  return generatePageMetadata({ title, description, path, locale, keywords });
 }

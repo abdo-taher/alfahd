@@ -1,39 +1,44 @@
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
 import { useLocale } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export function LanguageSwitcher() {
-  const router = useRouter();
+  const locale = useLocale();
   const pathname = usePathname();
-  const currentLocale = useLocale();
+  const router = useRouter();
 
-  function switchLang(locale: "en" | "ar") {
-    if (locale === currentLocale) return;
-
-    // Swap the locale segment at the start of the path: /en/... → /ar/...
+  function switchLocale(next: "ar" | "en") {
+    if (next === locale) return;
+    // Swap locale segment: /ar/services → /en/services
     const segments = pathname.split("/");
-    segments[1] = locale;
-    router.push(segments.join("/") || "/");
+    segments[1] = next;
+    router.push(segments.join("/") || `/${next}`);
   }
 
   return (
-    <div className="flex gap-2 text-sm">
-      <button
-        onClick={() => switchLang("en")}
-        className={currentLocale === "en" ? "font-semibold" : "opacity-60 hover:opacity-100"}
-        aria-label="Switch to English"
-      >
-        EN
-      </button>
-      <span className="opacity-30">|</span>
-      <button
-        onClick={() => switchLang("ar")}
-        className={currentLocale === "ar" ? "font-semibold" : "opacity-60 hover:opacity-100"}
-        aria-label="Switch to Arabic"
-      >
-        AR
-      </button>
+    <div
+      className="flex items-center rounded-lg border border-border overflow-hidden"
+      role="group"
+      aria-label="Language selector"
+    >
+      {(["ar", "en"] as const).map((lang) => (
+        <button
+          key={lang}
+          onClick={() => switchLocale(lang)}
+          className={cn(
+            "px-3 py-1.5 text-xs font-semibold transition-colors",
+            locale === lang
+              ? "bg-primary text-primary-foreground"
+              : "text-muted-foreground hover:text-foreground hover:bg-muted"
+          )}
+          aria-pressed={locale === lang}
+          aria-label={lang === "ar" ? "العربية" : "English"}
+        >
+          {lang === "ar" ? "عر" : "EN"}
+        </button>
+      ))}
     </div>
   );
 }

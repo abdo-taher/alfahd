@@ -1,0 +1,129 @@
+[
+  {
+    "id": "1",
+    "slug": "aluminum-works",
+    "title": "Aluminum Works",
+    "shortDescription": "Premium aluminum facades, doors & windows with the latest designs",
+    "description": "We specialize in designing, installing, and finishing all aluminum works for residential, commercial, and industrial buildings. We use the finest globally certified aluminum with a wide range of finishes and colors to suit every project.",
+    "icon": "squares-2x2",
+    "image": "/images/services/aluminum.jpg",
+    "benefits": [
+      "High resistance to rust and corrosion",
+      "Excellent thermal and acoustic insulation",
+      "Unlimited color and finish options",
+      "Lightweight yet durable",
+      "Eco-friendly and recyclable",
+      "Low-cost, simple maintenance"
+    ],
+    "applications": [
+      "Glass curtain wall facades",
+      "Aluminum doors and windows",
+      "Suspended ceilings",
+      "Interior partitions",
+      "Pergolas and canopies",
+      "Decorative interior designs"
+    ],
+    "process": [
+      { "step": 1, "title": "Requirements Study", "description": "We analyze your project needs and understand your architectural vision" },
+      { "step": 2, "title": "Engineering Design", "description": "We prepare execution drawings and engineering plans" },
+      { "step": 3, "title": "Manufacturing", "description": "Precision manufacturing of components in our equipped workshop" },
+      { "step": 4, "title": "Installation & Handover", "description": "Professional installation with quality and safety assurance" }
+    ],
+    "faq": [
+      {
+        "question": "How long does an aluminum project take?",
+        "answer": "Execution time ranges from 2 to 8 weeks depending on the project size and requirements."
+      },
+      {
+        "question": "Do you offer warranties on aluminum works?",
+        "answer": "Yes, we offer a 5-year warranty on all aluminum works with periodic maintenance service."
+      },
+      {
+        "question": "What types of aluminum do you use?",
+        "answer": "We use the finest globally certified aluminum including high-quality European and Turkish aluminum."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "slug": "glass-works",
+    "title": "Glass Works",
+    "shortDescription": "Comprehensive glass solutions for facades, partitions & entrances",
+    "description": "We provide comprehensive glass solutions including full glass facades, interior glass partitions, and transparent roofing. We use the latest tempered and double-glazed glass technologies to ensure the highest safety and insulation standards.",
+    "icon": "view-columns",
+    "image": "/images/services/glass.jpg",
+    "benefits": [
+      "High visual transparency",
+      "Excellent thermal and acoustic insulation",
+      "Break and impact resistant",
+      "UV ray protection",
+      "Easy to clean and maintain",
+      "Modern aesthetic designs"
+    ],
+    "applications": [
+      "Full glass curtain walls",
+      "Office glass partitions",
+      "Curved glass surfaces",
+      "Glass entrances",
+      "Glass balustrades",
+      "Transparent glass roofing"
+    ],
+    "process": [
+      { "step": 1, "title": "Engineering Consultation", "description": "Assess requirements and select the appropriate glass type" },
+      { "step": 2, "title": "Design & Measurement", "description": "Precise measurements and preparation of execution drawings" },
+      { "step": 3, "title": "Manufacturing & Cutting", "description": "Glass manufacturing and cutting with millimeter precision" },
+      { "step": 4, "title": "Professional Installation", "description": "Safe installation with quality tests and sealing" }
+    ],
+    "faq": [
+      {
+        "question": "What types of glass are available?",
+        "answer": "We offer double-glazed, tempered, tinted, reflective, smart, and safety glass."
+      },
+      {
+        "question": "How do you ensure installation safety?",
+        "answer": "We follow the highest safety standards, use high-quality sealants, and conduct comprehensive tests before handover."
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "slug": "steel-works",
+    "title": "Steel Works",
+    "shortDescription": "Durable steel structures for large industrial and commercial projects",
+    "description": "We specialize in designing, manufacturing, and installing steel structures for industrial, commercial, and infrastructure projects. Our specialized team ensures the highest standards of engineering precision and durability.",
+    "icon": "building-office-2",
+    "image": "/images/services/steel.jpg",
+    "benefits": [
+      "High durability and long service life",
+      "Resistant to earthquakes and heavy loads",
+      "Faster execution than concrete",
+      "Modifiable and expandable in future",
+      "High fire resistance when treated",
+      "Environmentally friendly"
+    ],
+    "applications": [
+      "Steel structures for factories and warehouses",
+      "Infrastructure towers and facilities",
+      "Bridges and walkways",
+      "Steel pergolas and barriers",
+      "Balustrades and staircases",
+      "Heavy steel doors"
+    ],
+    "process": [
+      { "step": 1, "title": "Engineering Study", "description": "Load analysis and structural requirements" },
+      { "step": 2, "title": "Design & Detailing", "description": "Detailed execution drawings for every structural element" },
+      { "step": 3, "title": "Manufacturing & Treatment", "description": "Precise manufacturing with anti-rust treatment" },
+      { "step": 4, "title": "Installation & Inspection", "description": "Scheduled installation with quality and safety inspections" }
+    ],
+    "faq": [
+      {
+        "question": "Do you offer periodic maintenance for steel structures?",
+        "answer": "Yes, we offer comprehensive periodic maintenance programs including inspection, painting, and repair."
+      },
+      {
+        "question": "What is the typical execution time for a steel structure project?",
+        "answer": "Execution time ranges from 4 to 16 weeks depending on the project size and complexity."
+      }
+    ]
+  }
+]

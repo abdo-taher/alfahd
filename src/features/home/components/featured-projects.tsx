@@ -1,31 +1,91 @@
-export function FeaturedProjects() {
-  const projects = [
-    { name: "Analytics Dashboard", tag: "Frontend" },
-    { name: "E-commerce Platform", tag: "Full Stack" },
-    { name: "AI Chat App", tag: "AI Product" },
-  ];
+import Link from "next/link";
+import Image from "next/image";
+import { useTranslations, useLocale } from "next-intl";
+import { ArrowLeft, ArrowRight, MapPin, Calendar } from "lucide-react";
+import { Container } from "@/shared/components/ui/container";
+import { Section } from "@/shared/components/ui/section";
+import { Badge } from "@/shared/components/ui/badge";
+import { Button } from "@/shared/components/ui/button";
+import { contentRepository } from "@/lib/content/content-repository";
+
+export async function FeaturedProjects() {
+  const locale = useLocale();
+  const t = useTranslations("home.projects");
+  const pt = useTranslations("projects");
+  const isRTL = locale === "ar";
+  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
+
+  const projects = await contentRepository.getFeaturedProjects(locale);
 
   return (
-    <section className="bg-white py-24">
-      <div className="mx-auto max-w-6xl px-6">
+    <Section>
+      <Container>
+        {/* Header */}
+        <div className="mx-auto max-w-2xl text-center mb-14">
+          <Badge variant="default" className="mb-3">{t("title")}</Badge>
+          <h2 className="heading-lg">{t("title")}</h2>
+          <p className="mt-4 text-muted-foreground leading-relaxed">{t("subtitle")}</p>
+        </div>
 
-        <h2 className="text-3xl font-bold text-center mb-12">
-          Featured Projects
-        </h2>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {projects.map((p, i) => (
-            <div
-              key={i}
-              className="p-6 rounded-2xl border hover:scale-[1.02] transition"
+        {/* Projects grid */}
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project) => (
+            <Link
+              key={project.id}
+              href={`/${locale}/projects/${project.slug}`}
+              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm hover:shadow-md transition-all duration-300"
             >
-              <div className="text-sm text-blue-600">{p.tag}</div>
-              <h3 className="text-lg font-semibold mt-2">{p.name}</h3>
-            </div>
+              {/* Image */}
+              <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+                <Image
+                  src={project.coverImage}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+                <div className="absolute top-4 start-4">
+                  <Badge variant="accent">{project.category}</Badge>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="flex flex-1 flex-col p-6">
+                <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                  {project.shortDescription}
+                </p>
+                <div className="mt-4 flex items-center gap-4 text-xs text-muted-foreground">
+                  <span className="flex items-center gap-1">
+                    <MapPin className="size-3.5" aria-hidden="true" />
+                    {project.location}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Calendar className="size-3.5" aria-hidden="true" />
+                    {project.year}
+                  </span>
+                </div>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                  {pt("viewProject")}
+                  <ArrowIcon className="size-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </div>
+            </Link>
           ))}
         </div>
 
-      </div>
-    </section>
+        {/* View all */}
+        <div className="mt-12 flex justify-center">
+          <Button asChild variant="outline" size="lg">
+            <Link href={`/${locale}/projects`}>
+              {t("viewAll")}
+              <ArrowIcon className="size-4" />
+            </Link>
+          </Button>
+        </div>
+      </Container>
+    </Section>
   );
 }
