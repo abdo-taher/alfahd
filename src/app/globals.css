@@ -4,39 +4,41 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ─── Brand Design Tokens ─────────────────────────────────────────────────── */
+/* ─── Design System Tokens — Architectural Prestige ──────────────────────── */
 @theme inline {
-  /* Typography */
-  --font-arabic: var(--font-ibm-plex-arabic);
+  /* Fonts */
+  --font-arabic:  var(--font-ibm-plex-arabic);
   --font-english: var(--font-inter);
-  --font-sans: var(--font-arabic), var(--font-english), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono);
+  --font-sans:    var(--font-ibm-plex-arabic), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    ui-monospace, monospace;
   --font-heading: var(--font-sans);
 
-  /* Brand Colors */
-  --color-brand-primary:   #0A3D91;
+  /* Brand */
+  --color-brand-primary:   #002868;
+  --color-brand-container: #0A3D91;
   --color-brand-secondary: #081F4D;
-  --color-brand-accent:    #C8A75D;
+  --color-brand-gold:      #C8A75D;
+  --color-brand-surface:   #faf8ff;
 
-  /* Semantic Color Aliases → CSS vars for dark mode support */
-  --color-background:  var(--background);
-  --color-foreground:  var(--foreground);
-  --color-primary:     var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary:   var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-accent:      var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-muted:       var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-card:        var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-border:      var(--border);
-  --color-input:       var(--input);
-  --color-ring:        var(--ring);
-  --color-destructive: var(--destructive);
-  --color-popover:     var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
+  /* Semantic aliases */
+  --color-background:          var(--background);
+  --color-foreground:          var(--foreground);
+  --color-primary:             var(--primary);
+  --color-primary-foreground:  var(--primary-foreground);
+  --color-secondary:           var(--secondary);
+  --color-secondary-foreground:var(--secondary-foreground);
+  --color-accent:              var(--accent);
+  --color-accent-foreground:   var(--accent-foreground);
+  --color-muted:               var(--muted);
+  --color-muted-foreground:    var(--muted-foreground);
+  --color-card:                var(--card);
+  --color-card-foreground:     var(--card-foreground);
+  --color-border:              var(--border);
+  --color-input:               var(--input);
+  --color-ring:                var(--ring);
+  --color-destructive:         var(--destructive);
+  --color-popover:             var(--popover);
+  --color-popover-foreground:  var(--popover-foreground);
 
   /* Sidebar */
   --color-sidebar:                    var(--sidebar);
@@ -55,157 +57,252 @@
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
 
-  /* Radius scale */
-  --radius-sm:  calc(var(--radius) * 0.6);
-  --radius-md:  calc(var(--radius) * 0.8);
-  --radius-lg:  var(--radius);
-  --radius-xl:  calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  /* Border radius — design spec: sharp/minimal */
+  --radius-sm:  0.125rem;
+  --radius-md:  0.25rem;
+  --radius-lg:  0.5rem;
+  --radius-xl:  0.75rem;
+  --radius:     0.25rem;
 }
 
 /* ─── Light Mode ──────────────────────────────────────────────────────────── */
 :root {
-  --radius: 0.625rem;
+  --radius: 0.25rem;
 
-  /* Brand as primary */
-  --primary:             #0A3D91;
-  --primary-foreground:  #FFFFFF;
+  --primary:             #002868;
+  --primary-foreground:  #ffffff;
 
-  --secondary:           #F1F5F9;
-  --secondary-foreground:#1E3A5F;
+  --secondary:           #f3f3fb;
+  --secondary-foreground:#1a1b21;
 
   --accent:              #C8A75D;
-  --accent-foreground:   #FFFFFF;
+  --accent-foreground:   #ffffff;
 
-  --background:  #FFFFFF;
-  --foreground:  #111827;
+  --background:  #faf8ff;
+  --foreground:  #1a1b21;
 
-  --card:            #FFFFFF;
-  --card-foreground: #111827;
+  --card:            #ffffff;
+  --card-foreground: #1a1b21;
 
-  --popover:            #FFFFFF;
-  --popover-foreground: #111827;
+  --popover:            #ffffff;
+  --popover-foreground: #1a1b21;
 
-  --muted:            #F8FAFC;
-  --muted-foreground: #6B7280;
+  --muted:            #f3f3fb;
+  --muted-foreground: #434652;
 
-  --border:      #E5E7EB;
-  --input:       #E5E7EB;
-  --ring:        #0A3D91;
+  --border:      #c4c6d3;
+  --input:       #e2e2e9;
+  --ring:        #002868;
   --destructive: oklch(0.577 0.245 27.325);
 
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.70 0.12 240);
-  --chart-3: oklch(0.65 0.18 200);
-  --chart-4: oklch(0.60 0.14 160);
-  --chart-5: oklch(0.50 0.10 100);
+  --chart-1: #002868;
+  --chart-2: #0A3D91;
+  --chart-3: #C8A75D;
+  --chart-4: #4b5d8e;
+  --chart-5: #747783;
 
-  --sidebar:                    #F8FAFC;
-  --sidebar-foreground:         #111827;
-  --sidebar-primary:            #0A3D91;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent:             #F1F5F9;
-  --sidebar-accent-foreground:  #111827;
-  --sidebar-border:             #E5E7EB;
-  --sidebar-ring:               #0A3D91;
+  --sidebar:                    #faf8ff;
+  --sidebar-foreground:         #1a1b21;
+  --sidebar-primary:            #002868;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent:             #f3f3fb;
+  --sidebar-accent-foreground:  #1a1b21;
+  --sidebar-border:             #c4c6d3;
+  --sidebar-ring:               #002868;
 }
 
 /* ─── Dark Mode ───────────────────────────────────────────────────────────── */
 .dark {
-  --primary:             #3B82F6;
-  --primary-foreground:  #FFFFFF;
+  --primary:             #b1c5ff;
+  --primary-foreground:  #001947;
 
-  --secondary:           #1E293B;
-  --secondary-foreground:#E2E8F0;
+  --secondary:           #2f3036;
+  --secondary-foreground:#e2e2e9;
 
   --accent:              #C8A75D;
-  --accent-foreground:   #FFFFFF;
+  --accent-foreground:   #1a1b21;
 
-  --background:  #0A0F1A;
-  --foreground:  #F1F5F9;
+  --background:  #1a1b21;
+  --foreground:  #e2e2e9;
 
-  --card:            #111827;
-  --card-foreground: #F1F5F9;
+  --card:            #2f3036;
+  --card-foreground: #e2e2e9;
 
-  --popover:            #1E293B;
-  --popover-foreground: #F1F5F9;
+  --popover:            #2f3036;
+  --popover-foreground: #e2e2e9;
 
-  --muted:            #1E293B;
-  --muted-foreground: #94A3B8;
+  --muted:            #2f3036;
+  --muted-foreground: #747783;
 
-  --border:      oklch(1 0 0 / 10%);
-  --input:       oklch(1 0 0 / 15%);
-  --ring:        #3B82F6;
+  --border:      rgba(255,255,255,0.08);
+  --input:       rgba(255,255,255,0.12);
+  --ring:        #b1c5ff;
   --destructive: oklch(0.704 0.191 22.216);
 
-  --chart-1: oklch(0.75 0.15 240);
-  --chart-2: oklch(0.65 0.20 200);
-  --chart-3: oklch(0.70 0.12 160);
-  --chart-4: oklch(0.60 0.18 120);
-  --chart-5: oklch(0.55 0.10 80);
+  --chart-1: #b1c5ff;
+  --chart-2: #8dadff;
+  --chart-3: #C8A75D;
+  --chart-4: #b3c5fd;
+  --chart-5: #747783;
 
-  --sidebar:                    #111827;
-  --sidebar-foreground:         #F1F5F9;
-  --sidebar-primary:            #3B82F6;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent:             #1E293B;
-  --sidebar-accent-foreground:  #F1F5F9;
-  --sidebar-border:             oklch(1 0 0 / 10%);
-  --sidebar-ring:               #3B82F6;
+  --sidebar:                    #2f3036;
+  --sidebar-foreground:         #e2e2e9;
+  --sidebar-primary:            #b1c5ff;
+  --sidebar-primary-foreground: #001947;
+  --sidebar-accent:             #1a1b21;
+  --sidebar-accent-foreground:  #e2e2e9;
+  --sidebar-border:             rgba(255,255,255,0.08);
+  --sidebar-ring:               #b1c5ff;
 }
 
-/* ─── Base Styles ─────────────────────────────────────────────────────────── */
+/* ─── Base ────────────────────────────────────────────────────────────────── */
 @layer base {
   * {
     @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground antialiased;
+    box-sizing: border-box;
   }
   html {
-    @apply font-sans;
+    @apply font-sans antialiased;
     scroll-behavior: smooth;
+    background-color: #faf8ff;
   }
-  /* Arabic RTL — ensure proper text rendering */
-  [dir="rtl"] {
-    text-align: right;
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
   }
-  [dir="ltr"] {
-    text-align: left;
-  }
+  [dir="rtl"] { text-align: right; }
+  [dir="ltr"] { text-align: left; }
+
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading tracking-tight;
+    @apply font-heading;
+    letter-spacing: -0.01em;
   }
-  /* Focus visible — keyboard navigation */
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-ring;
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  ::selection {
+    background-color: #002868;
+    color: #ffffff;
   }
 }
 
-/* ─── Utility Classes ─────────────────────────────────────────────────────── */
+/* ─── Design System Utilities ─────────────────────────────────────────────── */
 @layer utilities {
+  /* Container */
   .container-brand {
-    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-[1280px] px-6;
   }
-  .section-padding {
-    @apply py-16 md:py-24;
+
+  /* Section spacing — 120px desktop, 64px mobile per design spec */
+  .section-py {
+    padding-top: 64px;
+    padding-bottom: 64px;
   }
-  .heading-xl {
-    @apply text-4xl font-bold leading-tight md:text-5xl lg:text-6xl;
+  @media (min-width: 1024px) {
+    .section-py {
+      padding-top: 120px;
+      padding-bottom: 120px;
+    }
   }
-  .heading-lg {
-    @apply text-3xl font-bold leading-tight md:text-4xl;
+
+  /* Typography scale — matches design spec */
+  .text-display {
+    font-size: 48px;
+    line-height: 60px;
+    font-weight: 700;
   }
-  .heading-md {
-    @apply text-2xl font-semibold leading-snug md:text-3xl;
+  .text-display-mobile {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 700;
   }
-  .text-balance {
-    text-wrap: balance;
+  .text-headline-md {
+    font-size: 32px;
+    line-height: 44px;
+    font-weight: 600;
   }
-  /* Gold accent underline for headings */
-  .accent-underline {
-    @apply relative inline-block after:absolute after:bottom-0 after:start-0 after:h-0.5 after:w-full after:bg-[--color-brand-accent];
+  .text-headline-sm {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+  }
+  .text-body-lg {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+  }
+  .text-body-md {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+  .text-label-bold {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .text-caption {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+  }
+
+  /* Gold accent bar — design signature */
+  .gold-bar {
+    height: 2px;
+    width: 80px;
+    background: linear-gradient(90deg, #C8A75D 0%, transparent 100%);
+  }
+  .gold-bar-center {
+    height: 3px;
+    width: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #C8A75D;
+    border-radius: 9999px;
+  }
+
+  /* Luxury shadow — primary blue tint per design spec */
+  .luxury-shadow {
+    box-shadow: 0 20px 60px -15px rgba(0, 40, 104, 0.12);
+  }
+  .luxury-shadow-hover:hover {
+    box-shadow: 0 25px 80px -15px rgba(0, 40, 104, 0.20);
+  }
+
+  /* Enterprise gradient — hero/CTA sections */
+  .enterprise-gradient {
+    background: linear-gradient(135deg, #002868 0%, #0A3D91 100%);
+  }
+
+  /* Glass header blur */
+  .glass-header {
+    background: rgba(250, 248, 255, 0.85);
+    backdrop-filter: blur(12px);
+  }
+
+  /* Card image gradient overlay */
+  .card-image-gradient {
+    background: linear-gradient(to top, rgba(0,40,104,0.9) 0%, rgba(0,40,104,0.3) 50%, transparent 100%);
+  }
+
+  /* Text balance */
+  .text-balance { text-wrap: balance; }
+
+  /* Active nav underline */
+  .nav-active {
+    @apply text-primary relative;
+  }
+  .nav-active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    inset-inline-start: 0;
+    width: 100%;
+    height: 2px;
+    background: #002868;
   }
 }

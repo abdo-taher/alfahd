@@ -1,12 +1,7 @@
 import Link from "next/link";
 import { getTranslations, getLocale } from "next-intl/server";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Container } from "@/shared/components/ui/container";
-import { Section } from "@/shared/components/ui/section";
-import { Badge } from "@/shared/components/ui/badge";
-import { Button } from "@/shared/components/ui/button";
 
-const icons: Record<string, React.ReactNode> = {
+const serviceIcons: Record<string, React.ReactNode> = {
   aluminum: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-8" aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zm0 9.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zm9.75-9.75A2.25 2.25 0 0115.75 3.75H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zm0 9.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
@@ -28,55 +23,74 @@ export async function ServicesOverview() {
   const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "home.services" });
   const st = await getTranslations({ locale, namespace: "services" });
-  const isRTL = locale === "ar";
-  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
   const learnMore = st("learnMore");
-
   const items = t.raw("items") as Array<{ id: string; title: string; description: string }>;
 
   return (
-    <Section className="bg-muted/40">
-      <Container>
-        {/* Header */}
-        <div className="mx-auto max-w-2xl text-center mb-14">
-          <Badge variant="default" className="mb-3">{t("title")}</Badge>
-          <h2 className="heading-lg text-foreground">{t("title")}</h2>
-          <p className="mt-4 text-muted-foreground leading-relaxed">{t("subtitle")}</p>
+    <section className="section-py bg-[#faf8ff]">
+      <div className="container-brand">
+        {/* Section header */}
+        <div className="text-center mb-20">
+          <span className="text-label-bold text-[--color-brand-primary] uppercase tracking-widest block mb-3">
+            {t("title")}
+          </span>
+          <h2 className="text-display-mobile lg:text-headline-md text-[--color-brand-primary]">
+            {t("title")}
+          </h2>
+          <p className="text-body-lg text-[#434652] max-w-2xl mx-auto mt-4 leading-relaxed">
+            {t("subtitle")}
+          </p>
+          <div className="gold-bar-center mt-8" aria-hidden="true" />
         </div>
 
-        {/* Cards */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Service cards — full-image cards from redesign_6 */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {items.map((item) => (
             <Link
               key={item.id}
               href={`/${locale}/services/${item.id}-works`}
-              className="group flex flex-col rounded-2xl border border-border bg-card p-8 shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300"
+              className="group flex flex-col overflow-hidden bg-white rounded-lg luxury-shadow luxury-shadow-hover transition-all duration-500"
             >
-              <span className="mb-5 inline-flex size-16 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
-                {icons[item.id]}
-              </span>
-              <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-                {item.title}
-              </h3>
-              <p className="flex-1 text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-              <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
-                {learnMore}
-                <ArrowIcon className="size-4" />
-              </span>
+              {/* Image area with placeholder */}
+              <div className="relative h-64 overflow-hidden bg-[#eeedf5]">
+                <div className="absolute inset-0 card-image-gradient z-10" />
+                {/* Icon overlay on image */}
+                <div className="absolute bottom-0 z-20 p-6 w-full">
+                  <div className="flex items-center gap-4 text-white">
+                    <span className="p-2 bg-[#C8A75D]/20 backdrop-blur-md rounded-lg text-[#C8A75D]">
+                      {serviceIcons[item.id]}
+                    </span>
+                    <h3 className="text-headline-sm text-white font-semibold">{item.title}</h3>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card body */}
+              <div className="flex flex-col flex-1 p-8">
+                <p className="text-body-lg text-[#434652] leading-relaxed flex-1">
+                  {item.description}
+                </p>
+                <span className="mt-8 inline-flex items-center gap-3 text-label-bold text-[--color-brand-primary] group-hover:gap-5 transition-all duration-300">
+                  {learnMore}
+                  <svg viewBox="0 0 20 20" fill="currentColor" className={`size-4 transition-transform ${locale === "ar" ? "rotate-180" : ""}`} aria-hidden="true">
+                    <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </span>
+              </div>
             </Link>
           ))}
         </div>
 
         {/* View all */}
-        <div className="mt-12 flex justify-center">
-          <Button asChild variant="outline" size="lg">
-            <Link href={`/${locale}/services`}>
-              {t("viewAll")}
-              <ArrowIcon className="size-4" />
-            </Link>
-          </Button>
+        <div className="mt-14 text-center">
+          <Link
+            href={`/${locale}/services`}
+            className="inline-flex items-center justify-center border-2 border-[--color-brand-primary] text-[--color-brand-primary] px-10 py-3 text-label-bold rounded hover:bg-[--color-brand-primary]/5 transition-all duration-200"
+          >
+            {t("viewAll")}
+          </Link>
         </div>
-      </Container>
-    </Section>
+      </div>
+    </section>
   );
 }

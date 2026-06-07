@@ -1,71 +1,42 @@
 "use client";
+
 import { useTranslations } from "next-intl";
 import { ShieldCheck, Award, BadgeCheck, Stamp } from "lucide-react";
-import { Container } from "@/shared/components/ui/container";
-import { Section } from "@/shared/components/ui/section";
-import { Badge } from "@/shared/components/ui/badge";
 
-const certifications = [
-  {
-    icon: ShieldCheck,
-    nameAr: "ISO 9001:2015",
-    nameEn: "ISO 9001:2015",
-    descAr: "إدارة الجودة",
-    descEn: "Quality Management",
-  },
-  {
-    icon: Award,
-    nameAr: "ISO 14001:2015",
-    nameEn: "ISO 14001:2015",
-    descAr: "الإدارة البيئية",
-    descEn: "Environmental Management",
-  },
-  {
-    icon: BadgeCheck,
-    nameAr: "OHSAS 18001",
-    nameEn: "OHSAS 18001",
-    descAr: "الصحة والسلامة المهنية",
-    descEn: "Occupational Health & Safety",
-  },
-  {
-    icon: Stamp,
-    nameAr: "هيئة المقاولين",
-    nameEn: "Saudi Contractors Authority",
-    descAr: "معتمد من هيئة المقاولين السعودية",
-    descEn: "Certified by Saudi Contractors Authority",
-  },
+const certs = [
+  { Icon: ShieldCheck, name: "ISO 9001:2015",            desc: "إدارة الجودة" },
+  { Icon: Award,       name: "ISO 14001:2015",           desc: "الإدارة البيئية" },
+  { Icon: BadgeCheck,  name: "OHSAS 18001",              desc: "الصحة والسلامة" },
+  { Icon: Stamp,       name: "هيئة المقاولين",           desc: "معتمد سعودياً" },
 ];
 
 export function Certifications() {
   const t = useTranslations("home.certifications");
 
   return (
-    <Section className="bg-muted/40" tight>
-      <Container>
-        <div className="mx-auto max-w-2xl text-center mb-10">
-          <Badge variant="default" className="mb-3">{t("title")}</Badge>
-          <h2 className="heading-lg">{t("title")}</h2>
-          <p className="mt-4 text-muted-foreground">{t("subtitle")}</p>
+    <section className="py-16 bg-[#faf8ff] border-t border-[#e2e2e9]">
+      <div className="container-brand">
+        <div className="text-center mb-12">
+          <span className="text-label-bold text-[--color-brand-primary] uppercase tracking-widest block mb-3">
+            {t("title")}
+          </span>
+          <h2 className="text-headline-sm text-[--color-brand-primary]">{t("title")}</h2>
+          <p className="text-body-md text-[#434652] mt-2">{t("subtitle")}</p>
         </div>
 
         <div className="grid grid-cols-2 gap-5 sm:grid-cols-4">
-          {certifications.map((cert, i) => {
-            const Icon = cert.icon;
-            return (
-              <div
-                key={i}
-                className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-card p-6 text-center"
-              >
-                <Icon className="size-10 text-[--color-brand-accent]" aria-hidden="true" />
-                <div>
-                  <p className="font-semibold text-sm text-foreground">{cert.nameAr}</p>
-                  <p className="text-xs text-muted-foreground mt-1">{cert.descAr}</p>
-                </div>
-              </div>
-            );
-          })}
+          {certs.map(({ Icon, name, desc }, i) => (
+            <div
+              key={i}
+              className="flex flex-col items-center gap-3 rounded-lg border border-[#c4c6d3] bg-white p-6 text-center luxury-shadow"
+            >
+              <Icon className="size-10 text-[--color-brand-gold]" aria-hidden="true" />
+              <p className="text-label-bold text-[#1a1b21]">{name}</p>
+              <p className="text-caption text-[#747783]">{desc}</p>
+            </div>
+          ))}
         </div>
-      </Container>
-    </Section>
+      </div>
+    </section>
   );
 }

@@ -1,22 +1,16 @@
 "use client";
 
-import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { Container } from "@/shared/components/ui/container";
+import { useTranslations } from "next-intl";
 
 export function CredibilityStrip() {
   const t = useTranslations("home.stats");
-
-  // Typed because next-intl raw() gives unknown[]
   const items = t.raw("items") as Array<{ value: string; suffix: string; label: string }>;
 
   return (
-    <section
-      className="bg-primary py-12"
-      aria-label={t("title")}
-    >
-      <Container>
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+    <section className="enterprise-gradient py-16" aria-label={t("title")}>
+      <div className="container-brand">
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
           {items.map((item, i) => (
             <motion.div
               key={i}
@@ -26,15 +20,15 @@ export function CredibilityStrip() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="flex flex-col items-center text-center"
             >
-              <span className="text-4xl font-bold text-white md:text-5xl">
+              <span className="text-display-mobile font-bold text-white leading-none">
                 {item.value}
-                <span className="text-[--color-brand-accent]">{item.suffix}</span>
+                <span className="text-[--color-brand-gold]">{item.suffix}</span>
               </span>
-              <span className="mt-2 text-sm text-white/70">{item.label}</span>
+              <span className="mt-2 text-label-bold text-[#dae2ff]/80">{item.label}</span>
             </motion.div>
           ))}
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
