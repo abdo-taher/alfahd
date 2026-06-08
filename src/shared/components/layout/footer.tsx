@@ -57,6 +57,18 @@ export function Footer() {
                 height={80}
               />
             </div>
+            {/* Company name & tagline */}
+            <div>
+              <h3 className="text-white font-bold text-base tracking-tight">
+                {locale === "ar" ? "شركة الفهد للمقاولات" : "Al-Fahd Contracting Co."}
+              </h3>
+              <p
+                className="text-[11px] mt-0.5"
+                style={{ color: "#C5A880", fontFamily: "'JetBrains Mono', ui-monospace, monospace", letterSpacing: "0.04em" }}
+              >
+                {locale === "ar" ? "رواد هندسة الواجهات في المملكة" : "Facade Engineering Leaders — KSA"}
+              </p>
+            </div>
             <p className="text-xs text-gray-400 leading-relaxed font-sans max-w-sm">
               {t("description")}
             </p>
