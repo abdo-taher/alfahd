@@ -277,6 +277,7 @@
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
     background-color: #FAF9F5;
+    direction: rtl;
   }
   body {
     background-color: var(--background, #FAF9F5);

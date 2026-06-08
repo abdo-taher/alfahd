@@ -121,7 +121,7 @@ export function generateServiceMetadata({
   path: string;
 }): Metadata {
   const isAr = locale === "ar";
-  const companyName = isAr ? "شركة الفهد للمقاولات" : "Al Fahd Contracting";
+  const companyName = isAr ? "مؤسسة الفهد للمقاولات" : "Al Fahd Contracting";
 
   const title = isAr
     ? `${service} في الرياض | ${companyName}`

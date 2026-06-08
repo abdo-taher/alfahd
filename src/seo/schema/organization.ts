@@ -5,7 +5,7 @@ export function organizationSchema() {
     "@context": "https://schema.org",
     "@type": ["Organization", "LocalBusiness"],
     "@id": `${BASE_URL}/#organization`,
-    name: "شركة الفهد للمقاولات",
+    name: "مؤسسة الفهد للمقاولات",
     alternateName: ["Al Fahd Contracting", "Al-Fahad Contracting Company", "الفهد للمقاولات"],
     url: BASE_URL,
     logo: {
@@ -16,7 +16,7 @@ export function organizationSchema() {
     },
     image: `${BASE_URL}/images/og-default.jpg`,
     description:
-      "شركة الفهد للمقاولات — متخصصون في أعمال الألمنيوم والزجاج والحديد بالمملكة العربية السعودية. خبرة تزيد على 15 عاماً في تنفيذ المشاريع السكنية والتجارية والحكومية بأعلى معايير الجودة.",
+      "مؤسسة الفهد للمقاولات — متخصصون في أعمال الألمنيوم والزجاج والحديد بالمملكة العربية السعودية. خبرة تزيد على 15 عاماً في تنفيذ المشاريع السكنية والتجارية والحكومية بأعلى معايير الجودة.",
     address: {
       "@type": "PostalAddress",
       streetAddress: "أبراج العليا، برج ب، الطابق ١٤",
@@ -82,7 +82,7 @@ export function websiteSchema() {
     "@type": "WebSite",
     "@id": `${BASE_URL}/#website`,
     url: BASE_URL,
-    name: "شركة الفهد للمقاولات",
+    name: "مؤسسة الفهد للمقاولات",
     publisher: { "@id": `${BASE_URL}/#organization` },
     inLanguage: ["ar", "en"],
     potentialAction: {

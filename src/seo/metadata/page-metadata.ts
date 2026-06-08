@@ -4,7 +4,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://alfahd-contracting
 
 /** Shared brand keywords injected on every page for baseline authority signals */
 const BRAND_KEYWORDS_AR = [
-  "شركة الفهد للمقاولات",
+  "مؤسسة الفهد للمقاولات",
   "أعمال الألمنيوم الرياض",
   "أعمال الزجاج الرياض",
   "أعمال الحديد الرياض",
@@ -71,7 +71,7 @@ export function generatePageMetadata({
       description,
       url: canonical,
       type: "website",
-      siteName: locale === "ar" ? "شركة الفهد للمقاولات" : "Al Fahd Contracting",
+      siteName: locale === "ar" ? "مؤسسة الفهد للمقاولات" : "Al Fahd Contracting",
       locale: locale === "ar" ? "ar_SA" : "en_US",
       images: [{ url: ogImageUrl, width: 1200, height: 630, alt: title }],
     },

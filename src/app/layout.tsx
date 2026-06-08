@@ -17,9 +17,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "شركة الفهد للمقاولات",
+  title: "مؤسسة الفهد للمقاولات",
   description:
-    "شركة الفهد للمقاولات — متخصصون في أعمال الألمنيوم والزجاج والحديد بالمملكة العربية السعودية",
+    "مؤسسة الفهد للمقاولات — متخصصون في أعمال الألمنيوم والزجاج والحديد بالمملكة العربية السعودية",
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -47,6 +47,8 @@ export default function RootLayout({
   return (
     <html
       suppressHydrationWarning
+      dir="rtl"
+      lang="ar"
       className={`${ibmPlexArabic.variable} ${inter.variable}`}
     >
       <head>

@@ -61,6 +61,42 @@
       {
         "question": "Do you provide 3D visualization before execution?",
         "answer": "Yes, we use AutoCAD, Revit, and Rhinoceros to deliver full 3D facade simulations before manufacturing starts. This lets you review the final appearance, approve colors and details, and make any changes — with zero surprises at handover."
+      },
+      {
+        "question": "Is there a minimum project size you accept?",
+        "answer": "We welcome all project sizes, from replacing a single window in a residential villa to full multi-storey tower facades. For smaller projects we offer a rapid supply-and-install service; for larger ones we assign a dedicated project team including a project manager, site engineer, and specialist supervisors."
+      },
+      {
+        "question": "How is aluminum work priced?",
+        "answer": "Pricing is based on several factors: aluminum weight used (linear meters), finish type and complexity, accompanying insulation and glass specifications, and labor and installation costs. We issue a detailed line-item quote within 48 hours of receiving drawings and specifications — with every element listed separately for easy comparison."
+      },
+      {
+        "question": "Do you work as a subcontractor for other contractors or developers?",
+        "answer": "Yes, we serve main contractors and other construction companies as a nominated specialist subcontractor. We have extensive experience operating within multi-contractor projects and adhering to payment schedule requirements and quality standards for large-scale and government projects."
+      },
+      {
+        "question": "Can you supply aluminum sections without installation?",
+        "answer": "Yes. We offer a supply-only service for contractors and fabricators who have their own installation crews. All sections are cut to length, labelled, and packaged per shop drawings, with a full material certificate and packing list included for site receiving inspection."
+      },
+      {
+        "question": "How do you handle site measurements for irregular openings?",
+        "answer": "Our site survey team uses laser distance meters and digital level tools to capture all opening dimensions to ±1 mm. We then produce a site measurement report that is cross-checked against architectural drawings before any cutting order is placed, eliminating fit-up errors on site."
+      },
+      {
+        "question": "Do you provide shop drawings and as-built drawings?",
+        "answer": "Yes. We issue full shop drawings for client and consultant approval before fabrication, and as-built drawings upon project completion. Both sets are delivered in DWG and PDF formats and are archived in our document management system for the lifetime of the warranty."
+      },
+      {
+        "question": "What acoustic performance can aluminum window systems achieve?",
+        "answer": "Our thermally broken double-glazed aluminum window systems achieve Rw values of 35–45 dB depending on glass specification and profile depth. For high-noise environments such as airports or urban motorways, we can specify specialist acoustic interlayer glass and heavy-duty sealing gaskets to push performance beyond 45 dB."
+      },
+      {
+        "question": "Are your aluminum systems tested for water and air infiltration?",
+        "answer": "Yes. All curtain wall and window systems we supply are type-tested to AAMA 501, ASTM E283 (air infiltration) and ASTM E331 (water resistance) by accredited laboratories. Test reports are available for review and are submitted as part of the project submittal package to the engineer of record."
+      },
+      {
+        "question": "Can you match existing aluminum profiles on a heritage or partially renovated building?",
+        "answer": "In most cases, yes. We maintain a library of legacy extrusion profiles and can commission custom die extrusions for profiles no longer in standard production. We also carry a wide stock of universal bridging profiles that allow new sections to connect seamlessly to original frames."
       }
     ]
   },
@@ -126,6 +162,38 @@
       {
         "question": "Do you handle fire-rated glass requirements?",
         "answer": "Yes, we supply fire-rated glass with EW and EI classifications per EN 1364 and Saudi Civil Defense requirements. This is used in fire-compartment partitions, escape-route doors, and interior divisions in facilities with strict safety mandates such as hospitals, hotels, and government buildings."
+      },
+      {
+        "question": "Can you install acoustic glass for offices and hospitals?",
+        "answer": "Yes. We supply double and triple IGU units with argon fill and an asymmetric cavity (e.g. 6+12+8 mm) to break the sound resonance frequency and achieve an STC rating of 38–45 dB. Ideal for offices adjacent to highways, boardrooms, and healthcare facilities requiring high speech-privacy standards."
+      },
+      {
+        "question": "How do you handle leaks or breakage after project handover?",
+        "answer": "We provide an after-sales hotline during business hours. For warranty-covered leaks or breakages, we dispatch an emergency team within 24–48 hours to assess the situation and provide a temporary fix while the permanent repair is arranged. Every project has a digital panel registry that speeds up sourcing replacement units."
+      },
+      {
+        "question": "Can glass be printed or patterned for privacy and branding?",
+        "answer": "Yes. We supply digitally printed ceramic-frit glass for logos, geometric patterns, and gradient privacy screens. The ink is kiln-fired into the glass surface at 650 °C, making it fully permanent and UV-resistant. We also offer sandblasted and acid-etched finishes for a frosted aesthetic without printing."
+      },
+      {
+        "question": "What is the lead time for ordering specialty glass?",
+        "answer": "Standard tempered and double-glazed units are produced in 2–4 weeks. Specialty products such as Low-E coated, laminated, printed, or curved glass typically require 4–8 weeks depending on origin. We always communicate lead times upfront and factor them into the project master schedule."
+      },
+      {
+        "question": "Do you offer structural glazing (bonded glass without visible frames)?",
+        "answer": "Yes. We design and install structural silicone-bonded (SSG) facades where the glass is bonded to aluminum mullions with two-part Dow Corning or Sika structural sealant, creating a flush, frameless appearance. SSG systems are tested and approved by the sealant manufacturer's technical team on every project."
+      },
+      {
+        "question": "Can glass partitions be reconfigured after installation?",
+        "answer": "Demountable aluminum-framed glass partition systems are specifically designed for future reconfiguration. We offer both full-height and ceiling-track systems with modular panel widths, allowing offices to be subdivided or opened up without creating construction waste or requiring significant structural changes."
+      },
+      {
+        "question": "How do you manage glass transportation and on-site storage safely?",
+        "answer": "All glass is transported in custom-built A-frame stillages with foam spacers and polycarbonate corner protectors. On site, glass is stored upright on rubber-padded racks away from traffic routes. Our logistics team provides a delivery schedule synchronized with the installation programme to minimize breakage risk from prolonged site storage."
+      },
+      {
+        "question": "Are there glass options that reduce solar glare without heavy tinting?",
+        "answer": "Yes. Selective-coated Low-E glass achieves a Light-to-Solar-Gain (LSG) ratio above 2.0, meaning it admits twice as much visible light as solar heat. This eliminates the dark-tinted appearance of traditional reflective glass while still meeting ASHRAE 90.1 and SBC-601 energy performance requirements."
       }
     ]
   },
@@ -191,6 +259,38 @@
       {
         "question": "Can an existing steel structure be modified or expanded?",
         "answer": "Yes — flexibility is one of steel's greatest advantages. We conduct a structural assessment of the existing facility first to determine its load capacity, then design expansion or modification elements that integrate with the original frame. Expansions are often completed without fully halting factory or warehouse operations."
+      },
+      {
+        "question": "Do you offer custom fabrication for non-standard parts?",
+        "answer": "Yes. Our workshop is equipped with CNC laser cutters and bending machines capable of fabricating any steel element per execution drawings to a tolerance of ±1 mm. We serve architects and designers who need unique pieces for decorative or structural applications that fall outside standard rolled-section sizes."
+      },
+      {
+        "question": "What is your monthly production capacity?",
+        "answer": "Our current in-house production capacity is approximately 800 tonnes of fabricated steel per month, with the ability to scale through our certified manufacturing partners for projects exceeding that volume. We share a production-capacity schedule with the client at contract signing to guarantee alignment with the project timeline."
+      },
+      {
+        "question": "Do you provide structural calculations signed by a licensed Saudi engineer?",
+        "answer": "Yes. All structural calculations are reviewed and stamped by engineers registered with the Saudi Council of Engineers (SCE). These reports provide the official documentation required for building-permit issuance and government handover procedures."
+      },
+      {
+        "question": "What welding certifications do your welders hold?",
+        "answer": "All structural welders are qualified to AWS D1.1 and hold valid Welding Procedure Specifications (WPS). Welder qualification records (WQR) are maintained on file and are available for client or third-party inspector review. For critical joints we apply 100% visual inspection plus UT or MT non-destructive testing."
+      },
+      {
+        "question": "Can steel structures be hot-dip galvanized instead of painted?",
+        "answer": "Yes. For outdoor structures, buried elements, or high-humidity environments, hot-dip galvanizing to ISO 1461 provides superior long-term protection with a zinc layer of 85–100 microns. Galvanized structures typically require no maintenance for 20–40 years depending on environment, compared to 5–7 years for a paint system."
+      },
+      {
+        "question": "Do you supply steel mezzanine floors for warehouses?",
+        "answer": "Yes. We design and install freestanding mezzanine decks with structural steel columns, primary and secondary beams, and either steel grating, checker-plate, or oriented-strand-board decking. We provide full load calculations and PE-stamped drawings, and mezzanines can be designed for easy disassembly and relocation."
+      },
+      {
+        "question": "How do you handle interference between structural steel and MEP services?",
+        "answer": "We coordinate structural steel with mechanical, electrical, and plumbing (MEP) drawings using BIM clash-detection software (Navisworks or Revit) before fabrication. Web penetrations for ducts and conduits are designed with reinforced openings, and all coordination drawings are shared with the MEP subcontractors for approval."
+      },
+      {
+        "question": "What is your approach to on-site safety during steel erection?",
+        "answer": "We comply with Saudi Occupational Safety and Health (OSH) regulations and OSHA Steel Erection Standard 29 CFR 1926 Subpart R. Every erection crew uses full-body harnesses, inertia reels, and designated anchor points. A site-specific erection method statement and lifting plan are approved by the project safety officer before work begins."
       }
     ]
   }

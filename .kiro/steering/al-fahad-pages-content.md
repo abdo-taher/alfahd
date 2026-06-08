@@ -20,7 +20,7 @@ Locales: `ar` (default, RTL) and `en` (LTR).
 
 ## Company Identity
 
-**Full name (Arabic):** شركة الفهد للمقاولات  
+**Full name (Arabic):** مؤسسة الفهد للمقاولات  
 **Full name (English):** Al-Fahad Contracting Company  
 **Tagline:** رواد هندسة الواجهات والمشاريع الإنشائية في المملكة  
 **HQ:** الرياض، المملكة العربية السعودية (Riyadh, Saudi Arabia)  

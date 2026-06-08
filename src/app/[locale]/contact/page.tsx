@@ -14,7 +14,7 @@ export async function generateMetadata({
   const isAr = locale === "ar";
   const keywords = isAr
     ? [
-        "تواصل مع شركة الفهد للمقاولات",
+        "تواصل مع مؤسسة الفهد للمقاولات",
         "رقم شركة ألمنيوم بالرياض",
         "عنوان شركة مقاولات الرياض",
         "بريد شركة الفهد",

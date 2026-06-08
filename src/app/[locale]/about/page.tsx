@@ -13,7 +13,7 @@ export async function generateMetadata({
 
   const keywords = isAr
     ? [
-        "عن شركة الفهد للمقاولات",
+        "عن مؤسسة الفهد للمقاولات",
         "تاريخ شركة مقاولات الرياض",
         "مقاول ألمنيوم معتمد السعودية",
         "شركة مقاولات ISO الرياض",
@@ -87,7 +87,7 @@ export default async function AboutPage({
       title: locale === "ar" ? "التأسيس" : "Founded",
       desc:
         locale === "ar"
-          ? "تأسست شركة الفهد للمقاولات في الرياض"
+          ? "تأسست مؤسسة الفهد للمقاولات في الرياض"
           : "Al Fahd Contracting was founded in Riyadh",
     },
     {

@@ -15,7 +15,7 @@ export function generateProjectMetadata({
   ogImage?: string;
 }): Metadata {
   const isAr = locale === "ar";
-  const companyName = isAr ? "شركة الفهد للمقاولات" : "Al Fahd Contracting";
+  const companyName = isAr ? "مؤسسة الفهد للمقاولات" : "Al Fahd Contracting";
 
   const title = isAr
     ? `${name} — ${location} | ${companyName}`
