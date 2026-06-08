@@ -24,16 +24,16 @@ export function Footer() {
   };
 
   const serviceLinks = [
-    { label: locale === "ar" ? "أنظمة الألمنيوم"  : "Aluminum Systems",  href: `/${locale}/services` },
-    { label: locale === "ar" ? "جدران الستائر"    : "Curtain Walls",     href: `/${locale}/services` },
-    { label: locale === "ar" ? "الزجاج الإنشائي"  : "Structural Glass",  href: `/${locale}/services` },
-    { label: locale === "ar" ? "الهياكل المعدنية" : "Steel Structures",  href: `/${locale}/services` },
+    { label: locale === "ar" ? "أنظمة الألمنيوم"  : "Aluminum Systems",  href: `/${locale}/services/aluminum` },
+    { label: locale === "ar" ? "جدران الستائر"    : "Curtain Walls",     href: `/${locale}/services/curtain-wall` },
+    { label: locale === "ar" ? "الزجاج الإنشائي"  : "Structural Glass",  href: `/${locale}/services/glass` },
+    { label: locale === "ar" ? "الهياكل المعدنية" : "Steel Structures",  href: `/${locale}/services/steel` },
   ];
 
   const companyLinks = [
-    { label: locale === "ar" ? "تاريخنا المعماري" : "Our History",  href: `/${locale}/about` },
-    { label: locale === "ar" ? "مجلس الإدارة"    : "Leadership",   href: `/${locale}/about` },
-    { label: locale === "ar" ? "فرص العمل"       : "Careers",      href: `/${locale}/about` },
+    { label: locale === "ar" ? "من نحن"    : "About Us",  href: `/${locale}/about` },
+    { label: locale === "ar" ? "مشاريعنا" : "Projects",  href: `/${locale}/projects` },
+    { label: locale === "ar" ? "تواصل معنا" : "Contact",  href: `/${locale}/contact` },
   ];
 
   return (
@@ -242,8 +242,8 @@ export function Footer() {
               {t("terms")}
             </Link>
             <span aria-hidden="true">•</span>
-            <Link href={`/${locale}/contact`} className="hover:text-white transition-colors">
-              {locale === "ar" ? "تواصل معنا" : "Contact"}
+            <Link href={`/${locale}/request-quote`} className="hover:text-white transition-colors">
+              {locale === "ar" ? "طلب عرض سعر" : "Request Quote"}
             </Link>
           </div>
         </div>

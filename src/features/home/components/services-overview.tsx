@@ -54,7 +54,7 @@ export async function ServicesOverview() {
           {items.map((item) => {
             const icon = serviceIconMap[item.id] ?? "construction";
             const img = serviceImageMap[item.id];
-            const href = `/${locale}/services`;
+            const href = `/${locale}/services/${item.id}`;
 
             return (
               <Link
@@ -80,12 +80,12 @@ export async function ServicesOverview() {
                   >
                     {icon}
                   </span>
-                  <h3
-                    className="text-[#002868] dark:text-white mb-4"
-                    style={{ fontSize: "24px", lineHeight: "1.4", fontWeight: 600 }}
+                  <p
+                    className="text-[#002868] dark:text-white mb-4 font-semibold"
+                    style={{ fontSize: "24px", lineHeight: "1.4" }}
                   >
                     {item.title}
-                  </h3>
+                  </p>
                   <p className="text-[#434652] dark:text-gray-400 mb-6 flex-1" style={{ fontSize: "16px", lineHeight: "1.8" }}>
                     {item.description}
                   </p>

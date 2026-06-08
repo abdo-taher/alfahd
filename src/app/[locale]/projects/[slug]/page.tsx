@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { generateProjectMetadata } from "@/seo/metadata/project-metadata";
+import { ShareButtons } from "@/shared/components/ui/share-buttons";
+
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://alfahd-contracting.com";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -193,6 +196,13 @@ export default async function ProjectPage({
                   {project.description}
                 </p>
               </div>
+
+              {/* Share */}
+              <ShareButtons
+                url={`${BASE_URL}/${locale}/projects/${slug}`}
+                title={project.title}
+                locale={locale}
+              />
 
               {/* Challenge */}
               <div>

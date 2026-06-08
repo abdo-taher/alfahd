@@ -61,7 +61,7 @@ export function generatePageMetadata({
     alternates: {
       canonical,
       languages: {
-        "x-default": `${BASE_URL}/ar`,
+        "x-default": `${BASE_URL}${path.replace(`/${locale}`, "/ar")}`,
         [locale]: canonical,
         [altLocale]: `${BASE_URL}${altPath}`,
       },

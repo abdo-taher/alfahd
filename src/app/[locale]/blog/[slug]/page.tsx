@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { generateArticleMetadata } from "@/seo/metadata/article-metadata";
 import { articleSchema, breadcrumbSchema } from "@/seo/schema/organization";
+import { ShareButtons } from "@/shared/components/ui/share-buttons";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://alfahd-contracting.com";
 
@@ -229,6 +230,15 @@ export default async function BlogPostPage({
               </div>
             </div>
           )}
+
+          {/* Share buttons */}
+          <div className="mt-10 pt-8 border-t border-gray-200">
+            <ShareButtons
+              url={`${BASE_URL}/${locale}/blog/${slug}`}
+              title={post.title}
+              locale={locale}
+            />
+          </div>
         </div>
       </section>
 
