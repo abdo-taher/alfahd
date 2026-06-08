@@ -51,15 +51,26 @@ export function Header() {
   const locale = useLocale();
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const searchInputRef = useRef<HTMLInputElement>(null);
 
+  // Only the home page has a full-viewport dark hero — all other pages need a
+  // solid header from the very top so the logo/nav are legible.
+  const isHomePage = pathname === `/${locale}` || pathname === "/";
+  const isTransparent = isHomePage && !scrolled && !mobileMenuOpen;
+
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      // Don't update scroll state while mobile menu is open (body is fixed)
+      if (!mobileMenuOpen) {
+        setScrolled(window.scrollY > 20);
+      }
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     if (searchOpen && searchInputRef.current) {
@@ -108,7 +119,7 @@ export function Header() {
       <header
         className={[
           "fixed top-0 left-0 w-full z-50 transition-all duration-300",
-          scrolled
+          !isTransparent
             ? "bg-white/95 dark:bg-gray-950/95 backdrop-blur-md shadow-sm border-b border-gray-100 dark:border-gray-800 py-3"
             : "bg-transparent py-5",
         ].join(" ")}
@@ -132,7 +143,7 @@ export function Header() {
             {/* Logo — white when header is transparent (over dark hero), blue/black when scrolled */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={scrolled ? "/images/logo-dark.png" : "/images/logo-white.png"}
+              src={!isTransparent ? "/images/logo-dark.png" : "/images/logo-white.png"}
               alt="Al-Fahd Logo"
               className="h-20 w-auto object-contain transition-all duration-300 group-hover:scale-105"
               width={80}
@@ -209,7 +220,12 @@ export function Header() {
           <div className="lg:hidden flex items-center gap-2">
             <button
               onClick={() => setSearchOpen(true)}
-              className="p-2 text-gray-500 dark:text-gray-400 rounded-sm hover:bg-gray-50 dark:hover:bg-gray-800"
+              className={[
+                "p-2 rounded-sm transition-colors",
+                isTransparent
+                  ? "text-white/80 hover:text-white hover:bg-white/10"
+                  : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800",
+              ].join(" ")}
               aria-label={t("search")}
             >
               <Search className="w-4 h-4" aria-hidden="true" />
@@ -218,7 +234,7 @@ export function Header() {
               <LanguageSwitcher />
             </div>
             <ThemeToggle />
-            <MobileMenu navLinks={navLinks} />
+            <MobileMenu navLinks={navLinks} onOpenChange={setMobileMenuOpen} isTransparent={isTransparent} />
           </div>
 
         </div>

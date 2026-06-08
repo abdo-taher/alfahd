@@ -8,7 +8,15 @@ import { LanguageSwitcher } from "./language-switcher";
 
 type NavLink = { label: string; href: string };
 
-export function MobileMenu({ navLinks }: { navLinks: NavLink[] }) {
+export function MobileMenu({
+  navLinks,
+  onOpenChange,
+  isTransparent = false,
+}: {
+  navLinks: NavLink[];
+  onOpenChange?: (open: boolean) => void;
+  isTransparent?: boolean;
+}) {
   const t = useTranslations("nav");
   const locale = useLocale();
   const pathname = usePathname();
@@ -18,22 +26,46 @@ export function MobileMenu({ navLinks }: { navLinks: NavLink[] }) {
 
   const isRTL = locale === "ar";
 
+  const handleOpen = (value: boolean) => {
+    setOpen(value);
+    onOpenChange?.(value);
+  };
+
   // Close on outside click
   useEffect(() => {
     if (!open) return;
     const handler = (e: MouseEvent) => {
       if (drawerRef.current && !drawerRef.current.contains(e.target as Node)) {
-        setOpen(false);
+        handleOpen(false);
       }
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
-  // Lock body scroll when open
+  // Lock body scroll when open — iOS-safe fixed position technique
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    if (open) {
+      const scrollY = window.scrollY;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = "100%";
+      document.body.style.overflow = "hidden";
+    } else {
+      const scrollY = document.body.style.top;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      document.body.style.overflow = "";
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || "0") * -1);
+      }
+    }
     return () => {
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
       document.body.style.overflow = "";
     };
   }, [open]);
@@ -42,12 +74,13 @@ export function MobileMenu({ navLinks }: { navLinks: NavLink[] }) {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape" && open) {
-        setOpen(false);
+        handleOpen(false);
         triggerRef.current?.focus();
       }
     };
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
   // Focus first link when drawer opens
@@ -63,20 +96,24 @@ export function MobileMenu({ navLinks }: { navLinks: NavLink[] }) {
       {/* Hamburger trigger */}
       <button
         ref={triggerRef}
-        onClick={() => setOpen(true)}
+        onClick={() => handleOpen(true)}
         aria-expanded={open}
         aria-controls="mobile-nav-drawer"
         aria-label={t("menu")}
-        className="flex h-10 w-10 items-center justify-center rounded-xl text-[#002868] hover:bg-[#002868]/5 transition-colors focus-visible:outline-2 focus-visible:outline-[#002868]"
+        className={[
+          "flex h-10 w-10 items-center justify-center rounded-xl transition-colors focus-visible:outline-2",
+          isTransparent
+            ? "text-white/90 hover:bg-white/10 focus-visible:outline-white"
+            : "text-[#002868] hover:bg-[#002868]/5 focus-visible:outline-[#002868]",
+        ].join(" ")}
       >
-        {/* Hamburger icon */}
         <span className="material-symbols-outlined" aria-hidden="true">menu</span>
       </button>
 
       {/* Backdrop */}
       <div
         aria-hidden="true"
-        onClick={() => setOpen(false)}
+        onClick={() => handleOpen(false)}
         className={[
           "fixed inset-0 z-40 bg-[#002868]/60 backdrop-blur-sm transition-opacity duration-300",
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
@@ -109,7 +146,7 @@ export function MobileMenu({ navLinks }: { navLinks: NavLink[] }) {
             <span className="text-[11px] text-white/60 tracking-widest uppercase">للمقاولات</span>
           </div>
           <button
-            onClick={() => setOpen(false)}
+            onClick={() => handleOpen(false)}
             aria-label={t("closeMenu")}
             className="flex h-9 w-9 items-center justify-center rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
           >
@@ -133,18 +170,16 @@ export function MobileMenu({ navLinks }: { navLinks: NavLink[] }) {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => setOpen(false)}
+                onClick={() => handleOpen(false)}
                 aria-current={isActive ? "page" : undefined}
                 className={[
                   "flex items-center gap-3 px-4 py-3.5 rounded-xl text-sm font-semibold uppercase tracking-wider transition-all duration-200",
                   isActive
                     ? "bg-[#002868] text-white"
                     : "text-[#434652] dark:text-gray-300 hover:bg-[#002868]/5 dark:hover:bg-gray-800 hover:text-[#002868] dark:hover:text-white",
-                  // stagger animation via inline delay
                 ].join(" ")}
                 style={{ transitionDelay: open ? `${i * 30}ms` : "0ms" }}
               >
-                {/* Active indicator dot */}
                 {isActive && (
                   <span
                     className="w-1.5 h-1.5 rounded-full bg-[#C8A75D] shrink-0"
@@ -180,7 +215,7 @@ export function MobileMenu({ navLinks }: { navLinks: NavLink[] }) {
         <div className="px-5 py-5 border-t border-[#c4c6d3]/30 flex flex-col gap-3">
           <Link
             href={`/${locale}/request-quote`}
-            onClick={() => setOpen(false)}
+            onClick={() => handleOpen(false)}
             className="flex w-full items-center justify-center gap-2 bg-[#C8A75D] text-[#001947] py-3.5 rounded-xl font-bold text-sm hover:brightness-110 active:scale-95 transition-all duration-200"
           >
             <span className="material-symbols-outlined text-base" aria-hidden="true">description</span>
