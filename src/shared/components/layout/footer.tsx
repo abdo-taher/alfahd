@@ -53,9 +53,9 @@ export function Footer() {
                 src="/images/logo.png"
                 srcSet="/images/logo.png 1x, /images/logo@2x.png 2x"
                 alt="Al-Fahd Logo"
-                className="h-14 w-auto brightness-200"
-                width={280}
-                height={120}
+                className="h-16 w-auto brightness-200"
+                width={420}
+                height={180}
               />
             </div>
             <p className="text-xs text-gray-400 leading-relaxed font-sans max-w-sm">
