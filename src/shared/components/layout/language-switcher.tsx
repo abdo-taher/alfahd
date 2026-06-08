@@ -19,7 +19,7 @@ export function LanguageSwitcher() {
 
   return (
     <div
-      className="flex items-center rounded-lg border border-border overflow-hidden"
+      className="flex items-center rounded overflow-hidden border border-gray-200"
       role="group"
       aria-label="Language selector"
     >
@@ -28,10 +28,10 @@ export function LanguageSwitcher() {
           key={lang}
           onClick={() => switchLocale(lang)}
           className={cn(
-            "px-3 py-1.5 text-xs font-semibold transition-colors",
+            "px-3 py-1.5 text-xs font-bold tracking-wider uppercase transition-colors duration-200",
             locale === lang
-              ? "bg-primary text-primary-foreground"
-              : "text-muted-foreground hover:text-foreground hover:bg-muted"
+              ? "bg-gray-950 text-white"
+              : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
           )}
           aria-pressed={locale === lang}
           aria-label={lang === "ar" ? "العربية" : "English"}
