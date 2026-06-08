@@ -14,8 +14,8 @@
     "scope": ["Aluminum & glass facades for 20 floors", "Glass main entrance", "Aluminum interior partitions", "Decorative exterior panels"],
     "technologies": ["Reflective double glazing", "Low-emissivity aluminum", "Industrial silicone sealants"],
     "results": ["Project completed on schedule", "30% energy consumption savings", "Client achieved LEED certification"],
-    "coverImage": "/images/projects/riyadh-tower.jpg",
-    "gallery": ["/images/projects/riyadh-tower-1.jpg", "/images/projects/riyadh-tower-2.jpg"],
+    "coverImage": "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80", "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80"],
     "testimonial": {
       "id": "t1",
       "name": "Eng. Ahmed Al-Khalidi",
@@ -41,8 +41,8 @@
     "scope": ["Windows and doors for 50 villas", "Glass swimming pools", "Balconies with glass balustrades", "Custom aluminum entrances"],
     "technologies": ["12mm tempered glass", "Anodized aluminum", "Glass balustrades"],
     "results": ["Delivered 50 units in 6 months", "Full satisfaction from all owners", "Architectural distinction recognized with design award"],
-    "coverImage": "/images/projects/jeddah-villas.jpg",
-    "gallery": ["/images/projects/jeddah-villas-1.jpg"],
+    "coverImage": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=80"],
     "testimonial": {
       "id": "t2",
       "name": "Eng. Sara Al-Zahrani",
@@ -68,8 +68,8 @@
     "scope": ["Main steel structure 5,000 sqm", "Heavy industrial gates", "Balustrades and lifting platforms", "Anti-rust protective coatings"],
     "technologies": ["Galvanized steel structures", "Quality-controlled welding", "Epoxy coating"],
     "results": ["Delivered in 10 weeks", "Passed all safety inspections", "20% cost savings vs other bids"],
-    "coverImage": "/images/projects/dammam-warehouse.jpg",
-    "gallery": ["/images/projects/dammam-warehouse-1.jpg"],
+    "coverImage": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80"],
     "featured": true
   }
 ]

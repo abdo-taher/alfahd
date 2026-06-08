@@ -6,7 +6,7 @@
     "shortDescription": "Premium aluminum facades, doors & windows with the latest designs",
     "description": "We specialize in designing, installing, and finishing all aluminum works for residential, commercial, and industrial buildings. We use the finest globally certified aluminum with a wide range of finishes and colors to suit every project.",
     "icon": "squares-2x2",
-    "image": "/images/services/aluminum.jpg",
+    "image": "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80",
     "benefits": [
       "High resistance to rust and corrosion",
       "Excellent thermal and acoustic insulation",
@@ -51,7 +51,7 @@
     "shortDescription": "Comprehensive glass solutions for facades, partitions & entrances",
     "description": "We provide comprehensive glass solutions including full glass facades, interior glass partitions, and transparent roofing. We use the latest tempered and double-glazed glass technologies to ensure the highest safety and insulation standards.",
     "icon": "view-columns",
-    "image": "/images/services/glass.jpg",
+    "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80",
     "benefits": [
       "High visual transparency",
       "Excellent thermal and acoustic insulation",
@@ -92,7 +92,7 @@
     "shortDescription": "Durable steel structures for large industrial and commercial projects",
     "description": "We specialize in designing, manufacturing, and installing steel structures for industrial, commercial, and infrastructure projects. Our specialized team ensures the highest standards of engineering precision and durability.",
     "icon": "building-office-2",
-    "image": "/images/services/steel.jpg",
+    "image": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80",
     "benefits": [
       "High durability and long service life",
       "Resistant to earthquakes and heavy loads",

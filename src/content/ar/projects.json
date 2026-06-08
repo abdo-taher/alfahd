@@ -14,8 +14,8 @@
     "scope": ["واجهات ألمنيوم وزجاج لـ20 طابقاً", "مدخل رئيسي زجاجي", "أقسام داخلية ألمنيوم", "ألواح خارجية تزيينية"],
     "technologies": ["زجاج مزدوج عاكس", "ألمنيوم حرارة منخفضة", "مواد ختم سيليكون صناعي"],
     "results": ["إنجاز المشروع في الموعد المحدد", "توفير 30% في استهلاك الطاقة", "حصول العميل على شهادة LEED"],
-    "coverImage": "/images/projects/riyadh-tower.jpg",
-    "gallery": ["/images/projects/riyadh-tower-1.jpg", "/images/projects/riyadh-tower-2.jpg"],
+    "coverImage": "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80", "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80"],
     "testimonial": {
       "id": "t1",
       "name": "المهندس أحمد الخالدي",
@@ -41,8 +41,8 @@
     "scope": ["نوافذ وأبواب لـ50 فيلا", "حمامات سباحة زجاجية", "بلكونات بدرابزين زجاجي", "مداخل ألمنيوم مخصصة"],
     "technologies": ["زجاج مقسى 12 مم", "ألمنيوم أنودايز", "درابزين زجاجي"],
     "results": ["تسليم 50 وحدة في 6 أشهر", "رضا تام من جميع المالكين", "تميز معماري حاز على جائزة التصميم"],
-    "coverImage": "/images/projects/jeddah-villas.jpg",
-    "gallery": ["/images/projects/jeddah-villas-1.jpg"],
+    "coverImage": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=80"],
     "testimonial": {
       "id": "t2",
       "name": "المهندسة سارة الزهراني",
@@ -68,8 +68,8 @@
     "scope": ["هيكل حديدي رئيسي 5000 م²", "بوابات صناعية ثقيلة", "درابزين ومنصات رفع", "دهانات واقية من الصدأ"],
     "technologies": ["هياكل حديد مجلفن", "لحام مراقب جودة", "طلاء أيبوكسي"],
     "results": ["تسليم في 10 أسابيع", "اجتياز جميع فحوصات السلامة", "توفير 20% من التكلفة مقارنة بالعطاءات الأخرى"],
-    "coverImage": "/images/projects/dammam-warehouse.jpg",
-    "gallery": ["/images/projects/dammam-warehouse-1.jpg"],
+    "coverImage": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80"],
     "featured": true
   }
 ]
