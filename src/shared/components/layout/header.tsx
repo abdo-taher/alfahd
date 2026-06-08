@@ -1,11 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Container } from "@/shared/components/ui/container";
 import { LanguageSwitcher } from "./language-switcher";
 import { MobileMenu } from "./mobile-menu";
 
@@ -33,100 +31,99 @@ export function Header() {
   return (
     <header
       className={[
-        "fixed top-0 w-full z-50 transition-all duration-300 border-b",
+        "fixed top-0 left-0 w-full z-50 transition-all duration-300",
         scrolled
-          ? "glass-header border-[--color-border] shadow-sm py-3"
-          : "bg-[--color-brand-surface]/80 backdrop-blur-md border-transparent py-4",
+          ? "h-16 bg-white/95 backdrop-blur-[20px] border-b border-[#c4c6d3]/40 shadow-sm"
+          : "h-20 bg-white/85 backdrop-blur-[20px] border-b border-transparent",
       ].join(" ")}
     >
-      {/* Skip to content — text only, no image inside */}
+      {/* Skip to content */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-4 focus:z-50 focus:rounded focus:bg-primary focus:px-4 focus:py-2 focus:text-white"
-        aria-label={locale === "ar" ? "انتقل للمحتوى" : "Skip to content"}
+        className="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-3 focus:z-50 focus:rounded focus:bg-[#002868] focus:px-4 focus:py-2 focus:text-white focus:text-sm"
       >
         {locale === "ar" ? "انتقل للمحتوى" : "Skip to content"}
       </a>
 
-      <Container>
-        <div className="flex items-center justify-between gap-6">
-          {/* Logo — RTL: rendered last visually but first in DOM */}
-          <div className={locale === "ar" ? "order-last" : "order-first"}>
-            <Link
-              href={`/${locale}`}
-              className="flex items-center focus-visible:outline-2 focus-visible:outline-ring rounded"
-              aria-label={locale === "ar" ? "شركة الفهد للمقاولات" : "Al Fahd Contracting"}
-            >
-              <Image
-                src="/images/logo.svg"
-                alt={locale === "ar" ? "شركة الفهد للمقاولات" : "Al Fahd Contracting"}
-                width={160}
-                height={48}
-                priority
-                className="h-10 md:h-12 w-auto object-contain"
-              />
-            </Link>
+      {/* Inner container */}
+      <div className="max-w-[1280px] mx-auto px-6 h-full flex items-center justify-between gap-4">
+
+        {/* ── Logo ──────────────────────────────────────────── */}
+        <Link
+          href={`/${locale}`}
+          aria-label={locale === "ar" ? "شركة الفهد للمقاولات — الرئيسية" : "Al Fahd Contracting — Home"}
+          className="flex items-center gap-2 shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#002868] rounded"
+        >
+          {/* Text logo — swap for <Image> when logo asset is available */}
+          <div className="flex flex-col leading-none">
+            <span className="text-xl font-bold text-[#002868] tracking-tight">الفهد</span>
+            <span className="text-[10px] text-[#747783] tracking-[0.18em] uppercase">للمقاولات</span>
           </div>
+        </Link>
 
-          {/* Desktop Nav */}
-          <nav
-            className={[
-              "hidden lg:flex items-center gap-8",
-              locale === "ar" ? "flex-row-reverse" : "",
-            ].join(" ")}
-            role="navigation"
-            aria-label={t("menu")}
+        {/* ── Desktop Nav ───────────────────────────────────── */}
+        <nav
+          className="hidden lg:flex items-center gap-8"
+          role="navigation"
+          aria-label={t("menu")}
+        >
+          {navLinks.map((link) => {
+            const isActive =
+              link.href === `/${locale}`
+                ? pathname === link.href
+                : pathname.startsWith(link.href);
+
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={isActive ? "page" : undefined}
+                className={[
+                  "relative py-1 text-sm font-bold uppercase tracking-wider transition-colors duration-200 whitespace-nowrap",
+                  isActive
+                    ? "text-[#C8A75D] border-b-2 border-[#C8A75D] pb-1"
+                    : "text-[#434652] hover:text-[#C8A75D]",
+                ].join(" ")}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* ── Desktop Actions ───────────────────────────────── */}
+        <div className="hidden lg:flex items-center gap-5">
+          {/* Phone number */}
+          <a
+            href="tel:+966920000000"
+            className="flex items-center gap-1.5 text-[#002868] font-bold text-sm hover:text-[#C8A75D] transition-colors"
+            dir="ltr"
           >
-            {navLinks.map((link) => {
-              const isActive =
-                link.href === `/${locale}`
-                  ? pathname === link.href
-                  : pathname.startsWith(link.href);
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={[
-                    "text-label-bold relative py-1 uppercase tracking-wider transition-colors duration-200",
-                    isActive
-                      ? "text-[#C8A75D] font-bold border-b-2 border-[#C8A75D] pb-1"
-                      : "text-[--color-muted-foreground] hover:text-[#C8A75D]",
-                  ].join(" ")}
-                  aria-current={isActive ? "page" : undefined}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
+            <span className="material-symbols-outlined text-base" aria-hidden="true">phone</span>
+            +966 92 000 000
+          </a>
 
-          {/* Actions */}
-          <div
-            className={[
-              "flex items-center gap-3",
-              locale === "ar" ? "order-first flex-row-reverse" : "order-last",
-            ].join(" ")}
+          <LanguageSwitcher />
+
+          {/* Gold CTA */}
+          <Link
+            href={`/${locale}/request-quote`}
+            className="flex items-center gap-1.5 bg-[#C8A75D] text-[#001947] px-5 py-2 font-bold text-sm rounded-xl hover:brightness-110 hover:shadow-lg transition-all duration-200 active:scale-95 whitespace-nowrap"
           >
-            {/* Phone number — visible on desktop (master reference) */}
-            <span className="hidden lg:flex items-center gap-2 text-[#002868] font-bold text-sm" dir="ltr">
-              <span className="material-symbols-outlined text-base" aria-hidden="true">phone</span>
-              92000XXXX
-            </span>
-
-            <LanguageSwitcher />
-
-            {/* Gold CTA button — matching master reference */}
-            <Link
-              href={`/${locale}/request-quote`}
-              className="hidden sm:inline-flex items-center justify-center bg-[#C8A75D] text-[#001947] px-6 py-2 font-bold rounded-xl hover:shadow-lg transition-all duration-300 active:scale-95 text-sm"
-            >
-              {t("requestQuote")}
-            </Link>
-
-            <MobileMenu navLinks={navLinks} />
-          </div>
+            {t("requestQuote")}
+          </Link>
         </div>
-      </Container>
+
+        {/* ── Mobile: Language + Hamburger ─────────────────── */}
+        <div className="lg:hidden flex items-center gap-2">
+          {/* Mini language toggle — visible on mobile outside drawer */}
+          <div className="hidden sm:flex">
+            <LanguageSwitcher />
+          </div>
+          <MobileMenu navLinks={navLinks} />
+        </div>
+
+      </div>
     </header>
   );
 }

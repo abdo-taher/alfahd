@@ -2,23 +2,27 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
-import { Button } from "@/shared/components/ui/button";
+import { usePathname } from "next/navigation";
+import { LanguageSwitcher } from "./language-switcher";
 
 type NavLink = { label: string; href: string };
 
 export function MobileMenu({ navLinks }: { navLinks: NavLink[] }) {
   const t = useTranslations("nav");
   const locale = useLocale();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  const isRTL = locale === "ar";
 
   // Close on outside click
   useEffect(() => {
     if (!open) return;
     const handler = (e: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+      if (drawerRef.current && !drawerRef.current.contains(e.target as Node)) {
         setOpen(false);
       }
     };
@@ -29,89 +33,164 @@ export function MobileMenu({ navLinks }: { navLinks: NavLink[] }) {
   // Lock body scroll when open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
-  // Close on Escape key
+  // Close on Escape, restore focus
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape" && open) {
+        setOpen(false);
+        triggerRef.current?.focus();
+      }
     };
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
-  }, []);
+  }, [open]);
+
+  // Focus first link when drawer opens
+  useEffect(() => {
+    if (open) {
+      const firstLink = drawerRef.current?.querySelector("a");
+      setTimeout(() => (firstLink as HTMLElement)?.focus(), 100);
+    }
+  }, [open]);
 
   return (
-    <div ref={menuRef} className="lg:hidden">
+    <div className="lg:hidden">
+      {/* Hamburger trigger */}
       <button
-        onClick={() => setOpen(!open)}
-        className="flex h-10 w-10 items-center justify-center rounded-xl border border-border hover:bg-muted transition-colors"
+        ref={triggerRef}
+        onClick={() => setOpen(true)}
         aria-expanded={open}
-        aria-label={open ? t("closeMenu") : t("menu")}
-        aria-controls="mobile-menu"
+        aria-controls="mobile-nav-drawer"
+        aria-label={t("menu")}
+        className="flex h-10 w-10 items-center justify-center rounded-xl text-[#002868] hover:bg-[#002868]/5 transition-colors focus-visible:outline-2 focus-visible:outline-[#002868]"
       >
-        {open ? <X className="size-5" /> : <Menu className="size-5" />}
+        {/* Hamburger icon */}
+        <span className="material-symbols-outlined" aria-hidden="true">menu</span>
       </button>
 
-      {/* Overlay */}
-      {open && (
-        <div
-          className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
-          aria-hidden="true"
-          onClick={() => setOpen(false)}
-        />
-      )}
+      {/* Backdrop */}
+      <div
+        aria-hidden="true"
+        onClick={() => setOpen(false)}
+        className={[
+          "fixed inset-0 z-40 bg-[#002868]/60 backdrop-blur-sm transition-opacity duration-300",
+          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
+        ].join(" ")}
+      />
 
       {/* Drawer */}
       <div
-        id="mobile-menu"
+        ref={drawerRef}
+        id="mobile-nav-drawer"
         role="dialog"
         aria-modal="true"
         aria-label={t("menu")}
         className={[
-          "fixed top-0 z-50 h-full w-[280px] bg-background shadow-xl transition-transform duration-300",
-          "flex flex-col",
-          locale === "ar" ? "right-0" : "left-0",
+          "fixed top-0 z-50 h-full w-[300px] sm:w-[340px]",
+          "flex flex-col bg-white shadow-2xl",
+          "transition-transform duration-300 ease-in-out",
+          isRTL ? "right-0" : "left-0",
           open
             ? "translate-x-0"
-            : locale === "ar"
+            : isRTL
             ? "translate-x-full"
             : "-translate-x-full",
         ].join(" ")}
       >
-        {/* Drawer header */}
-        <div className="flex items-center justify-between border-b border-border px-5 py-4">
-          <span className="text-lg font-bold text-primary">الفهد للمقاولات</span>
+        {/* ── Drawer Header ─────────────────────────────────── */}
+        <div className="flex items-center justify-between px-6 py-5 border-b border-[#c4c6d3]/40 bg-[#002868]">
+          <div className="flex flex-col leading-none">
+            <span className="text-lg font-bold text-white tracking-tight">الفهد</span>
+            <span className="text-[11px] text-white/60 tracking-widest uppercase">للمقاولات</span>
+          </div>
           <button
             onClick={() => setOpen(false)}
-            className="flex h-8 w-8 items-center justify-center rounded-lg hover:bg-muted"
             aria-label={t("closeMenu")}
+            className="flex h-9 w-9 items-center justify-center rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
           >
-            <X className="size-4" />
+            <span className="material-symbols-outlined text-xl" aria-hidden="true">close</span>
           </button>
         </div>
 
-        {/* Links */}
-        <nav className="flex flex-col gap-1 p-4 flex-1 overflow-y-auto">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="rounded-xl px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/5 hover:text-primary transition-colors"
-              onClick={() => setOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
+        {/* ── Nav Links ─────────────────────────────────────── */}
+        <nav
+          className="flex flex-col flex-1 overflow-y-auto px-4 py-4"
+          role="navigation"
+          aria-label={t("menu")}
+        >
+          {navLinks.map((link, i) => {
+            const isActive =
+              link.href === `/${locale}`
+                ? pathname === link.href
+                : pathname.startsWith(link.href);
+
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                aria-current={isActive ? "page" : undefined}
+                className={[
+                  "flex items-center gap-3 px-4 py-3.5 rounded-xl text-sm font-semibold uppercase tracking-wider transition-all duration-200",
+                  isActive
+                    ? "bg-[#002868] text-white"
+                    : "text-[#434652] hover:bg-[#002868]/5 hover:text-[#002868]",
+                  // stagger animation via inline delay
+                ].join(" ")}
+                style={{ transitionDelay: open ? `${i * 30}ms` : "0ms" }}
+              >
+                {/* Active indicator dot */}
+                {isActive && (
+                  <span
+                    className="w-1.5 h-1.5 rounded-full bg-[#C8A75D] shrink-0"
+                    aria-hidden="true"
+                  />
+                )}
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
-        {/* CTA at bottom */}
-        <div className="p-4 border-t border-border">
-          <Button asChild size="lg" variant="primary" className="w-full">
-            <Link href={`/${locale}/request-quote`} onClick={() => setOpen(false)}>
-              {t("requestQuote")}
-            </Link>
-          </Button>
+        {/* ── Contact Info ──────────────────────────────────── */}
+        <div className="px-6 py-4 border-t border-[#c4c6d3]/30 bg-[#f3f3fb]">
+          <a
+            href="tel:+966920000000"
+            className="flex items-center gap-3 text-sm text-[#002868] font-semibold hover:text-[#C8A75D] transition-colors"
+            dir="ltr"
+          >
+            <span className="material-symbols-outlined text-[#C8A75D] text-base" aria-hidden="true">phone</span>
+            +966 92 000 0000
+          </a>
+          <a
+            href="mailto:info@alfahd-contracting.com"
+            className="flex items-center gap-3 text-sm text-[#434652] mt-2 hover:text-[#002868] transition-colors"
+          >
+            <span className="material-symbols-outlined text-[#C8A75D] text-base" aria-hidden="true">mail</span>
+            info@alfahd-contracting.com
+          </a>
+        </div>
+
+        {/* ── Bottom: CTA + Language ────────────────────────── */}
+        <div className="px-5 py-5 border-t border-[#c4c6d3]/30 flex flex-col gap-3">
+          <Link
+            href={`/${locale}/request-quote`}
+            onClick={() => setOpen(false)}
+            className="flex w-full items-center justify-center gap-2 bg-[#C8A75D] text-[#001947] py-3.5 rounded-xl font-bold text-sm hover:brightness-110 active:scale-95 transition-all duration-200"
+          >
+            <span className="material-symbols-outlined text-base" aria-hidden="true">description</span>
+            {t("requestQuote")}
+          </Link>
+
+          {/* Language switcher */}
+          <div className="flex justify-center">
+            <LanguageSwitcher />
+          </div>
         </div>
       </div>
     </div>
