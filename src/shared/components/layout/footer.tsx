@@ -50,22 +50,12 @@ export function Footer() {
             <div className="flex items-center gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeYTKEmEgjxCOI4avUzqbo7nzIpjxLLbNp4wIGuCzQQuRrJp7mpFsVReC_HfbeHTJObjNB2QuRc2aiYL1ZouHV2gKCP7zQ6JaqXCYoeqTa9Tf957XZqyriAUVqmk0yJ7CxEvj1bhV-yJyXk7e-ZPCyeSaawiRBdxPADNCKqQ7IKqIQQb1tBUom2URpChFNODx6dzM-Pr8rxTwk49PqTjcsDhRkJ4cH7BHenMvK3WAGPb7xIPtxA5B5wZw7YTLtLPDDkYjG2p-A9kYgEF4"
+                src="/images/logo.jpg"
                 alt="Al-Fahd Logo"
-                className="h-10 w-auto brightness-200"
-                referrerPolicy="no-referrer"
+                className="h-14 w-auto brightness-200"
+                width={140}
+                height={56}
               />
-              <div>
-                <span className="font-sans font-extrabold text-white text-base uppercase tracking-tight block">
-                  {locale === "ar" ? "الفهد" : "Al-Fahd"}
-                </span>
-                <span
-                  className="text-[9px] text-amber-500 tracking-wider"
-                  style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
-                >
-                  ESTD. 1984
-                </span>
-              </div>
             </div>
             <p className="text-xs text-gray-400 leading-relaxed font-sans max-w-sm">
               {t("description")}

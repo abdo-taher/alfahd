@@ -132,24 +132,12 @@ export function Header() {
             {/* Logo image */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeYTKEmEgjxCOI4avUzqbo7nzIpjxLLbNp4wIGuCzQQuRrJp7mpFsVReC_HfbeHTJObjNB2QuRc2aiYL1ZouHV2gKCP7zQ6JaqXCYoeqTa9Tf957XZqyriAUVqmk0yJ7CxEvj1bhV-yJyXk7e-ZPCyeSaawiRBdxPADNCKqQ7IKqIQQb1tBUom2URpChFNODx6dzM-Pr8rxTwk49PqTjcsDhRkJ4cH7BHenMvK3WAGPb7xIPtxA5B5wZw7YTLtLPDDkYjG2p-A9kYgEF4"
+              src="/images/logo.jpg"
               alt="Al-Fahd Logo"
-              className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-              referrerPolicy="no-referrer"
-              width={48}
-              height={48}
+              className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              width={140}
+              height={56}
             />
-            <div className="flex flex-col leading-none">
-              <span className="font-sans font-bold text-gray-900 dark:text-white text-base tracking-tight uppercase">
-                {locale === "ar" ? "الفهد" : "Al-Fahd"}
-              </span>
-              <span
-                className="text-[9px] text-[#C5A880] tracking-wider uppercase mt-0.5"
-                style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
-              >
-                Contracting &amp; Engineering
-              </span>
-            </div>
           </Link>
 
           {/* ── Desktop Nav ───────────────────────────────────── */}
