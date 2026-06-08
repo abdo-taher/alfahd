@@ -5,106 +5,151 @@ import { useTranslations, useLocale } from "next-intl";
 
 export function HeroSection() {
   const t = useTranslations("home.hero");
-  const st = useTranslations("home.stats");
   const locale = useLocale();
-  const stats = st.raw("items") as Array<{ value: string; suffix: string; label: string }>;
+
+  const stats = [
+    { value: "40+", label: t("statsYears") },
+    { value: "1,200+", label: t("statsProjects") },
+    { value: "50,000+", label: t("statsProduction") },
+  ];
 
   return (
     <section
-      className="relative min-h-screen flex items-center pt-20 overflow-hidden"
+      className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gray-950"
       aria-label={t("title")}
     >
-      {/* Background image with gradient overlay — matching master reference */}
+      {/* Background architectural image */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-l from-primary/90 to-primary/40 z-10" aria-hidden="true" />
-        {/* Hero background — using video as fallback to static color */}
-        <video
-          className="w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvwblNQmF23c_-OuBV0Z0mf899U3_IkjyA5GnwYGAucjLJr5dMn4fIRHOfRhrQXKQp1a9UF4SKTzcHO07m1-nUIN8f_QUAjLWOljnWsKMOYjU7ZIn6cThWq5YIMviz3Qd7OUCZHsN6q0oRTv7_eVjGrBEZw7gJy4I-LzfztGObl7J5yG9JI_9gnbij6SjS2w2HIjWEm3bHFsUza4MeB5TPRd7ny3i0jgWuZ4MUHoJJl342TdyBkVCpsyd88Cfw5CrSk5MCpK67kb14"
+          alt=""
+          className="w-full h-full object-cover opacity-25"
+          referrerPolicy="no-referrer"
           aria-hidden="true"
-        >
-          <source src="/hero.mp4" type="video/mp4" />
-        </video>
+        />
+        {/* Dark overlay with slight gradient */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(135deg, rgba(3,7,18,0.95) 0%, rgba(3,7,18,0.70) 60%, rgba(3,7,18,0.85) 100%)",
+          }}
+          aria-hidden="true"
+        />
       </div>
 
+      {/* Hero video fallback (optional) */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover opacity-15 z-[1]"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="none"
+        aria-hidden="true"
+      >
+        <source src="/hero.mp4" type="video/mp4" />
+      </video>
+
       {/* Content */}
-      <div className="container-brand relative z-20 w-full">
+      <div className="container-brand relative z-20 w-full py-16 md:py-24">
         <div className="max-w-4xl text-white">
-          {/* Eyebrow badge — master reference style */}
+
+          {/* Gold pill badge — reference style */}
           <span
-            className="inline-block mb-6 px-4 py-1 rounded-full font-bold uppercase tracking-widest text-xs"
+            className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest"
             style={{
-              background: "rgba(200,167,93,0.2)",
-              border: "1px solid rgba(200,167,93,0.3)",
-              color: "#C8A75D",
+              background: "rgba(255,255,255,0.08)",
+              backdropFilter: "blur(12px)",
+              border: "1px solid rgba(255,255,255,0.15)",
+              color: "#C5A880",
+              fontFamily: "'JetBrains Mono', ui-monospace, monospace",
             }}
           >
-            {locale === "ar"
-              ? "الفهد للمقاولات | التميز الهندسي"
-              : "Al-Fahad Contracting | Engineering Excellence"}
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880]" aria-hidden="true" />
+            {t("badge")}
           </span>
 
-          {/* H1 — display-xl 72px desktop, 48px mobile */}
+          {/* H1 */}
           <h1
-            className="font-bold text-white mb-6 leading-tight"
-            style={{ fontSize: "clamp(48px, 6vw, 72px)", letterSpacing: "-0.02em", lineHeight: 1.1 }}
+            className="font-sans font-extrabold text-white mb-6 uppercase tracking-tight"
+            style={{
+              fontSize: "clamp(40px, 6vw, 72px)",
+              lineHeight: 1.05,
+              letterSpacing: "-0.02em",
+            }}
           >
             {t("title")}{" "}
             <span className="text-gradient-gold">{t("titleHighlight")}</span>
           </h1>
 
-          {/* Body — 18px weight 300, lineHeight 1.8 */}
+          {/* Description */}
           <p
-            className="text-white mb-10 max-w-2xl"
-            style={{ fontSize: "18px", lineHeight: "1.8", fontWeight: 300, opacity: 0.9 }}
+            className="text-white/75 mb-10 max-w-2xl"
+            style={{ fontSize: "18px", lineHeight: "1.8", fontWeight: 300 }}
           >
             {t("description")}
           </p>
 
-          {/* CTAs */}
-          <div className="flex flex-wrap gap-6 mb-16">
-            {/* Primary: gold button */}
+          {/* CTAs — reference style */}
+          <div className="flex flex-wrap gap-4 mb-16">
+            {/* Primary: white button */}
             <Link
               href={`/${locale}/request-quote`}
-              className="inline-flex items-center gap-3 bg-[#C8A75D] text-[#001947] px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-transform active:scale-95 shadow-xl"
+              className="inline-flex items-center gap-3 bg-white text-gray-950 px-8 py-4 font-sans font-bold text-sm uppercase tracking-wider hover:bg-gray-100 transition-all duration-200 active:scale-95 shadow-lg"
             >
               {t("ctaPrimary")}
-              <span className="material-symbols-outlined text-xl" aria-hidden="true">arrow_back</span>
+              <span
+                className="material-symbols-outlined"
+                aria-hidden="true"
+                style={{ fontSize: "16px" }}
+              >
+                {locale === "ar" ? "arrow_back" : "arrow_forward"}
+              </span>
             </Link>
 
             {/* Secondary: ghost */}
             <Link
               href={`/${locale}/projects`}
-              className="inline-flex items-center gap-3 px-10 py-4 rounded-xl font-bold text-lg text-white"
+              className="inline-flex items-center gap-3 px-8 py-4 font-sans font-bold text-sm uppercase tracking-wider text-white transition-all duration-200"
               style={{
-                border: "1px solid rgba(255,255,255,0.3)",
-                backdropFilter: "blur(12px)",
+                border: "2px solid rgba(255,255,255,0.25)",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.background = "white";
-                (e.currentTarget as HTMLAnchorElement).style.color = "#002868";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.6)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.background = "";
-                (e.currentTarget as HTMLAnchorElement).style.color = "white";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.25)";
               }}
             >
               {t("ctaSecondary")}
             </Link>
           </div>
 
-          {/* Stats row INSIDE hero — 4 stats below CTA with border-t */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-white/20">
+          {/* Stats row — reference style */}
+          <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/10">
             {stats.map((stat, i) => (
               <div key={i}>
-                <div className="text-4xl font-bold text-[#C8A75D] mb-1">
-                  +{stat.value}{stat.suffix}
+                <div
+                  className="font-sans font-bold mb-1"
+                  style={{
+                    fontSize: "clamp(24px, 3vw, 36px)",
+                    color: "#C5A880",
+                    fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                  }}
+                >
+                  {stat.value}
                 </div>
-                <div className="text-sm text-white/70">{stat.label}</div>
+                <div
+                  className="text-gray-400 uppercase"
+                  style={{
+                    fontSize: "10px",
+                    letterSpacing: "0.1em",
+                    fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                  }}
+                >
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>

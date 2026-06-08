@@ -11,18 +11,24 @@
     "blog": "Blog",
     "contact": "Contact",
     "requestQuote": "Request Quote",
+    "portal": "Client Portal",
+    "search": "Search",
     "menu": "Menu",
     "closeMenu": "Close menu"
   },
   "home": {
     "hero": {
       "tagline": "Your trusted contracting partner",
+      "badge": "Connect with Engineering Excellence",
       "title": "Building the Future",
       "titleHighlight": "with Precision & Excellence",
       "description": "Al Fahd Contracting — a leader in Aluminum, Glass & Steel works across Saudi Arabia. We turn your vision into reality with the highest quality standards.",
       "ctaPrimary": "Request a Quote",
       "ctaSecondary": "View Our Projects",
-      "scrollDown": "Scroll down"
+      "scrollDown": "Scroll down",
+      "statsYears": "Years of Trust",
+      "statsProjects": "Projects Delivered",
+      "statsProduction": "Production Floor (SQM)"
     },
     "stats": {
       "title": "Numbers That Speak for Themselves",
@@ -63,8 +69,7 @@
           "icon": "format_shapes"
         }
       ]
-    },
-    "whyChoose": {
+    },    "whyChoose": {
       "title": "Why Leading Developers Trust Al-Fahad?",
       "subtitle": "We combine decades of specialised experience with modern engineering technology to deliver projects that exceed expectations",
       "items": [
@@ -174,6 +179,13 @@
     "allCategories": "All",
     "publishedAt": "Published on",
     "readingTime": "min read",
+    "featuredPost": "Featured Post",
+    "mediaCenter": "Media Center",
+    "latestNews": "Latest News & Articles",
+    "viewAll": "View All",
+    "newsletter": "Subscribe to our newsletter",
+    "newsletterSub": "Get the latest articles and news directly in your inbox",
+    "subscribe": "Subscribe",
     "categories": {
       "aluminum": "Aluminum",
       "glass": "Glass",
@@ -181,7 +193,9 @@
       "construction": "Construction",
       "project-management": "Project Management",
       "building-regulations": "Building Regulations",
-      "case-studies": "Case Studies"
+      "case-studies": "Case Studies",
+      "technical-studies": "Technical Studies",
+      "company-news": "Company News"
     }
   },
   "contact": {
@@ -247,7 +261,21 @@
     "followUs": "Follow Us",
     "rights": "All rights reserved",
     "privacy": "Privacy Policy",
-    "terms": "Terms & Conditions"
+    "terms": "Terms & Conditions",
+    "specialties": "Specialties",
+    "companyLinks": "Company",
+    "newsletter": "Newsletter",
+    "newsletterSub": "Sign up to receive our latest technological studies and engineering updates.",
+    "subscribeBtn": "Subscribe Now",
+    "certBadge1": "ISO 9001:2015",
+    "certBadge2": "Class T1 Certified",
+    "hqTitle": "Riyadh Hub (HQ)",
+    "hqAddress": "Olaya Towers, Block B, Floor 14",
+    "phoneTitle": "Central Operations",
+    "phoneNumber": "+966 11 445 9222",
+    "emailTitle": "Engineering Inquiries",
+    "emailAddress": "engineering@al-fahd.com.sa",
+    "copyright": "© 2026 Al-Fahd Contracting. All Rights Reserved. ISO 9001 Certified."
   },
   "common": {
     "loading": "Loading...",
@@ -267,5 +295,33 @@
     "yes": "Yes",
     "no": "No",
     "skipToContent": "Skip to main content"
+  },
+  "portal": {
+    "title": "Client Portal",
+    "description": "Track your RFQ proposals and monitor engineering milestones",
+    "stats": {
+      "total": "Total Proposals Filed",
+      "inReview": "In Feasibility Analysis",
+      "approved": "Approved / Dispatched"
+    },
+    "rfqLog": "Active Engineering RFQ Log",
+    "secureChannel": "Secure Channel",
+    "noInquiries": "No active technical proposals found on this system.",
+    "trackingTerminal": "Tracking Terminal",
+    "trackingHint": "Select any active technical inquiry on the left log rail to view detailed structural milestones, blueprints analysis metadata, and team status reports.",
+    "currentlyInspecting": "Currently Inspecting",
+    "clearFocus": "Clear Focus",
+    "developerLead": "Developer Lead",
+    "contact": "Contact",
+    "blueprintsPackage": "Blueprints Package",
+    "detailedSpecs": "Detailed Log Specifications",
+    "milestoneTracking": "Milestone Tracking Status",
+    "systemType": "System Type:",
+    "milestones": {
+      "1": { "title": "Inquiry Logged", "desc": "Secure transmission received by Riyadh server nodes." },
+      "2": { "title": "Engineering Analysis", "desc": "Structural engineers analyzing blueprints and static wind calculations." },
+      "3": { "title": "Technical Review", "desc": "Determining exact lamination layers, thermal break profiles and extrusions." },
+      "4": { "title": "Proposal Dispatched", "desc": "Commercial quotation pack and project breakdown sent." }
+    }
   }
 }

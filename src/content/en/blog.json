@@ -1,0 +1,45 @@
+[
+  {
+    "id": "1",
+    "slug": "future-smart-glass-facades",
+    "title": "The Future of Smart Glass Facades in Megaprojects",
+    "excerpt": "Discover how modern glass technology achieves critical thermal insulation and smart lighting in luxury skyscrapers.",
+    "content": "Modern structural glazing has transcended pure aesthetics, evolving into key functional envelopes that manage energy. This deep dive reviews electrochromic innovations, low-iron transparency parameters, and high-wind structural glass performance metrics across Saudi Arabia's mega structures.",
+    "category": "technical-studies",
+    "author": "Al-Fahd Engineering Team",
+    "publishedAt": "2026-05-15",
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuCqxz2yV6Txg1Ylp40OjIw39_JzxcPzcHubVUqCSQjZaFpglU6tL2Sx6kaTyk5Ze_kSNZ2-8-Qph3MIpT0MUVfZbWYtNNfVmcG5_iHWcdZCE7WVgEKNtElpUuHYoL2k1_TKn-B2GeOYA0V3NjKpaUZ7IP1CRuiSZGqNao43nsTbs5kYIe9EV9pAkSA9gLIoxMXbmrheG4xLwUgaygPYbeQAx810fqP1wjiUHbK-iCZJInYlaSkpbDipGYqYuLGrrYPLN86cqBebFl6s",
+    "tags": ["glass", "facade", "innovation", "megaprojects"],
+    "readingTime": 5,
+    "featured": true,
+    "badgeEN": "Featured Post"
+  },
+  {
+    "id": "2",
+    "slug": "riyadh-tower-phase-ii",
+    "title": "Signing of Phase II for the Riyadh International Tower Facades",
+    "excerpt": "Al-Fahd Contracting secures the major installation and cladding agreement for Riyadh's prominent landmark.",
+    "content": "Al-Fahd Contracting has officially signed the phase II contract to customize and erect the double-glazed engineered aluminum cladding for the Riyadh International Tower, a masterwork of modern structural architecture.",
+    "category": "company-news",
+    "author": "Al-Fahd Management",
+    "publishedAt": "2026-05-10",
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuC47ms1XX8nur_QJz9udfz200farLOcBgEo2EcD8urd7YkAQoa5ZoVofVAQXzczuWZZQxInqG4msiee86bXeGCebBprae1LJWz7NwukGpZyD40qGsR912J8egmHRuvGw9LTlCuTRWlbndIdTJ3FrPuWGlPpeESCtP06FuNqszpTJBV_qgjzdN59DjjndbUqtnnsav6MpKMgBSKasENXAi6oT38lWxTAWiS16v-SSYwMb_cAa7xChfdhvLgqm9mfLgePujX2zYWFW1oM",
+    "tags": ["news", "contract", "riyadh", "aluminum"],
+    "readingTime": 3,
+    "featured": false
+  },
+  {
+    "id": "3",
+    "slug": "thermal-insulation-desert-climates",
+    "title": "Thermal Insulation Impact on Facade Energy Consumption in Desert Climates",
+    "excerpt": "An analytical research on optimizing thermal break profiles for sustainable HVAC load reduction in KSA.",
+    "content": "This comprehensive architectural research evaluates the synergy of low-E thermal breaks and insulated glass units in mitigating harsh UV radiation, allowing substantial peak-electricity usage savings.",
+    "category": "technical-studies",
+    "author": "Al-Fahd Engineering Team",
+    "publishedAt": "2026-05-05",
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuAw42ezMjfdpd-lA7_MW4p08Sop1r62HU8fY-tIf_mp0-Y4E1fQ0vkKswn7-ehKYrfYSGGNsB3vWsN8nOpDb5lshtj5VwUeeTKZQ5FWgm08KvRdaErnyqv3fF8E6jgOjc-3k4MAO1I7WZKhee9CgPDdFDbi0UVaGCUs85GuanN5fPu-6a7_C2ogyQXqdO-lie-nGV6yd3sNjsDhJD00m_R4hJ158xpOdcFA4qFElmiXfAJb6xnfRTH2YT5Nxk_9zhue72cSRIYfdJ__",
+    "tags": ["thermal", "insulation", "energy", "desert", "sustainability"],
+    "readingTime": 8,
+    "featured": false
+  }
+]

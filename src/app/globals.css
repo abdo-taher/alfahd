@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -68,8 +69,8 @@
   --color-inverse-primary: #b1c5ff;
 
   /* Brand aliases */
-  --color-gold:       #C8A75D;
-  --color-brand-gold: #C8A75D;
+  --color-gold:       #C5A880;
+  --color-brand-gold: #C5A880;
   --color-brand-navy: #0A3D91;
 
   /* Shadcn-compatible semantic aliases */
@@ -84,7 +85,7 @@
   --color-popover:             #ffffff;
   --color-popover-foreground:  #1a1b21;
   --color-destructive:         #ba1a1a;
-  --color-accent:              #C8A75D;
+  --color-accent:              #C5A880;
   --color-accent-foreground:   #ffffff;
 
   /* Brand tokens (kept for backwards compatibility) */
@@ -92,7 +93,7 @@
   --color-brand-container: #0A3D91;
   --color-brand-secondary: #081F4D;
   --color-brand-surface:   #faf8ff;
-  --color-brand-accent:    #C8A75D;
+  --color-brand-accent:    #C5A880;
 
   /* ── Typography Scale ──────────────────────────────────────────────────── */
   --text-display-lg:                48px;
@@ -172,14 +173,14 @@
   --primary-foreground:  #ffffff;
   --secondary:           #f3f3fb;
   --secondary-foreground:#1a1b21;
-  --accent:              #C8A75D;
+  --accent:              #C5A880;
   --accent-foreground:   #ffffff;
-  --background:          #faf8ff;
-  --foreground:          #1a1b21;
+  --background:          #FAF9F5;
+  --foreground:          #1c1917;
   --card:                #ffffff;
-  --card-foreground:     #1a1b21;
+  --card-foreground:     #1c1917;
   --popover:             #ffffff;
-  --popover-foreground:  #1a1b21;
+  --popover-foreground:  #1c1917;
   --muted:               #f3f3fb;
   --muted-foreground:    #434652;
   --border:              #c4c6d3;
@@ -188,15 +189,15 @@
   --destructive:         #ba1a1a;
   --chart-1: #002868;
   --chart-2: #0A3D91;
-  --chart-3: #C8A75D;
+  --chart-3: #C5A880;
   --chart-4: #4b5d8e;
   --chart-5: #747783;
-  --sidebar:                    #faf8ff;
-  --sidebar-foreground:         #1a1b21;
+  --sidebar:                    #FAF9F5;
+  --sidebar-foreground:         #1c1917;
   --sidebar-primary:            #002868;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent:             #f3f3fb;
-  --sidebar-accent-foreground:  #1a1b21;
+  --sidebar-accent-foreground:  #1c1917;
   --sidebar-border:             #c4c6d3;
   --sidebar-ring:               #002868;
   --radius: 0.125rem;
@@ -234,11 +235,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
-    background-color: #faf8ff;
+    background-color: #FAF9F5;
   }
   body {
-    background-color: var(--background, #faf8ff);
-    color: var(--foreground, #1a1b21);
+    background-color: var(--background, #FAF9F5);
+    color: var(--foreground, #1c1917);
     overflow-x: hidden;
   }
   /* Material Symbols default style */
@@ -477,5 +478,77 @@
     line-height: 1;
     font-weight: 700;
     letter-spacing: 0.1em;
+  }
+}
+
+@layer utilities {
+  /* ── Reference App Utilities ─────────────────────────────────────────────── */
+
+  /* JetBrains Mono label — reference app signature */
+  .font-mono-label {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Editorial card — reference app card style */
+  .card-editorial {
+    background: white;
+    border: 1px solid #f3f4f6;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  /* Dark primary CTA button */
+  .btn-primary-dark {
+    background: #111827;
+    color: white;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+  }
+  .btn-primary-dark:hover { background: #1f2937; }
+
+  /* Gold CTA button — reference app */
+  .btn-gold {
+    background: #C5A880;
+    color: #111827;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+  }
+  .btn-gold:hover { filter: brightness(1.05); }
+
+  /* Reference app gold accent updated */
+  .gold-bar {
+    height: 2px;
+    width: 80px;
+    background: linear-gradient(90deg, #C5A880 0%, transparent 100%);
+  }
+  .gold-bar-center {
+    height: 3px;
+    width: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #C5A880;
+    border-radius: 9999px;
+  }
+  .text-gradient-gold {
+    background: linear-gradient(to right, #C5A880, #E5D2A0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }

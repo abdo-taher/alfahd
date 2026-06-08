@@ -2,88 +2,105 @@
 
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
+import { useState } from "react";
+import { MapPin, Phone, Mail, Send, Check } from "lucide-react";
 
 export function Footer() {
   const t = useTranslations("footer");
   const nt = useTranslations("nav");
   const locale = useLocale();
   const year = new Date().getFullYear();
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setStatus("loading");
+    setTimeout(() => {
+      setStatus("success");
+      setEmail("");
+    }, 1200);
+  };
 
   const serviceLinks = [
-    { label: locale === "ar" ? "أنظمة الألمنيوم"  : "Aluminium Systems", href: `/${locale}/services` },
-    { label: locale === "ar" ? "الزجاج الإنشائي"  : "Structural Glass",  href: `/${locale}/services` },
+    { label: locale === "ar" ? "أنظمة الألمنيوم"  : "Aluminum Systems",  href: `/${locale}/services` },
     { label: locale === "ar" ? "جدران الستائر"    : "Curtain Walls",     href: `/${locale}/services` },
+    { label: locale === "ar" ? "الزجاج الإنشائي"  : "Structural Glass",  href: `/${locale}/services` },
     { label: locale === "ar" ? "الهياكل المعدنية" : "Steel Structures",  href: `/${locale}/services` },
   ];
 
   const companyLinks = [
-    { label: nt("home"),     href: `/${locale}` },
-    { label: nt("about"),    href: `/${locale}/about` },
-    { label: nt("projects"), href: `/${locale}/projects` },
-    { label: nt("blog"),     href: `/${locale}/blog` },
-    { label: nt("contact"),  href: `/${locale}/contact` },
-  ];
-
-  const legalLinks = [
-    { label: locale === "ar" ? "سياسة الخصوصية" : "Privacy Policy", href: `/${locale}/privacy` },
-    { label: locale === "ar" ? "الشروط والأحكام" : "Terms & Conditions", href: `/${locale}/terms` },
-    { label: locale === "ar" ? "اتصل بنا" : "Contact Us", href: `/${locale}/contact` },
-    { label: locale === "ar" ? "طلب عرض سعر" : "Request Quote", href: `/${locale}/request-quote` },
+    { label: locale === "ar" ? "تاريخنا المعماري" : "Our History",  href: `/${locale}/about` },
+    { label: locale === "ar" ? "مجلس الإدارة"    : "Leadership",   href: `/${locale}/about` },
+    { label: locale === "ar" ? "فرص العمل"       : "Careers",      href: `/${locale}/about` },
   ];
 
   return (
-    <footer className="bg-primary text-on-primary pt-24 pb-12" role="contentinfo">
-      <div className="container-brand">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+    <footer
+      className="bg-gray-950 text-gray-300 font-sans border-t-2 pt-16 pb-8"
+      style={{ borderColor: "rgba(120,53,15,0.1)" }}
+      role="contentinfo"
+    >
+      <div className="max-w-[1280px] mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
-          {/* Col 1: Logo + desc + social */}
-          <div className="col-span-1">
-            {/* Logo text */}
-            <Link href={`/${locale}`} className="inline-block mb-8">
-              <div className="flex flex-col leading-tight">
-                <span className="text-xl font-bold text-white">
-                  {locale === "ar" ? "الفهد للمقاولات" : "Al-Fahad"}
+          {/* Brand & Description */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeYTKEmEgjxCOI4avUzqbo7nzIpjxLLbNp4wIGuCzQQuRrJp7mpFsVReC_HfbeHTJObjNB2QuRc2aiYL1ZouHV2gKCP7zQ6JaqXCYoeqTa9Tf957XZqyriAUVqmk0yJ7CxEvj1bhV-yJyXk7e-ZPCyeSaawiRBdxPADNCKqQ7IKqIQQb1tBUom2URpChFNODx6dzM-Pr8rxTwk49PqTjcsDhRkJ4cH7BHenMvK3WAGPb7xIPtxA5B5wZw7YTLtLPDDkYjG2p-A9kYgEF4"
+                alt="Al-Fahd Logo"
+                className="h-10 w-auto brightness-200"
+                referrerPolicy="no-referrer"
+              />
+              <div>
+                <span className="font-sans font-extrabold text-white text-base uppercase tracking-tight block">
+                  {locale === "ar" ? "الفهد" : "Al-Fahd"}
                 </span>
-                <span className="text-xs text-on-primary/60 uppercase tracking-widest">
-                  {locale === "ar" ? "Contracting" : "Contracting"}
+                <span
+                  className="text-[9px] text-amber-500 tracking-wider"
+                  style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
+                >
+                  ESTD. 1984
                 </span>
               </div>
-            </Link>
-
-            <p className="text-on-primary/70 mb-8 leading-relaxed text-sm">
+            </div>
+            <p className="text-xs text-gray-400 leading-relaxed font-sans max-w-sm">
               {t("description")}
             </p>
-
-            {/* Social icons */}
-            <div className="flex gap-4">
-              {[
-                { icon: "share", label: "Social" },
-                { icon: "language", label: "Website" },
-                { icon: "mail", label: "Email" },
-              ].map(({ icon, label }) => (
-                <a
-                  key={icon}
-                  href="#"
-                  aria-label={label}
-                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#C8A75D] hover:text-primary hover:border-transparent transition-all duration-300"
-                >
-                  <span className="material-symbols-outlined text-sm" aria-hidden="true">{icon}</span>
-                </a>
-              ))}
+            {/* ISO badges */}
+            <div className="pt-2 flex flex-wrap gap-1 text-xs text-gray-500">
+              <span
+                className="inline-block px-2 py-1 bg-gray-900 border border-gray-800 rounded"
+                style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace", fontSize: "10px" }}
+              >
+                ISO 9001:2015
+              </span>
+              <span
+                className="inline-block px-2 py-1 bg-gray-900 border border-gray-800 rounded"
+                style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace", fontSize: "10px" }}
+              >
+                Class T1 Certified
+              </span>
             </div>
           </div>
 
-          {/* Col 2: الخدمات */}
-          <div>
-            <h4 className="text-[#C8A75D] font-bold mb-8 uppercase tracking-widest text-sm">
-              {t("ourServices")}
+          {/* Specialties */}
+          <div className="space-y-3">
+            <h4
+              className="text-xs font-bold uppercase tracking-widest"
+              style={{ color: "#C5A880" }}
+            >
+              {t("specialties")}
             </h4>
-            <ul className="space-y-4">
+            <ul className="space-y-2 text-xs">
               {serviceLinks.map((link) => (
-                <li key={link.href + link.label}>
+                <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-on-primary/80 hover:text-[#C8A75D] transition-colors text-sm"
+                    className="text-gray-400 hover:text-amber-400 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -92,77 +109,141 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Col 3: الشركة */}
-          <div>
-            <h4 className="text-[#C8A75D] font-bold mb-8 uppercase tracking-widest text-sm">
-              {locale === "ar" ? "الشركة" : "Company"}
+          {/* Company */}
+          <div className="space-y-3">
+            <h4
+              className="text-xs font-bold uppercase tracking-widest"
+              style={{ color: "#C5A880" }}
+            >
+              {t("companyLinks")}
             </h4>
-            <ul className="space-y-4">
+            <ul className="space-y-2 text-xs">
               {companyLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-on-primary/80 hover:text-[#C8A75D] transition-colors text-sm"
+                    className="text-gray-400 hover:text-amber-400 transition-colors"
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href={`/${locale}/portal`}
+                  className="text-gray-400 hover:text-amber-400 transition-colors"
+                >
+                  {nt("portal")}
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Col 4: قانوني */}
-          <div>
-            <h4 className="text-[#C8A75D] font-bold mb-8 uppercase tracking-widest text-sm">
-              {locale === "ar" ? "قانوني" : "Legal"}
+          {/* Newsletter */}
+          <div className="space-y-4">
+            <h4
+              className="text-xs font-bold uppercase tracking-widest"
+              style={{ color: "#C5A880" }}
+            >
+              {t("newsletter")}
             </h4>
-            <ul className="space-y-4">
-              {legalLinks.map((link) => (
-                <li key={link.href + link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-on-primary/80 hover:text-[#C8A75D] transition-colors text-sm"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <p className="text-xs text-gray-400 font-sans leading-relaxed">
+              {t("newsletterSub")}
+            </p>
+            <form onSubmit={handleSubscribe} className="space-y-2">
+              <div
+                className="flex rounded overflow-hidden border border-gray-800 focus-within:border-amber-600 transition-colors"
+              >
+                <input
+                  type="email"
+                  placeholder="name@organization.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={status === "success"}
+                  className="w-full bg-transparent px-3 py-2 text-xs text-white placeholder:text-gray-500 focus:outline-none"
+                  required
+                />
+                <button
+                  type="submit"
+                  disabled={status !== "idle"}
+                  className="bg-amber-700 hover:bg-amber-600 text-white px-3 transition-colors flex items-center justify-center disabled:opacity-50"
+                  aria-label={t("subscribeBtn")}
+                >
+                  {status === "loading" ? (
+                    <div className="animate-spin rounded-full h-3.5 w-3.5 border-2 border-white border-t-transparent" />
+                  ) : status === "success" ? (
+                    <Check className="w-3.5 h-3.5" aria-hidden="true" />
+                  ) : (
+                    <Send className="w-3.5 h-3.5" aria-hidden="true" />
+                  )}
+                </button>
+              </div>
+              {status === "success" && (
+                <p className="text-[10px] text-amber-500 font-sans font-medium">
+                  {locale === "ar" ? "شكراً جزيلاً لتسجيلك!" : "Thank you for subscribing!"}
+                </p>
+              )}
+            </form>
+          </div>
+        </div>
 
-            {/* Contact info */}
-            <div className="mt-8 space-y-3">
-              <a
-                href="tel:+966500000000"
-                className="flex items-center gap-2 text-on-primary/60 hover:text-[#C8A75D] transition-colors text-sm"
-                dir="ltr"
-              >
-                <span className="material-symbols-outlined text-sm" aria-hidden="true">phone</span>
-                +966 50 000 0000
-              </a>
-              <a
-                href="mailto:info@alfahd-contracting.com"
-                className="flex items-center gap-2 text-on-primary/60 hover:text-[#C8A75D] transition-colors text-sm"
-              >
-                <span className="material-symbols-outlined text-sm" aria-hidden="true">mail</span>
-                info@alfahd.com
-              </a>
+        {/* Contact bar */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 pb-8 border-t border-gray-800/80 mt-12 text-xs text-gray-400">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-gray-900 border border-gray-800 rounded text-amber-500">
+              <MapPin className="w-3.5 h-3.5" aria-hidden="true" />
+            </div>
+            <div>
+              <p className="font-semibold text-white">
+                {t("hqTitle")}
+              </p>
+              <p className="text-[11px] text-gray-500">{t("hqAddress")}</p>
             </div>
           </div>
-
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-gray-900 border border-gray-800 rounded text-amber-500">
+              <Phone className="w-3.5 h-3.5" aria-hidden="true" />
+            </div>
+            <div>
+              <p className="font-semibold text-white">{t("phoneTitle")}</p>
+              <p className="text-[11px] text-gray-500" dir="ltr">{t("phoneNumber")}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-gray-900 border border-gray-800 rounded text-amber-500">
+              <Mail className="w-3.5 h-3.5" aria-hidden="true" />
+            </div>
+            <div>
+              <p className="font-semibold text-white">{t("emailTitle")}</p>
+              <p className="text-[11px] text-gray-500">{t("emailAddress")}</p>
+            </div>
+          </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-on-primary/50 text-sm">
-            © {year} {locale === "ar" ? "الفهد للمقاولات" : "Al-Fahad Contracting"} —{" "}
-            {t("rights")}
+        <div
+          className="pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center gap-4"
+          style={{ fontSize: "11px", color: "#6b7280" }}
+        >
+          <p
+            style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
+            className="text-center md:text-start"
+          >
+            {t("copyright")}
           </p>
-          <p className="text-on-primary/50 text-sm flex items-center gap-2">
-            {locale === "ar"
-              ? "صنع بفخر في المملكة العربية السعودية"
-              : "Made with pride in Saudi Arabia"}
-            <span className="material-symbols-outlined text-[#C8A75D] text-base" aria-hidden="true">favorite</span>
-          </p>
+          <div className="flex gap-4">
+            <Link href={`/${locale}/privacy`} className="hover:text-white transition-colors">
+              {t("privacy")}
+            </Link>
+            <span aria-hidden="true">•</span>
+            <Link href={`/${locale}/terms`} className="hover:text-white transition-colors">
+              {t("terms")}
+            </Link>
+            <span aria-hidden="true">•</span>
+            <Link href={`/${locale}/contact`} className="hover:text-white transition-colors">
+              {locale === "ar" ? "تواصل معنا" : "Contact"}
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

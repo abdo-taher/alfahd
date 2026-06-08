@@ -5,24 +5,38 @@ import { contentRepository } from "@/lib/content/content-repository";
 export async function FeaturedProjects() {
   const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "home.projects" });
-  const pt = await getTranslations({ locale, namespace: "projects" });
   const projects = await contentRepository.getFeaturedProjects(locale);
 
   const [mainProject, secondProject] = projects;
 
+  const filterLabels = [
+    locale === "ar" ? "الكل" : "All",
+    locale === "ar" ? "زجاج" : "Glass",
+    locale === "ar" ? "ألمنيوم" : "Aluminium",
+    locale === "ar" ? "حديد" : "Iron",
+  ];
+
   return (
     <section className="section-padding bg-white" aria-labelledby="projects-heading">
       <div className="container-brand">
-        {/* Header row — left text + right filter pills */}
+        {/* Header row */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-2xl">
-            <span className="text-[#C8A75D] font-bold uppercase tracking-widest text-sm mb-4 block">
+            <span
+              className="font-bold uppercase tracking-widest mb-4 block"
+              style={{
+                color: "#C5A880",
+                fontSize: "10px",
+                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                letterSpacing: "0.1em",
+              }}
+            >
               {locale === "ar" ? "سجل الإنجازات" : "Achievement Record"}
             </span>
             <h2
               id="projects-heading"
-              className="text-[#002868]"
-              style={{ fontSize: "48px", lineHeight: "1.2", fontWeight: 700 }}
+              className="text-gray-950"
+              style={{ fontSize: "clamp(28px, 4vw, 48px)", lineHeight: "1.2", fontWeight: 700 }}
             >
               {locale === "ar"
                 ? "مشاريع تركت أثراً في أفق مدننا"
@@ -31,20 +45,16 @@ export async function FeaturedProjects() {
           </div>
 
           {/* Filter pills */}
-          <div className="flex flex-wrap gap-4">
-            {[
-              locale === "ar" ? "الكل" : "All",
-              locale === "ar" ? "حكومية" : "Government",
-              locale === "ar" ? "تجارية" : "Commercial",
-              locale === "ar" ? "سكنية" : "Residential",
-            ].map((label, i) => (
+          <div className="flex flex-wrap gap-2">
+            {filterLabels.map((label, i) => (
               <button
                 key={i}
-                className={`px-6 py-2 rounded-full font-bold transition-colors duration-200 ${
+                className={[
+                  "px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors duration-200",
                   i === 0
-                    ? "bg-[#002868] text-white"
-                    : "bg-[#F4F7FA] text-[#434652] hover:bg-[#002868]/10"
-                }`}
+                    ? "bg-gray-950 text-white"
+                    : "bg-gray-50 text-gray-500 hover:bg-gray-100 border border-gray-100",
+                ].join(" ")}
               >
                 {label}
               </button>
@@ -53,38 +63,54 @@ export async function FeaturedProjects() {
         </div>
 
         {/* Asymmetric 12-column grid */}
-        <div className="grid grid-cols-12 gap-6">
+        <div className="grid grid-cols-12 gap-4">
           {/* Large card — col-span-8 */}
           {mainProject ? (
             <Link
               href={`/${locale}/projects/${mainProject.slug}`}
-              className="col-span-12 md:col-span-8 group relative rounded-3xl overflow-hidden h-[600px] premium-shadow"
+              className="col-span-12 md:col-span-8 group relative rounded-lg overflow-hidden h-[600px] shadow-sm"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={mainProject.coverImage}
                 alt={mainProject.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                referrerPolicy="no-referrer"
               />
               <div
                 className="absolute inset-0"
                 style={{
-                  background: "linear-gradient(to top, rgba(0,40,104,0.9) 0%, rgba(0,40,104,0.2) 50%, transparent 100%)",
-                  opacity: 0.85,
+                  background:
+                    "linear-gradient(to top, rgba(3,7,18,0.92) 0%, rgba(3,7,18,0.3) 50%, transparent 100%)",
                 }}
                 aria-hidden="true"
               />
-              <div className="absolute bottom-10 end-10 start-10 text-white">
-                <span className="bg-[#C8A75D] text-[#001947] px-4 py-1 rounded-full text-xs font-bold mb-4 inline-block uppercase tracking-wide">
+              <div className="absolute bottom-8 end-8 start-8 text-white">
+                {/* Gold chip */}
+                <span
+                  className="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4"
+                  style={{
+                    background: "#C5A880",
+                    color: "#111827",
+                    fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                  }}
+                >
                   {locale === "ar" ? "مشروع رائد" : "Flagship Project"}
                 </span>
-                <h3 className="text-4xl font-bold mb-4">{mainProject.title}</h3>
-                <p className="text-white/80 max-w-xl">{mainProject.shortDescription}</p>
+                <h3
+                  className="font-bold mb-3"
+                  style={{ fontSize: "clamp(22px, 3vw, 32px)", lineHeight: 1.2 }}
+                >
+                  {mainProject.title}
+                </h3>
+                <p className="text-white/70 max-w-xl text-sm leading-relaxed">
+                  {mainProject.shortDescription}
+                </p>
               </div>
             </Link>
           ) : (
-            <div className="col-span-12 md:col-span-8 rounded-3xl overflow-hidden h-[600px] premium-shadow bg-[#F4F7FA] flex items-center justify-center">
-              <span className="text-[#002868] font-bold text-xl">
+            <div className="col-span-12 md:col-span-8 rounded-lg overflow-hidden h-[600px] bg-gray-100 flex items-center justify-center">
+              <span className="text-gray-400 font-bold">
                 {locale === "ar" ? "مشروع رائد" : "Flagship Project"}
               </span>
             </div>
@@ -94,30 +120,38 @@ export async function FeaturedProjects() {
           {secondProject ? (
             <Link
               href={`/${locale}/projects/${secondProject.slug}`}
-              className="col-span-12 md:col-span-4 group relative rounded-3xl overflow-hidden h-[600px] premium-shadow"
+              className="col-span-12 md:col-span-4 group relative rounded-lg overflow-hidden h-[600px] shadow-sm"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={secondProject.coverImage}
                 alt={secondProject.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                referrerPolicy="no-referrer"
               />
               <div
                 className="absolute inset-0"
                 style={{
-                  background: "linear-gradient(to top, rgba(0,40,104,0.9) 0%, rgba(0,40,104,0.2) 50%, transparent 100%)",
-                  opacity: 0.8,
+                  background:
+                    "linear-gradient(to top, rgba(3,7,18,0.90) 0%, rgba(3,7,18,0.25) 50%, transparent 100%)",
                 }}
                 aria-hidden="true"
               />
-              <div className="absolute bottom-10 end-10 start-10 text-white">
-                <h3 className="text-2xl font-bold mb-2">{secondProject.title}</h3>
-                <p className="text-white/80 text-sm">{secondProject.shortDescription}</p>
+              <div className="absolute bottom-8 end-8 start-8 text-white">
+                <h3
+                  className="font-bold mb-2"
+                  style={{ fontSize: "20px", lineHeight: 1.3 }}
+                >
+                  {secondProject.title}
+                </h3>
+                <p className="text-white/70 text-xs leading-relaxed">
+                  {secondProject.shortDescription}
+                </p>
               </div>
             </Link>
           ) : (
-            <div className="col-span-12 md:col-span-4 rounded-3xl overflow-hidden h-[600px] premium-shadow bg-[#eeedf5] flex items-center justify-center">
-              <span className="text-[#002868] font-bold">
+            <div className="col-span-12 md:col-span-4 rounded-lg overflow-hidden h-[600px] bg-gray-50 flex items-center justify-center">
+              <span className="text-gray-400 font-bold">
                 {locale === "ar" ? "مشروع" : "Project"}
               </span>
             </div>
@@ -125,12 +159,15 @@ export async function FeaturedProjects() {
         </div>
 
         {/* View all */}
-        <div className="mt-14 text-center">
+        <div className="mt-12 text-center">
           <Link
             href={`/${locale}/projects`}
-            className="inline-flex items-center justify-center border-2 border-[#002868] text-[#002868] px-10 py-3 font-bold rounded-xl hover:bg-[#002868]/5 transition-all duration-200"
+            className="inline-flex items-center gap-2 border border-gray-950 text-gray-950 px-10 py-3.5 font-bold text-xs uppercase tracking-wider hover:bg-gray-950 hover:text-white transition-all duration-200"
           >
             {t("viewAll")}
+            <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: "14px" }}>
+              {locale === "ar" ? "arrow_back" : "arrow_forward"}
+            </span>
           </Link>
         </div>
       </div>
