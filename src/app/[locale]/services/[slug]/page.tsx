@@ -26,6 +26,7 @@ export async function generateMetadata({
   if (!service) return {};
   return generateServiceMetadata({
     service: service.title,
+    slug,
     locale,
     path: `/${locale}/services/${slug}`,
   });

@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { generateArticleMetadata } from "@/seo/metadata/article-metadata";
+import { articleSchema, breadcrumbSchema } from "@/seo/schema/organization";
+
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://alfahd-contracting.com";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -87,6 +90,21 @@ export default async function BlogPostPage({
 
   const isAr = locale === "ar";
 
+  // JSON-LD structured data
+  const articleSd = articleSchema({
+    title: post.title,
+    description: post.excerpt,
+    url: `${BASE_URL}/${locale}/blog/${slug}`,
+    publishedAt: post.publishedAt,
+    image: post.coverImage,
+  });
+
+  const breadcrumbs = breadcrumbSchema([
+    { name: isAr ? "الرئيسية" : "Home", url: `${BASE_URL}/${locale}` },
+    { name: isAr ? "المدونة" : "Blog", url: `${BASE_URL}/${locale}/blog` },
+    { name: post.title, url: `${BASE_URL}/${locale}/blog/${slug}` },
+  ]);
+
   // Format published date
   const formattedDate = new Date(post.publishedAt).toLocaleDateString(
     isAr ? "ar-SA" : "en-US",
@@ -101,6 +119,14 @@ export default async function BlogPostPage({
 
   return (
     <div className="pt-20" style={{ background: "#FAF9F5" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSd).replace(/</g, "\\u003c") }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs).replace(/</g, "\\u003c") }}
+      />
       {/* Hero */}
       <section className="relative bg-gray-950 overflow-hidden">
         {/* Cover image */}

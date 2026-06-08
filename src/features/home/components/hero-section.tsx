@@ -1,11 +1,9 @@
-"use client";
-
 import Link from "next/link";
-import { useTranslations, useLocale } from "next-intl";
+import { getTranslations, getLocale } from "next-intl/server";
 
-export function HeroSection() {
-  const t = useTranslations("home.hero");
-  const locale = useLocale();
+export async function HeroSection() {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "home.hero" });
 
   const stats = [
     { value: "40+", label: t("statsYears") },
@@ -111,16 +109,7 @@ export function HeroSection() {
             {/* Secondary: ghost */}
             <Link
               href={`/${locale}/projects`}
-              className="inline-flex items-center gap-3 px-8 py-4 font-sans font-bold text-sm uppercase tracking-wider text-white transition-all duration-200"
-              style={{
-                border: "2px solid rgba(255,255,255,0.25)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.6)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.25)";
-              }}
+              className="inline-flex items-center gap-3 px-8 py-4 font-sans font-bold text-sm uppercase tracking-wider text-white transition-all duration-200 border-2 border-white/25 hover:border-white/60"
             >
               {t("ctaSecondary")}
             </Link>

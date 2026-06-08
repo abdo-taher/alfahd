@@ -11,11 +11,34 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "blog" });
+  const isAr = locale === "ar";
+
+  const keywords = isAr
+    ? [
+        "مدونة الفهد للمقاولات",
+        "مقالات أعمال الألمنيوم",
+        "دراسات الزجاج الإنشائي",
+        "أخبار قطاع المقاولات السعودية",
+        "هندسة الواجهات الرياض",
+        "نصائح الهياكل الحديدية",
+        "تقنيات البناء الرياض",
+      ]
+    : [
+        "Al Fahd Contracting blog",
+        "aluminum works articles",
+        "glass facade engineering studies",
+        "contracting industry news Saudi Arabia",
+        "facade engineering Riyadh",
+        "steel structure tips",
+        "construction technology Saudi Arabia",
+      ];
+
   return generatePageMetadata({
     title: t("title"),
     description: t("description"),
     path: `/${locale}/blog`,
     locale,
+    keywords,
   });
 }
 

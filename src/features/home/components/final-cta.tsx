@@ -1,11 +1,9 @@
-"use client";
-
 import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
+import { getTranslations, getLocale } from "next-intl/server";
 
-export function FinalCta() {
-  const locale = useLocale();
-  const t = useTranslations("home.cta");
+export async function FinalCta() {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "home.cta" });
 
   return (
     <section
@@ -73,14 +71,7 @@ export function FinalCta() {
               href="https://wa.me/966500000000"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 font-sans font-bold text-xs uppercase tracking-widest text-white transition-all duration-200"
-              style={{ border: "2px solid rgba(255,255,255,0.2)" }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.5)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.2)";
-              }}
+              className="inline-flex items-center gap-3 px-8 py-4 font-sans font-bold text-xs uppercase tracking-widest text-white transition-all duration-200 border-2 border-white/20 hover:border-white/50"
             >
               {t("secondary")}
             </a>

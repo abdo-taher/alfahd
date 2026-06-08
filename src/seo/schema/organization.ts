@@ -6,7 +6,7 @@ export function organizationSchema() {
     "@type": ["Organization", "LocalBusiness"],
     "@id": `${BASE_URL}/#organization`,
     name: "شركة الفهد للمقاولات",
-    alternateName: "Al Fahd Contracting",
+    alternateName: ["Al Fahd Contracting", "Al-Fahad Contracting Company", "الفهد للمقاولات"],
     url: BASE_URL,
     logo: {
       "@type": "ImageObject",
@@ -14,19 +14,65 @@ export function organizationSchema() {
       width: 200,
       height: 60,
     },
+    image: `${BASE_URL}/images/og-default.jpg`,
     description:
-      "شركة الفهد للمقاولات — متخصصون في أعمال الألمنيوم والزجاج والحديد بالمملكة العربية السعودية",
+      "شركة الفهد للمقاولات — متخصصون في أعمال الألمنيوم والزجاج والحديد بالمملكة العربية السعودية. خبرة تزيد على 15 عاماً في تنفيذ المشاريع السكنية والتجارية والحكومية بأعلى معايير الجودة.",
     address: {
       "@type": "PostalAddress",
-      addressCountry: "SA",
+      streetAddress: "أبراج العليا، برج ب، الطابق ١٤",
+      addressLocality: "الرياض",
       addressRegion: "Riyadh",
+      addressCountry: "SA",
     },
-    areaServed: {
-      "@type": "Country",
-      name: "Saudi Arabia",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "24.6877",
+      longitude: "46.7219",
     },
-    knowsAbout: ["Aluminum Works", "Glass Works", "Steel Works", "Contracting"],
-    sameAs: [],
+    telephone: "+966114459222",
+    email: "engineering@al-fahd.com.sa",
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+      opens: "08:00",
+      closes: "17:00",
+    },
+    areaServed: [
+      { "@type": "City", name: "Riyadh" },
+      { "@type": "City", name: "Jeddah" },
+      { "@type": "City", name: "Dammam" },
+      { "@type": "Country", name: "Saudi Arabia" },
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Contracting Services",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aluminum Works — أعمال الألمنيوم" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Glass Works — أعمال الزجاج" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Steel Works — أعمال الحديد" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Curtain Wall Systems — جدران الستائر" } },
+      ],
+    },
+    knowsAbout: [
+      "Aluminum Works",
+      "Glass Works",
+      "Steel Works",
+      "Curtain Wall Systems",
+      "Architectural Facades",
+      "Glass Facades",
+      "Aluminum Contractor Riyadh",
+      "Glass Contractor Riyadh",
+      "Steel Contractor Riyadh",
+      "أعمال الألمنيوم",
+      "أعمال الزجاج",
+      "الهياكل المعدنية",
+      "واجهات زجاجية",
+      "مقاولات الرياض",
+    ],
+    sameAs: [
+      "https://www.linkedin.com/company/alfahd-contracting",
+      "https://twitter.com/alfahdcontracting",
+    ],
   };
 }
 

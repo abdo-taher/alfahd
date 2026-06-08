@@ -244,13 +244,19 @@ export default function PortalPage() {
 
             <div className="space-y-2 max-h-[460px] overflow-y-auto">
               {inquiries.length === 0 ? (
-                <div className="text-center py-12 text-gray-400 space-y-2">
+                <div className="text-center py-12 text-gray-400 space-y-3">
                   <Inbox className="w-8 h-8 mx-auto text-[#C5A880]" aria-hidden="true" />
                   <p className="font-sans text-xs">
                     {isAr
                       ? "لا توجد مقترحات تقنية نشطة."
                       : "No active technical proposals found on this system."}
                   </p>
+                  <a
+                    href={`/${locale}/request-quote`}
+                    className="inline-block mt-2 px-4 py-2 bg-gray-950 text-white text-[10px] font-bold uppercase tracking-wider hover:bg-gray-800 transition-colors"
+                  >
+                    {isAr ? "أرسل طلب عرض سعر" : "Submit an RFQ"}
+                  </a>
                 </div>
               ) : (
                 inquiries.map((inq) => {

@@ -9,11 +9,32 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "about" });
+  const isAr = locale === "ar";
+
+  const keywords = isAr
+    ? [
+        "عن شركة الفهد للمقاولات",
+        "تاريخ شركة مقاولات الرياض",
+        "مقاول ألمنيوم معتمد السعودية",
+        "شركة مقاولات ISO الرياض",
+        "مهندسو الواجهات الرياض",
+        "رسالة الفهد للمقاولات",
+        "قيم شركة مقاولات الرياض",
+      ]
+    : [
+        "about Al Fahd Contracting",
+        "aluminum contractor company Riyadh",
+        "ISO certified contractor Saudi Arabia",
+        "facade engineering company Riyadh",
+        "contracting company history Saudi Arabia",
+      ];
+
   return generatePageMetadata({
     title: t("title"),
     description: t("description"),
     path: `/${locale}/about`,
     locale,
+    keywords,
   });
 }
 

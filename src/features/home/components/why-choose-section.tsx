@@ -1,6 +1,4 @@
-"use client";
-
-import { useTranslations, useLocale } from "next-intl";
+import { getTranslations, getLocale } from "next-intl/server";
 
 const whyIcons = [
   "verified",
@@ -11,18 +9,22 @@ const whyIcons = [
   "handshake",
 ];
 
-export function WhyChooseSection() {
-  const t = useTranslations("home.whyChoose");
-  const locale = useLocale();
+export async function WhyChooseSection() {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "home.whyChoose" });
   const items = t.raw("items") as Array<{ title: string; description: string }>;
 
   return (
     <section className="section-padding bg-[#002868] relative overflow-hidden" aria-labelledby="why-choose-heading">
-      {/* Decorative blobs */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true" style={{ opacity: 0.05 }}>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#C8A75D] rounded-full blur-[150px]" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#4b5d8e] rounded-full blur-[150px]" />
-      </div>
+      {/* Decorative radial gradient — replaces blur blobs for better perf */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 50% at 90% 0%, rgba(200,167,93,0.08) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 10% 100%, rgba(75,93,142,0.08) 0%, transparent 70%)",
+        }}
+        aria-hidden="true"
+      />
 
       <div className="container-brand relative z-10">
         {/* Header */}

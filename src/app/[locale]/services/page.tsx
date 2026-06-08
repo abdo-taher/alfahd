@@ -11,11 +11,36 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "services" });
+  const isAr = locale === "ar";
+
+  const keywords = isAr
+    ? [
+        "خدمات شركة الفهد للمقاولات",
+        "أعمال الألمنيوم الرياض",
+        "أعمال الزجاج الرياض",
+        "أعمال الحديد الرياض",
+        "واجهات زجاجية السعودية",
+        "جدران ستائر الرياض",
+        "هياكل معدنية الرياض",
+        "مقاول متكامل الرياض",
+      ]
+    : [
+        "Al Fahd Contracting services",
+        "aluminum works Riyadh",
+        "glass works Riyadh",
+        "steel works Saudi Arabia",
+        "curtain wall systems Riyadh",
+        "glass facades Saudi Arabia",
+        "steel structures Riyadh",
+        "integrated contractor Saudi Arabia",
+      ];
+
   return generatePageMetadata({
     title: t("title"),
     description: t("description"),
     path: `/${locale}/services`,
     locale,
+    keywords,
   });
 }
 

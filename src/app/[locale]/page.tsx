@@ -22,11 +22,45 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
 
+  const isAr = locale === "ar";
+  const keywords = isAr
+    ? [
+        "شركة الفهد للمقاولات",
+        "مقاول ألمنيوم الرياض",
+        "مقاول زجاج الرياض",
+        "مقاول حديد الرياض",
+        "أعمال الألمنيوم الرياض",
+        "أعمال الزجاج الرياض",
+        "أعمال الحديد الرياض",
+        "واجهات زجاجية الرياض",
+        "هياكل حديدية السعودية",
+        "مقاولات الرياض",
+        "شركة مقاولات السعودية",
+        "ألمنيوم وزجاج وحديد",
+      ]
+    : [
+        "Al Fahd Contracting",
+        "aluminum contractor Riyadh",
+        "glass contractor Riyadh",
+        "steel contractor Riyadh",
+        "aluminum works Riyadh",
+        "glass works Saudi Arabia",
+        "steel structures Saudi Arabia",
+        "glass facades Riyadh",
+        "curtain wall contractor",
+        "contracting company Saudi Arabia",
+      ];
+
+  // Use per-page richer title/description keys when available, fall back to site defaults
+  const title = (t as (key: string) => string)("homeTitle") || t("siteTitle");
+  const description = (t as (key: string) => string)("homeDescription") || t("siteDescription");
+
   return generatePageMetadata({
-    title: t("siteTitle"),
-    description: t("siteDescription"),
+    title,
+    description,
     path: `/${locale}`,
     locale,
+    keywords,
   });
 }
 

@@ -36,6 +36,13 @@ export default function RootLayout({
       className={`${ibmPlexArabic.variable} ${inter.variable}`}
     >
       <head>
+        {/* JetBrains Mono — used for mono labels throughout the site */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"
+        />
         {/* Material Symbols Outlined — used by service cards, certifications, etc. */}
         <link
           rel="stylesheet"

@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ThemeProvider } from "next-themes";
+import { Preloader } from "@/shared/components/layout/preloader";
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -17,8 +18,25 @@ export function Providers({ children, locale, dir }: ProvidersProps) {
     if (dir) document.documentElement.dir = dir;
   }, [locale, dir]);
 
+  // Show the preloader only once per session (skip on repeat navigations).
+  const [showPreloader, setShowPreloader] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return !sessionStorage.getItem("alfahd_preloader_shown");
+  });
+
+  const handlePreloaderComplete = () => {
+    sessionStorage.setItem("alfahd_preloader_shown", "1");
+    setShowPreloader(false);
+  };
+
   return (
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+      {showPreloader && (
+        <Preloader
+          locale={locale ?? "ar"}
+          onComplete={handlePreloaderComplete}
+        />
+      )}
       {children}
     </ThemeProvider>
   );

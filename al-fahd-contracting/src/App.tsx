@@ -30,6 +30,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { RFQForm } from './components/RFQForm';
 import { PortalDashboard } from './components/PortalDashboard';
+import { Preloader } from './components/Preloader';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
@@ -38,9 +39,22 @@ export default function App() {
   const [expandedPost, setExpandedPost] = useState<BlogPost | null>(null);
   const [fabTab, setFabTab] = useState<'cnc' | 'tempering'>('cnc');
   const [portalRefresh, setPortalRefresh] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   const t = TRANSLATIONS[lang];
   const isRtl = lang === 'ar';
+
+  // Prevent scroll when structural calibration pre-loader is active
+  useEffect(() => {
+    if (loading) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [loading]);
 
   // Parse URL hash for clean routing integration
   useEffect(() => {
@@ -78,15 +92,23 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF9F5] font-sans selection:bg-[#C5A880]/30 selection:text-gray-950">
-      {/* Universal Header */}
-      <Header
-        currentLang={lang}
-        setLang={setLang}
-        currentPage={page}
-        setCurrentPage={navigateToPage}
-        onSearchSelect={handleSearchSelect}
-      />
+    <>
+      <AnimatePresence mode="wait">
+        {loading && (
+          <Preloader key="app-preloader" onComplete={() => setLoading(false)} lang={lang} />
+        )}
+      </AnimatePresence>
+
+      <div className="min-h-screen flex flex-col bg-[#FAF9F5] font-sans selection:bg-[#C5A880]/30 selection:text-gray-950">
+        {/* Universal Header */}
+        <Header
+          currentLang={lang}
+          setLang={setLang}
+          currentPage={page}
+          setCurrentPage={navigateToPage}
+          onSearchSelect={handleSearchSelect}
+          onTriggerLoader={() => setLoading(true)}
+        />
 
       {/* Main Body Dynamic Render Section (Sliding cinematic transitions) */}
       <main className="flex-grow pt-20">
@@ -837,5 +859,6 @@ export default function App() {
       {/* Universal Footer */}
       <Footer currentLang={lang} setCurrentPage={navigateToPage} />
     </div>
+    </>
   );
 }

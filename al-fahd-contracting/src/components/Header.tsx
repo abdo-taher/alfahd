@@ -15,6 +15,7 @@ interface HeaderProps {
   currentPage: Page;
   setCurrentPage: (page: Page) => void;
   onSearchSelect: (projectId: string) => void;
+  onTriggerLoader?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -23,6 +24,7 @@ export const Header: React.FC<HeaderProps> = ({
   currentPage,
   setCurrentPage,
   onSearchSelect,
+  onTriggerLoader,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -142,6 +144,19 @@ export const Header: React.FC<HeaderProps> = ({
 
             {/* Action Buttons */}
             <div className="hidden lg:flex items-center space-x-3 gap-3">
+              {/* Diagnostics Calibrate Trigger */}
+              {onTriggerLoader && (
+                <button
+                  onClick={onTriggerLoader}
+                  className="flex items-center space-x-1.5 gap-1.5 px-3 py-1.5 text-stone-600 hover:text-amber-800 bg-[#FAF9F5]/90 hover:bg-amber-500/5 transition-all duration-300 font-mono text-[9px] font-semibold border border-stone-200/80 rounded cursor-pointer uppercase shadow-sm group"
+                  title={isRtl ? 'بدء فحص الأنظمة وأحمال الرياح' : 'Calibrate Systems & Wind Tolerances'}
+                  id="diag-recalibrate-btn"
+                >
+                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full inline-block group-hover:bg-[#C5A880] transition-colors" />
+                  <span>{isRtl ? 'محاكاة الواجهات' : 'DIAG_CALIBRATE'}</span>
+                </button>
+              )}
+
               {/* Search Toggle */}
               <button
                 onClick={() => setSearchOpen(true)}
@@ -359,6 +374,19 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
 
               <div className="pt-6 border-t border-gray-100 flex flex-col space-y-3">
+                {onTriggerLoader && (
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onTriggerLoader();
+                    }}
+                    className="w-full py-2.5 bg-stone-50 hover:bg-stone-100 border border-stone-200 text-stone-600 font-mono text-[10px] uppercase font-semibold flex items-center justify-center gap-1.5 cursor-pointer rounded"
+                    id="m-diag-recalibrate-btn"
+                  >
+                    <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
+                    <span>{isRtl ? 'محاكاة الأنظمة وصيانة الواجهة' : 'SYSTEM DIAGNOSTICS'}</span>
+                  </button>
+                )}
                 <button
                   onClick={() => {
                     setCurrentPage('contact');
