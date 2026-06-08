@@ -134,9 +134,9 @@ export function Header() {
             <img
               src="/images/logo-dark.png"
               alt="Al-Fahd Logo"
-              className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-              width={56}
-              height={56}
+              className="h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              width={80}
+              height={80}
             />
           </Link>
 
