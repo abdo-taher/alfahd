@@ -92,7 +92,7 @@ export function MobileMenu({ navLinks }: { navLinks: NavLink[] }) {
         aria-label={t("menu")}
         className={[
           "fixed top-0 z-50 h-full w-[300px] sm:w-[340px]",
-          "flex flex-col bg-white shadow-2xl",
+          "flex flex-col bg-white dark:bg-gray-900 shadow-2xl",
           "transition-transform duration-300 ease-in-out",
           isRTL ? "right-0" : "left-0",
           open
@@ -139,7 +139,7 @@ export function MobileMenu({ navLinks }: { navLinks: NavLink[] }) {
                   "flex items-center gap-3 px-4 py-3.5 rounded-xl text-sm font-semibold uppercase tracking-wider transition-all duration-200",
                   isActive
                     ? "bg-[#002868] text-white"
-                    : "text-[#434652] hover:bg-[#002868]/5 hover:text-[#002868]",
+                    : "text-[#434652] dark:text-gray-300 hover:bg-[#002868]/5 dark:hover:bg-gray-800 hover:text-[#002868] dark:hover:text-white",
                   // stagger animation via inline delay
                 ].join(" ")}
                 style={{ transitionDelay: open ? `${i * 30}ms` : "0ms" }}
@@ -158,10 +158,10 @@ export function MobileMenu({ navLinks }: { navLinks: NavLink[] }) {
         </nav>
 
         {/* ── Contact Info ──────────────────────────────────── */}
-        <div className="px-6 py-4 border-t border-[#c4c6d3]/30 bg-[#f3f3fb]">
+        <div className="px-6 py-4 border-t border-[#c4c6d3]/30 dark:border-gray-800 bg-[#f3f3fb] dark:bg-gray-800">
           <a
             href="tel:+966920000000"
-            className="flex items-center gap-3 text-sm text-[#002868] font-semibold hover:text-[#C8A75D] transition-colors"
+            className="flex items-center gap-3 text-sm text-[#002868] dark:text-blue-300 font-semibold hover:text-[#C8A75D] transition-colors"
             dir="ltr"
           >
             <span className="material-symbols-outlined text-[#C8A75D] text-base" aria-hidden="true">phone</span>
@@ -169,7 +169,7 @@ export function MobileMenu({ navLinks }: { navLinks: NavLink[] }) {
           </a>
           <a
             href="mailto:info@alfahd-contracting.com"
-            className="flex items-center gap-3 text-sm text-[#434652] mt-2 hover:text-[#002868] transition-colors"
+            className="flex items-center gap-3 text-sm text-[#434652] dark:text-gray-400 mt-2 hover:text-[#002868] dark:hover:text-white transition-colors"
           >
             <span className="material-symbols-outlined text-[#C8A75D] text-base" aria-hidden="true">mail</span>
             info@alfahd-contracting.com

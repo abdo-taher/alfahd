@@ -29,7 +29,7 @@ export async function ServicesOverview() {
   }>;
 
   return (
-    <section className="section-padding bg-[#f3f3fb]">
+    <section className="section-padding bg-[#f3f3fb] dark:bg-gray-950">
       <div className="container-brand">
         {/* Section header — centered */}
         <div className="text-center max-w-3xl mx-auto mb-20">
@@ -37,14 +37,14 @@ export async function ServicesOverview() {
             {locale === "ar" ? "تخصصاتنا الهندسية" : "Our Engineering Specialties"}
           </span>
           <h2
-            className="text-[#002868] mb-6"
+            className="text-[#002868] dark:text-white mb-6"
             style={{ fontSize: "48px", lineHeight: "1.2", fontWeight: 700 }}
           >
             {locale === "ar"
               ? "خدمات هندسية متكاملة للواجهات الحديثة"
               : "Comprehensive Engineering Services for Modern Facades"}
           </h2>
-          <p className="text-[#434652]" style={{ fontSize: "18px", lineHeight: "1.8", fontWeight: 300 }}>
+          <p className="text-[#434652] dark:text-gray-400" style={{ fontSize: "18px", lineHeight: "1.8", fontWeight: 300 }}>
             {t("subtitle")}
           </p>
         </div>
@@ -60,7 +60,7 @@ export async function ServicesOverview() {
               <Link
                 key={item.id}
                 href={href}
-                className="group bg-white rounded-3xl overflow-hidden premium-shadow flex flex-col md:flex-row h-full"
+                className="group bg-white dark:bg-gray-900 rounded-3xl overflow-hidden premium-shadow flex flex-col md:flex-row h-full border border-transparent dark:border-gray-800"
               >
                 {/* Image — left half */}
                 <div className="md:w-1/2 h-64 md:h-auto overflow-hidden shrink-0">
@@ -81,15 +81,15 @@ export async function ServicesOverview() {
                     {icon}
                   </span>
                   <h3
-                    className="text-[#002868] mb-4"
+                    className="text-[#002868] dark:text-white mb-4"
                     style={{ fontSize: "24px", lineHeight: "1.4", fontWeight: 600 }}
                   >
                     {item.title}
                   </h3>
-                  <p className="text-[#434652] mb-6 flex-1" style={{ fontSize: "16px", lineHeight: "1.8" }}>
+                  <p className="text-[#434652] dark:text-gray-400 mb-6 flex-1" style={{ fontSize: "16px", lineHeight: "1.8" }}>
                     {item.description}
                   </p>
-                  <span className="text-[#002868] font-bold flex items-center gap-2 group-hover:gap-4 transition-all">
+                  <span className="text-[#002868] dark:text-blue-300 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">
                     {locale === "ar" ? "اكتشف المزيد" : "Discover More"}
                     <span className="material-symbols-outlined text-base" aria-hidden="true">arrow_back</span>
                   </span>
@@ -103,7 +103,7 @@ export async function ServicesOverview() {
         <div className="mt-14 text-center">
           <Link
             href={`/${locale}/services`}
-            className="inline-flex items-center justify-center border-2 border-[#002868] text-[#002868] px-10 py-3 font-bold rounded-xl hover:bg-[#002868]/5 transition-all duration-200"
+            className="inline-flex items-center justify-center border-2 border-[#002868] dark:border-blue-400 text-[#002868] dark:text-blue-400 px-10 py-3 font-bold rounded-xl hover:bg-[#002868]/5 dark:hover:bg-blue-400/10 transition-all duration-200"
           >
             {t("viewAll")}
           </Link>

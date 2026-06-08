@@ -30,7 +30,7 @@ export function Providers({ children, locale, dir }: ProvidersProps) {
   };
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
       {showPreloader && (
         <Preloader
           locale={locale ?? "ar"}

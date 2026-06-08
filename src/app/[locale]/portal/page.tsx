@@ -135,7 +135,7 @@ export default function PortalPage() {
   ];
 
   return (
-    <div className="pt-20 min-h-screen" style={{ background: "#FAF9F5" }}>
+    <div className="pt-20 min-h-screen bg-[#FAF9F5] dark:bg-gray-950">
       {/* Page header */}
       <section className="bg-gray-950 py-16 text-white relative overflow-hidden">
         <div
@@ -199,7 +199,7 @@ export default function PortalPage() {
           ].map((stat, i) => (
             <div
               key={i}
-              className="bg-white border border-gray-100 rounded-lg p-5 flex items-center justify-between shadow-sm"
+              className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg p-5 flex items-center justify-between shadow-sm"
             >
               <div>
                 <p
@@ -211,7 +211,7 @@ export default function PortalPage() {
                 >
                   {stat.label}
                 </p>
-                <p className="text-2xl font-bold font-sans text-gray-900 mt-1">
+                <p className="text-2xl font-bold font-sans text-gray-900 dark:text-white mt-1">
                   {stat.value}
                 </p>
               </div>
@@ -226,10 +226,10 @@ export default function PortalPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
           {/* RFQ list — 7 cols */}
-          <div className="lg:col-span-7 bg-white border border-gray-100 rounded-lg shadow-sm p-5 space-y-4">
-            <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+          <div className="lg:col-span-7 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow-sm p-5 space-y-4">
+            <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-700 pb-3">
               <h2
-                className="font-sans font-bold text-sm text-gray-950 uppercase tracking-wider flex items-center gap-2"
+                className="font-sans font-bold text-sm text-gray-950 dark:text-white uppercase tracking-wider flex items-center gap-2"
               >
                 <Workflow className="w-4 h-4 text-[#C5A880]" aria-hidden="true" />
                 {isAr ? "طلبات عروض الأسعار النشطة" : "Active Engineering RFQ Log"}
@@ -268,8 +268,8 @@ export default function PortalPage() {
                       className={[
                         "w-full text-start p-4 rounded-lg border transition-all duration-200 flex justify-between items-center group",
                         isActive
-                          ? "border-gray-900 bg-gray-50/50 shadow-sm"
-                          : "border-gray-100 bg-white hover:border-gray-300",
+                          ? "border-gray-900 dark:border-gray-400 bg-gray-50/50 dark:bg-gray-700/50 shadow-sm"
+                          : "border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-500",
                       ].join(" ")}
                     >
                       <div className="space-y-1.5 flex-1 min-w-0">
@@ -293,7 +293,7 @@ export default function PortalPage() {
                             • {inq.date}
                           </span>
                         </div>
-                        <p className="font-sans font-bold text-xs text-gray-950 group-hover:text-amber-900 transition-colors truncate">
+                        <p className="font-sans font-bold text-xs text-gray-950 dark:text-white group-hover:text-amber-900 dark:group-hover:text-amber-400 transition-colors truncate">
                           {inq.companyName}
                         </p>
                         <p className="font-sans text-[11px] text-gray-500">
@@ -322,8 +322,8 @@ export default function PortalPage() {
           {/* Detail panel — 5 cols */}
           <div className="lg:col-span-5">
             {selected ? (
-              <div className="bg-white border border-gray-100 rounded-lg p-5 shadow-sm space-y-4">
-                <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+              <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg p-5 shadow-sm space-y-4">
+                <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-700 pb-3">
                   <div>
                     <span
                       className="text-[#C5A880] uppercase tracking-wider block"
@@ -332,7 +332,7 @@ export default function PortalPage() {
                       {isAr ? "جارٍ الفحص" : "Currently Inspecting"}
                     </span>
                     <span
-                      className="font-bold text-gray-900"
+                      className="font-bold text-gray-900 dark:text-white"
                       style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "12px" }}
                     >
                       {selected.id}
@@ -354,8 +354,8 @@ export default function PortalPage() {
                     >
                       {isAr ? "المسؤول" : "Developer Lead"}
                     </span>
-                    <p className="font-bold text-gray-900">{selected.fullName}</p>
-                    <p className="text-[11px] text-gray-500">{selected.companyName}</p>
+                    <p className="font-bold text-gray-900 dark:text-white">{selected.fullName}</p>
+                    <p className="text-[11px] text-gray-500 dark:text-gray-400">{selected.companyName}</p>
                   </div>
 
                   <div>
@@ -366,7 +366,7 @@ export default function PortalPage() {
                       {isAr ? "التواصل" : "Contact"}
                     </span>
                     <span
-                      className="text-gray-700"
+                      className="text-gray-700 dark:text-gray-300"
                       style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "11px" }}
                     >
                       {selected.email} • {selected.phone}
@@ -390,7 +390,7 @@ export default function PortalPage() {
                     </div>
                   )}
 
-                  <div className="pt-2 border-t border-gray-100">
+                  <div className="pt-2 border-t border-gray-100 dark:border-gray-700">
                     <span
                       className="text-gray-400 uppercase tracking-wide block mb-1"
                       style={{ fontSize: "9px", fontFamily: "'JetBrains Mono', monospace" }}
@@ -398,7 +398,7 @@ export default function PortalPage() {
                       {isAr ? "المواصفات التفصيلية" : "Detailed Log Specifications"}
                     </span>
                     <p
-                      className="text-gray-700 bg-gray-50 p-3 rounded leading-relaxed overflow-y-auto max-h-24"
+                      className="text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 p-3 rounded leading-relaxed overflow-y-auto max-h-24"
                       style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "11px" }}
                     >
                       {selected.scope}
@@ -407,7 +407,7 @@ export default function PortalPage() {
                 </div>
 
                 {/* Milestone stepper */}
-                <div className="border-t border-gray-100 pt-4 space-y-4">
+                <div className="border-t border-gray-100 dark:border-gray-700 pt-4 space-y-4">
                   <span
                     className="text-gray-400 uppercase tracking-wide block"
                     style={{ fontSize: "9px", fontFamily: "'JetBrains Mono', monospace" }}
@@ -430,7 +430,7 @@ export default function PortalPage() {
                               "w-7 h-7 rounded-full flex items-center justify-center font-bold border text-[11px] shrink-0",
                               done
                                 ? "bg-amber-600 text-white border-amber-600"
-                                : "bg-white text-gray-300 border-gray-200",
+                                : "bg-white dark:bg-gray-700 text-gray-300 dark:text-gray-500 border-gray-200 dark:border-gray-600",
                             ].join(" ")}
                             style={{ fontFamily: "'JetBrains Mono', monospace" }}
                           >
@@ -438,7 +438,7 @@ export default function PortalPage() {
                           </div>
                           <div className="flex-1 min-w-0">
                             <p
-                              className={`font-sans font-bold ${done ? "text-gray-900" : "text-gray-400"}`}
+                              className={`font-sans font-bold ${done ? "text-gray-900 dark:text-white" : "text-gray-400 dark:text-gray-500"}`}
                             >
                               {m.title}
                             </p>
@@ -454,11 +454,11 @@ export default function PortalPage() {
               </div>
             ) : (
               <div
-                className="rounded-lg border border-dashed border-gray-200 p-8 text-center text-gray-400 space-y-3 h-full flex flex-col items-center justify-center"
-                style={{ background: "#FAF9F5", minHeight: "300px" }}
+                className="rounded-lg border border-dashed border-gray-200 dark:border-gray-700 p-8 text-center text-gray-400 space-y-3 h-full flex flex-col items-center justify-center bg-[#FAF9F5] dark:bg-gray-900"
+                style={{ minHeight: "300px" }}
               >
                 <Workflow className="w-10 h-10 text-[#C5A880]" aria-hidden="true" />
-                <h3 className="font-sans font-bold text-xs text-gray-700 uppercase tracking-widest">
+                <h3 className="font-sans font-bold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest">
                   {isAr ? "نافذة التتبع" : "Tracking Terminal"}
                 </h3>
                 <p className="font-sans text-[11px] text-gray-500 max-w-xs leading-relaxed">

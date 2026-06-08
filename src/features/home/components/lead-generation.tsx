@@ -24,7 +24,7 @@ export function LeadGeneration() {
     : ["Aluminium Works", "Glass Works", "Steel Structures", "Project Management", "Other"];
 
   return (
-    <section className="section-padding bg-[#F4F7FA]" aria-labelledby="leadgen-heading">
+    <section className="section-padding bg-[#F4F7FA] dark:bg-gray-950" aria-labelledby="leadgen-heading">
       <div className="container-brand">
         <div className="bg-[#002868] rounded-[40px] overflow-hidden flex flex-col md:flex-row premium-shadow">
 
@@ -74,16 +74,16 @@ export function LeadGeneration() {
           </div>
 
           {/* Right half — white form */}
-          <div className="md:w-1/2 bg-white p-16 flex flex-col justify-center">
+          <div className="md:w-1/2 bg-white dark:bg-gray-900 p-16 flex flex-col justify-center">
             {status === "success" ? (
               <div className="text-center py-8">
                 <span className="material-symbols-outlined text-[#C8A75D] text-6xl mb-4 block" aria-hidden="true">
                   task_alt
                 </span>
-                <h3 className="text-[#002868] text-2xl font-bold mb-3">
+                <h3 className="text-[#002868] dark:text-white text-2xl font-bold mb-3">
                   {locale === "ar" ? "تم إرسال طلبك!" : "Request Sent!"}
                 </h3>
-                <p className="text-[#434652]">
+                <p className="text-[#434652] dark:text-gray-400">
                   {locale === "ar"
                     ? "سيتواصل معك فريقنا خلال 24 ساعة."
                     : "Our team will contact you within 24 hours."}
@@ -91,12 +91,12 @@ export function LeadGeneration() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-                <h3 className="text-[#002868] text-xl font-bold mb-6">
+                <h3 className="text-[#002868] dark:text-white text-xl font-bold mb-6">
                   {locale === "ar" ? "أرسل استفسارك" : "Send Your Inquiry"}
                 </h3>
 
                 <div>
-                  <label htmlFor="lead-name" className="block text-sm font-bold text-[#1a1b21] mb-2">
+                  <label htmlFor="lead-name" className="block text-sm font-bold text-[#1a1b21] dark:text-gray-200 mb-2">
                     {locale === "ar" ? "الاسم الكامل *" : "Full Name *"}
                   </label>
                   <input
@@ -107,12 +107,12 @@ export function LeadGeneration() {
                     placeholder={locale === "ar" ? "أدخل اسمك" : "Enter your name"}
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full bg-[#F4F7FA] border-none rounded-xl p-4 text-[#1a1b21] focus:outline-none focus:ring-2 focus:ring-[#002868] transition-all"
+                    className="w-full bg-[#F4F7FA] dark:bg-gray-800 dark:text-white border-none rounded-xl p-4 text-[#1a1b21] focus:outline-none focus:ring-2 focus:ring-[#002868] transition-all"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="lead-phone" className="block text-sm font-bold text-[#1a1b21] mb-2">
+                  <label htmlFor="lead-phone" className="block text-sm font-bold text-[#1a1b21] dark:text-gray-200 mb-2">
                     {locale === "ar" ? "رقم الجوال *" : "Phone Number *"}
                   </label>
                   <input
@@ -124,12 +124,12 @@ export function LeadGeneration() {
                     placeholder="05XXXXXXXX"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full bg-[#F4F7FA] border-none rounded-xl p-4 text-[#1a1b21] focus:outline-none focus:ring-2 focus:ring-[#002868] transition-all"
+                    className="w-full bg-[#F4F7FA] dark:bg-gray-800 dark:text-white border-none rounded-xl p-4 text-[#1a1b21] focus:outline-none focus:ring-2 focus:ring-[#002868] transition-all"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="lead-service" className="block text-sm font-bold text-[#1a1b21] mb-2">
+                  <label htmlFor="lead-service" className="block text-sm font-bold text-[#1a1b21] dark:text-gray-200 mb-2">
                     {locale === "ar" ? "نوع الخدمة" : "Service Type"}
                   </label>
                   <select
@@ -137,7 +137,7 @@ export function LeadGeneration() {
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full bg-[#F4F7FA] border-none rounded-xl p-4 text-[#1a1b21] focus:outline-none focus:ring-2 focus:ring-[#002868] transition-all"
+                    className="w-full bg-[#F4F7FA] dark:bg-gray-800 dark:text-white border-none rounded-xl p-4 text-[#1a1b21] focus:outline-none focus:ring-2 focus:ring-[#002868] transition-all"
                   >
                     <option value="">
                       {locale === "ar" ? "اختر الخدمة" : "Select service"}
@@ -149,7 +149,7 @@ export function LeadGeneration() {
                 </div>
 
                 <div>
-                  <label htmlFor="lead-message" className="block text-sm font-bold text-[#1a1b21] mb-2">
+                  <label htmlFor="lead-message" className="block text-sm font-bold text-[#1a1b21] dark:text-gray-200 mb-2">
                     {locale === "ar" ? "وصف المشروع" : "Project Description"}
                   </label>
                   <textarea
@@ -159,7 +159,7 @@ export function LeadGeneration() {
                     placeholder={locale === "ar" ? "اكتب وصفاً مختصراً لمشروعك..." : "Brief description of your project..."}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full bg-[#F4F7FA] border-none rounded-xl p-4 text-[#1a1b21] focus:outline-none focus:ring-2 focus:ring-[#002868] transition-all resize-none"
+                    className="w-full bg-[#F4F7FA] dark:bg-gray-800 dark:text-white border-none rounded-xl p-4 text-[#1a1b21] focus:outline-none focus:ring-2 focus:ring-[#002868] transition-all resize-none"
                   />
                 </div>
 

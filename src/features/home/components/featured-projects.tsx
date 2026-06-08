@@ -17,7 +17,7 @@ export async function FeaturedProjects() {
   ];
 
   return (
-    <section className="section-padding bg-white" aria-labelledby="projects-heading">
+    <section className="section-padding bg-white dark:bg-gray-900" aria-labelledby="projects-heading">
       <div className="container-brand">
         {/* Header row */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
@@ -35,7 +35,7 @@ export async function FeaturedProjects() {
             </span>
             <h2
               id="projects-heading"
-              className="text-gray-950"
+              className="text-gray-950 dark:text-white"
               style={{ fontSize: "clamp(28px, 4vw, 48px)", lineHeight: "1.2", fontWeight: 700 }}
             >
               {locale === "ar"
@@ -52,8 +52,8 @@ export async function FeaturedProjects() {
                 className={[
                   "px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors duration-200",
                   i === 0
-                    ? "bg-gray-950 text-white"
-                    : "bg-gray-50 text-gray-500 hover:bg-gray-100 border border-gray-100",
+                    ? "bg-gray-950 text-white dark:bg-white dark:text-gray-950"
+                    : "bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-100 dark:border-gray-700",
                 ].join(" ")}
               >
                 {label}
@@ -162,7 +162,7 @@ export async function FeaturedProjects() {
         <div className="mt-12 text-center">
           <Link
             href={`/${locale}/projects`}
-            className="inline-flex items-center gap-2 border border-gray-950 text-gray-950 px-10 py-3.5 font-bold text-xs uppercase tracking-wider hover:bg-gray-950 hover:text-white transition-all duration-200"
+            className="inline-flex items-center gap-2 border border-gray-950 dark:border-white text-gray-950 dark:text-white px-10 py-3.5 font-bold text-xs uppercase tracking-wider hover:bg-gray-950 dark:hover:bg-white hover:text-white dark:hover:text-gray-950 transition-all duration-200"
           >
             {t("viewAll")}
             <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: "14px" }}>

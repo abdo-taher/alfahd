@@ -13,7 +13,7 @@ export async function Certifications() {
 
   return (
     <section
-      className="py-24 bg-white"
+      className="py-24 bg-white dark:bg-gray-900"
       style={{ borderTop: "1px solid rgba(196,198,211,0.3)", borderBottom: "1px solid rgba(196,198,211,0.3)" }}
       aria-labelledby="certs-heading"
     >
@@ -23,13 +23,13 @@ export async function Certifications() {
           <div className="max-w-md">
             <h2
               id="certs-heading"
-              className="text-[#002868] mb-4 text-3xl font-bold"
+              className="text-[#002868] dark:text-white mb-4 text-3xl font-bold"
             >
               {locale === "ar"
                 ? "التزامنا بالجودة يتخطى المعايير"
                 : "Our Quality Commitment Exceeds Standards"}
             </h2>
-            <p className="text-[#434652]" style={{ fontSize: "16px", lineHeight: "1.8" }}>
+            <p className="text-[#434652] dark:text-gray-400" style={{ fontSize: "16px", lineHeight: "1.8" }}>
               {t("subtitle")}
             </p>
           </div>
@@ -39,12 +39,12 @@ export async function Certifications() {
             {certs.map(({ icon, name }) => (
               <div key={name} className="flex flex-col items-center gap-3 text-center">
                 <span
-                  className="material-symbols-outlined text-5xl text-[#1a1b21]"
+                  className="material-symbols-outlined text-5xl text-[#1a1b21] dark:text-gray-200"
                   aria-hidden="true"
                 >
                   {icon}
                 </span>
-                <p className="font-bold text-[#1a1b21]">{name}</p>
+                <p className="font-bold text-[#1a1b21] dark:text-gray-200">{name}</p>
               </div>
             ))}
           </div>

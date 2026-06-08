@@ -83,11 +83,11 @@ export function QuoteClient() {
         </div>
       </section>
 
-      <section className="section-py bg-surface">
+      <section className="section-py bg-surface dark:bg-gray-950">
         <div className="container-brand">
           <div className="max-w-3xl mx-auto">
             {formState === "success" ? (
-              <div className="bg-surface-container-low border border-outline-variant rounded-lg p-16 text-center">
+              <div className="bg-surface-container-low dark:bg-gray-800 border border-outline-variant dark:border-gray-700 rounded-lg p-16 text-center">
                 <div className="w-16 h-16 rounded-full enterprise-gradient flex items-center justify-center text-white text-3xl mx-auto mb-6">
                   ✓
                 </div>
@@ -103,7 +103,7 @@ export function QuoteClient() {
                 </a>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-8 bg-surface-container-lowest border border-outline-variant rounded-lg p-10 luxury-shadow" noValidate>
+              <form onSubmit={handleSubmit} className="space-y-8 bg-surface-container-lowest dark:bg-gray-800 border border-outline-variant dark:border-gray-700 rounded-lg p-10 luxury-shadow" noValidate>
                 <h2 className="text-headline-md text-primary">
                   {locale === "ar" ? "تفاصيل طلبك" : "Your Request Details"}
                 </h2>

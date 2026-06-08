@@ -32,15 +32,35 @@
     "faq": [
       {
         "question": "How long does an aluminum project take?",
-        "answer": "Execution time ranges from 2 to 8 weeks depending on the project size and requirements."
+        "answer": "Execution time ranges from 2 to 8 weeks depending on project size and complexity. Small-scale work like doors and windows typically takes 1–2 weeks, while full tower facades can extend to 16 weeks including coordination with the main contractor."
       },
       {
         "question": "Do you offer warranties on aluminum works?",
-        "answer": "Yes, we offer a 5-year warranty on all aluminum works with periodic maintenance service."
+        "answer": "Yes, we offer a comprehensive 5-year warranty covering both materials and workmanship, including any manufacturing defects. We also offer optional annual preventive maintenance contracts after the warranty period expires."
       },
       {
         "question": "What types of aluminum do you use?",
-        "answer": "We use the finest globally certified aluminum including high-quality European and Turkish aluminum."
+        "answer": "We use 6063-T5 and 6061-T6 alloy sections from certified European and Turkish suppliers. All aluminum materials are tested per EN 755 and ASTM B221 standards and carry SASO Saudi conformity certificates."
+      },
+      {
+        "question": "Does aluminum hold up to the heat and humidity in Saudi Arabia?",
+        "answer": "Aluminum is one of the most suitable materials for the Saudi climate. The electrostatic powder coating or anodizing finish we apply protects sections from corrosion caused by extreme heat, sand, and coastal humidity — maintaining appearance for decades without fading or peeling."
+      },
+      {
+        "question": "Do you comply with Saudi Building Code (SBC)?",
+        "answer": "Compliance with SBC and SBC-601 Energy Code is mandatory in all our projects. We provide thermal insulation calculation extracts and facade performance verification per national requirements, facilitating building permit approvals and final inspections."
+      },
+      {
+        "question": "Can colors and finishes be customized?",
+        "answer": "Absolutely. We offer over 200 standard RAL colors plus custom finishes including wood-grain effect, metallic textures, matte and gloss solids. We provide physical samples for approval before production begins — no surprises at handover."
+      },
+      {
+        "question": "How do you handle renovation and replacement projects?",
+        "answer": "We have a dedicated refurbishment team. We measure existing openings and manufacture matching profiles without touching the structural frame, minimizing operational downtime. This covers window replacement in existing towers, mall entrances, and residential villas."
+      },
+      {
+        "question": "Do you provide 3D visualization before execution?",
+        "answer": "Yes, we use AutoCAD, Revit, and Rhinoceros to deliver full 3D facade simulations before manufacturing starts. This lets you review the final appearance, approve colors and details, and make any changes — with zero surprises at handover."
       }
     ]
   },
@@ -77,11 +97,35 @@
     "faq": [
       {
         "question": "What types of glass are available?",
-        "answer": "We offer double-glazed, tempered, tinted, reflective, smart, and safety glass."
+        "answer": "We offer a wide range including: Insulated Glass Units (IGU) with air or argon fill for enhanced thermal performance, heat-tempered safety glass, laminated glass, heat-strengthened glass, Low-E coated glass, smart switchable glass (PDLC/SPD), and ultra-clear low-iron glass for maximum transparency."
       },
       {
         "question": "How do you ensure installation safety?",
-        "answer": "We follow the highest safety standards, use high-quality sealants, and conduct comprehensive tests before handover."
+        "answer": "We follow an integrated safety protocol: certified structural silicone from Dow Corning and Sika, air-pressure and water-penetration tests per ASTM E283 and E331, and supervision by a licensed structural engineer at every installation stage — with a quality report delivered to the client."
+      },
+      {
+        "question": "Is glass safe in the hot climate and under intense sunlight in Saudi Arabia?",
+        "answer": "Yes, particularly with the right product selection. We recommend Low-E glass with a vapor-deposited coating for high-solar-radiation zones. This reduces the Solar Heat Gain Coefficient (SHGC) to 0.25 or below, cutting air-conditioning loads by up to 40% compared to standard clear glass."
+      },
+      {
+        "question": "What glass thickness is appropriate for high-rise buildings?",
+        "answer": "Thickness is determined by wind-load calculations per ASCE 7 and SBC-301. For commercial towers we typically supply double units in the 28–36 mm total range (e.g. 6+12+6 or 8+12+8 mm), with a signed structural calculation report issued for each project."
+      },
+      {
+        "question": "What warranty do you offer on glass and fittings?",
+        "answer": "We provide: a 10-year warranty against thermal seal failure (internal condensation) on IGU units, a 5-year warranty on sealants and weatherproofing materials, and a 2-year workmanship warranty on installation labor. Any unit showing manufacturing defects within the warranty period is replaced at no cost."
+      },
+      {
+        "question": "Can you handle curved glass and non-standard shapes?",
+        "answer": "Yes, we work with architecturally complex forms including cylindrically curved glass, angled panels, and custom geometric patterns. We rely on made-to-measure manufacturing and partner with specialized European factories for shapes that exceed local processing capabilities."
+      },
+      {
+        "question": "How are glass facades cleaned and maintained?",
+        "answer": "We supply a detailed maintenance manual with every project. Generally, external cleaning every 3–6 months is recommended (more frequent in sandy regions) using non-acidic solutions. We also provide a unit-registry log with data for each glass panel, making future replacement straightforward."
+      },
+      {
+        "question": "Do you handle fire-rated glass requirements?",
+        "answer": "Yes, we supply fire-rated glass with EW and EI classifications per EN 1364 and Saudi Civil Defense requirements. This is used in fire-compartment partitions, escape-route doors, and interior divisions in facilities with strict safety mandates such as hospitals, hotels, and government buildings."
       }
     ]
   },
@@ -118,11 +162,35 @@
     "faq": [
       {
         "question": "Do you offer periodic maintenance for steel structures?",
-        "answer": "Yes, we offer comprehensive periodic maintenance programs including inspection, painting, and repair."
+        "answer": "Yes, we offer tiered maintenance programs: an annual visual inspection, a non-destructive testing (NDT) inspection every 3 years, and a full coating and anti-corrosion renewal every 5–7 years. Each inspection is documented in a detailed report filed in the project record."
       },
       {
         "question": "What is the typical execution time for a steel structure project?",
-        "answer": "Execution time ranges from 4 to 16 weeks depending on the project size and complexity."
+        "answer": "Execution ranges from 4 to 16 weeks. Small-scale projects like canopies and barriers take 4–6 weeks; large manufacturing warehouses or tower structures may take 12–20 weeks. We provide a detailed Gantt Chart timeline at project kick-off."
+      },
+      {
+        "question": "What quality standards do you follow in fabrication?",
+        "answer": "We comply with AISC (American Institute of Steel Construction), AWS D1.1 for structural welding, and Saudi Building Code SBC-301. All steel materials carry ASTM A36/A572 certification and undergo tensile and hardness testing before fabrication begins."
+      },
+      {
+        "question": "How do you protect steel structures from rust in coastal areas?",
+        "answer": "We apply a multi-layer protection system: Sa2.5 abrasive blast cleaning, a zinc-rich primer at 75 microns, an epoxy intermediate coat at 125 microns, and a polyurethane or polysiloxane topcoat at 75 microns. For severe coastal environments, COR-TEN weathering steel is also available."
+      },
+      {
+        "question": "Are steel structures safe from earthquakes in Saudi Arabia?",
+        "answer": "Steel is one of the most earthquake-resistant materials due to its ductility and energy-dissipation capacity. We design all structures per SBC-301 Chapter 12 seismic requirements, accounting for region-specific hazard maps across Saudi Arabia."
+      },
+      {
+        "question": "Can steel structures be combined with glass facades and aluminum?",
+        "answer": "This is one of our key competitive advantages. Since we specialize in all three trades — steel, glass, and aluminum — under one roof, we deliver integrated solutions that include the load-bearing steel frame, the glass facade system, and the aluminum profiles in a single contract, eliminating scope conflicts and reducing overall cost."
+      },
+      {
+        "question": "What is the difference between structural steel and cold-formed sections for decorative work?",
+        "answer": "Structural steel (H, I, RHS sections) is used for load-bearing elements like bridges, columns, and beams. Cold-formed sections (tubes, angles, and light profiles) are used for staircases, balustrades, and decorative canopies. We supply both to the correct specification for each application."
+      },
+      {
+        "question": "Can an existing steel structure be modified or expanded?",
+        "answer": "Yes — flexibility is one of steel's greatest advantages. We conduct a structural assessment of the existing facility first to determine its load capacity, then design expansion or modification elements that integrate with the original frame. Expansions are often completed without fully halting factory or warehouse operations."
       }
     ]
   }

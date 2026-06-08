@@ -291,7 +291,7 @@ export function Preloader({ locale, onComplete }: PreloaderProps) {
           z-index: 9999;
           display: flex;
           flex-direction: column;
-          background: rgba(12, 10, 9, 0.70);
+          background: rgba(12, 10, 9, 0.95);
           color: #e7e5e4;
           overflow: hidden;
           font-family: 'JetBrains Mono', ui-monospace, monospace;

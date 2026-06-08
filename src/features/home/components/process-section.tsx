@@ -6,7 +6,7 @@ export async function ProcessSection() {
   const steps = t.raw("steps") as Array<{ step: number; title: string; description: string }>;
 
   return (
-    <section className="section-padding bg-[#ffffff]" style={{ backgroundColor: "var(--color-surface-container-lowest, #ffffff)" }} aria-labelledby="process-heading">
+    <section className="section-padding bg-white dark:bg-gray-950" style={{}} aria-labelledby="process-heading">
       <div className="container-brand">
         {/* Header */}
         <div className="text-center mb-20">
@@ -15,7 +15,7 @@ export async function ProcessSection() {
           </span>
           <h2
             id="process-heading"
-            className="text-[#002868]"
+            className="text-[#002868] dark:text-white"
             style={{ fontSize: "48px", lineHeight: "1.2", fontWeight: 700 }}
           >
             {locale === "ar" ? "كيف ننسج النجاح؟" : t("title")}
@@ -34,7 +34,7 @@ export async function ProcessSection() {
             {steps.map((step, i) => (
               <div
                 key={step.step}
-                className="bg-white p-8 rounded-2xl premium-shadow text-center"
+                className="bg-white dark:bg-gray-800 p-8 rounded-2xl premium-shadow text-center"
                 style={{ border: "1px solid rgba(196,198,211,0.2)" }}
               >
                 {/* Step circle — alternates primary/gold */}
@@ -47,8 +47,8 @@ export async function ProcessSection() {
                 >
                   {String(step.step).padStart(2, "0")}
                 </div>
-                <h4 className="font-bold text-[#002868] mb-3">{step.title}</h4>
-                <p className="text-sm text-[#434652] leading-relaxed">{step.description}</p>
+                <h4 className="font-bold text-[#002868] dark:text-blue-300 mb-3">{step.title}</h4>
+                <p className="text-sm text-[#434652] dark:text-gray-400 leading-relaxed">{step.description}</p>
               </div>
             ))}
           </div>

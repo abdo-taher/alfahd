@@ -42,7 +42,7 @@ export function ContactClient() {
       </section>
 
       {/* Split layout */}
-      <section className="section-py bg-surface">
+      <section className="section-py bg-surface dark:bg-gray-950">
         <div className="container-brand">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             {/* Form — takes 7 cols */}
@@ -52,7 +52,7 @@ export function ContactClient() {
               </h2>
 
               {formState === "success" ? (
-                <div className="bg-surface-container-low border border-outline-variant rounded-lg p-10 text-center">
+                <div className="bg-surface-container-low dark:bg-gray-800 border border-outline-variant dark:border-gray-700 rounded-lg p-10 text-center">
                   <div className="text-4xl mb-4">✓</div>
                   <p className="text-headline-sm text-primary">{ft.success}</p>
                 </div>

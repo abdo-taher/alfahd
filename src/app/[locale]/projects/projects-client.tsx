@@ -152,7 +152,7 @@ export function ProjectsClient() {
   });
 
   return (
-    <div className="pt-20" style={{ background: "#FAF9F5" }}>
+    <div className="pt-20 bg-[#FAF9F5] dark:bg-gray-950">
       {/* Editorial header */}
       <section className="bg-gray-950 py-20 text-white relative overflow-hidden">
         <div
@@ -191,7 +191,7 @@ export function ProjectsClient() {
       </section>
 
       {/* Filter + Search */}
-      <section className="bg-white border-b border-gray-100 py-5 sticky top-16 z-30">
+      <section className="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 py-5 sticky top-16 z-30">
         <div className="container-brand flex flex-wrap items-center justify-between gap-4">
           <div
             className="flex flex-wrap gap-2"
@@ -205,8 +205,8 @@ export function ProjectsClient() {
                 className={[
                   "px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-200",
                   active === cat
-                    ? "bg-gray-950 text-white"
-                    : "bg-gray-50 text-gray-600 border border-gray-100 hover:border-gray-300",
+                    ? "bg-gray-950 dark:bg-white text-white dark:text-gray-950"
+                    : "bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400 border border-gray-100 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-500",
                 ].join(" ")}
               >
                 {labels[cat] ?? cat}
@@ -214,7 +214,7 @@ export function ProjectsClient() {
             ))}
           </div>
 
-          <div className="flex items-center gap-2 bg-gray-50 border border-gray-100 px-3 py-2 rounded">
+          <div className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 px-3 py-2 rounded">
             <span className="material-symbols-outlined text-gray-400" aria-hidden="true" style={{ fontSize: "16px" }}>
               search
             </span>
@@ -223,7 +223,7 @@ export function ProjectsClient() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder={isAr ? "ابحث في المشاريع..." : "Search projects..."}
-              className="bg-transparent text-xs text-gray-800 placeholder:text-gray-400 focus:outline-none w-40"
+              className="bg-transparent text-xs text-gray-800 dark:text-gray-200 placeholder:text-gray-400 focus:outline-none w-40"
             />
           </div>
         </div>

@@ -8,14 +8,14 @@ export function WhatsAppButton() {
 
   return (
     <a
-      href="https://wa.me/966500000000"
+      href="https://wa.me/966531028822"
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
       title={label}
       className={[
         "fixed bottom-6 z-50 flex size-14 items-center justify-center rounded-full",
-        "bg-[#25D366] text-white shadow-lg hover:bg-[#20bc5a]",
+        "bg-[#25D366] text-white shadow-lg hover:bg-[#20bc5a] opacity-80",
         "transition-all duration-300 hover:scale-110",
         "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366]",
         locale === "ar" ? "left-6" : "right-6",

@@ -142,17 +142,17 @@ export default async function AboutPage({
       </section>
 
       {/* Mission & Vision */}
-      <section className="section-py bg-surface">
+      <section className="section-py bg-surface dark:bg-gray-950">
         <div className="container-brand">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="bg-surface-container-low rounded-lg p-10 border border-outline-variant">
+            <div className="bg-surface-container-low dark:bg-gray-800 rounded-lg p-10 border border-outline-variant dark:border-gray-700">
               <div className="w-12 h-12 rounded-lg enterprise-gradient flex items-center justify-center text-white text-xl font-bold mb-6">
                 ◎
               </div>
               <h2 className="text-headline-sm text-primary mb-4">{t("mission")}</h2>
               <p className="text-body-lg text-on-surface-variant leading-relaxed">{t("missionText")}</p>
             </div>
-            <div className="bg-surface-container-low rounded-lg p-10 border border-outline-variant">
+            <div className="bg-surface-container-low dark:bg-gray-800 rounded-lg p-10 border border-outline-variant dark:border-gray-700">
               <div className="w-12 h-12 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-xl font-bold mb-6">
                 ◈
               </div>
@@ -164,7 +164,7 @@ export default async function AboutPage({
       </section>
 
       {/* Timeline */}
-      <section className="section-py bg-surface-container-low">
+      <section className="section-py bg-surface-container-low dark:bg-gray-900">
         <div className="container-brand">
           <div className="text-center mb-20">
             <span className="text-label-bold text-primary uppercase tracking-widest block mb-3">
@@ -193,7 +193,7 @@ export default async function AboutPage({
                 >
                   <div className={`flex-1 ${i % 2 === 0 ? "lg:text-end" : "lg:text-start"}`}>
                     <div
-                      className={`bg-surface-container-lowest rounded-lg p-8 border border-outline-variant luxury-shadow inline-block w-full`}
+                      className={`bg-surface-container-lowest dark:bg-gray-800 rounded-lg p-8 border border-outline-variant dark:border-gray-700 luxury-shadow inline-block w-full`}
                     >
                       <p className="text-label-bold text-gold uppercase tracking-widest mb-2">{item.year}</p>
                       <h3 className="text-headline-sm text-primary mb-2">{item.title}</h3>
@@ -211,13 +211,13 @@ export default async function AboutPage({
       </section>
 
       {/* Values */}
-      <section className="section-py bg-surface">
+      <section className="section-py bg-surface dark:bg-gray-950">
         <div className="container-brand">
           <div className="text-center mb-20">
             <span className="text-label-bold text-primary uppercase tracking-widest block mb-3">
               {t("values")}
             </span>
-            <h2 className="text-display-mobile lg:text-headline-md text-primary">
+            <h2 className="text-display-mobile lg:text-headline-md text-primary dark:text-white">
               {locale === "ar" ? "ما يميّزنا" : "What Defines Us"}
             </h2>
             <div className="gold-bar-center mt-6" aria-hidden="true" />
@@ -227,7 +227,7 @@ export default async function AboutPage({
             {values.map((val) => (
               <div
                 key={val.title}
-                className="group flex flex-col p-8 bg-surface-container-lowest rounded-lg border border-outline-variant luxury-shadow hover:border-primary transition-all duration-300"
+                className="group flex flex-col p-8 bg-surface-container-lowest dark:bg-gray-800 rounded-lg border border-outline-variant dark:border-gray-700 luxury-shadow hover:border-primary transition-all duration-300"
               >
                 <div className="text-3xl text-gold mb-6 group-hover:scale-110 transition-transform duration-300">
                   {val.icon}

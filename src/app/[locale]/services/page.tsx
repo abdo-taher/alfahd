@@ -71,7 +71,7 @@ export default async function ServicesPage({
       </section>
 
       {/* ── Services — alternating image + content layout ─────── */}
-      <section className="section-py bg-[#FAF9F5]">
+      <section className="section-py bg-[#FAF9F5] dark:bg-gray-950">
         <div className="container-brand">
           <div className="flex flex-col gap-24">
             {services.map((service, index) => {
@@ -79,7 +79,7 @@ export default async function ServicesPage({
               return (
                 <div
                   key={service.id}
-                  className="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm group"
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-sm group"
                 >
                   {/* ── Image ── */}
                   <div
@@ -125,11 +125,11 @@ export default async function ServicesPage({
                       {locale === "ar" ? "الخدمة" : "Service"}
                     </span>
 
-                    <h2 className="text-3xl font-bold text-[#002868] mb-4 leading-snug">
+                    <h2 className="text-3xl font-bold text-[#002868] dark:text-white mb-4 leading-snug">
                       {service.title}
                     </h2>
 
-                    <p className="text-body-lg text-[#434652] leading-relaxed mb-8">
+                    <p className="text-body-lg text-[#434652] dark:text-gray-400 leading-relaxed mb-8">
                       {service.description}
                     </p>
 
@@ -141,7 +141,7 @@ export default async function ServicesPage({
                             className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#C5A880] shrink-0"
                             aria-hidden="true"
                           />
-                          <span className="text-sm text-[#434652] leading-relaxed">
+                          <span className="text-sm text-[#434652] dark:text-gray-400 leading-relaxed">
                             {benefit}
                           </span>
                         </li>
@@ -158,7 +158,7 @@ export default async function ServicesPage({
                           {service.applications.slice(0, 4).map((app) => (
                             <span
                               key={app}
-                              className="px-3 py-1 bg-[#f3f3fb] border border-[#c4c6d3]/40 text-[#434652] text-xs rounded font-medium"
+                              className="px-3 py-1 bg-[#f3f3fb] dark:bg-gray-700 border border-[#c4c6d3]/40 dark:border-gray-600 text-[#434652] dark:text-gray-300 text-xs rounded font-medium"
                             >
                               {app}
                             </span>
@@ -177,7 +177,7 @@ export default async function ServicesPage({
                       </Link>
                       <Link
                         href={`/${locale}/services/${service.slug}`}
-                        className="inline-flex items-center gap-2 border border-[#002868] text-[#002868] px-7 py-3 text-sm font-bold rounded hover:bg-[#002868]/5 transition-all duration-200"
+                        className="inline-flex items-center gap-2 border border-[#002868] dark:border-blue-300 text-[#002868] dark:text-blue-300 px-7 py-3 text-sm font-bold rounded hover:bg-[#002868]/5 dark:hover:bg-blue-300/10 transition-all duration-200"
                       >
                         {t("learnMore")}
                         <svg
@@ -203,13 +203,13 @@ export default async function ServicesPage({
       </section>
 
       {/* ── Process ───────────────────────────────────────────── */}
-      <section className="section-py bg-white border-y border-gray-100">
+      <section className="section-py bg-white dark:bg-gray-900 border-y border-gray-100 dark:border-gray-800">
         <div className="container-brand">
           <div className="text-center mb-20">
             <span className="font-mono text-[10px] text-[#C5A880] uppercase tracking-widest font-bold block mb-3">
               {locale === "ar" ? "منهجيتنا" : "Our Process"}
             </span>
-            <h2 className="text-3xl font-bold text-[#002868]">
+            <h2 className="text-3xl font-bold text-[#002868] dark:text-white">
               {locale === "ar" ? "كيف نعمل" : "How We Work"}
             </h2>
             <div className="gold-bar-center mt-6" aria-hidden="true" />
@@ -262,15 +262,15 @@ export default async function ServicesPage({
               ].map((item) => (
                 <div
                   key={item.step}
-                  className="flex flex-col items-center text-center bg-white p-8 rounded-lg border border-gray-100 shadow-sm"
+                  className="flex flex-col items-center text-center bg-white dark:bg-gray-800 p-8 rounded-lg border border-gray-100 dark:border-gray-700 shadow-sm"
                 >
                   <div
                     className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold font-mono mb-6 ${item.bg}`}
                   >
                     {item.step}
                   </div>
-                  <h3 className="text-base font-bold text-[#002868] mb-3">{item.title}</h3>
-                  <p className="text-sm text-[#434652] leading-relaxed">{item.desc}</p>
+                  <h3 className="text-base font-bold text-[#002868] dark:text-white mb-3">{item.title}</h3>
+                  <p className="text-sm text-[#434652] dark:text-gray-400 leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>

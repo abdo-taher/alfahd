@@ -13,7 +13,7 @@ export async function IndustriesSection() {
   const locale = await getLocale();
 
   return (
-    <section className="section-padding bg-[#F4F7FA]" aria-labelledby="industries-heading">
+    <section className="section-padding bg-[#F4F7FA] dark:bg-gray-950" aria-labelledby="industries-heading">
       <div className="container-brand">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
@@ -24,7 +24,7 @@ export async function IndustriesSection() {
             </span>
             <h2
               id="industries-heading"
-              className="text-[#002868] mb-8"
+              className="text-[#002868] dark:text-white mb-8"
               style={{ fontSize: "48px", lineHeight: "1.2", fontWeight: 700 }}
             >
               {locale === "ar"
@@ -32,7 +32,7 @@ export async function IndustriesSection() {
                 : "Our Expertise Spans Multiple Sectors"}
             </h2>
             <p
-              className="text-[#434652] mb-10"
+              className="text-[#434652] dark:text-gray-400 mb-10"
               style={{ fontSize: "18px", lineHeight: "1.8", fontWeight: 300 }}
             >
               {locale === "ar"
@@ -45,15 +45,15 @@ export async function IndustriesSection() {
               {sectors.map((sector) => (
                 <div
                   key={sector.nameEn}
-                  className="flex items-center gap-4 p-4 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300"
+                  className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300"
                 >
                   <span
-                    className="material-symbols-outlined text-[#002868] bg-[#002868]/5 p-3 rounded-xl shrink-0"
+                    className="material-symbols-outlined text-[#002868] dark:text-blue-300 bg-[#002868]/5 dark:bg-blue-300/10 p-3 rounded-xl shrink-0"
                     aria-hidden="true"
                   >
                     {sector.icon}
                   </span>
-                  <span className="font-bold text-[#1a1b21] text-sm">
+                  <span className="font-bold text-[#1a1b21] dark:text-gray-100 text-sm">
                     {locale === "ar" ? sector.nameAr : sector.nameEn}
                   </span>
                 </div>
