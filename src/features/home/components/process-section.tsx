@@ -1,53 +1,57 @@
-"use client";
+import { getTranslations, getLocale } from "next-intl/server";
 
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
-
-export function ProcessSection() {
-  const t = useTranslations("home.process");
+export async function ProcessSection() {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "home.process" });
   const steps = t.raw("steps") as Array<{ step: number; title: string; description: string }>;
 
   return (
-    <section className="section-py bg-[#faf8ff]">
+    <section className="section-padding bg-[#ffffff]" style={{ backgroundColor: "var(--color-surface-container-lowest, #ffffff)" }} aria-labelledby="process-heading">
       <div className="container-brand">
+        {/* Header */}
         <div className="text-center mb-20">
-          <span className="text-label-bold text-[--color-brand-primary] uppercase tracking-widest block mb-3">
-            {t("title")}
+          <span className="text-[#C8A75D] font-bold uppercase tracking-widest text-sm mb-4 block">
+            {locale === "ar" ? "مسار العمل" : "Work Process"}
           </span>
-          <h2 className="text-display-mobile lg:text-headline-md text-[--color-brand-primary]">
-            {t("title")}
+          <h2
+            id="process-heading"
+            className="text-[#002868]"
+            style={{ fontSize: "48px", lineHeight: "1.2", fontWeight: 700 }}
+          >
+            {locale === "ar" ? "كيف ننسج النجاح؟" : t("title")}
           </h2>
-          <p className="text-body-lg text-[#434652] max-w-2xl mx-auto mt-4 leading-relaxed">
-            {t("subtitle")}
-          </p>
-          <div className="gold-bar-center mt-8" aria-hidden="true" />
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step, i) => (
-            <motion.div
-              key={step.step}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative flex flex-col items-center text-center p-8 bg-white border border-[#c4c6d3] rounded-xl luxury-shadow group hover:border-[--color-brand-primary] transition-colors duration-300"
-            >
-              {/* Step number — alternates navy / gold like reference */}
-              <span
-                className={[
-                  "mb-6 flex size-16 items-center justify-center rounded-full text-2xl font-bold shadow-md group-hover:scale-110 transition-transform duration-300",
-                  i % 2 === 0
-                    ? "enterprise-gradient text-white"
-                    : "bg-[#C8A75D] text-[#001947]",
-                ].join(" ")}
+        {/* Steps — with horizontal connector line on desktop */}
+        <div className="relative">
+          {/* Connector line */}
+          <div
+            className="hidden md:block absolute top-8 left-0 w-full h-0.5 bg-[#c4c6d3] z-0"
+            aria-hidden="true"
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+            {steps.map((step, i) => (
+              <div
+                key={step.step}
+                className="bg-white p-8 rounded-2xl premium-shadow text-center"
+                style={{ border: "1px solid rgba(196,198,211,0.2)" }}
               >
-                {String(step.step).padStart(2, "0")}
-              </span>
-              <h3 className="text-headline-sm text-[#1a1b21] mb-3">{step.title}</h3>
-              <p className="text-body-md text-[#434652] leading-relaxed">{step.description}</p>
-            </motion.div>
-          ))}
+                {/* Step circle — alternates primary/gold */}
+                <div
+                  className="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6"
+                  style={{
+                    background: i % 2 === 0 ? "#002868" : "#C8A75D",
+                    color: i % 2 === 0 ? "#ffffff" : "#001947",
+                  }}
+                >
+                  {String(step.step).padStart(2, "0")}
+                </div>
+                <h4 className="font-bold text-[#002868] mb-3">{step.title}</h4>
+                <p className="text-sm text-[#434652] leading-relaxed">{step.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

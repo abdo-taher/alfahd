@@ -87,10 +87,10 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   className={[
-                    "text-label-bold relative py-1 transition-colors duration-200",
+                    "text-label-bold relative py-1 uppercase tracking-wider transition-colors duration-200",
                     isActive
-                      ? "text-[--color-brand-primary] nav-active"
-                      : "text-[--color-muted-foreground] hover:text-[--color-brand-primary]",
+                      ? "text-[#C8A75D] font-bold border-b-2 border-[#C8A75D] pb-1"
+                      : "text-[--color-muted-foreground] hover:text-[#C8A75D]",
                   ].join(" ")}
                   aria-current={isActive ? "page" : undefined}
                 >
@@ -107,12 +107,18 @@ export function Header() {
               locale === "ar" ? "order-first flex-row-reverse" : "order-last",
             ].join(" ")}
           >
+            {/* Phone number — visible on desktop (master reference) */}
+            <span className="hidden lg:flex items-center gap-2 text-[#002868] font-bold text-sm" dir="ltr">
+              <span className="material-symbols-outlined text-base" aria-hidden="true">phone</span>
+              92000XXXX
+            </span>
+
             <LanguageSwitcher />
 
-            {/* Gold CTA button — matching reference */}
+            {/* Gold CTA button — matching master reference */}
             <Link
               href={`/${locale}/request-quote`}
-              className="hidden sm:inline-flex items-center justify-center bg-[#C8A75D] text-[#001947] px-5 py-2.5 text-label-bold rounded-lg hover:bg-white hover:text-[--color-brand-primary] transition-all duration-300 active:scale-95 shadow-sm"
+              className="hidden sm:inline-flex items-center justify-center bg-[#C8A75D] text-[#001947] px-6 py-2 font-bold rounded-xl hover:shadow-lg transition-all duration-300 active:scale-95 text-sm"
             >
               {t("requestQuote")}
             </Link>

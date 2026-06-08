@@ -49,7 +49,7 @@
   --color-surface-bright:           #faf8ff;
   --color-surface-container-lowest: #ffffff;
   --color-surface-container-low:    #f3f3fb;
-  --color-surface-container:        #eeedf5;
+  --color-surface-container:        #F4F7FA;
   --color-surface-container-high:   #e8e7ef;
   --color-surface-container-highest:#e2e2e9;
   --color-on-surface:               #1a1b21;
@@ -127,6 +127,29 @@
   --text-caption:                12px;
   --text-caption--line-height:   16px;
   --text-caption--font-weight:   400;
+
+  /* ── Master Reference Typography Tokens (from full_website_code.html) ─── */
+  --text-display-xl: 72px;
+  --text-display-xl--line-height: 1.1;
+  --text-display-xl--font-weight: 700;
+  --text-display-xl--letter-spacing: -0.02em;
+
+  --text-display-xl-mobile: 48px;
+  --text-display-xl-mobile--line-height: 1.1;
+  --text-display-xl-mobile--font-weight: 700;
+
+  --text-headline-lg: 48px;
+  --text-headline-lg--line-height: 1.2;
+  --text-headline-lg--font-weight: 700;
+
+  --text-title-lg: 24px;
+  --text-title-lg--line-height: 1.4;
+  --text-title-lg--font-weight: 600;
+
+  --text-label-sm: 13px;
+  --text-label-sm--line-height: 1;
+  --text-label-sm--letter-spacing: 0.1em;
+  --text-label-sm--font-weight: 700;
 
   /* ── Spacing ────────────────────────────────────────────────────────────── */
   --spacing-unit:                    8px;
@@ -369,5 +392,90 @@
     width: 100%;
     height: 2px;
     background: #002868;
+  }
+
+  /* ── Master Reference Design Signature Utilities ──────────────────────── */
+
+  /* Premium shadow — master design signature */
+  .premium-shadow {
+    box-shadow: 0 20px 40px -15px rgba(8, 31, 77, 0.08);
+  }
+
+  /* Section padding — master uses 180px desktop, 80px mobile */
+  .section-padding {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  @media (min-width: 1024px) {
+    .section-padding {
+      padding-top: 180px;
+      padding-bottom: 180px;
+    }
+  }
+
+  /* Gold gradient text */
+  .text-gradient-gold {
+    background: linear-gradient(to right, #C8A75D, #E5D2A0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glass effect */
+  .glass-effect {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Nav gold active (master reference style) */
+  .nav-active-gold {
+    color: #C8A75D;
+    position: relative;
+    border-bottom: 2px solid #C8A75D;
+    padding-bottom: 4px;
+  }
+
+  /* ── Master Reference Full Typography Scale ──────────────────────────────── */
+
+  /* display-xl — 72px hero headlines */
+  .text-display-xl {
+    font-size: 72px;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  @media (max-width: 768px) {
+    .text-display-xl {
+      font-size: 48px;
+    }
+  }
+
+  /* display-xl-mobile — 48px */
+  .text-display-xl-mobile {
+    font-size: 48px;
+    line-height: 1.1;
+    font-weight: 700;
+  }
+
+  /* headline-lg — 48px section headings */
+  .text-headline-lg {
+    font-size: 48px;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  /* title-lg — 24px card titles */
+  .text-title-lg {
+    font-size: 24px;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+  /* label-sm — 13px uppercase tracking */
+  .text-label-sm {
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.1em;
   }
 }

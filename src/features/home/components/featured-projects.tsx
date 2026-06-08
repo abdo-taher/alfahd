@@ -1,7 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
 import { getTranslations, getLocale } from "next-intl/server";
-import { MapPin, Calendar } from "lucide-react";
 import { contentRepository } from "@/lib/content/content-repository";
 
 export async function FeaturedProjects() {
@@ -10,83 +8,127 @@ export async function FeaturedProjects() {
   const pt = await getTranslations({ locale, namespace: "projects" });
   const projects = await contentRepository.getFeaturedProjects(locale);
 
+  const [mainProject, secondProject] = projects;
+
   return (
-    <section className="section-py bg-[#f3f3fb]">
+    <section className="section-padding bg-white" aria-labelledby="projects-heading">
       <div className="container-brand">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <span className="text-label-bold text-[--color-brand-primary] uppercase tracking-widest block mb-3">
-            {t("title")}
-          </span>
-          <h2 className="text-display-mobile lg:text-headline-md text-[--color-brand-primary]">
-            {t("title")}
-          </h2>
-          <p className="text-body-lg text-[#434652] max-w-2xl mx-auto mt-4 leading-relaxed">
-            {t("subtitle")}
-          </p>
-          <div className="gold-bar-center mt-8" aria-hidden="true" />
+        {/* Header row — left text + right filter pills */}
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+          <div className="max-w-2xl">
+            <span className="text-[#C8A75D] font-bold uppercase tracking-widest text-sm mb-4 block">
+              {locale === "ar" ? "سجل الإنجازات" : "Achievement Record"}
+            </span>
+            <h2
+              id="projects-heading"
+              className="text-[#002868]"
+              style={{ fontSize: "48px", lineHeight: "1.2", fontWeight: 700 }}
+            >
+              {locale === "ar"
+                ? "مشاريع تركت أثراً في أفق مدننا"
+                : "Projects That Shaped Our City Skylines"}
+            </h2>
+          </div>
+
+          {/* Filter pills */}
+          <div className="flex flex-wrap gap-4">
+            {[
+              locale === "ar" ? "الكل" : "All",
+              locale === "ar" ? "حكومية" : "Government",
+              locale === "ar" ? "تجارية" : "Commercial",
+              locale === "ar" ? "سكنية" : "Residential",
+            ].map((label, i) => (
+              <button
+                key={i}
+                className={`px-6 py-2 rounded-full font-bold transition-colors duration-200 ${
+                  i === 0
+                    ? "bg-[#002868] text-white"
+                    : "bg-[#F4F7FA] text-[#434652] hover:bg-[#002868]/10"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Projects grid */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
+        {/* Asymmetric 12-column grid */}
+        <div className="grid grid-cols-12 gap-6">
+          {/* Large card — col-span-8 */}
+          {mainProject ? (
             <Link
-              key={project.id}
-              href={`/${locale}/projects/${project.slug}`}
-              className="group flex flex-col overflow-hidden bg-white rounded-lg luxury-shadow luxury-shadow-hover transition-all duration-500"
+              href={`/${locale}/projects/${mainProject.slug}`}
+              className="col-span-12 md:col-span-8 group relative rounded-3xl overflow-hidden h-[600px] premium-shadow"
             >
-              {/* Image */}
-              <div className="relative aspect-[16/9] overflow-hidden bg-[#eeedf5]">
-                <Image
-                  src={project.coverImage}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 card-image-gradient" aria-hidden="true" />
-                {/* Category chip */}
-                <div className="absolute top-4 start-4 z-10">
-                  <span className="bg-[--color-brand-gold] text-[#001947] text-caption font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                    {project.category}
-                  </span>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="flex flex-col flex-1 p-7">
-                <h3 className="text-headline-sm text-[#1a1b21] group-hover:text-[--color-brand-primary] transition-colors mb-2 leading-snug">
-                  {project.title}
-                </h3>
-                <p className="text-body-md text-[#434652] leading-relaxed flex-1 mb-4">
-                  {project.shortDescription}
-                </p>
-                <div className="flex items-center gap-4 text-caption text-[#747783]">
-                  <span className="flex items-center gap-1.5">
-                    <MapPin className="size-3.5" aria-hidden="true" />
-                    {project.location}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Calendar className="size-3.5" aria-hidden="true" />
-                    {project.year}
-                  </span>
-                </div>
-                <span className="mt-5 inline-flex items-center gap-2 text-label-bold text-[--color-brand-primary] group-hover:gap-4 transition-all duration-300">
-                  {pt("viewProject")}
-                  <svg viewBox="0 0 20 20" fill="currentColor" className={`size-4 ${locale === "ar" ? "rotate-180" : ""}`} aria-hidden="true">
-                    <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={mainProject.coverImage}
+                alt={mainProject.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: "linear-gradient(to top, rgba(0,40,104,0.9) 0%, rgba(0,40,104,0.2) 50%, transparent 100%)",
+                  opacity: 0.85,
+                }}
+                aria-hidden="true"
+              />
+              <div className="absolute bottom-10 end-10 start-10 text-white">
+                <span className="bg-[#C8A75D] text-[#001947] px-4 py-1 rounded-full text-xs font-bold mb-4 inline-block uppercase tracking-wide">
+                  {locale === "ar" ? "مشروع رائد" : "Flagship Project"}
                 </span>
+                <h3 className="text-4xl font-bold mb-4">{mainProject.title}</h3>
+                <p className="text-white/80 max-w-xl">{mainProject.shortDescription}</p>
               </div>
             </Link>
-          ))}
+          ) : (
+            <div className="col-span-12 md:col-span-8 rounded-3xl overflow-hidden h-[600px] premium-shadow bg-[#F4F7FA] flex items-center justify-center">
+              <span className="text-[#002868] font-bold text-xl">
+                {locale === "ar" ? "مشروع رائد" : "Flagship Project"}
+              </span>
+            </div>
+          )}
+
+          {/* Secondary card — col-span-4 */}
+          {secondProject ? (
+            <Link
+              href={`/${locale}/projects/${secondProject.slug}`}
+              className="col-span-12 md:col-span-4 group relative rounded-3xl overflow-hidden h-[600px] premium-shadow"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={secondProject.coverImage}
+                alt={secondProject.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: "linear-gradient(to top, rgba(0,40,104,0.9) 0%, rgba(0,40,104,0.2) 50%, transparent 100%)",
+                  opacity: 0.8,
+                }}
+                aria-hidden="true"
+              />
+              <div className="absolute bottom-10 end-10 start-10 text-white">
+                <h3 className="text-2xl font-bold mb-2">{secondProject.title}</h3>
+                <p className="text-white/80 text-sm">{secondProject.shortDescription}</p>
+              </div>
+            </Link>
+          ) : (
+            <div className="col-span-12 md:col-span-4 rounded-3xl overflow-hidden h-[600px] premium-shadow bg-[#eeedf5] flex items-center justify-center">
+              <span className="text-[#002868] font-bold">
+                {locale === "ar" ? "مشروع" : "Project"}
+              </span>
+            </div>
+          )}
         </div>
 
         {/* View all */}
         <div className="mt-14 text-center">
           <Link
             href={`/${locale}/projects`}
-            className="inline-flex items-center justify-center border-2 border-[--color-brand-primary] text-[--color-brand-primary] px-10 py-3 text-label-bold rounded hover:bg-[--color-brand-primary]/5 transition-all duration-200"
+            className="inline-flex items-center justify-center border-2 border-[#002868] text-[#002868] px-10 py-3 font-bold rounded-xl hover:bg-[#002868]/5 transition-all duration-200"
           >
             {t("viewAll")}
           </Link>

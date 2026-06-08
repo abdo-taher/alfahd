@@ -1,15 +1,13 @@
 import Link from "next/link";
 import { getTranslations, getLocale } from "next-intl/server";
 
-// Material Symbol icon names per service id — matches reference design
 const serviceIconMap: Record<string, string> = {
-  aluminum:     "architecture",
-  glass:        "window",
+  aluminum:       "architecture",
+  glass:          "window",
   "curtain-wall": "domain",
-  steel:        "format_shapes",
+  steel:          "format_shapes",
 };
 
-// Placeholder hero images for each service card
 const serviceImageMap: Record<string, string> = {
   aluminum:
     "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80",
@@ -24,8 +22,6 @@ const serviceImageMap: Record<string, string> = {
 export async function ServicesOverview() {
   const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "home.services" });
-  const st = await getTranslations({ locale, namespace: "services" });
-  const learnMore = st("learnMore");
   const items = t.raw("items") as Array<{
     id: string;
     title: string;
@@ -33,80 +29,69 @@ export async function ServicesOverview() {
   }>;
 
   return (
-    <section className="section-py bg-[#f3f3fb]">
+    <section className="section-padding bg-[#f3f3fb]">
       <div className="container-brand">
-        {/* Section header */}
-        <div className="text-center mb-20">
-          <span className="text-label-bold text-[--color-brand-primary] uppercase tracking-widest block mb-3">
-            {t("title")}
+        {/* Section header — centered */}
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <span className="text-[#C8A75D] font-bold uppercase tracking-widest text-sm mb-4 block">
+            {locale === "ar" ? "تخصصاتنا الهندسية" : "Our Engineering Specialties"}
           </span>
-          <h2 className="text-display-mobile lg:text-headline-md text-[--color-brand-primary]">
-            {t("title")}
+          <h2
+            className="text-[#002868] mb-6"
+            style={{ fontSize: "48px", lineHeight: "1.2", fontWeight: 700 }}
+          >
+            {locale === "ar"
+              ? "خدمات هندسية متكاملة للواجهات الحديثة"
+              : "Comprehensive Engineering Services for Modern Facades"}
           </h2>
-          <p className="text-body-lg text-[#434652] max-w-2xl mx-auto mt-4 leading-relaxed">
+          <p className="text-[#434652]" style={{ fontSize: "18px", lineHeight: "1.8", fontWeight: 300 }}>
             {t("subtitle")}
           </p>
-          <div className="gold-bar-center mt-8" aria-hidden="true" />
         </div>
 
-        {/* 2-column service cards — image left, content right — matching reference */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {items.map((item, i) => {
+        {/* 2-col service cards — horizontal split image + content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {items.map((item) => {
             const icon = serviceIconMap[item.id] ?? "construction";
-            const img  = serviceImageMap[item.id];
+            const img = serviceImageMap[item.id];
             const href = `/${locale}/services`;
 
             return (
               <Link
                 key={item.id}
                 href={href}
-                className="group flex flex-col md:flex-row overflow-hidden bg-white rounded-xl luxury-shadow luxury-shadow-hover transition-all duration-500"
+                className="group bg-white rounded-3xl overflow-hidden premium-shadow flex flex-col md:flex-row h-full"
               >
                 {/* Image — left half */}
-                <div className="relative md:w-1/2 h-56 md:h-auto overflow-hidden bg-[#eeedf5] shrink-0">
+                <div className="md:w-1/2 h-64 md:h-auto overflow-hidden shrink-0">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={img}
                     alt={item.title}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 card-image-gradient opacity-60" aria-hidden="true" />
                 </div>
 
                 {/* Content — right half */}
-                <div className="flex flex-col justify-center p-8 md:p-10 gap-4">
-                  {/* Material symbol icon */}
+                <div className="md:w-1/2 p-10 flex flex-col justify-center">
                   <span
-                    className="material-symbols-outlined text-[#C8A75D] text-4xl leading-none"
+                    className="material-symbols-outlined text-[#C8A75D] text-4xl mb-4 leading-none"
                     aria-hidden="true"
                   >
                     {icon}
                   </span>
-
-                  <h3 className="text-headline-sm text-[--color-brand-primary]">
+                  <h3
+                    className="text-[#002868] mb-4"
+                    style={{ fontSize: "24px", lineHeight: "1.4", fontWeight: 600 }}
+                  >
                     {item.title}
                   </h3>
-
-                  <p className="text-body-md text-[#434652] leading-relaxed flex-1">
+                  <p className="text-[#434652] mb-6 flex-1" style={{ fontSize: "16px", lineHeight: "1.8" }}>
                     {item.description}
                   </p>
-
-                  <span
-                    className={`inline-flex items-center gap-2 text-label-bold text-[--color-brand-primary] group-hover:gap-4 transition-all duration-300 mt-2`}
-                  >
-                    {learnMore}
-                    <svg
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      className={`size-4 transition-transform ${locale === "ar" ? "rotate-180" : ""}`}
-                      aria-hidden="true"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                  <span className="text-[#002868] font-bold flex items-center gap-2 group-hover:gap-4 transition-all">
+                    {locale === "ar" ? "اكتشف المزيد" : "Discover More"}
+                    <span className="material-symbols-outlined text-base" aria-hidden="true">arrow_back</span>
                   </span>
                 </div>
               </Link>
@@ -118,7 +103,7 @@ export async function ServicesOverview() {
         <div className="mt-14 text-center">
           <Link
             href={`/${locale}/services`}
-            className="inline-flex items-center justify-center border-2 border-[--color-brand-primary] text-[--color-brand-primary] px-10 py-3 text-label-bold rounded hover:bg-[--color-brand-primary]/5 transition-all duration-200"
+            className="inline-flex items-center justify-center border-2 border-[#002868] text-[#002868] px-10 py-3 font-bold rounded-xl hover:bg-[#002868]/5 transition-all duration-200"
           >
             {t("viewAll")}
           </Link>

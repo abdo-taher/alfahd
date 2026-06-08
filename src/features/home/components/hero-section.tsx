@@ -5,117 +5,110 @@ import { useTranslations, useLocale } from "next-intl";
 
 export function HeroSection() {
   const t = useTranslations("home.hero");
+  const st = useTranslations("home.stats");
   const locale = useLocale();
+  const stats = st.raw("items") as Array<{ value: string; suffix: string; label: string }>;
 
   return (
     <section
-      className="relative h-screen w-full flex items-center overflow-hidden"
+      className="relative min-h-screen flex items-center pt-20 overflow-hidden"
       aria-label={t("title")}
     >
-      {/* Background video */}
-      <video
-        className="absolute inset-0 z-0 w-full h-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-      >
-        <source src="/hero.mp4" type="video/mp4" />
-      </video>
-
-      {/* hero-vignette overlay */}
-      <div
-        className="absolute inset-0 z-[1]"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,40,104,0.4) 100%), linear-gradient(to left, rgba(10,61,145,0.9), rgba(10,61,145,0.2))",
-        }}
-        aria-hidden="true"
-      />
+      {/* Background image with gradient overlay — matching master reference */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-l from-primary/90 to-primary/40 z-10" aria-hidden="true" />
+        {/* Hero background — using video as fallback to static color */}
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
+      </div>
 
       {/* Content */}
-      <div className="relative z-10 container-brand w-full">
-        <div className="max-w-4xl text-right">
+      <div className="container-brand relative z-20 w-full">
+        <div className="max-w-4xl text-white">
+          {/* Eyebrow badge — master reference style */}
+          <span
+            className="inline-block mb-6 px-4 py-1 rounded-full font-bold uppercase tracking-widest text-xs"
+            style={{
+              background: "rgba(200,167,93,0.2)",
+              border: "1px solid rgba(200,167,93,0.3)",
+              color: "#C8A75D",
+            }}
+          >
+            {locale === "ar"
+              ? "الفهد للمقاولات | التميز الهندسي"
+              : "Al-Fahad Contracting | Engineering Excellence"}
+          </span>
 
-          {/* Tagline row: gold label + gold line */}
-          <div className="flex items-center gap-4 justify-end mb-8">
-            <span className="text-[--color-brand-gold] font-bold tracking-[0.3em] uppercase text-xs">
-              Architectural Excellence
-            </span>
-            <span className="h-[1px] w-12 bg-[--color-brand-gold]/50" aria-hidden="true" />
-          </div>
-
-          {/* Headline */}
+          {/* H1 — display-xl 72px desktop, 48px mobile */}
           <h1
-            className="font-bold text-white mb-8"
-            style={{ fontSize: "clamp(48px, 7vw, 84px)", lineHeight: 1 }}
+            className="font-bold text-white mb-6 leading-tight"
+            style={{ fontSize: "clamp(48px, 6vw, 72px)", letterSpacing: "-0.02em", lineHeight: 1.1 }}
           >
             {t("title")}{" "}
-            <br />
-            <span className="text-[--color-brand-gold]">{t("titleHighlight")}</span>
+            <span className="text-gradient-gold">{t("titleHighlight")}</span>
           </h1>
 
-          {/* Description */}
-          <p className="text-white/80 text-lg md:text-xl max-w-2xl ms-auto mb-14 font-light leading-relaxed">
+          {/* Body — 18px weight 300, lineHeight 1.8 */}
+          <p
+            className="text-white mb-10 max-w-2xl"
+            style={{ fontSize: "18px", lineHeight: "1.8", fontWeight: 300, opacity: 0.9 }}
+          >
             {t("description")}
           </p>
 
           {/* CTAs */}
-          <div
-            className={`flex gap-8 items-center ${
-              locale === "ar" ? "flex-row-reverse justify-start" : "flex-row justify-start"
-            }`}
-          >
-            {/* Primary — gold filled */}
+          <div className="flex flex-wrap gap-6 mb-16">
+            {/* Primary: gold button */}
             <Link
               href={`/${locale}/request-quote`}
-              className="bg-[--color-brand-gold] text-[#001947] font-bold px-12 py-6 rounded-sm text-lg hover:bg-white hover:text-[--color-brand-primary] transition-all duration-500 shadow-2xl shadow-[#C8A75D]/20 active:scale-95"
+              className="inline-flex items-center gap-3 bg-[#C8A75D] text-[#001947] px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-transform active:scale-95 shadow-xl"
             >
               {t("ctaPrimary")}
+              <span className="material-symbols-outlined text-xl" aria-hidden="true">arrow_back</span>
             </Link>
 
-            {/* Secondary — ghost with play icon */}
+            {/* Secondary: ghost */}
             <Link
               href={`/${locale}/projects`}
-              className="group flex items-center gap-4 text-white font-medium text-lg hover:text-[--color-brand-gold] transition-colors"
+              className="inline-flex items-center gap-3 px-10 py-4 rounded-xl font-bold text-lg text-white"
+              style={{
+                border: "1px solid rgba(255,255,255,0.3)",
+                backdropFilter: "blur(12px)",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.background = "white";
+                (e.currentTarget as HTMLAnchorElement).style.color = "#002868";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.background = "";
+                (e.currentTarget as HTMLAnchorElement).style.color = "white";
+              }}
             >
-              {/* Play circle icon (SVG, no external font dependency) */}
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="size-10 group-hover:scale-110 transition-transform"
-                aria-hidden="true"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113z"
-                  clipRule="evenodd"
-                />
-              </svg>
               {t("ctaSecondary")}
             </Link>
           </div>
-        </div>
-      </div>
 
-      {/* Scroll indicator */}
-      <div
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-40 z-10"
-        aria-hidden="true"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          className="size-8 text-white"
-        >
-          <path
-            fillRule="evenodd"
-            d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z"
-            clipRule="evenodd"
-          />
-        </svg>
+          {/* Stats row INSIDE hero — 4 stats below CTA with border-t */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-white/20">
+            {stats.map((stat, i) => (
+              <div key={i}>
+                <div className="text-4xl font-bold text-[#C8A75D] mb-1">
+                  +{stat.value}{stat.suffix}
+                </div>
+                <div className="text-sm text-white/70">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
