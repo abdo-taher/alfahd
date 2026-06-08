@@ -132,11 +132,12 @@ export function Header() {
             {/* Logo image */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/logo.jpg"
+              src="/images/logo.png"
+              srcSet="/images/logo.png 1x, /images/logo@2x.png 2x"
               alt="Al-Fahd Logo"
               className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-              width={140}
-              height={56}
+              width={280}
+              height={120}
             />
           </Link>
 

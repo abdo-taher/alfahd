@@ -50,11 +50,12 @@ export function Footer() {
             <div className="flex items-center gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/logo.jpg"
+                src="/images/logo.png"
+                srcSet="/images/logo.png 1x, /images/logo@2x.png 2x"
                 alt="Al-Fahd Logo"
                 className="h-14 w-auto brightness-200"
-                width={140}
-                height={56}
+                width={280}
+                height={120}
               />
             </div>
             <p className="text-xs text-gray-400 leading-relaxed font-sans max-w-sm">
