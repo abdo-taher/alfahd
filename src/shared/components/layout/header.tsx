@@ -4,17 +4,39 @@ import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { Search, X } from "lucide-react";
+import { Search } from "lucide-react";
 import { LanguageSwitcher } from "./language-switcher";
 import { MobileMenu } from "./mobile-menu";
 
-// Reference-style project search data (hardcoded for client-side search)
-const SEARCH_PROJECTS = [
-  { id: "1", slug: "king-salman-financial-tower", titleEN: "King Salman Financial Tower", titleAR: "برج الملك سلمان المالي", categoryEN: "Structural Glass", categoryAR: "هياكل زجاجية", locationEN: "Riyadh, KSA", locationAR: "الرياض", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCvwblNQmF23c_-OuBV0Z0mf899U3_IkjyA5GnwYGAucjLJr5dMn4fIRHOfRhrQXKQp1a9UF4SKTzcHO07m1-nUIN8f_QUAjLWOljnWsKMOYjU7ZIn6cThWq5YIMviz3Qd7OUCZHsN6q0oRTv7_eVjGrBEZw7gJy4I-LzfztGObl7J5yG9JI_9gnbij6SjS2w2HIjWEm3bHFsUza4MeB5TPRd7ny3i0jgWuZ4MUHoJJl342TdyBkVCpsyd88Cfw5CrSk5MCpK67kb14" },
-  { id: "2", slug: "neom-infrastructure-hub", titleEN: "NEOM Infrastructure Hub", titleAR: "مجمع بنيوم الإنشائي", categoryEN: "Steel Systems", categoryAR: "أعمال حديد", locationEN: "NEOM, KSA", locationAR: "نيوم", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDMnLDv35oEIlyXRgKy3LWwpROa09JaxlklFhgfUcCYnJsXR5yE3do-MNglVqtnZyeOJ79ALeaMSwzMztQ2PO4W0RcFPVEaPzdd8t8Gw2mGbP8044xWAvpE-6-q1-J_nWPmoHhjof27zsYyk1erwGEC6iFXB2HVKXmEtsS5DiD8HrqTbBqRFtrPZa5-MAbLLjWu-fR_-fw3g0jgKdsr0ADAqFxuC8YZJ0p0taaMAr9xj3kPl-crFJZugJfvuNMC6ZSRQTxIIUZocJ4g" },
-  { id: "3", slug: "red-sea-global-pavilion", titleEN: "Red Sea Global Pavilion", titleAR: "جناح البحر الأحمر العالمي", categoryEN: "Sustainable Structural", categoryAR: "هياكل مستدامة", locationEN: "Red Sea, KSA", locationAR: "البحر الأحمر", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAeXd_bsxIZ523NTAhdnr374o56ikad_BtTVJwWIwQCADfORBs28IQcapnWhHr_d8K3amACjUId2MiQEKt6mA8zyS-TdAB9fCvMs594dvGZS9bolZzlz91PkS-Td1aFw4NKPRg0bpm_5SyyAsXRN1YO3Yrz2tP3xIFJoII2TZf2OM2aKTaIGiz-BplENh_XB6x63o1H_vO74XQ3RbFVyvh1PmWmzlRXd1UcIkFYKqDZ8h1AM_2f_clnNqGfnIB_ht46rUVTjNGdbF5H" },
-  { id: "4", slug: "commercial-crystal-tower", titleEN: "Commercial Crystal Tower", titleAR: "برج الكريستال التجاري", categoryEN: "Aluminum Systems", categoryAR: "واجهات ألمنيوم", locationEN: "Riyadh, KSA", locationAR: "الرياض", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDqlrwHcNt2VRqEMfO73px9Vmxt-L3lqQkb9Z9Ic8wI-Ni5nbyg3EdqYEcALDRyItBnvlZdhT3R0REdFKYGBxZ_dNQ7-q52XpgCuaoczp3r943lDomB3ge4cjixLDCBDVBTaJeRU3uCpEnAC8urEUKHRb-EsF0lCd_s4yBLak2G6eWTt1gDuhifEqG8bwolOmqlCludTY2XiyP0UU4trFEqMcXSvPqT3ISW-j6ikGon39ZKm0JfC22hGJUVpoZx6L0zBim6zzseeqJr" },
-  { id: "5", slug: "rolls-royce-showroom", titleEN: "Rolls Royce Showroom", titleAR: "معرض رولز رويس", categoryEN: "Structural Glass", categoryAR: "هياكل زجاجية", locationEN: "Riyadh, KSA", locationAR: "الرياض", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCj6ujoVoJrgwr7_SM4IkWKmQ0g-6xEaO8h3m6OYGus18fY-bNHGDPAF4jph6YbhDIcjqZ67ek6D-cKKRsaZas0HJIsQyuWwGjY_luHLwyZze3kPRg0KQwcM7MLCcT0Hq0rAgrqDb485qtDrWPbt-Kz66pGU66ztQD0e5LFvGWmWdzxlpF7qcPsleej42OL-X2qgZrbYQKhQNZCxNte3z28ACD6e-G6Im9DEsSlXh4YPfk_-K0arDD5TVE0g1wvSkWC2oue_QRDN0co" },
+// ── Search index — projects + services (bilingual, client-side) ────────────
+type SearchItem = {
+  id: string;
+  slug: string;
+  type: "project" | "service";
+  titleEN: string;
+  titleAR: string;
+  categoryEN: string;
+  categoryAR: string;
+  locationEN: string;
+  locationAR: string;
+  image: string;
+};
+
+const SEARCH_INDEX: SearchItem[] = [
+  // ── Projects ──────────────────────────────────────────────────────────────
+  { id: "p1", type: "project", slug: "king-salman-financial-tower",     titleEN: "King Salman Financial Tower",     titleAR: "برج الملك سلمان المالي",          categoryEN: "Structural Glass",       categoryAR: "هياكل زجاجية",     locationEN: "Riyadh, KSA",      locationAR: "الرياض",            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCvwblNQmF23c_-OuBV0Z0mf899U3_IkjyA5GnwYGAucjLJr5dMn4fIRHOfRhrQXKQp1a9UF4SKTzcHO07m1-nUIN8f_QUAjLWOljnWsKMOYjU7ZIn6cThWq5YIMviz3Qd7OUCZHsN6q0oRTv7_eVjGrBEZw7gJy4I-LzfztGObl7J5yG9JI_9gnbij6SjS2w2HIjWEm3bHFsUza4MeB5TPRd7ny3i0jgWuZ4MUHoJJl342TdyBkVCpsyd88Cfw5CrSk5MCpK67kb14" },
+  { id: "p2", type: "project", slug: "neom-infrastructure-hub",         titleEN: "NEOM Infrastructure Hub",         titleAR: "مجمع بنيوم الإنشائي",             categoryEN: "Steel Systems",          categoryAR: "أعمال حديد",       locationEN: "NEOM, KSA",        locationAR: "نيوم",              image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDMnLDv35oEIlyXRgKy3LWwpROa09JaxlklFhgfUcCYnJsXR5yE3do-MNglVqtnZyeOJ79ALeaMSwzMztQ2PO4W0RcFPVEaPzdd8t8Gw2mGbP8044xWAvpE-6-q1-J_nWPmoHhjof27zsYyk1erwGEC6iFXB2HVKXmEtsS5DiD8HrqTbBqRFtrPZa5-MAbLLjWu-fR_-fw3g0jgKdsr0ADAqFxuC8YZJ0p0taaMAr9xj3kPl-crFJZugJfvuNMC6ZSRQTxIIUZocJ4g" },
+  { id: "p3", type: "project", slug: "red-sea-global-pavilion",         titleEN: "Red Sea Global Pavilion",         titleAR: "جناح البحر الأحمر العالمي",       categoryEN: "Sustainable Structural", categoryAR: "هياكل مستدامة",    locationEN: "Red Sea, KSA",     locationAR: "البحر الأحمر",     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAeXd_bsxIZ523NTAhdnr374o56ikad_BtTVJwWIwQCADfORBs28IQcapnWhHr_d8K3amACjUId2MiQEKt6mA8zyS-TdAB9fCvMs594dvGZS9bolZzlz91PkS-Td1aFw4NKPRg0bpm_5SyyAsXRN1YO3Yrz2tP3xIFJoII2TZf2OM2aKTaIGiz-BplENh_XB6x63o1H_vO74XQ3RbFVyvh1PmWmzlRXd1UcIkFYKqDZ8h1AM_2f_clnNqGfnIB_ht46rUVTjNGdbF5H" },
+  { id: "p4", type: "project", slug: "commercial-crystal-tower",        titleEN: "Commercial Crystal Tower",        titleAR: "برج الكريستال التجاري",           categoryEN: "Aluminum Systems",       categoryAR: "واجهات ألمنيوم",   locationEN: "Riyadh, KSA",      locationAR: "الرياض",            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDqlrwHcNt2VRqEMfO73px9Vmxt-L3lqQkb9Z9Ic8wI-Ni5nbyg3EdqYEcALDRyItBnvlZdhT3R0REdFKYGBxZ_dNQ7-q52XpgCuaoczp3r943lDomB3ge4cjixLDCBDVBTaJeRU3uCpEnAC8urEUKHRb-EsF0lCd_s4yBLak2G6eWTt1gDuhifEqG8bwolOmqlCludTY2XiyP0UU4trFEqMcXSvPqT3ISW-j6ikGon39ZKm0JfC22hGJUVpoZx6L0zBim6zzseeqJr" },
+  { id: "p5", type: "project", slug: "al-nakheel-mall-atrium",          titleEN: "Al Nakheel Mall Atrium",          titleAR: "أتريوم مجمع النخيل",              categoryEN: "Structural Glass",       categoryAR: "هياكل زجاجية",     locationEN: "Jeddah, KSA",      locationAR: "جدة",               image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBvNMXhx_PtZEjUvGER6vEwXdB5cRdkvrltMht8WC9l3SEbK28C07yPkcox9J-zjOUlBCKx9oW4smjdPDKeaXIpjWAgJy3ZnoCagzkfdJjlZ9bOviZBCRjR2Mz-JHQf6rpE0bA6Jf6NxI1oJDauUGz7QT3OxPTqIbJAc--XiSVUcy9fe_W0rzPOitHObQsXeDUscnLk143ZL-RXCIqLGuSOuaWtrpLFgC5Thy8YAJeu0ijswRmR5Uzmnybshd_sVTo8bBAcI0w6NkQY" },
+  { id: "p6", type: "project", slug: "al-naseem-private-villa",         titleEN: "Al Naseem Private Villa",         titleAR: "فيلا النسيم الخاصة",              categoryEN: "Ornamental Iron",        categoryAR: "أعمال حديد",       locationEN: "Khobar, KSA",      locationAR: "الخبر",             image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBlI6giCcQB-rUvweBJJ-EAjJ2Qq6h0olzrcPKvnwcrqQw436rXYn789VL75xMSuDImoLKJAyQvjfA4_-aVeGjpW95RHsvMDV_RrhzN3jsRpcJ0T2nj7kudYoe99c5Ns8jw0PSiPB8Z_1uvcnrrU6-IHJqKzCyZtBp2f2t6NiwlgM-c5xP23fie1Qa25Fp6Vd8g72xTnqxMvUmqVqrAG2_pMHYOECspMCI4H8E4TZt-pp-X-ZWEy6v1hjs2cziW2PcYaBY-77teAFKU" },
+  { id: "p7", type: "project", slug: "industrial-innovation-complex",   titleEN: "Industrial Innovation Complex",   titleAR: "مجمع الابتكار الصناعي",           categoryEN: "Aluminum Systems",       categoryAR: "واجهات ألمنيوم",   locationEN: "Jubail, KSA",      locationAR: "الجبيل",            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDThd-WgATXSWPGf34k60Y9gU_Fp5HXLZf9TQfJZfcdJFAQ0FojZZnbYkHWv4XzgMCwt47kAawrCIcZWA01A9xFLFyfSk4-YUaFfVFG0wtYfufH5Qqc-nP_CicFqhX3L73xEnZYZpu1Vi-KCjyNmo9gEoHWaQLsv5XNYJvQqm9aRZJU7eorQiAJSfAVDXqPAUR7dC2GPLGPOj2UyMTaZetg_ih6B9GLc_uW9_gksFCeIUSxQtIP4CVgmIN2aeILdqSSflW2Z2g_P-Xa" },
+  { id: "p8", type: "project", slug: "rolls-royce-showroom",            titleEN: "Rolls Royce Showroom",            titleAR: "معرض رولز رويس",                  categoryEN: "Structural Glass",       categoryAR: "هياكل زجاجية",     locationEN: "Riyadh, KSA",      locationAR: "الرياض",            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCj6ujoVoJrgwr7_SM4IkWKmQ0g-6xEaO8h3m6OYGus18fY-bNHGDPAF4jph6YbhDIcjqZ67ek6D-cKKRsaZas0HJIsQyuWwGjY_luHLwyZze3kPRg0KQwcM7MLCcT0Hq0rAgrqDb485qtDrWPbt-Kz66pGU66ztQD0e5LFvGWmWdzxlpF7qcPsleej42OL-X2qgZrbYQKhQNZCxNte3z28ACD6e-G6Im9DEsSlXh4YPfk_-K0arDD5TVE0g1wvSkWC2oue_QRDN0co" },
+  { id: "p9", type: "project", slug: "smart-pedestrian-bridge",         titleEN: "Smart Pedestrian Bridge",         titleAR: "جسر المشاة الذكي",                categoryEN: "Steel Systems",          categoryAR: "أعمال حديد",       locationEN: "KAFD, Riyadh",     locationAR: "مركز الملك عبدالله المالي", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA7AbIbz53C_YURvbfL7IVSBiFB8YdS561Z73FqKXBlFaETJZReMjGUVLk6cfSR8JekGMFmxaZB5lXI9VX2q-iR0FGonumLvrKjT31CY9w4d1dY4ODxTEqwf9MRU5D_bphcM7zk3tigIPqVEC6cAjuIsIf4L-J1iDlUMXjWPfGB9mTkAHxKfcFTXITHDg1rSoS9GQQex0XAskrher-7TsLzL76NR6EbbMnAir8v3HKA3h9s6gt6-QpeLASxXuZ5qjDx2I6TinBVkv3g" },
+  // ── Services ──────────────────────────────────────────────────────────────
+  { id: "s1", type: "service", slug: "aluminum-works",  titleEN: "Aluminum Works",  titleAR: "أعمال الألمنيوم", categoryEN: "Service", categoryAR: "خدمة", locationEN: "Saudi Arabia", locationAR: "المملكة العربية السعودية", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAGOdoQi-_FUUElyQKlxwamDcsiwTfqzxmZ_qFLc1Kv59CwcOThsop-Jyj0M8OFnUDZKbaupukNVYDIiP-D_Q8VYv-gNWVLRS3nwb4r4IGontoX3F2qWIMCUhwBV3CNbHBv-xIA7kBdCyZr3ukA8vvJUEfSrWqbUu1RENuk628Z65oXfDhBZRinieXB0ruYzjzt2oIbtfWZLrAgsMdW5mt83UXzpFO2qlHktEgBgK5H_c8fzcJnHOZI_oSmQs5A-paC7QBDCpgj5dwu" },
+  { id: "s2", type: "service", slug: "glass-works",     titleEN: "Glass Works",     titleAR: "أعمال الزجاج",   categoryEN: "Service", categoryAR: "خدمة", locationEN: "Saudi Arabia", locationAR: "المملكة العربية السعودية", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAQdq7sec-c4BVOpEzZI_8KrEC917dHvJmdnrGkazvwgPDcuieAXevWOWv34nx2xDLAMy1n1Qh8tRztxuDOtZcXeQCJDn2h_7GHMoHqGvGtCZl5hlIti-KDbA26-F2gNspFVTIePUL3oSh5ABss6GSuso_nNvZKeMI_lsKPLqbn23zml-ufugj-_4Ye-xW_NK3HzsWqEfVBeSxgKAvoqi-00jalei1utYNDl4EpmJ4Y7_hPHgDhC7g1dxiKn1XZS3DmhuJlBTmT64jJ" },
+  { id: "s3", type: "service", slug: "steel-works",     titleEN: "Steel Works",     titleAR: "أعمال الحديد",   categoryEN: "Service", categoryAR: "خدمة", locationEN: "Saudi Arabia", locationAR: "المملكة العربية السعودية", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDXGixeSqm7JqZKiH5qs61ww7454H8GnClR-Cyq-x1mEkcMU3U0OxG2zhFYJWl4sQIFq6D5QAFjLrj6tuDoUd0hD7TXMIB1IINft9VH9OyeAmZxzqdvNR5UzZxAjx4M3cwJRDiSyWKxr9OfL2EMAlipzxcuGKAy1rYyHvxSKoRdhwVLroFDhf0nEJhPSnq4B2PPMnj4IrJx96xXyREztFmL3vBOzGr2TKtWHL_0NQxefDWggnBgU59YCU2yrufTAc2BpHy9jRgkNtg8" },
 ];
 
 export function Header() {
@@ -57,13 +79,13 @@ export function Header() {
     { label: t("portal"),      href: `/${locale}/portal` },
   ];
 
-  // Search filtering
-  const filteredProjects = searchQuery.trim()
-    ? SEARCH_PROJECTS.filter((p) => {
+  // Search filtering — covers all 9 projects + 3 services
+  const filteredResults = searchQuery.trim()
+    ? SEARCH_INDEX.filter((item) => {
         const q = searchQuery.toLowerCase();
-        const title = locale === "ar" ? p.titleAR : p.titleEN;
-        const cat = locale === "ar" ? p.categoryAR : p.categoryEN;
-        const loc = locale === "ar" ? p.locationAR : p.locationEN;
+        const title = locale === "ar" ? item.titleAR : item.titleEN;
+        const cat = locale === "ar" ? item.categoryAR : item.categoryEN;
+        const loc = locale === "ar" ? item.locationAR : item.locationEN;
         return (
           title.toLowerCase().includes(q) ||
           cat.toLowerCase().includes(q) ||
@@ -243,38 +265,60 @@ export function Header() {
                     ? "اكتب للبحث بالعنوان أو الموقع أو الفئة..."
                     : "Type to search by title, location, or category..."}
                 </div>
-              ) : filteredProjects.length > 0 ? (
+              ) : filteredResults.length > 0 ? (
                 <div className="space-y-1">
-                  {filteredProjects.map((p) => (
-                    <Link
-                      key={p.id}
-                      href={`/${locale}/projects/${p.slug}`}
-                      onClick={() => { setSearchOpen(false); setSearchQuery(""); }}
-                      className="w-full text-start p-3 hover:bg-gray-50 rounded-md transition-colors flex items-center justify-between group"
-                    >
-                      <div className="flex items-center gap-3">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={p.image}
-                          alt=""
-                          className="w-10 h-10 object-cover rounded-md"
-                          referrerPolicy="no-referrer"
-                        />
-                        <div>
-                          <p className="font-sans font-semibold text-sm text-gray-900 group-hover:text-amber-700 transition-colors">
-                            {locale === "ar" ? p.titleAR : p.titleEN}
-                          </p>
-                          <p
-                            className="text-[10px] text-gray-400"
-                            style={{ fontFamily: "'JetBrains Mono', monospace" }}
-                          >
-                            {locale === "ar" ? p.categoryAR : p.categoryEN} •{" "}
-                            {locale === "ar" ? p.locationAR : p.locationEN}
-                          </p>
+                  {filteredResults.map((item) => {
+                    const href =
+                      item.type === "project"
+                        ? `/${locale}/projects/${item.slug}`
+                        : `/${locale}/services/${item.slug}`;
+                    const typeLabel =
+                      item.type === "project"
+                        ? locale === "ar" ? "مشروع" : "Project"
+                        : locale === "ar" ? "خدمة" : "Service";
+
+                    return (
+                      <Link
+                        key={item.id}
+                        href={href}
+                        onClick={() => { setSearchOpen(false); setSearchQuery(""); }}
+                        className="w-full text-start p-3 hover:bg-gray-50 rounded-md transition-colors flex items-center justify-between group"
+                      >
+                        <div className="flex items-center gap-3">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={item.image}
+                            alt=""
+                            className="w-10 h-10 object-cover rounded-md shrink-0"
+                            referrerPolicy="no-referrer"
+                          />
+                          <div>
+                            <p className="font-sans font-semibold text-sm text-gray-900 group-hover:text-amber-700 transition-colors">
+                              {locale === "ar" ? item.titleAR : item.titleEN}
+                            </p>
+                            <p
+                              className="text-[10px] text-gray-400"
+                              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                            >
+                              {typeLabel} •{" "}
+                              {locale === "ar" ? item.categoryAR : item.categoryEN}
+                              {item.type === "project" && (
+                                <> • {locale === "ar" ? item.locationAR : item.locationEN}</>
+                              )}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </Link>
-                  ))}
+                        {/* Enter arrow */}
+                        <svg
+                          className="w-4 h-4 text-gray-300 group-hover:text-gray-600 shrink-0"
+                          viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+                          aria-hidden="true"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    );
+                  })}
                 </div>
               ) : (
                 <div className="p-6 text-center text-gray-500 text-xs font-sans">
