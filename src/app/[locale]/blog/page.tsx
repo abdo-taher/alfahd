@@ -1,8 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getTranslations, getLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { generatePageMetadata } from "@/seo/metadata/page-metadata";
 import { NewsletterForm } from "./newsletter-form";
+
+// ── Types ────────────────────────────────────────────────────────────────────
+interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  publishedAt: string;
+  coverImage: string;
+  readingTime: number;
+  featured?: boolean;
+  badgeAR?: string;
+  badgeEN?: string;
+}
 
 export async function generateMetadata({
   params,
@@ -42,50 +57,22 @@ export async function generateMetadata({
   });
 }
 
-// Real blog data from reference app
-const blogData = [
-  {
-    slug: "future-smart-glass-facades",
-    titleEN: "The Future of Smart Glass Facades in Megaprojects",
-    titleAR: "مستقبل الواجهات الزجاجية الذكية في المشاريع العملاقة",
-    excerptEN: "Discover how modern glass technology achieves critical thermal insulation and smart lighting in luxury skyscrapers.",
-    excerptAR: "كيف تساهم التقنيات الحديثة في تحسين كفاءة الطاقة وتوفير بيئة عمل استثنائية من خلال زجاج ذكي يتكيف مع الطقس الوعر في المملكة.",
-    categoryEN: "Technical Studies",
-    categoryAR: "دراسات تقنية",
-    badgeEN: "Featured Post",
-    badgeAR: "مقال مختار",
-    date: "15 May 2026",
-    readTimeEN: "5 min read",
-    readTimeAR: "٥ دقائق قراءة",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCqxz2yV6Txg1Ylp40OjIw39_JzxcPzcHubVUqCSQjZaFpglU6tL2Sx6kaTyk5Ze_kSNZ2-8-Qph3MIpT0MUVfZbWYtNNfVmcG5_iHWcdZCE7WVgEKNtElpUuHYoL2k1_TKn-B2GeOYA0V3NjKpaUZ7IP1CRuiSZGqNao43nsTbs5kYIe9EV9pAkSA9gLIoxMXbmrheG4xLwUgaygPYbeQAx810fqP1wjiUHbK-iCZJInYlaSkpbDipGYqYuLGrrYPLN86cqBebFl6s",
-  },
-  {
-    slug: "riyadh-tower-phase-ii",
-    titleEN: "Signing of Phase II for the Riyadh International Tower Facades",
-    titleAR: "توقيع عقد المرحلة الثانية لتطوير واجهات برج الرياض الدولي",
-    excerptEN: "Al-Fahd Contracting secures the major installation and cladding agreement for Riyadh's prominent landmark.",
-    excerptAR: "أعلنت الفهد للمقاولات عن شراكة جديدة وتوقيع اتفاقية توريد وتجهيز أنظمة واجهات متكاملة لأحد كبرى الأبراج الاستثمارية بالرياض.",
-    categoryEN: "Company News",
-    categoryAR: "مشاريع الشركة",
-    date: "10 May 2026",
-    readTimeEN: "3 min read",
-    readTimeAR: "٣ دقائق قراءة",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuC47ms1XX8nur_QJz9udfz200farLOcBgEo2EcD8urd7YkAQoa5ZoVofVAQXzczuWZZQxInqG4msiee86bXeGCebBprae1LJWz7NwukGpZyD40qGsR912J8egmHRuvGw9LTlCuTRWlbndIdTJ3FrPuWGlPpeESCtP06FuNqszpTJBV_qgjzdN59DjjndbUqtnnsav6MpKMgBSKasENXAi6oT38lWxTAWiS16v-SSYwMb_cAa7xChfdhvLgqm9mfLgePujX2zYWFW1oM",
-  },
-  {
-    slug: "thermal-insulation-desert-climates",
-    titleEN: "Thermal Insulation Impact on Facade Energy Consumption in Desert Climates",
-    titleAR: "تأثير العزل الحراري في الواجهات على استهلاك الطاقة في المناخ الصحراوي",
-    excerptEN: "An analytical research on optimizing thermal break profiles for sustainable HVAC load reduction in KSA.",
-    excerptAR: "دراسة هندسية تحليلية حول أهمية تكنولوجيا الحواجز الحرارية لتقليل أحمال التكييف وتوفير الطاقة بشكل فعال ومطابق للأكواد الوطنية.",
-    categoryEN: "Technical Studies",
-    categoryAR: "دراسات تقنية",
-    date: "05 May 2026",
-    readTimeEN: "8 min read",
-    readTimeAR: "٨ دقائق قراءة",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAw42ezMjfdpd-lA7_MW4p08Sop1r62HU8fY-tIf_mp0-Y4E1fQ0vkKswn7-ehKYrfYSGGNsB3vWsN8nOpDb5lshtj5VwUeeTKZQ5FWgm08KvRdaErnyqv3fF8E6jgOjc-3k4MAO1I7WZKhee9CgPDdFDbi0UVaGCUs85GuanN5fPu-6a7_C2ogyQXqdO-lie-nGV6yd3sNjsDhJD00m_R4hJ158xpOdcFA4qFElmiXfAJb6xnfRTH2YT5Nxk_9zhue72cSRIYfdJ__",
-  },
-];
+// Category label map
+const CATEGORY_LABELS: Record<string, { ar: string; en: string }> = {
+  "technical-studies": { ar: "دراسات تقنية", en: "Technical Studies" },
+  "company-news":      { ar: "أخبار الشركة",  en: "Company News" },
+  "industry-insights": { ar: "رؤى الصناعة",   en: "Industry Insights" },
+};
+
+function formatDate(iso: string, isAr: boolean) {
+  return new Date(iso).toLocaleDateString(isAr ? "ar-SA" : "en-GB", {
+    day: "numeric", month: "short", year: "numeric",
+  });
+}
+
+function readTimeLabel(mins: number, isAr: boolean) {
+  return isAr ? `${mins} دقائق قراءة` : `${mins} min read`;
+}
 
 export default async function BlogPage({
   params,
@@ -96,10 +83,11 @@ export default async function BlogPage({
   const t = await getTranslations({ locale, namespace: "blog" });
   const isAr = locale === "ar";
 
-  const [featured, ...rest] = blogData;
+  const posts: BlogPost[] = (await import(`@/content/${locale}/blog.json`)).default;
+  const [featured, ...rest] = posts;
 
   return (
-    <div className="pt-20" style={{ background: "#FAF9F5" }}>
+    <div className="pt-20 bg-[#FAF9F5] dark:bg-gray-950">
       {/* Hero */}
       <section className="bg-gray-950 py-20 text-white relative overflow-hidden">
         <div
@@ -143,14 +131,14 @@ export default async function BlogPage({
           <div className="mb-16">
             <Link
               href={`/${locale}/blog/${featured.slug}`}
-              className="group grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-all duration-500"
+              className="group grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-500"
             >
               {/* Image */}
               <div className="relative h-64 lg:h-auto overflow-hidden min-h-[280px]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={featured.image}
-                  alt={isAr ? featured.titleAR : featured.titleEN}
+                  src={featured.coverImage}
+                  alt={featured.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
@@ -158,13 +146,9 @@ export default async function BlogPage({
                 <div className="absolute bottom-0 start-0 p-6 z-10">
                   <span
                     className="inline-block px-3 py-1 font-bold uppercase tracking-wider text-gray-950"
-                    style={{
-                      background: "#C5A880",
-                      fontSize: "9px",
-                      fontFamily: "'JetBrains Mono', monospace",
-                    }}
+                    style={{ background: "#C5A880", fontSize: "9px", fontFamily: "'JetBrains Mono', monospace" }}
                   >
-                    {isAr ? (featured.badgeAR ?? featured.categoryAR) : (featured.badgeEN ?? featured.categoryEN)}
+                    {isAr ? (featured.badgeAR ?? CATEGORY_LABELS[featured.category]?.ar) : (featured.badgeEN ?? CATEGORY_LABELS[featured.category]?.en)}
                   </span>
                 </div>
               </div>
@@ -173,33 +157,28 @@ export default async function BlogPage({
               <div className="p-10 lg:p-14 flex flex-col justify-center">
                 <span
                   className="font-bold uppercase tracking-widest block mb-4"
-                  style={{
-                    color: "#C5A880",
-                    fontSize: "10px",
-                    fontFamily: "'JetBrains Mono', monospace",
-                    letterSpacing: "0.1em",
-                  }}
+                  style={{ color: "#C5A880", fontSize: "10px", fontFamily: "'JetBrains Mono', monospace", letterSpacing: "0.1em" }}
                 >
                   {isAr ? "مقال رئيسي" : "Featured Article"}
                 </span>
                 <h2
-                  className="font-sans font-bold text-gray-950 group-hover:text-[#C5A880] transition-colors mb-4 leading-snug"
+                  className="font-sans font-bold text-gray-950 dark:text-white group-hover:text-[#C5A880] transition-colors mb-4 leading-snug"
                   style={{ fontSize: "clamp(20px, 2.5vw, 28px)", lineHeight: 1.3 }}
                 >
-                  {isAr ? featured.titleAR : featured.titleEN}
+                  {featured.title}
                 </h2>
-                <p className="text-gray-500 leading-relaxed mb-6 text-sm">
-                  {isAr ? featured.excerptAR : featured.excerptEN}
+                <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-6 text-sm">
+                  {featured.excerpt}
                 </p>
                 <div
                   className="flex items-center gap-3 text-gray-400 mb-6"
                   style={{ fontSize: "11px", fontFamily: "'JetBrains Mono', monospace" }}
                 >
-                  <span>{featured.date}</span>
+                  <span>{formatDate(featured.publishedAt, isAr)}</span>
                   <span>•</span>
-                  <span>{isAr ? featured.readTimeAR : featured.readTimeEN}</span>
+                  <span>{readTimeLabel(featured.readingTime, isAr)}</span>
                 </div>
-                <span className="text-xs font-bold text-gray-950 inline-flex items-center gap-2 group-hover:gap-4 transition-all duration-300">
+                <span className="text-xs font-bold text-gray-950 dark:text-white inline-flex items-center gap-2 group-hover:gap-4 transition-all duration-300">
                   {t("readMore")}
                   <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: "14px" }}>
                     {isAr ? "arrow_back" : "arrow_forward"}
@@ -215,14 +194,14 @@ export default async function BlogPage({
               <Link
                 key={post.slug}
                 href={`/${locale}/blog/${post.slug}`}
-                className="group bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-all duration-500 flex flex-col"
+                className="group bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-500 flex flex-col"
               >
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={post.image}
-                    alt={isAr ? post.titleAR : post.titleEN}
+                    src={post.coverImage}
+                    alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     referrerPolicy="no-referrer"
                   />
@@ -230,13 +209,9 @@ export default async function BlogPage({
                   <div className="absolute bottom-0 start-0 p-4 z-10">
                     <span
                       className="inline-block px-2 py-1 font-bold uppercase tracking-wider text-gray-950"
-                      style={{
-                        background: "#C5A880",
-                        fontSize: "9px",
-                        fontFamily: "'JetBrains Mono', monospace",
-                      }}
+                      style={{ background: "#C5A880", fontSize: "9px", fontFamily: "'JetBrains Mono', monospace" }}
                     >
-                      {isAr ? post.categoryAR : post.categoryEN}
+                      {CATEGORY_LABELS[post.category]?.[isAr ? "ar" : "en"] ?? post.category}
                     </span>
                   </div>
                 </div>
@@ -244,21 +219,21 @@ export default async function BlogPage({
                 {/* Content */}
                 <div className="flex flex-col flex-1 p-6">
                   <h3
-                    className="font-bold text-gray-950 group-hover:text-[#C5A880] transition-colors mb-3 leading-snug"
+                    className="font-bold text-gray-950 dark:text-white group-hover:text-[#C5A880] transition-colors mb-3 leading-snug"
                     style={{ fontSize: "16px", lineHeight: 1.4 }}
                   >
-                    {isAr ? post.titleAR : post.titleEN}
+                    {post.title}
                   </h3>
-                  <p className="text-gray-500 leading-relaxed flex-1 mb-4 text-sm line-clamp-3">
-                    {isAr ? post.excerptAR : post.excerptEN}
+                  <p className="text-gray-500 dark:text-gray-400 leading-relaxed flex-1 mb-4 text-sm line-clamp-3">
+                    {post.excerpt}
                   </p>
                   <div
                     className="flex items-center gap-3 text-gray-400"
                     style={{ fontSize: "10px", fontFamily: "'JetBrains Mono', monospace" }}
                   >
-                    <span>{post.date}</span>
+                    <span>{formatDate(post.publishedAt, isAr)}</span>
                     <span>•</span>
-                    <span>{isAr ? post.readTimeAR : post.readTimeEN}</span>
+                    <span>{readTimeLabel(post.readingTime, isAr)}</span>
                   </div>
                 </div>
               </Link>
