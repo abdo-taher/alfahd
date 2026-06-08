@@ -129,15 +129,18 @@ export function Header() {
             aria-label={locale === "ar" ? "مؤسسة الفهد للمقاولات — الرئيسية" : "Al Fahd Contracting — Home"}
             className="flex items-center gap-3 shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-950 rounded group"
           >
-            {/* Logo image */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/logo-dark.png"
-              alt="Al-Fahd Logo"
-              className="h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-              width={80}
-              height={80}
-            />
+            {/* Logo image — blue in light mode, black in dark mode */}
+            <picture>
+              <source srcSet="/images/logo-black.png" media="(prefers-color-scheme: dark)" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/logo-dark.png"
+                alt="Al-Fahd Logo"
+                className="h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                width={80}
+                height={80}
+              />
+            </picture>
           </Link>
 
           {/* ── Desktop Nav ───────────────────────────────────── */}
