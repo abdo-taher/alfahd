@@ -309,7 +309,7 @@ export function Header() {
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src={item.image}
-                            alt=""
+                            alt={locale === "ar" ? item.titleAR : item.titleEN}
                             className="w-10 h-10 object-cover rounded-md shrink-0"
                             referrerPolicy="no-referrer"
                           />

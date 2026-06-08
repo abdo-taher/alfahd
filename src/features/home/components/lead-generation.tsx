@@ -80,9 +80,9 @@ export function LeadGeneration() {
                 <span className="material-symbols-outlined text-[#C8A75D] text-6xl mb-4 block" aria-hidden="true">
                   task_alt
                 </span>
-                <h3 className="text-[#002868] dark:text-white text-2xl font-bold mb-3">
+                <p className="text-[#002868] dark:text-white text-2xl font-bold mb-3">
                   {locale === "ar" ? "تم إرسال طلبك!" : "Request Sent!"}
-                </h3>
+                </p>
                 <p className="text-[#434652] dark:text-gray-400">
                   {locale === "ar"
                     ? "سيتواصل معك فريقنا خلال 24 ساعة."
@@ -91,9 +91,9 @@ export function LeadGeneration() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-                <h3 className="text-[#002868] dark:text-white text-xl font-bold mb-6">
+                <p className="text-[#002868] dark:text-white text-xl font-bold mb-6">
                   {locale === "ar" ? "أرسل استفسارك" : "Send Your Inquiry"}
-                </h3>
+                </p>
 
                 <div>
                   <label htmlFor="lead-name" className="block text-sm font-bold text-[#1a1b21] dark:text-gray-200 mb-2">

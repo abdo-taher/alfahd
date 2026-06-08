@@ -59,12 +59,12 @@ export async function WhyChooseSection() {
               >
                 {whyIcons[i] ?? "check_circle"}
               </span>
-              <h3
-                className="text-white mb-4"
-                style={{ fontSize: "24px", lineHeight: "1.4", fontWeight: 600 }}
+              <p
+                className="text-white mb-4 font-semibold"
+                style={{ fontSize: "24px", lineHeight: "1.4" }}
               >
                 {item.title}
-              </h3>
+              </p>
               <p className="text-white/70" style={{ fontSize: "16px", lineHeight: "1.8" }}>
                 {item.description}
               </p>

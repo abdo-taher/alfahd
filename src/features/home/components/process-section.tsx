@@ -47,7 +47,7 @@ export async function ProcessSection() {
                 >
                   {String(step.step).padStart(2, "0")}
                 </div>
-                <h4 className="font-bold text-[#002868] dark:text-blue-300 mb-3">{step.title}</h4>
+                <p className="font-bold text-[#002868] dark:text-blue-300 mb-3">{step.title}</p>
                 <p className="text-sm text-[#434652] dark:text-gray-400 leading-relaxed">{step.description}</p>
               </div>
             ))}

@@ -23,10 +23,10 @@ export async function generateMetadata({
     description: t("siteDescription"),
     metadataBase: new URL(baseUrl),
     alternates: {
-      canonical: `${baseUrl}/${locale}`,
       languages: {
         ar: `${baseUrl}/ar`,
         en: `${baseUrl}/en`,
+        "x-default": `${baseUrl}/ar`,
       },
     },
     openGraph: {

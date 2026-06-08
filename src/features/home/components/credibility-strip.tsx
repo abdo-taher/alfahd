@@ -14,7 +14,7 @@ export async function CredibilityStrip() {
             {/* Card 1 — primary (blue) with mt */}
             <div className="mt-12 bg-[#002868] p-12 rounded-3xl premium-shadow hover:-translate-y-4 transition-transform duration-500 flex flex-col">
               <span className="material-symbols-outlined text-[#C8A75D] text-5xl mb-4" aria-hidden="true">architecture</span>
-              <h3 className="text-white text-5xl font-bold mb-2">500+</h3>
+              <p className="text-white text-5xl font-bold mb-2">500+</p>
               <p className="text-white/60 text-base leading-relaxed">
                 {locale === "ar"
                   ? "مشروع معماري متكامل في مختلف مناطق المملكة"
@@ -25,7 +25,7 @@ export async function CredibilityStrip() {
             {/* Card 2 — surface-container (light) */}
             <div className="bg-[#F4F7FA] dark:bg-gray-800 p-12 rounded-3xl premium-shadow hover:-translate-y-4 transition-transform duration-500 flex flex-col">
               <span className="material-symbols-outlined text-[#002868] dark:text-blue-300 text-5xl mb-4" aria-hidden="true">history</span>
-              <h3 className="text-[#002868] dark:text-blue-300 text-5xl font-bold mb-2">25+</h3>
+              <p className="text-[#002868] dark:text-blue-300 text-5xl font-bold mb-2">25+</p>
               <p className="text-[#434652] dark:text-gray-400 text-base leading-relaxed">
                 {locale === "ar"
                   ? "عام من الريادة في قطاع الواجهات والهياكل"
@@ -36,7 +36,7 @@ export async function CredibilityStrip() {
             {/* Card 3 — surface-container (light) */}
             <div className="bg-[#F4F7FA] dark:bg-gray-800 p-12 rounded-3xl premium-shadow hover:-translate-y-4 transition-transform duration-500 flex flex-col">
               <span className="material-symbols-outlined text-[#002868] dark:text-blue-300 text-5xl mb-4" aria-hidden="true">group</span>
-              <h3 className="text-[#002868] dark:text-blue-300 text-5xl font-bold mb-2">100+</h3>
+              <p className="text-[#002868] dark:text-blue-300 text-5xl font-bold mb-2">100+</p>
               <p className="text-[#434652] dark:text-gray-400 text-base leading-relaxed">
                 {locale === "ar"
                   ? "عميل من القطاعين العام والخاص"
@@ -47,7 +47,7 @@ export async function CredibilityStrip() {
             {/* Card 4 — gold with negative mt */}
             <div className="-mt-12 bg-[#C8A75D] p-12 rounded-3xl premium-shadow hover:-translate-y-4 transition-transform duration-500 flex flex-col">
               <span className="material-symbols-outlined text-[#001947] text-5xl mb-4" aria-hidden="true">location_on</span>
-              <h3 className="text-[#001947] text-5xl font-bold mb-2">15+</h3>
+              <p className="text-[#001947] text-5xl font-bold mb-2">15+</p>
               <p className="text-[#001947]/70 text-base leading-relaxed">
                 {locale === "ar"
                   ? "مدينة نخدمها بأعلى معايير الدقة"
