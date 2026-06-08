@@ -126,18 +126,17 @@ export function Header() {
           {/* ── Logo ──────────────────────────────────────────── */}
           <Link
             href={`/${locale}`}
-            aria-label={locale === "ar" ? "شركة الفهد للمقاولات — الرئيسية" : "Al Fahd Contracting — Home"}
+            aria-label={locale === "ar" ? "مؤسسة الفهد للمقاولات — الرئيسية" : "Al Fahd Contracting — Home"}
             className="flex items-center gap-3 shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-950 rounded group"
           >
             {/* Logo image */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/logo.png"
-              srcSet="/images/logo.png 1x, /images/logo@2x.png 2x"
+              src="/images/logo-dark.png"
               alt="Al-Fahd Logo"
-              className="h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-              width={420}
-              height={180}
+              className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              width={56}
+              height={56}
             />
           </Link>
 
