@@ -1,390 +1,931 @@
-# Requirements Document — Enterprise SEO Strategy Documentation
+# Enterprise SEO Requirements
+# مؤسسة الفهد للمقاولات — alfahd-contracting.com
 
-## Introduction
-
-This feature delivers a complete, enterprise-grade SEO strategy documentation suite for **مؤسسة الفهد للمقاولات (Al-Fahad Contracting Company)**, a leading aluminum, glass, and steel contractor headquartered in Riyadh, Saudi Arabia, with 25+ years of experience and 300+ strategic projects. The deliverable is 24 implementation-ready markdown documents placed in the `seo/` directory, covering every dimension of a modern enterprise SEO program — from keyword research and content strategy to technical SEO, local SEO, AI search optimization, and KPI tracking. All strategy and keyword content must be bilingual (Arabic + English) and customized for the Saudi Arabian construction and facade-engineering market.
-
----
-
-## Glossary
-
-- **SEO_Documentation_Suite**: The complete set of 24 markdown files output to `seo/`
-- **SEO_Strategy_Document**: An individual markdown file within the suite, targeting one strategic domain
-- **Al_Fahad**: مؤسسة الفهد للمقاولات — Al-Fahad Contracting Company, the subject of all strategy
-- **SERP**: Search Engine Results Page
-- **RFQ**: Request for Quotation — a primary lead-generation conversion goal
-- **GCC**: Gulf Cooperation Council — future expansion market beyond Saudi Arabia
-- **Topical_Authority**: The measure of a website's expertise and trustworthiness on a subject in the eyes of search engines
-- **EARS**: Easy Approach to Requirements Syntax — pattern used in this document
-- **Primary_Market**: Riyadh, Saudi Arabia
-- **Secondary_Market**: Wider Saudi Arabia (Jeddah, Dammam, Khobar, Makkah, Madinah)
-- **Future_Market**: GCC countries
-- **Target_Customer_Segments**: Real Estate Developers, General Contractors, Government Projects, Commercial Projects, Hospitality Projects, Industrial Projects, Villa Owners, Architects, Consultants, Engineering Offices
-- **Core_Services**: Aluminum Works (أعمال الألمنيوم), Glass Works (هندسة الواجهات الزجاجية), Steel Works (الهياكل المعدنية)
-- **Content_Author**: The person or team responsible for implementing SEO content
-- **Keyword_Cluster**: A grouped set of related search terms organized by intent, funnel stage, or topic
-- **Schema_Markup**: Structured data vocabulary (Schema.org) that helps search engines understand page content
-- **E-E-A-T**: Experience, Expertise, Authoritativeness, Trustworthiness — Google's quality signals
-- **AI_Search**: Generative AI search surfaces including ChatGPT, Gemini, Claude, Perplexity, and Google AI Overviews
+**Version:** 2.0  
+**Based on:** Full Enterprise SEO Audit (June 2026)  
+**Scope:** All fixes, enhancements, and new pages required to achieve Google dominance in Riyadh & Saudi Arabia
 
 ---
 
-## Requirements
+## REQ-001 — Critical Bug Fixes (Pre-Launch Blockers)
+
+### REQ-001-1: Fix Sitemap Service Slug Mismatch
+**Priority:** CRITICAL  
+**Problem:** `src/app/sitemap.ts` generates service URLs as `/ar/services/aluminum`, `/ar/services/glass`, `/ar/services/steel` — but the actual Next.js routes are `/ar/services/aluminum-works`, `/ar/services/glass-works`, `/ar/services/steel-works`. All service entries in the sitemap resolve to 404s.  
+**Requirement:** Update `sitemap.ts` to use the correct slugs: `aluminum-works`, `glass-works`, `steel-works`.  
+**Acceptance Criteria:**
+- `GET /ar/services/aluminum-works` returns 200
+- `GET /ar/services/glass` returns 404 (not indexed)
+- Sitemap XML shows correct URLs for all 3 services × 2 locales
 
 ---
 
-### Requirement 1: Business SEO Analysis Document
-
-**User Story:** As a Content_Author, I want a business SEO analysis document, so that I can understand Al-Fahad's competitive position, market opportunity, and SEO potential before executing the strategy.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `01-business-analysis.md` file in the `seo/` directory.
-2. WHEN the business analysis document is read, THE SEO_Strategy_Document SHALL contain a SWOT analysis covering Al-Fahad's SEO strengths, weaknesses, opportunities, and threats in the Saudi construction market.
-3. THE SEO_Strategy_Document SHALL include an SEO Opportunity Matrix mapping each Core_Service to its estimated search volume, competition level, and lead generation potential.
-4. THE SEO_Strategy_Document SHALL document Al-Fahad's market positioning relative to competitors operating in Riyadh and Saudi Arabia.
-5. THE SEO_Strategy_Document SHALL include a competitive landscape section identifying key online competitors in the aluminum, glass, and steel contracting space in Saudi Arabia.
-6. WHEN the lead generation potential section is read, THE SEO_Strategy_Document SHALL provide estimated monthly search volumes and conversion potential for each Core_Service in both Arabic and English queries.
+### REQ-001-2: Create Missing OG Default Image
+**Priority:** CRITICAL  
+**Problem:** `src/seo/metadata/page-metadata.ts` falls back to `/images/og-default.jpg` for all pages without a custom OG image. This file does not exist in `/public/images/`. Every shared link across all social platforms shows a broken image preview.  
+**Requirement:** Create and place a 1200×630px branded OG image at `/public/images/og-default.jpg`.  
+**Acceptance Criteria:**
+- File exists at `/public/images/og-default.jpg`
+- Image dimensions: 1200×630px minimum
+- Includes company logo, name, tagline in Arabic
+- File size under 300KB (WebP or optimised JPEG)
 
 ---
 
-### Requirement 2: Enterprise Keyword Research Document
-
-**User Story:** As a Content_Author, I want comprehensive keyword research for all three core services, so that every piece of content targets validated, high-value search terms in both Arabic and English.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `02-keyword-research.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL provide keyword lists for each of the three Core_Services (Aluminum, Glass, Steel) separately.
-3. WHEN keyword lists are presented, THE SEO_Strategy_Document SHALL organize each service's keywords into the following categories: Primary, Secondary, Long-Tail, Commercial Intent, Transactional Intent, Informational, Comparison, Cost/Price, FAQ, Local SEO, Government Sector, Developer Sector, and Architect/Consultant Sector.
-4. THE SEO_Strategy_Document SHALL present every keyword with both its Arabic term and its English equivalent.
-5. THE SEO_Strategy_Document SHALL group keywords by search intent (navigational, informational, commercial, transactional), funnel stage (top/middle/bottom), business value (high/medium/low), and priority (P1/P2/P3).
-6. WHEN local SEO keywords are listed, THE SEO_Strategy_Document SHALL include Riyadh-specific and district-level keyword variations (e.g., شركة ألمنيوم شمال الرياض).
-7. THE SEO_Strategy_Document SHALL include government and tender-related Arabic keyword variations relevant to Vision 2030 projects and ARAMCO/NEOM-adjacent construction.
+### REQ-001-3: Fix Project Category Name Mismatch
+**Priority:** CRITICAL  
+**Problem:** Three separate mismatches cause the "Related Projects" section to be permanently empty for two services:
+- `src/content/ar/projects.json` uses `"aluminium"` (British) but `contentRepository.getProjectsByCategory()` is called with `"aluminum"` (American)
+- `projects.json` uses `"iron"` for steel projects but the service-to-category map in `services/[slug]/page.tsx` maps `"steel-works" → "steel"`  
+**Requirement:** Standardise all category names to: `"aluminum"`, `"glass"`, `"steel"` across all JSON files, content repository, and page components.  
+**Acceptance Criteria:**
+- `/ar/services/aluminum-works` Related Projects section shows ≥1 project
+- `/ar/services/steel-works` Related Projects section shows ≥1 project
+- All category filters on `/projects` page work correctly
 
 ---
 
-### Requirement 3: Website SEO Architecture Document
-
-**User Story:** As a Content_Author, I want a full URL architecture specification, so that every page on the site has a defined SEO purpose, target keyword, and internal linking role before development begins.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `03-website-architecture.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL define the complete URL structure covering: Homepage, About, Services, Sub-Services, Projects, Case Studies, Industries, Locations, Blog, Resources, FAQs, Contact, Request Quote, and Consultation pages.
-3. WHEN a URL is listed, THE SEO_Strategy_Document SHALL specify the SEO purpose, primary target keyword(s), search intent type, and internal linking role for that URL.
-4. THE SEO_Strategy_Document SHALL include both Arabic and English URL slug recommendations.
-5. THE SEO_Strategy_Document SHALL define the URL hierarchy depth (max 3 levels recommended for Core_Services) and explain the rationale.
-6. THE SEO_Strategy_Document SHALL specify which pages serve as pillar pages, cluster pages, and supporting pages in the topical authority structure.
+### REQ-001-4: Fix WhatsApp Placeholder Phone Number
+**Priority:** CRITICAL  
+**Problem:** Service pages and layout contain `href="https://wa.me/966500000000"` — a placeholder number. All WhatsApp CTAs are non-functional.  
+**Requirement:** Replace all instances of `966500000000` with the real business WhatsApp number.  
+**Acceptance Criteria:**
+- All `wa.me/` links use the verified business number
+- WhatsApp click opens correct contact in WhatsApp
 
 ---
 
-### Requirement 4: Service SEO Strategy Document
-
-**User Story:** As a Content_Author, I want a dedicated SEO strategy for each core service, so that Aluminum, Glass, and Steel service pages are optimized to rank for high-value commercial keywords and convert visitors into RFQ leads.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `04-service-seo-strategy.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL provide a complete SEO strategy for each of the three Core_Services individually.
-3. WHEN a service SEO strategy is described, THE SEO_Strategy_Document SHALL include: primary and secondary keyword targets, search intent analysis, recommended page content structure, required content sections, conversion elements, trust elements, FAQ opportunities, internal linking strategy, and Schema markup recommendations.
-4. THE SEO_Strategy_Document SHALL specify recommended page word count and content depth requirements for each service page.
-5. THE SEO_Strategy_Document SHALL include meta title and meta description templates in both Arabic and English for each service.
-
----
-
-### Requirement 5: Sub-Service SEO Strategy Document
-
-**User Story:** As a Content_Author, I want granular SEO strategies for all sub-services, so that Al-Fahad captures long-tail and specific-intent search traffic at the sub-service level.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `05-sub-service-seo-strategy.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL cover at minimum the following sub-services:
-   - Aluminum: Windows, Doors, Facades, Curtain Walls, Custom Systems, Cladding, Skylights
-   - Glass: Tempered Glass, Laminated Glass, Glass Facades, Glass Partitions, Structural Glass, Spider Glass Systems
-   - Steel: Structural Steel, Steel Fabrication, Steel Installation, Canopies, Mezzanine Floors, Steel Warehouses
-3. WHEN a sub-service is documented, THE SEO_Strategy_Document SHALL include target keywords (Arabic + English), search intent, content strategy, conversion strategy, and recommended internal links.
-4. THE SEO_Strategy_Document SHALL specify metadata templates for each sub-service page.
+### REQ-001-5: Fix Founding Year Inconsistency
+**Priority:** HIGH  
+**Problem:** The company's founding year/experience is stated inconsistently:
+- Steering docs: "~1999", "25+ years"
+- `ar.json` locale: "25+ عاماً" and "500+ مشروع"
+- `organization.ts` schema: "15 عاماً" in description
+- About page timeline: starts from 2008  
+**Requirement:** Standardise to "تأسست عام 1999" / "25+ عاماً من الخبرة" across all pages, JSON-LD, locale files, and components.  
+**Acceptance Criteria:**
+- `organization.ts` description uses 25+ years
+- `ar.json` stats block uses 25+
+- About page timeline starts at 1999 milestone
+- No page states "15 years"
 
 ---
 
-### Requirement 6: Industry SEO Strategy Document
-
-**User Story:** As a Content_Author, I want industry-specific SEO landing page strategies, so that Al-Fahad can attract each of its Target_Customer_Segments through tailored organic search entry points.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `06-industry-seo-strategy.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL cover the following industry verticals: Villas, Residential Buildings, Commercial Buildings, Hospitality (Hotels & Resorts), Government Buildings, Industrial Facilities, Real Estate Developers, Warehouses, Shopping Centers, and Office Buildings.
-3. WHEN an industry strategy is defined, THE SEO_Strategy_Document SHALL specify: target keywords (Arabic + English), recommended landing page URL, content strategy, internal linking strategy, and primary conversion goal.
-4. THE SEO_Strategy_Document SHALL explain how each industry page connects to the Core_Services pages and relevant project/case study pages.
+### REQ-001-6: Fix NEXT_PUBLIC_SITE_URL Environment Variable
+**Priority:** HIGH  
+**Problem:** The base URL defaults to `"https://alfahd-contracting.com"` via `process.env.NEXT_PUBLIC_SITE_URL || "..."` hardcode. If the env var is missing in production, canonical URLs, sitemap, and OG tags all still work — but any staging/preview deployment will emit wrong canonical URLs pointing to production.  
+**Requirement:** Ensure `.env.example` documents `NEXT_PUBLIC_SITE_URL`. Add a build-time assertion that throws if it is missing in non-development environments.  
+**Acceptance Criteria:**
+- `.env.example` contains `NEXT_PUBLIC_SITE_URL=https://alfahd-contracting.com`
+- Build fails with clear error if `NEXT_PUBLIC_SITE_URL` is unset in production
 
 ---
 
-### Requirement 7: Location SEO Strategy Document
-
-**User Story:** As a Content_Author, I want a location SEO strategy for Riyadh districts and future expansion cities, so that Al-Fahad can dominate local search results in every geographic market it serves.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `07-location-seo-strategy.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL define local SEO strategies for Riyadh's primary districts (North Riyadh, South Riyadh, East Riyadh, West Riyadh, Central Riyadh) and key neighborhoods (Al-Olaya, Al-Nakheel, Al-Malaz, Al-Sahafa, Diplomatic Quarter).
-3. THE SEO_Strategy_Document SHALL include future expansion strategies for Jeddah, Dammam, Al-Khobar, Makkah, and Madinah.
-4. WHEN a location strategy is defined, THE SEO_Strategy_Document SHALL specify: URL structure (e.g., `/services/aluminum/riyadh-north/`), content strategy, target keywords in Arabic and English, internal linking, and expected search volume category.
-5. THE SEO_Strategy_Document SHALL describe how location pages link to Core_Services, Industry, and Project pages.
+### REQ-001-7: Fix Canonical Fallback in `src/seo/canonical/index.ts`
+**Priority:** MEDIUM  
+**Problem:** File uses `https://example.com` as fallback URL instead of the correct base domain.  
+**Requirement:** Replace `https://example.com` with `process.env.NEXT_PUBLIC_SITE_URL || "https://alfahd-contracting.com"`.  
+**Acceptance Criteria:**
+- No reference to `example.com` in any SEO utility file
 
 ---
 
-### Requirement 8: Project SEO Strategy Document
+## REQ-002 — Schema / JSON-LD Enhancements
 
-**User Story:** As a Content_Author, I want a project page SEO strategy, so that every completed project becomes a high-authority SEO asset that ranks for location + service keywords.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `08-project-seo-strategy.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL define a URL structure template for project pages (e.g., `/projects/{service}-{location}-{year}/`).
-3. THE SEO_Strategy_Document SHALL provide an SEO-optimized content template for project pages including recommended sections, image optimization guidance, and metadata strategy.
-4. WHEN a project page strategy is described, THE SEO_Strategy_Document SHALL specify target keyword patterns, Schema markup type, and internal linking rules (which pages each project page should link to and from).
-5. THE SEO_Strategy_Document SHALL explain how project pages build Topical_Authority and contribute to service page rankings.
-
----
-
-### Requirement 9: Case Study SEO Strategy Document
-
-**User Story:** As a Content_Author, I want a case study SEO framework, so that Al-Fahad's case studies rank for high-intent "proof" searches and convert readers into leads.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `09-case-study-seo-strategy.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL define a case study content framework with sections: Client Challenge, Solution Approach, Materials & Specifications, Execution Process, and Measurable Results.
-3. WHEN the case study SEO strategy is described, THE SEO_Strategy_Document SHALL specify keyword targeting strategy (service + location + project type), internal linking patterns, and conversion opportunities within case studies.
-4. THE SEO_Strategy_Document SHALL explain how case studies differ from project pages in SEO value and ranking potential.
-5. THE SEO_Strategy_Document SHALL include a metadata template and Schema markup recommendation for case study pages.
+### REQ-002-1: Add JSON-LD to About Page
+**Priority:** HIGH  
+**Problem:** `/about` page has no structured data. Google cannot identify this as an authoritative company profile page.  
+**Requirement:** Inject `Organization` + `AboutPage` + `BreadcrumbList` JSON-LD into `/[locale]/about/page.tsx`.  
+**Acceptance Criteria:**
+- `Organization` schema references `@id: BASE_URL/#organization`
+- `BreadcrumbList` has 2 items: Home → About
+- Passes Google Rich Results Test with no errors
 
 ---
 
-### Requirement 10: Topical Authority Strategy Document
-
-**User Story:** As a Content_Author, I want a topical authority map for all Core_Services, so that Al-Fahad becomes the definitive online authority on aluminum, glass, and steel works in Saudi Arabia.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `10-topical-authority-strategy.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL define topic clusters for: Aluminum Works, Glass Works, Steel Works, Construction & Architecture, Building Facades, and Saudi Construction Industry.
-3. WHEN a topic cluster is defined, THE SEO_Strategy_Document SHALL identify: the Pillar Page, all Cluster Pages, and all Supporting Articles for that cluster.
-4. THE SEO_Strategy_Document SHALL present a visual topical map (text/table representation) showing the hierarchical relationship between pillar, cluster, and supporting content.
-5. THE SEO_Strategy_Document SHALL specify how achieving Topical_Authority on each cluster impacts organic rankings for commercial keywords.
-
----
-
-### Requirement 11: Content Marketing Strategy Document
-
-**User Story:** As a Content_Author, I want 100 SEO article ideas organized by topic and funnel stage, so that Al-Fahad's content calendar drives sustained organic traffic growth for 12–24 months.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `11-content-marketing-strategy.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL provide a minimum of 100 article ideas organized into topic groups: Aluminum Works, Glass Works, Steel Works, Construction Industry, Architecture & Design, Cost Guides, Comparison Articles, Government & Vision 2030 Projects, and Developer Resources.
-3. WHEN an article idea is presented, THE SEO_Strategy_Document SHALL specify: article title (Arabic + English), primary keyword, search intent, funnel stage (TOFU/MOFU/BOFU), business value (high/medium/low), and priority score.
-4. THE SEO_Strategy_Document SHALL recommend a publication frequency and content calendar structure for the first 12 months.
-5. THE SEO_Strategy_Document SHALL explain the content-to-conversion path for each funnel stage.
+### REQ-002-2: Add JSON-LD to Contact Page
+**Priority:** HIGH  
+**Problem:** `/contact` page has no structured data. Local SEO signal is missing.  
+**Requirement:** Inject `LocalBusiness` + `ContactPage` + `BreadcrumbList` JSON-LD into `/[locale]/contact/page.tsx`.  
+**Schema must include:**
+- `telephone`, `email`, `address`, `openingHoursSpecification`, `geo`
+- `contactPoint` with `contactType: "customer service"`  
+**Acceptance Criteria:**
+- Schema passes Google Rich Results Test
+- NAP (Name, Address, Phone) in schema exactly matches footer text
 
 ---
 
-### Requirement 12: FAQ SEO Strategy Document
-
-**User Story:** As a Content_Author, I want 100 FAQ opportunities mapped to specific pages, so that Al-Fahad captures featured snippets, voice search, and AI Overview citations for common industry questions.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `12-faq-seo-strategy.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL provide a minimum of 100 FAQ opportunities organized by category: Aluminum Works, Glass Works, Steel Works, Project Process, Cost & Pricing, Installation, Maintenance, Certifications, and Company.
-3. WHEN an FAQ is listed, THE SEO_Strategy_Document SHALL specify: the question in Arabic and English, search intent, recommended target page (which page should host the FAQ), and expected SERP feature (featured snippet, People Also Ask, AI Overview).
-4. THE SEO_Strategy_Document SHALL include Schema markup implementation guidance for FAQ sections on each page type.
+### REQ-002-3: Add JSON-LD to Projects Index Page
+**Priority:** HIGH  
+**Requirement:** Inject `ItemList` + `BreadcrumbList` JSON-LD into `/[locale]/projects/page.tsx`.  
+**ItemList must include:** Each project as a `ListItem` with `url`, `name`, `position`.  
+**Acceptance Criteria:**
+- Schema validates without errors
+- All 9 projects appear in ItemList
 
 ---
 
-### Requirement 13: Cost SEO Strategy Document
-
-**User Story:** As a Content_Author, I want a cost content SEO strategy, so that Al-Fahad captures high-commercial-intent searches from buyers actively researching pricing for aluminum, glass, and steel works in Saudi Arabia.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `13-cost-seo-strategy.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL define dedicated cost-content landing pages for: Aluminum Facade Cost Riyadh, Glass Facade Cost Saudi Arabia, Steel Structure Cost Riyadh, Curtain Wall Cost, Aluminum Windows Cost, Steel Warehouse Cost, and at minimum 10 additional cost page opportunities.
-3. WHEN a cost page is described, THE SEO_Strategy_Document SHALL specify: primary keyword (Arabic + English), secondary keywords, page content strategy, conversion mechanism, lead capture strategy, and trust elements required.
-4. THE SEO_Strategy_Document SHALL explain how cost content pages integrate into the broader site architecture without undercutting the premium brand positioning.
-
----
-
-### Requirement 14: Local SEO Strategy Document
-
-**User Story:** As a Content_Author, I want a complete local SEO strategy, so that Al-Fahad dominates the Google Local Pack and Maps results in Riyadh and Saudi Arabia.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `14-local-seo-strategy.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL define strategies for: Google Business Profile optimization, Review Acquisition, Citation Building, NAP (Name/Address/Phone) Consistency, Local Link Building, Location Content, and Local Authority building.
-3. WHEN the Google Business Profile strategy is described, THE SEO_Strategy_Document SHALL specify: profile completeness requirements, category selection (Arabic + English), post cadence, Q&A seeding, photo strategy, and service area configuration.
-4. THE SEO_Strategy_Document SHALL include a citation priority list of top Saudi Arabian and GCC business directories relevant to the construction industry.
-5. THE SEO_Strategy_Document SHALL define a review acquisition workflow targeting completed project clients.
+### REQ-002-4: Add JSON-LD to Project Detail Pages
+**Priority:** HIGH  
+**Problem:** `/projects/[slug]` pages have no structured data at all — no breadcrumb, no project schema.  
+**Requirement:** Inject `CreativeWork` (or `ConstructionProject`) + `BreadcrumbList` JSON-LD into project detail pages.  
+**Schema fields:** `name`, `description`, `url`, `dateCreated` (year), `locationCreated` (city), `provider` (company), `image`, `keywords` (technologies).  
+**Acceptance Criteria:**
+- BreadcrumbList has 3 items: Home → Projects → Project Title
+- CreativeWork schema present on all project pages
+- No validation errors
 
 ---
 
-### Requirement 15: Digital PR Strategy Document
-
-**User Story:** As a Content_Author, I want a digital PR strategy, so that Al-Fahad earns authoritative backlinks from Saudi construction media, architectural publications, and government sources.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `15-digital-pr-strategy.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL identify PR opportunities in: Saudi construction publications, regional architectural media, Vision 2030 project announcements, industry award programs, and professional associations (Saudi Council of Engineers, RICS Saudi Arabia).
-3. WHEN a PR opportunity is described, THE SEO_Strategy_Document SHALL specify: target publication/outlet, content angle, expected domain authority benefit, and outreach approach.
-4. THE SEO_Strategy_Document SHALL include a content-for-links strategy with at least 5 linkable asset ideas suited to the Saudi construction market.
+### REQ-002-5: Add JSON-LD to Services Index Page
+**Priority:** MEDIUM  
+**Requirement:** Inject `ItemList` + `BreadcrumbList` JSON-LD into `/[locale]/services/page.tsx` listing all 3 services.  
+**Acceptance Criteria:**
+- ItemList contains 3 service items with URL and name
 
 ---
 
-### Requirement 16: Link Building Strategy Document
-
-**User Story:** As a Content_Author, I want a prioritized link building strategy, so that Al-Fahad systematically builds domain authority through high-quality, relevant backlinks.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `16-link-building-strategy.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL categorize link building opportunities into: Foundation Links, Industry Links, Authority Links, Local Links, Government Links, and Construction/Architecture Links.
-3. WHEN a link building opportunity is listed, THE SEO_Strategy_Document SHALL specify: link source, priority score (1–5), acquisition difficulty (easy/medium/hard), expected domain authority impact, and acquisition method.
-4. THE SEO_Strategy_Document SHALL define a monthly link acquisition target and cadence for each phase of the SEO roadmap.
-5. THE SEO_Strategy_Document SHALL explicitly exclude or flag link building tactics that violate Google's guidelines.
+### REQ-002-6: Add AggregateRating Schema
+**Priority:** HIGH  
+**Problem:** No star rating displays in Google search results. Competitors with reviews schema get rich snippet CTR advantage.  
+**Requirement:** Add `AggregateRating` to `organizationSchema()` and service schemas. Populate with real review data collected from clients.  
+**Minimum data needed:** `ratingValue`, `reviewCount`, `bestRating: 5`.  
+**Acceptance Criteria:**
+- `organizationSchema` includes `aggregateRating` object
+- Stars appear in SERP (may take 2-4 weeks to index)
 
 ---
 
-### Requirement 17: Schema Markup Strategy Document
-
-**User Story:** As a Content_Author, I want a complete Schema markup strategy, so that every page type on the Al-Fahad site sends maximum structured data signals to search engines and AI systems.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `17-schema-strategy.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL define Schema implementations for: Organization, LocalBusiness, Service, FAQPage, Article, BreadcrumbList, Project (CreativeWork), Review, VideoObject, ImageObject, and Person schemas.
-3. WHEN a Schema type is described, THE SEO_Strategy_Document SHALL specify: the Schema type, which pages it applies to, the required and recommended properties, an implementation example (JSON-LD), and the expected SEO benefit.
-4. THE SEO_Strategy_Document SHALL address bilingual (Arabic/English) Schema implementation requirements.
-5. THE SEO_Strategy_Document SHALL include validation and testing guidance for Schema markup.
+### REQ-002-7: Add VideoObject Schema for Hero Video
+**Priority:** MEDIUM  
+**Problem:** `/public/hero.mp4` is used in the home page hero section but has no `VideoObject` schema. Google cannot index it as a video result.  
+**Requirement:** Add `VideoObject` JSON-LD to the home page referencing the hero video.  
+**Required fields:** `name`, `description`, `thumbnailUrl`, `uploadDate`, `contentUrl`.  
+**Acceptance Criteria:**
+- VideoObject schema present on home page
+- Passes Google Video Rich Results Test
 
 ---
 
-### Requirement 18: Internal Linking Architecture Document
-
-**User Story:** As a Content_Author, I want a defined internal linking architecture, so that link equity flows efficiently through the site and every page reinforces Al-Fahad's Topical_Authority.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `18-internal-linking-architecture.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL define internal linking rules for: Service pages, Industry pages, Project pages, Blog/Article pages, Resource pages, and Location pages.
-3. WHEN internal linking rules are defined, THE SEO_Strategy_Document SHALL specify: which pages link to which (source → destination), the recommended anchor text pattern (Arabic + English), and the SEO rationale for each linking pattern.
-4. THE SEO_Strategy_Document SHALL include a visual architecture representation (table or ASCII diagram) showing the internal link flow between major page categories.
-5. THE SEO_Strategy_Document SHALL specify the minimum number of internal links required per page type and the maximum recommended outbound internal links per page.
+### REQ-002-8: Add Person Schema for Blog Authors
+**Priority:** MEDIUM  
+**Problem:** Blog articles attribute authorship to named engineers (م. أحمد الشمري, م. سعد العتيبي, etc.) but no `Person` schema exists. E-E-A-T signals are lost.  
+**Requirement:** Create author profiles and inject `Person` schema into blog post pages using the `author` field from `blog.json`.  
+**Acceptance Criteria:**
+- Each blog post with a named author includes `Person` schema with `name` and `jobTitle`
+- Author name in `articleSchema` references the `Person` entity
 
 ---
 
-### Requirement 19: Conversion SEO Strategy Document
-
-**User Story:** As a Content_Author, I want a conversion-focused SEO strategy, so that every page type is mapped to a specific conversion goal and organic traffic is systematically converted into RFQ leads and consultations.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `19-conversion-seo-strategy.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL map each page type (Homepage, Service, Sub-Service, Project, Case Study, Industry, Location, Blog, FAQ, Cost) to a primary conversion goal (RFQ, Consultation, Phone Call, WhatsApp, Brochure Download).
-3. WHEN a conversion strategy is described for a page type, THE SEO_Strategy_Document SHALL specify: the primary CTA, secondary CTA, trust signals required, conversion funnel stage, and expected conversion rate benchmark.
-4. THE SEO_Strategy_Document SHALL define an RFQ funnel that captures leads from organic traffic at each stage of the buyer journey.
-5. THE SEO_Strategy_Document SHALL include a trust-building content strategy that leverages Al-Fahad's 25+ years of experience and 300+ projects portfolio.
+### REQ-002-9: Add Review Schema to Service Pages
+**Priority:** MEDIUM  
+**Requirement:** Add `Review` entries (from `testimonials.json`) to service pages where relevant, nested under `AggregateRating`.  
+**Acceptance Criteria:**
+- At least 3 reviews per service page
+- Review schema includes `author`, `reviewRating`, `reviewBody`
 
 ---
 
-### Requirement 20: AI Search Optimization Strategy Document
-
-**User Story:** As a Content_Author, I want an AI search optimization strategy, so that Al-Fahad is cited and recommended by ChatGPT, Gemini, Claude, Perplexity, and Google AI Overviews when users ask about aluminum, glass, and steel contractors in Saudi Arabia.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `20-ai-search-optimization.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL cover optimization strategies for: Google AI Overviews, ChatGPT Search, Gemini, Claude, and Perplexity.
-3. WHEN an AI platform strategy is described, THE SEO_Strategy_Document SHALL address: entity establishment (Knowledge Graph), structured content formats preferred by AI systems, expert content signals (E-E-A-T), citation opportunities, and authority signal requirements.
-4. THE SEO_Strategy_Document SHALL define an entity strategy that clearly establishes Al-Fahad as a named entity in the construction and facade engineering domain for Saudi Arabia.
-5. THE SEO_Strategy_Document SHALL include a prompt/query strategy — the specific types of user queries Al-Fahad should target to appear in AI-generated answers.
+### REQ-002-10: Add Speakable Schema for AI Search
+**Priority:** LOW  
+**Requirement:** Add `speakable` property to `Article` and key landing page schemas, marking primary headings and summary paragraphs as machine-readable for voice/AI search.  
+**Acceptance Criteria:**
+- `speakable` with `cssSelector` or `xpath` present on service pages and featured blog posts
 
 ---
 
-### Requirement 21: Competitor Analysis Framework Document
+## REQ-003 — New Pages — Industries / Verticals
 
-**User Story:** As a Content_Author, I want a competitor analysis framework, so that Al-Fahad can systematically evaluate and outperform competitors in organic search across every key dimension.
+All industry pages must follow the standard page template: Hero → Stats → Services Used → Related Projects → Testimonial → CTA.
 
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `21-competitor-analysis-framework.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL identify the primary competitive set: aluminum, glass, and steel contractors operating in Riyadh and Saudi Arabia with measurable online presence.
-3. THE SEO_Strategy_Document SHALL define evaluation criteria across: content depth, keyword coverage, domain authority, backlink profile, technical SEO health, local SEO presence, and conversion optimization.
-4. WHEN the analysis framework is described, THE SEO_Strategy_Document SHALL provide a scoring rubric and template that Content_Authors can use for quarterly competitive audits.
-5. THE SEO_Strategy_Document SHALL identify specific content and keyword gap opportunities where Al-Fahad can gain competitive advantage within 90 days.
-
----
-
-### Requirement 22: Technical SEO Requirements Document
-
-**User Story:** As a Content_Author, I want a technical SEO requirements specification, so that the development team builds a site that is fully crawlable, indexable, and performant for both Arabic and English audiences.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `22-technical-seo-requirements.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL specify requirements for: crawlability, indexability, Core Web Vitals (LCP, CLS, INP), site architecture, URL structure, canonical tags, pagination, XML sitemaps, robots.txt, and structured data.
-3. WHEN Arabic SEO requirements are defined, THE SEO_Strategy_Document SHALL specify: hreflang implementation for Arabic/English language targeting, RTL rendering requirements, Arabic URL slug handling, and Arabic meta tag requirements.
-4. THE SEO_Strategy_Document SHALL define Core Web Vitals performance targets: LCP ≤ 2.5 seconds, CLS ≤ 0.1, INP ≤ 200ms.
-5. THE SEO_Strategy_Document SHALL include an international/bilingual SEO implementation checklist covering hreflang, language sitemaps, content-language headers, and locale-specific canonicals.
-6. THE SEO_Strategy_Document SHALL define crawl budget management requirements given the expected site scale (500+ pages at full buildout).
+### REQ-003-1: Government Projects Industry Page
+**URL:** `/[locale]/industries/government-projects`  
+**Arabic title:** `مقاولات المشاريع الحكومية`  
+**Target keywords (AR):** مقاول مشاريع حكومية الرياض، شركة مقاولات للجهات الحكومية، تنفيذ مشاريع حكومية واجهات  
+**Target keywords (EN):** government projects contractor Riyadh, government facade contractor Saudi Arabia  
+**Priority:** CRITICAL  
+**Content requirements:**
+- Explain compliance requirements (SASO, SBC, Vision 2030 alignment)
+- List certifications relevant to government tenders (ISO 9001, ISO 45001)
+- Link to relevant projects: King Salman Financial Tower, KAFD Bridge
+- CTA: "طلب تأهيل مناقصة" (Tender Pre-qualification Request)
 
 ---
 
-### Requirement 23: SEO Roadmap Document
-
-**User Story:** As a Content_Author, I want a phased SEO roadmap, so that the strategy is executed in a logical sequence that delivers measurable results within 3, 6, 12, and 24 months.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `23-seo-roadmap.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL define four phases:
-   - Phase 1 (Months 0–3): Foundation & Technical Setup
-   - Phase 2 (Months 3–6): Content Buildout & On-Page Optimization
-   - Phase 3 (Months 6–12): Authority Building & Topical Dominance
-   - Phase 4 (Months 12–24): Scaling, GCC Expansion & AI Search Dominance
-3. WHEN a phase is defined, THE SEO_Strategy_Document SHALL specify: objectives, specific tasks, priority level (P1/P2/P3), required resources, and expected organic traffic and lead impact.
-4. THE SEO_Strategy_Document SHALL define success metrics for each phase transition (what must be achieved before moving to the next phase).
-5. THE SEO_Strategy_Document SHALL estimate the total number of pages, articles, and backlinks required per phase.
+### REQ-003-2: Real Estate Developers Industry Page
+**URL:** `/[locale]/industries/real-estate-developers`  
+**Arabic title:** `خدمات المطورين العقاريين`  
+**Target keywords (AR):** مقاول واجهات للمطورين العقاريين، شركة واجهات للأبراج التجارية، تنفيذ واجهات مشاريع التطوير  
+**Priority:** CRITICAL  
+**Content requirements:**
+- Focus on scale, delivery timelines, multi-tower experience
+- Mention Unit Curtain Wall, BIM coordination, nominated sub-contractor capability
+- Link to projects: Commercial Crystal Tower, NEOM Hub
 
 ---
 
-### Requirement 24: KPI Framework Document
-
-**User Story:** As a Content_Author, I want a KPI tracking framework, so that Al-Fahad can measure SEO performance across traffic, leads, authority, local visibility, content, and conversion metrics on a monthly basis.
-
-#### Acceptance Criteria
-
-1. THE SEO_Documentation_Suite SHALL include a `24-kpi-framework.md` file in the `seo/` directory.
-2. THE SEO_Strategy_Document SHALL define KPIs across six categories: Organic Traffic KPIs, Lead Generation KPIs, Domain Authority KPIs, Local SEO KPIs, Content Performance KPIs, and Conversion KPIs.
-3. WHEN a KPI is defined, THE SEO_Strategy_Document SHALL specify: metric name, definition, measurement tool, reporting frequency, baseline (Month 0), and monthly targets for Months 3, 6, 12, and 24.
-4. THE SEO_Strategy_Document SHALL define a monthly reporting dashboard template specifying which metrics to track, visualize, and present to stakeholders.
-5. THE SEO_Strategy_Document SHALL include alert thresholds — the conditions (e.g., 20% traffic drop in 30 days) that trigger immediate investigation and action.
-6. WHEN lead generation KPIs are defined, THE SEO_Strategy_Document SHALL specify RFQ volume targets, consultation request targets, and cost-per-organic-lead benchmarks relevant to the Saudi B2B construction sector.
+### REQ-003-3: Commercial Projects Industry Page
+**URL:** `/[locale]/industries/commercial-projects`  
+**Arabic title:** `المشاريع التجارية والمكتبية`  
+**Target keywords (AR):** مقاول واجهات مراكز تجارية، أعمال ألمنيوم للمولات، واجهات الأبراج المكتبية الرياض  
+**Priority:** HIGH  
+**Content requirements:**
+- Showcase retail and office tower portfolio
+- Highlight showroom-grade glass (low-iron, Spider Glass)
+- Link to projects: Rolls-Royce Showroom, Al-Nakheel Mall Atrium
 
 ---
 
-### Requirement 25: SEO Documentation Suite Completeness
+### REQ-003-4: Hospitality Projects Industry Page
+**URL:** `/[locale]/industries/hospitality`  
+**Arabic title:** `مشاريع الضيافة والفنادق`  
+**Target keywords (AR):** مقاول واجهات فنادق، تنفيذ واجهات منتجعات فاخرة، واجهات مشاريع سياحية السعودية  
+**Priority:** HIGH  
+**Content requirements:**
+- Reference Red Sea Global Pavilion project
+- Emphasise sustainability credentials (LEED, low-carbon aluminium)
+- Link to Vision 2030 tourism projects
 
-**User Story:** As a Content_Author, I want all 24 documents delivered as a complete, cross-referenced suite, so that the strategy is coherent, internally consistent, and immediately implementable.
+---
 
-#### Acceptance Criteria
+### REQ-003-5: Industrial Projects Industry Page
+**URL:** `/[locale]/industries/industrial`  
+**Arabic title:** `المشاريع الصناعية`  
+**Target keywords (AR):** مقاول هياكل معدنية صناعية، تكسية ألمنيوم مقاومة للبيئة البحرية، واجهات مستودعات صناعية  
+**Priority:** HIGH  
+**Content requirements:**
+- Focus on marine-grade aluminium, chemical-resistant coatings
+- Reference Industrial Innovation Complex (Jubail) project
+- Mention ISO 12944 corrosion protection standards
 
-1. THE SEO_Documentation_Suite SHALL contain exactly 24 markdown files in the `seo/` directory, numbered `01-business-analysis.md` through `24-kpi-framework.md`.
-2. THE SEO_Strategy_Document SHALL cross-reference related documents using relative markdown links where applicable.
-3. WHEN any keyword, URL, or strategic recommendation appears in more than one document, THE SEO_Documentation_Suite SHALL maintain consistency in terminology, naming conventions, and strategic direction across all documents.
-4. THE SEO_Documentation_Suite SHALL use English as the primary document language while embedding Arabic terms, keywords, and phrases in context throughout every document.
-5. IF a document references a URL structure or keyword from another document, THEN THE SEO_Strategy_Document SHALL use the exact same URL pattern and keyword spelling as defined in `03-website-architecture.md` and `02-keyword-research.md` respectively.
+---
+
+### REQ-003-6: Residential / Villas Industry Page
+**URL:** `/[locale]/industries/residential`  
+**Arabic title:** `الفلل والمشاريع السكنية`  
+**Target keywords (AR):** مقاول ألمنيوم فلل، أعمال حديد مزخرف للفلل، نوافذ وأبواب ألمنيوم للفلل  
+**Priority:** MEDIUM  
+**Content requirements:**
+- Emphasise custom fabrication, ornamental iron, luxury finishes
+- Reference Al-Naseem Private Villa project
+- Include residential-specific FAQ (guarantees, lead times, design options)
+
+---
+
+## REQ-004 — New Pages — Geographic / Location SEO
+
+All location pages must be unique (not duplicate) — each must reference specific districts, landmark projects, and local context.
+
+### REQ-004-1: Riyadh Main Location Page
+**URL:** `/[locale]/locations/riyadh`  
+**Arabic title:** `مقاول ألمنيوم وزجاج وحديد في الرياض`  
+**Target keywords (AR):** مقاول الرياض، أعمال ألمنيوم الرياض، شركة مقاولات الرياض  
+**Priority:** CRITICAL  
+**Content requirements:**
+- Overview of all services available in Riyadh
+- Map embed + full address
+- List landmark Riyadh projects with links
+- Working hours + contact details
+
+---
+
+### REQ-004-2: North Riyadh Location Page
+**URL:** `/[locale]/locations/north-riyadh`  
+**Arabic title:** `أعمال الألمنيوم والزجاج في شمال الرياض`  
+**Target keywords:** أعمال ألمنيوم شمال الرياض، مقاول شمال الرياض، تركيب واجهات حي الملقا النرجس  
+**Priority:** HIGH
+
+---
+
+### REQ-004-3: Central Riyadh / KAFD Location Page
+**URL:** `/[locale]/locations/kafd-riyadh`  
+**Arabic title:** `مقاول واجهات مركز الملك عبدالله المالي`  
+**Target keywords:** مقاول KAFD، أعمال واجهات مركز الملك عبدالله المالي  
+**Priority:** HIGH  
+**Note:** Reference the KAFD Pedestrian Bridge project directly
+
+---
+
+### REQ-004-4: Jeddah Location Page
+**URL:** `/[locale]/locations/jeddah`  
+**Arabic title:** `أعمال الألمنيوم والزجاج في جدة`  
+**Target keywords:** مقاول ألمنيوم جدة، أعمال زجاج جدة، شركة واجهات جدة  
+**Priority:** HIGH  
+**Note:** Reference Al-Nakheel Mall Atrium (Jeddah) project
+
+---
+
+### REQ-004-5: Dammam / Eastern Province Location Page
+**URL:** `/[locale]/locations/dammam`  
+**Arabic title:** `أعمال الألمنيوم والزجاج في الدمام والمنطقة الشرقية`  
+**Target keywords:** مقاول ألمنيوم الدمام، أعمال واجهات المنطقة الشرقية  
+**Priority:** MEDIUM
+
+---
+
+### REQ-004-6: Jubail Industrial City Location Page
+**URL:** `/[locale]/locations/jubail`  
+**Arabic title:** `المقاولات الصناعية في الجبيل`  
+**Target keywords:** مقاول هياكل معدنية الجبيل، تكسية ألمنيوم صناعي الجبيل  
+**Priority:** MEDIUM  
+**Note:** Reference Industrial Innovation Complex project
+
+---
+
+## REQ-005 — New Pages — Sub-Service Pages
+
+Each sub-service page must have: unique H1, 400+ word description, benefits list, process steps, FAQ (min. 5 questions), related projects, and CTA. All must include Service + BreadcrumbList JSON-LD.
+
+### Aluminium Sub-Services
+
+#### REQ-005-1: Curtain Wall Systems
+**URL:** `/[locale]/services/aluminum-works/curtain-wall-systems`  
+**Arabic title:** `أنظمة جدران الستائر الألمنيوم`  
+**Target keywords:** جدار الستائر ألمنيوم الرياض، نظام Unit curtain wall، تنفيذ جدران ستائر للأبراج  
+**Priority:** CRITICAL
+
+#### REQ-005-2: Aluminium Windows & Doors
+**URL:** `/[locale]/services/aluminum-works/aluminum-windows-doors`  
+**Arabic title:** `نوافذ وأبواب الألمنيوم`  
+**Target keywords:** نوافذ ألمنيوم الرياض، أبواب ألمنيوم مقاومة للحريق، تركيب نوافذ ألمنيوم  
+**Priority:** HIGH
+
+#### REQ-005-3: Aluminium Cladding
+**URL:** `/[locale]/services/aluminum-works/aluminum-cladding`  
+**Arabic title:** `التكسية الألمنيوم للمباني`  
+**Target keywords:** تكسية ألمنيوم للمباني، ألواح تكسية ألمنيوم، واجهات ألمنيوم مركبة  
+**Priority:** HIGH
+
+#### REQ-005-4: Aluminium Facades
+**URL:** `/[locale]/services/aluminum-works/aluminum-facades`  
+**Arabic title:** `واجهات الألمنيوم المعمارية`  
+**Target keywords:** واجهات ألمنيوم معمارية، تصميم واجهات ألمنيوم، مقاول واجهات ألمنيوم  
+**Priority:** HIGH
+
+#### REQ-005-5: Structural Aluminium Glazing (SSG)
+**URL:** `/[locale]/services/aluminum-works/structural-glazing`  
+**Arabic title:** `الزجاج الإنشائي الملصق (SSG)`  
+**Target keywords:** زجاج إنشائي ملصق SSG، واجهات بلا إطارات ظاهرة، structural silicone glazing  
+**Priority:** MEDIUM
+
+---
+
+### Glass Sub-Services
+
+#### REQ-005-6: Structural Glass Facades
+**URL:** `/[locale]/services/glass-works/structural-glass-facades`  
+**Arabic title:** `الواجهات الزجاجية الإنشائية`  
+**Target keywords:** واجهة زجاجية إنشائية، زجاج إنشائي حامل، تنفيذ واجهات زجاجية كاملة  
+**Priority:** CRITICAL
+
+#### REQ-005-7: Spider Glass Systems
+**URL:** `/[locale]/services/glass-works/spider-glass-systems`  
+**Arabic title:** `أنظمة Spider Glass — الزجاج بدون إطارات`  
+**Target keywords:** Spider glass الرياض، زجاج بدون إطار، نظام التثبيت النقطي للزجاج  
+**Priority:** HIGH
+
+#### REQ-005-8: Fire-Rated Glass
+**URL:** `/[locale]/services/glass-works/fire-rated-glass`  
+**Arabic title:** `الزجاج المقاوم للحريق`  
+**Target keywords:** زجاج مقاوم للحريق، زجاج EI EW للمباني، متطلبات الدفاع المدني للزجاج  
+**Priority:** HIGH
+
+#### REQ-005-9: Insulated Glass Units (IGU)
+**URL:** `/[locale]/services/glass-works/insulating-glass-units`  
+**Arabic title:** `وحدات الزجاج العازل المزدوج`  
+**Target keywords:** زجاج مزدوج معزول، IGU الرياض، زجاج Low-E عازل حراري  
+**Priority:** HIGH
+
+#### REQ-005-10: Low-Iron Ultra-Clear Glass
+**URL:** `/[locale]/services/glass-works/low-iron-glass`  
+**Arabic title:** `الزجاج منخفض الحديد فائق الوضوح`  
+**Target keywords:** زجاج منخفض الحديد، Ultra clear glass الرياض، زجاج شفافية عالية صالات عرض  
+**Priority:** MEDIUM
+
+---
+
+### Steel Sub-Services
+
+#### REQ-005-11: Steel Structures
+**URL:** `/[locale]/services/steel-works/steel-structures`  
+**Arabic title:** `الهياكل الفولاذية الإنشائية`  
+**Target keywords:** هياكل فولاذية إنشائية الرياض، تصنيع هياكل حديدية، مقاول هياكل فولاذية  
+**Priority:** CRITICAL
+
+#### REQ-005-12: Steel Warehouses
+**URL:** `/[locale]/services/steel-works/steel-warehouses`  
+**Arabic title:** `المستودعات والمخازن الحديدية`  
+**Target keywords:** مستودعات حديدية الرياض، إنشاء مستودع حديدي، أسعار مستودعات حديدية  
+**Priority:** HIGH
+
+#### REQ-005-13: Ornamental Iron Works
+**URL:** `/[locale]/services/steel-works/ornamental-iron`  
+**Arabic title:** `الحديد المزخرف والفني`  
+**Target keywords:** حديد مزخرف للفلل، بوابات حديدية مزخرفة، درابزين حديدي مزخرف  
+**Priority:** HIGH
+
+#### REQ-005-14: Steel Canopies & Shading
+**URL:** `/[locale]/services/steel-works/steel-canopies`  
+**Arabic title:** `المظلات والساتر الحديدية`  
+**Target keywords:** مظلات حديدية الرياض، ساتر حديدي، تركيب مظلة معدنية  
+**Priority:** MEDIUM
+
+#### REQ-005-15: Pedestrian Bridges
+**URL:** `/[locale]/services/steel-works/pedestrian-bridges`  
+**Arabic title:** `جسور المشاة الفولاذية`  
+**Target keywords:** جسر مشاة فولاذي، تصنيع جسور المشاة، إنشاء جسر مشاة حديدي  
+**Priority:** MEDIUM
+
+---
+
+## REQ-006 — New Pages — Cost / Pricing Pages
+
+Each cost page must: explain pricing factors (NOT give exact prices), include a cost range guide, explain what affects price, and funnel to the quote form. Must include FAQPage schema.
+
+### REQ-006-1: Aluminium Works Cost Page
+**URL:** `/[locale]/cost/aluminum-works`  
+**Arabic title:** `تكلفة أعمال الألمنيوم في الرياض — دليل الأسعار 2026`  
+**Target keywords (AR):** أسعار أعمال الألمنيوم الرياض، تكلفة تركيب الألمنيوم، سعر متر الألمنيوم  
+**Target keywords (EN):** aluminum works cost Riyadh, aluminum installation price Saudi Arabia  
+**Priority:** CRITICAL  
+**Content requirements:**
+- Price factors: alloy grade, finish type, profile complexity, installation access
+- General cost ranges (e.g., بالمتر المربع or بالمتر الطولي)
+- Comparison: standard vs. thermal-break vs. curtain wall systems
+- FAQ: 5 questions about pricing
+- CTA: احصل على عرض سعر مجاني
+
+---
+
+### REQ-006-2: Glass Facades Cost Page
+**URL:** `/[locale]/cost/glass-facades`  
+**Arabic title:** `تكلفة الواجهات الزجاجية — دليل الأسعار`  
+**Target keywords (AR):** تكلفة واجهة زجاجية، سعر متر الزجاج الإنشائي، أسعار زجاج الواجهات  
+**Priority:** CRITICAL  
+**Content requirements:**
+- Factors: glass type (tempered, IGU, Low-E), system type (framed, SSG, Spider), building height
+- Typical price tiers by project type
+- FAQ: 5 pricing questions
+
+---
+
+### REQ-006-3: Steel Structures Cost Page
+**URL:** `/[locale]/cost/steel-structures`  
+**Arabic title:** `تكلفة الهياكل الحديدية والفولاذية`  
+**Target keywords (AR):** أسعار الهياكل الحديدية، تكلفة إنشاء مستودع حديدي، سعر طن الحديد الإنشائي  
+**Priority:** HIGH
+
+---
+
+### REQ-006-4: Curtain Wall Cost Page
+**URL:** `/[locale]/cost/curtain-wall`  
+**Arabic title:** `تكلفة جدار الستائر للأبراج التجارية`  
+**Target keywords (AR):** تكلفة جدار الستائر، سعر نظام curtain wall للأبراج، أسعار واجهات الأبراج  
+**Priority:** HIGH
+
+---
+
+## REQ-007 — Central FAQ Hub Page
+
+### REQ-007-1: FAQ Hub
+**URL:** `/[locale]/faq`  
+**Arabic title:** `الأسئلة الشائعة — مؤسسة الفهد للمقاولات`  
+**Priority:** HIGH  
+**Content requirements:**
+- Aggregate the top 5 questions from each service's FAQ (15 questions minimum)
+- Add general company questions (founded, coverage area, certifications, payment terms)
+- Add People Also Ask-style questions targeting PAA boxes
+- Full `FAQPage` JSON-LD schema
+- Group by category: الألمنيوم / الزجاج / الحديد / عام / التسعير  
+**Acceptance Criteria:**
+- Minimum 25 Q&A pairs
+- FAQPage schema validates without errors
+- Page linked from footer and from each service page
+
+---
+
+## REQ-008 — Case Study Pages
+
+### REQ-008-1: Case Study Template & Infrastructure
+**Priority:** HIGH  
+**Requirement:** Create a `/[locale]/case-studies/[slug]` route with a dedicated template separate from `/projects/[slug]`.  
+**Case Study template must include:**
+- Client overview section
+- Challenge → Solution → Results structure (with quantified metrics)
+- Client testimonial quote
+- Before/after or process imagery
+- Technologies & materials list
+- PDF download CTA (or link to project documents)
+- `Article` + `CaseStudy` JSON-LD (sub-type of Article)
+- Internal links to related services and blog posts  
+
+### REQ-008-2: King Salman Financial Tower Case Study
+**URL:** `/[locale]/case-studies/king-salman-financial-tower`  
+**Priority:** HIGH  
+**Must include:** 45,000m² scope, custom IGU specs, thermal performance vs. SBC-601 benchmark, delivery timeline
+
+### REQ-008-3: NEOM Infrastructure Hub Case Study
+**URL:** `/[locale]/case-studies/neom-infrastructure-hub`  
+**Priority:** HIGH  
+**Must include:** 120,000m² scope, Vision 2030 compliance, desert environment challenges, modular system approach
+
+### REQ-008-4: Red Sea Global Pavilion Case Study
+**URL:** `/[locale]/case-studies/red-sea-global-pavilion`  
+**Priority:** HIGH  
+**Must include:** LEED Platinum contribution, 75% recycled aluminium, sustainability metrics
+
+### REQ-008-5: KAFD Pedestrian Bridge Case Study
+**URL:** `/[locale]/case-studies/kafd-pedestrian-bridge`  
+**Priority:** MEDIUM  
+**Must include:** 500+ ton installation, laser-cut geometric panels, award mention, urban landmark positioning
+
+---
+
+## REQ-009 — Content / Blog Strategy
+
+### REQ-009-1: Create English Blog Content
+**Priority:** CRITICAL  
+**Problem:** `/en/blog` has zero articles. English-language search for B2B decision-makers (architects, international developers, consultants) is entirely unaddressed.  
+**Requirement:** Translate the following 8 priority Arabic blog posts to English and publish under `/en/blog/[same-slug]`:
+1. `aluminum-curtain-wall-systems`
+2. `spider-glass-structural-systems`
+3. `fire-rated-glass-safety-standards`
+4. `bim-facade-coordination`
+5. `thermal-insulation-desert-climates`
+6. `iso-certification-contracting`
+7. `vision-2030-construction-sector`
+8. `saso-standards-facade-materials`  
+**Acceptance Criteria:**
+- `/en/content/blog.json` contains ≥8 translated posts
+- `hreflang` links correctly connect AR and EN versions
+
+---
+
+### REQ-009-2: Create Cost / Pricing Blog Content
+**Priority:** HIGH  
+**Requirement:** Publish 4 new Arabic blog posts targeting cost-intent keywords:
+1. "كم تكلفة تركيب الألمنيوم في الرياض؟ — دليل شامل 2026"
+2. "تكلفة الواجهات الزجاجية في المملكة: العوامل المؤثرة وكيف تحصل على أفضل سعر"
+3. "مقارنة تكاليف أنظمة جدار الستائر: Stick vs. Unitized vs. Semi-Unitized"
+4. "أسعار أعمال الحديد الإنشائي في الرياض — ما الذي يحدد التكلفة؟"  
+**Acceptance Criteria:**
+- Each post ≥800 words
+- Includes FAQ section (≥5 questions) with FAQPage schema
+- Internal links to corresponding service page and `/cost/` page
+
+---
+
+### REQ-009-3: Create Pillar Pages
+**Priority:** HIGH  
+**Requirement:** Create 3 comprehensive pillar pages (~2000+ words each) covering the full topic cluster for each main service:
+1. **"الدليل الشامل لأعمال الألمنيوم في المملكة العربية السعودية"** → `/blog/ultimate-guide-aluminum-works-saudi-arabia`
+2. **"الدليل الشامل للواجهات الزجاجية الإنشائية"** → `/blog/ultimate-guide-structural-glass-facades`
+3. **"الدليل الشامل للهياكل الفولاذية في السعودية"** → `/blog/ultimate-guide-steel-structures-saudi-arabia`  
+**Each pillar page must:**
+- Link to all sub-service pages in its cluster
+- Link to 5+ related blog articles
+- Have comprehensive Table of Contents (TOC)
+- Include `Article` JSON-LD
+- Be linked from the corresponding service page
+
+---
+
+### REQ-009-4: Create Comparison Blog Content
+**Priority:** MEDIUM  
+**Requirement:** Publish 3 comparison articles:
+1. "الألمنيوم مقابل الحديد: أيهما أنسب لواجهة مبناك؟"
+2. "جدار الستائر vs. الواجهة الزجاجية التقليدية: الفروق الجوهرية"
+3. "أفضل شركات الألمنيوم في الرياض: معايير الاختيار الصحيح"
+
+---
+
+### REQ-009-5: Create Local Blog Content
+**Priority:** MEDIUM  
+**Requirement:** Publish 3 location-targeted blog articles:
+1. "أبرز مشاريع الواجهات الزجاجية في الرياض 2024-2026"
+2. "مشاريع الألمنيوم والزجاج في حي مركز الملك عبدالله المالي"
+3. "دليل المطور العقاري في جدة لاختيار مقاول الواجهات"
+
+---
+
+## REQ-010 — Local SEO Technical Requirements
+
+### REQ-010-1: NAP Consistency Audit & Fix
+**Priority:** HIGH  
+**Requirement:** Ensure Name, Address, Phone is identical across:
+- `organization.ts` schema
+- `ar.json` and `en.json` footer section
+- Contact page content
+- Request Quote page footer
+- All meta descriptions that include contact info  
+**Standard format to use:**
+- Name: `مؤسسة الفهد للمقاولات` / `Al Fahd Contracting`
+- Address: `أبراج العليا، برج ب، الطابق ١٤، الرياض، المملكة العربية السعودية`
+- Phone: `+966 11 445 9222` (consistent format everywhere)
+
+---
+
+### REQ-010-2: Google Business Profile Integration
+**Priority:** CRITICAL  
+**Requirement:** 
+- Create/claim and fully optimise Google Business Profile
+- Add GBP link to footer and contact page (`rel="noopener"`)
+- Add `sameAs` in `organization.ts` pointing to GBP URL
+- GBP must have: all services listed, 50+ photos, Q&A populated, working hours, all attributes  
+**Acceptance Criteria:**
+- GBP URL included in `sameAs` array in schema
+- Footer "موقعنا على خرائط Google" link works
+
+---
+
+### REQ-010-3: Local Citations Program
+**Priority:** HIGH  
+**Requirement:** Submit NAP to minimum 15 Saudi Arabian business directories and industry sites including:
+- Saudi Chamber of Commerce (chamber.org.sa)
+- منصة بلدي (balady.gov.sa)
+- نافس (nafis.gov.sa)
+- السجل التجاري الإلكتروني
+- Yello Saudi Arabia
+- Foursquare / Yelp KSA
+- Waze Business
+- Apple Maps Business Connect
+- Bing Places  
+**Acceptance Criteria:**
+- NAP identical on all platforms
+- Document all submission URLs
+
+---
+
+### REQ-010-4: LocalBusiness Schema Enhancement
+**Priority:** HIGH  
+**Requirement:** Enhance `organization.ts` with:
+- `addressRegion: "01"` (ISO 3166-2:SA Riyadh Region code) alongside Arabic text
+- `priceRange: "$$$$"` (enterprise level indicator)
+- `currenciesAccepted: "SAR"`
+- `paymentAccepted: "Cash, Bank Transfer, Letter of Credit"`
+- `slogan` property (Arabic tagline)
+- `foundingDate: "1999"`
+- `numberOfEmployees` (approximate)
+
+---
+
+## REQ-011 — Technical SEO Enhancements
+
+### REQ-011-1: Replace `<img>` with Next.js `<Image>` Component
+**Priority:** HIGH  
+**Problem:** All project pages, service pages, and blog pages use raw `<img>` tags. Next.js `<Image>` provides automatic WebP conversion, lazy loading, and size optimisation critical for Core Web Vitals (LCP).  
+**Requirement:** Replace all `<img>` tags in `app/[locale]/` with `<Image>` from `next/image` where the image source is known at build time or is a relative path. For external CDN images (lh3.googleusercontent.com), ensure `remotePatterns` is already configured (it is) and use `<Image>` with `fill` or fixed dimensions.  
+**Acceptance Criteria:**
+- No raw `<img>` tags in project detail, service detail, or blog post templates
+- PageSpeed Insights LCP score improves by ≥10 points
+
+---
+
+### REQ-011-2: Add Explicit hreflang `<link>` Tags in `<head>`
+**Priority:** HIGH  
+**Problem:** hreflang is set via Next.js `Metadata.alternates.languages` which next-intl/Next.js renders as `<link rel="alternate">` tags — verify these are actually emitted in the rendered HTML head. If not, add explicit hreflang tags in the locale layout.  
+**Requirement:** Confirm (via `curl` or browser DevTools on production) that `<link rel="alternate" hreflang="ar" ...>`, `<link rel="alternate" hreflang="en" ...>`, and `<link rel="alternate" hreflang="x-default" ...>` are present in every page's `<head>`.  
+**Acceptance Criteria:**
+- Google Search Console shows no hreflang errors
+- All pages have 3 hreflang link tags
+
+---
+
+### REQ-011-3: Create Thank You Page for Conversions
+**Priority:** HIGH  
+**Requirement:** Create `/[locale]/thank-you` page shown after successful quote form submission. This enables GA4 conversion tracking.  
+**Page content:** Confirmation message + expected callback timeframe (24h) + WhatsApp CTA + related services links  
+**Redirect logic:** After successful form submission in `quote-client.tsx`, redirect to `/${locale}/thank-you` instead of showing inline success message.  
+**Acceptance Criteria:**
+- `/ar/thank-you` and `/en/thank-you` return 200
+- GA4 Goal can be configured using pageview of `/thank-you`
+- Page excluded from sitemap (noindex or omitted)
+
+---
+
+### REQ-011-4: Add GA4 Conversion Events
+**Priority:** HIGH  
+**Requirement:** Implement the following GA4 events via `@next/third-parties` or dataLayer push:
+- `generate_lead` — on quote form successful submit
+- `contact` — on contact form successful submit
+- `click_whatsapp` — on any WhatsApp link click
+- `click_phone` — on any `tel:` link click
+- `click_cta` — on primary CTA buttons (with `cta_location` parameter)  
+**Acceptance Criteria:**
+- Events visible in GA4 DebugView
+- Conversion rate calculable from Analytics dashboard
+
+---
+
+### REQ-011-5: Add `preload` for Above-the-Fold Images
+**Priority:** MEDIUM  
+**Requirement:** Add `<link rel="preload" as="image">` hints in page `<head>` for the hero image/video poster on Home, and the cover image on Service and Project hero sections. This directly improves LCP.  
+**Acceptance Criteria:**
+- Home page LCP element has preload hint
+- PageSpeed Insights shows no "Preload LCP image" opportunity
+
+---
+
+### REQ-011-6: Add Sitemap Image Extensions
+**Priority:** MEDIUM  
+**Requirement:** Extend `sitemap.ts` to include `<image:image>` tags for project pages, using the `coverImage` field from `projects.json`. This helps Google index project portfolio images.  
+**Acceptance Criteria:**
+- Sitemap includes image sitemap extensions for project pages
+- Google Search Console → Sitemaps shows image count
+
+---
+
+### REQ-011-7: Add Security & Performance Headers
+**Priority:** MEDIUM  
+**Requirement:** Add the following HTTP headers via `next.config.mjs` `headers()` function:
+- `X-Content-Type-Options: nosniff`
+- `X-Frame-Options: SAMEORIGIN`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy: camera=(), microphone=(), geolocation=()`
+- `Content-Security-Policy` (basic — allow self + Google Fonts + GTM)  
+**Note:** These headers also send positive technical trust signals.
+
+---
+
+### REQ-011-8: Migrate External CDN Images to Local/Stable Storage
+**Priority:** MEDIUM  
+**Problem:** All project and blog images use `lh3.googleusercontent.com` URLs which are Google AI Studio-generated and may expire or become inaccessible. This is a long-term content stability risk.  
+**Requirement:** Migrate images to a stable CDN (Cloudinary, Vercel Blob, or AWS S3) and update all JSON content files to reference the new stable URLs.  
+**Acceptance Criteria:**
+- No `lh3.googleusercontent.com` URLs in production content
+- All images load correctly and are served from a stable, controlled source
+
+---
+
+## REQ-012 — Internal Linking Architecture
+
+### REQ-012-1: Blog → Service Internal Links
+**Priority:** HIGH  
+**Requirement:** Every blog article must contain at least 2 contextual internal links to relevant service pages.  
+**Mapping:**
+- Articles about aluminium → link to `/services/aluminum-works` and relevant sub-service
+- Articles about glass → link to `/services/glass-works`
+- Articles about steel → link to `/services/steel-works`
+- Technical articles → link to the most relevant `/blog/` pillar page  
+**Acceptance Criteria:**
+- Blog post template includes a "Related Services" sidebar/footer section
+- Existing 23 blog posts are updated with internal links
+
+---
+
+### REQ-012-2: Project → Service Internal Links
+**Priority:** HIGH  
+**Requirement:** Each project detail page must link to its primary service page.  
+**Example:** King Salman Financial Tower (glass category) → link to `/services/glass-works`  
+**Acceptance Criteria:**
+- Every project page has at least 1 internal link to a service page
+
+---
+
+### REQ-012-3: Service → Blog Internal Links
+**Priority:** MEDIUM  
+**Requirement:** Each service detail page must include a "مقالات ذات صلة" (Related Articles) section linking to 3 relevant blog posts.  
+**Acceptance Criteria:**
+- Aluminium service page links to 3 aluminium-related blog posts
+- Glass service page links to 3 glass-related blog posts
+- Steel service page links to 3 steel-related blog posts
+
+---
+
+### REQ-012-4: Cross-Service Internal Links
+**Priority:** MEDIUM  
+**Requirement:** Each service page must include a mention of complementary services with a link.  
+**Example:** Aluminium page mentions "تُقدّم الفهد أيضاً [أعمال الزجاج الإنشائي](/services/glass-works)"  
+**Acceptance Criteria:**
+- Each service page links to at least 1 other service page
+
+---
+
+### REQ-012-5: About Page Internal Links
+**Priority:** MEDIUM  
+**Requirement:** About page must include internal links to:
+- 3 featured projects
+- Services overview page
+- Request Quote page  
+**Acceptance Criteria:**
+- At least 5 contextual internal links on the About page
+
+---
+
+## REQ-013 — Conversion Rate Optimisation (CRO)
+
+### REQ-013-1: Add Social Proof to Quote Form Page
+**Priority:** HIGH  
+**Requirement:** Add to `/request-quote` page:
+- A testimonial quote from a satisfied client (from `testimonials.json`)
+- A 3-stat trust bar (500+ projects, 25+ years, ISO certified)
+- "Response within 24 hours" promise badge  
+**Acceptance Criteria:**
+- Quote form conversion rate measurable via GA4
+- Page includes at least 1 client testimonial
+
+---
+
+### REQ-013-2: Add Author Bio Section to Blog Posts
+**Priority:** MEDIUM  
+**Requirement:** Add an "About the Author" section at the bottom of blog posts for posts with named engineer authors. Include name, title, brief bio, and photo placeholder.  
+**Acceptance Criteria:**
+- Posts with named authors (not "فريق الفهد الهندسي") show author bio box
+- Bio box links to author's related articles
+
+---
+
+### REQ-013-3: Sticky WhatsApp + Call Bar on Mobile
+**Priority:** MEDIUM  
+**Requirement:** On mobile viewports, add a persistent bottom action bar with two buttons: "واتساب" (green) and "اتصل الآن" (blue). This should appear on all pages except the quote form and portal.  
+**Acceptance Criteria:**
+- Visible on mobile on all key pages
+- Fires `click_whatsapp` and `click_phone` GA4 events
+
+---
+
+### REQ-013-4: Exit Intent / Scroll-Depth Lead Capture
+**Priority:** LOW  
+**Requirement:** On service pages and blog posts, trigger a lead capture prompt (email or WhatsApp) when user has scrolled 80%+ of the page without clicking a CTA.  
+**Acceptance Criteria:**
+- Prompt appears after 80% scroll on service detail pages
+- Can be dismissed
+- Submission fires `generate_lead` GA4 event
+
+---
+
+## REQ-014 — AI Search Optimisation
+
+### REQ-014-1: Structured H2/H3 Question Format
+**Priority:** HIGH  
+**Requirement:** All service pages, industry pages, and pillar blog posts must use question-format H2/H3 headings where appropriate (e.g., "ما هي مزايا جدار الستائر؟", "كيف نختار نوع الألمنيوم المناسب؟").  
+**Acceptance Criteria:**
+- ≥3 question-format headings per service/industry page
+- Content beneath each heading directly answers the question
+
+---
+
+### REQ-014-2: Build Author E-E-A-T Profiles
+**Priority:** HIGH  
+**Requirement:** Create public author profile pages at `/[locale]/team/[slug]` for the named engineers who write blog posts. Each profile must include: name, qualifications, years of experience, specialisations, articles list.  
+**Acceptance Criteria:**
+- Profile pages created for ≥3 named authors
+- `Person` schema on each profile page
+- Blog posts link to author profile page
+
+---
+
+### REQ-014-3: Add Quantified Data Points Throughout Content
+**Priority:** MEDIUM  
+**Requirement:** Ensure all service descriptions, case studies, and blog posts contain specific, citable metrics (e.g., "توفير 40% في أحمال التكييف", "سماكة 25 ميكرون", "اختبار ±3.0 كيلوباسكال"). AI models prefer citing specific, verifiable data.  
+**Acceptance Criteria:**
+- Every service page has ≥5 specific technical metrics
+- Case studies include quantified before/after metrics
+
+---
+
+### REQ-014-4: Add Wikidata / Knowledge Graph Presence
+**Priority:** LOW  
+**Requirement:** Create or claim a Wikidata entry for مؤسسة الفهد للمقاولات with key properties (founded, location, industry, website, social profiles). This helps ChatGPT/Gemini identify and cite the company.  
+**Acceptance Criteria:**
+- Wikidata Q-number exists for the company
+- Website property links to `alfahd-contracting.com`
+
+---
+
+## REQ-015 — Social Media & External Profiles
+
+### REQ-015-1: Create & Link Real Social Profiles
+**Priority:** HIGH  
+**Problem:** `organization.ts` has placeholder LinkedIn and Twitter URLs.  
+**Requirement:** Create verified profiles on LinkedIn, X (Twitter), and Instagram. Update `sameAs` array in schema with real URLs.  
+**Minimum profile completeness:**
+- LinkedIn: Company page with logo, banner, description, all services, ≥10 posts
+- Instagram: Portfolio images of projects, branded highlights
+- X: Company bio, link to website  
+**Acceptance Criteria:**
+- `sameAs` in schema uses real, verified profile URLs
+- Profiles are publicly accessible
+
+---
+
+## Acceptance Criteria Summary
+
+All requirements are considered complete when:
+
+1. **Zero Critical Bugs:** No 404s from sitemap links; OG image exists; category mismatches fixed; WhatsApp number is real
+2. **Schema Coverage:** Every page type (home, about, service, project, blog, contact, quote) has appropriate JSON-LD
+3. **Page Inventory:** All REQ-003 through REQ-007 pages are published with unique content, correct metadata, and JSON-LD
+4. **Internal Linking:** Every service, blog, and project page participates in the internal link graph as specified in REQ-012
+5. **Local SEO:** GBP is live and linked; NAP consistent; ≥6 location pages published
+6. **English Content:** `/en/blog` has ≥8 posts; all service pages have English FAQ content
+7. **GA4 Tracking:** All 5 conversion events fire correctly; Thank You page exists
+8. **Performance:** PageSpeed Insights mobile score ≥70 on home, service, and project pages
+9. **Validation:** All schema passes Google Rich Results Test with no errors
+10. **No Placeholder Content:** No `example.com`, `966500000000`, or placeholder social URLs in production
+
+---
+
+*Requirements authored based on Enterprise SEO Audit — June 2026*  
+*Total requirements: 15 sections, 60+ individual requirements*

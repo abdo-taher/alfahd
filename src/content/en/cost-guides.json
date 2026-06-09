@@ -1,0 +1,294 @@
+[
+  {
+    "id": "cg-1",
+    "slug": "aluminum-works-cost",
+    "title": "Aluminium Works Price Guide 2026",
+    "description": "A comprehensive guide to aluminium works pricing in Saudi Arabia for 2026, covering cost factors, system comparisons, and practical tips for getting the best quote.",
+    "relatedServiceSlug": "aluminum-works",
+    "pricingFactors": [
+      {
+        "factor": "Aluminium Profile Type",
+        "description": "Thermally broken profiles cost 30–50% more than standard profiles",
+        "impact": "high"
+      },
+      {
+        "factor": "Glass Specification",
+        "description": "Double-glazed Low-E units raise cost by 20–40% compared to single glazing",
+        "impact": "high"
+      },
+      {
+        "factor": "Finish Type and Colour",
+        "description": "Custom colours and metallic finishes add 10–20% to base cost",
+        "impact": "medium"
+      },
+      {
+        "factor": "Project Scale",
+        "description": "Larger projects benefit from lower unit prices due to economies of scale",
+        "impact": "medium"
+      },
+      {
+        "factor": "Installation Difficulty",
+        "description": "High-level works require scaffolding and cranes, raising labour costs",
+        "impact": "medium"
+      },
+      {
+        "factor": "Execution Season",
+        "description": "Peak-season execution can raise labour costs by 15–25%",
+        "impact": "low"
+      }
+    ],
+    "systemTiers": [
+      {
+        "name": "Economy",
+        "description": "Standard aluminium profiles without thermal break, single glazing — suited to economy buildings and warehouses",
+        "relativeRange": "Lowest cost — basic"
+      },
+      {
+        "name": "High Performance",
+        "description": "Thermal-break profiles with Low-E double glazing — most common for towers and offices",
+        "relativeRange": "Medium-high — 30–50% above economy"
+      },
+      {
+        "name": "Premium",
+        "description": "Curtain wall systems with triple glazing and bespoke architectural design — for prestige projects",
+        "relativeRange": "Highest cost — 80–120% above economy"
+      }
+    ],
+    "howToGetBestPrice": [
+      "Submit complete, detailed drawings and specifications for an accurate price, not estimates",
+      "Request multiple quotes and compare specifications, not price alone",
+      "Plan ahead and avoid urgent requests which carry emergency surcharges",
+      "Discuss phased project delivery to improve cash flow"
+    ],
+    "faq": [
+      {
+        "question": "What is a ballpark price per m² for aluminium works in Riyadh?",
+        "answer": "Prices vary considerably by specification, so we always recommend requesting a detailed quote. Costs are influenced by profile type, finish, glass, installation complexity, project size, and site conditions."
+      },
+      {
+        "question": "Is there room to negotiate on aluminium works pricing?",
+        "answer": "Yes. Factors that help improve pricing include large project volume, complete clear specifications, flexible scheduling, and early commitment before the peak demand season."
+      }
+    ],
+    "keywords": {
+      "ar": ["أسعار أعمال الألمنيوم الرياض"],
+      "en": ["aluminum works cost Riyadh 2026", "aluminum price Saudi Arabia", "aluminum quote"]
+    }
+  },
+  {
+    "id": "cg-2",
+    "slug": "glass-works-cost",
+    "title": "Glass Works Price Guide 2026",
+    "description": "A comprehensive guide to glass works pricing in Saudi Arabia for 2026, covering all glass types, installation requirements, and factors that affect cost.",
+    "relatedServiceSlug": "glass-works",
+    "pricingFactors": [
+      {
+        "factor": "Glass Type and Specification",
+        "description": "Tempered, double-glazed, and Low-E glass cost more than standard float glass",
+        "impact": "high"
+      },
+      {
+        "factor": "Glass Thickness and Panel Dimensions",
+        "description": "Larger and thicker panels cost more and are harder to install",
+        "impact": "high"
+      },
+      {
+        "factor": "Installation System",
+        "description": "Frameless SSG and Spider-fix systems cost more than traditional framed systems",
+        "impact": "medium"
+      },
+      {
+        "factor": "Height and Access Difficulty",
+        "description": "High-level works add significant equipment and safety costs",
+        "impact": "medium"
+      },
+      {
+        "factor": "Special Coatings and Treatments",
+        "description": "Ceramic printing, etching, and self-cleaning coatings add 25–50%",
+        "impact": "medium"
+      },
+      {
+        "factor": "Quantity and Schedule",
+        "description": "Large orders and flexible schedules improve unit pricing",
+        "impact": "low"
+      }
+    ],
+    "systemTiers": [
+      {
+        "name": "Standard Glass",
+        "description": "Single or standard double-glazed glass in a traditional aluminium frame — suitable for economy projects",
+        "relativeRange": "Basic — cost reference"
+      },
+      {
+        "name": "High-Performance Glass",
+        "description": "Low-E double-glazed with thermal frames — the optimal choice for towers and offices",
+        "relativeRange": "35–60% above standard"
+      },
+      {
+        "name": "Premium Structural Glass",
+        "description": "SSG and Spider Glass facades without visible frames — for prestige architectural projects",
+        "relativeRange": "100–150% above standard"
+      }
+    ],
+    "howToGetBestPrice": [
+      "Define glass specifications precisely (thickness, type, coating) before requesting quotes",
+      "Combine glass supply and installation in one contract for a better price",
+      "Plan orders in advance to avoid express delivery charges",
+      "Ask about bulk discounts and long-term maintenance contracts"
+    ],
+    "faq": [
+      {
+        "question": "How much more does double-glazed glass cost than single-glazed?",
+        "answer": "Double-glazed IGU units typically cost 60–100% more than single-glazed glass, but deliver substantial electricity savings over time through improved thermal efficiency."
+      }
+    ],
+    "keywords": {
+      "ar": ["أسعار زجاج الرياض"],
+      "en": ["glass works cost Riyadh 2026", "glass price Saudi Arabia", "glass works quote"]
+    }
+  },
+  {
+    "id": "cg-3",
+    "slug": "steel-works-cost",
+    "title": "Steel Works Price Guide 2026",
+    "description": "A comprehensive guide to steel structure and metalwork pricing in Saudi Arabia for 2026, with a breakdown of costs from design through installation.",
+    "relatedServiceSlug": "steel-works",
+    "pricingFactors": [
+      {
+        "factor": "Raw Steel Prices",
+        "description": "Raw steel cost represents 50–65% of total cost and tracks global metals markets",
+        "impact": "high"
+      },
+      {
+        "factor": "Design Complexity and Detailing",
+        "description": "Complex geometric structures can double manufacturing costs",
+        "impact": "high"
+      },
+      {
+        "factor": "Corrosion Protection System",
+        "description": "Hot-dip galvanising costs more than painting but lasts longer with less maintenance",
+        "impact": "medium"
+      },
+      {
+        "factor": "Lifting and Erection Needs",
+        "description": "Projects requiring large cranes and special site equipment add 15–30%",
+        "impact": "medium"
+      },
+      {
+        "factor": "Quality Certificates and Inspection",
+        "description": "NDT tests and material certificates add 5–10% but are essential for government projects",
+        "impact": "low"
+      },
+      {
+        "factor": "Delivery Location and Distance",
+        "description": "Remote areas increase transport and logistics costs",
+        "impact": "low"
+      }
+    ],
+    "systemTiers": [
+      {
+        "name": "Light Structures",
+        "description": "Structures below 30 kg/m² for warehouses, hangars, and canopies — lowest cost",
+        "relativeRange": "Basic — economy"
+      },
+      {
+        "name": "Medium Structures",
+        "description": "Structures 30–60 kg/m² for factories and multi-storey industrial buildings",
+        "relativeRange": "40–70% above light structures"
+      },
+      {
+        "name": "Heavy Structures",
+        "description": "Structures over 60 kg/m² for bridges and heavy industrial facilities",
+        "relativeRange": "Highest — 100–200% above light structures"
+      }
+    ],
+    "howToGetBestPrice": [
+      "Complete structural design and drawing approval before requesting quotes to avoid costly revisions",
+      "Provide complete BIM or CAD plans for accurate pricing without excessive contingency",
+      "Factor in periodic maintenance costs when comparing protection systems",
+      "Ask about supply-only options if you have a certified erection team"
+    ],
+    "faq": [
+      {
+        "question": "How do I estimate the cost of a steel warehouse?",
+        "answer": "Cost is typically calculated by multiplying the steel structure weight (in tonnes) by the supply-and-erect rate per tonne. The structural designer determines weight based on loads and dimensions. For an accurate estimate, you need full dimensions, height, and cladding type."
+      }
+    ],
+    "keywords": {
+      "ar": ["أسعار هياكل حديدية الرياض"],
+      "en": ["steel works cost Riyadh 2026", "steel structure price Saudi Arabia", "steel fabrication quote"]
+    }
+  },
+  {
+    "id": "cg-4",
+    "slug": "curtain-wall-cost",
+    "title": "Glass Curtain Wall Price Guide 2026",
+    "description": "A specialist guide to glass curtain wall system pricing for commercial buildings and towers in Saudi Arabia for 2026.",
+    "relatedServiceSlug": "aluminum-works",
+    "pricingFactors": [
+      {
+        "factor": "Curtain Wall System Type",
+        "description": "Unitized systems cost 30–50% more than stick systems but install significantly faster",
+        "impact": "high"
+      },
+      {
+        "factor": "Glass Specification",
+        "description": "Triple-glazed or smart glass can double the glass cost alone",
+        "impact": "high"
+      },
+      {
+        "factor": "Geometric Complexity",
+        "description": "Curved and irregular facades raise cost by 40–80%",
+        "impact": "high"
+      },
+      {
+        "factor": "Facade Cleaning System",
+        "description": "BMU cleaning equipment falls outside the curtain wall contract but must be designed alongside it",
+        "impact": "medium"
+      },
+      {
+        "factor": "Interior Trim Works",
+        "description": "Interior edge finishes may be included in the curtain wall contract or tendered separately",
+        "impact": "low"
+      },
+      {
+        "factor": "Thermal Code Requirements",
+        "description": "SBC-601 requirements may mandate higher-specification glass, raising cost",
+        "impact": "medium"
+      }
+    ],
+    "systemTiers": [
+      {
+        "name": "Stick System",
+        "description": "Field-assembled element by element — lowest cost, best suited for small and medium buildings",
+        "relativeRange": "Basic — cost reference"
+      },
+      {
+        "name": "Unitized System",
+        "description": "Fully factory-assembled units — faster to install and higher quality for large towers",
+        "relativeRange": "30–50% above stick system"
+      },
+      {
+        "name": "SSG / Point-Fixed",
+        "description": "Frameless facades with structural silicone or Spider point-fixing",
+        "relativeRange": "Highest — 60–100% above stick system"
+      }
+    ],
+    "howToGetBestPrice": [
+      "Decide on system type (Stick/Unitized) early as it significantly affects pricing",
+      "Complete wind and thermal load calculations before requesting quotes",
+      "Combining the curtain wall with internal aluminium works may save 5–10% overall",
+      "Plan and budget for the mockup phase in advance"
+    ],
+    "faq": [
+      {
+        "question": "What is the cost difference between Stick and Unitized systems?",
+        "answer": "Unitized costs 30–50% more than Stick System, but installs 40–60% faster, reducing site equipment and labour costs on large projects."
+      }
+    ],
+    "keywords": {
+      "ar": ["أسعار جدران الستائر الرياض"],
+      "en": ["curtain wall cost Riyadh 2026", "curtain wall price Saudi Arabia", "facade system quote"]
+    }
+  }
+]

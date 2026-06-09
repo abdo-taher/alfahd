@@ -68,7 +68,7 @@ export async function FinalCta() {
             </Link>
 
             <a
-              href="https://wa.me/966500000000"
+              href="https://wa.me/966114459222"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-8 py-4 font-sans font-bold text-xs uppercase tracking-widest text-white transition-all duration-200 border-2 border-white/20 hover:border-white/50"

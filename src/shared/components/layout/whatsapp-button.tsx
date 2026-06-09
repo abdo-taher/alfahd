@@ -1,6 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
+import { trackEvent } from "@/lib/analytics";
 
 export function WhatsAppButton() {
   const locale = useLocale();
@@ -13,6 +14,7 @@ export function WhatsAppButton() {
       rel="noopener noreferrer"
       aria-label={label}
       title={label}
+      onClick={() => trackEvent("click_whatsapp", { location: "floating_button" })}
       className={[
         "fixed bottom-6 z-50 flex size-14 items-center justify-center rounded-full",
         "bg-[#25D366] text-white shadow-lg hover:bg-[#20bc5a] opacity-80",

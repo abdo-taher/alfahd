@@ -1,0 +1,128 @@
+[
+  {
+    "id": "cs-1",
+    "slug": "king-salman-tower-glass",
+    "title": "دراسة حالة: برج الملك سلمان المالي — الواجهة الزجاجية",
+    "client": "حكومة المملكة العربية السعودية",
+    "year": 2024,
+    "location": "الرياض، المملكة العربية السعودية",
+    "scope": "45,000 م² من الواجهات الزجاجية الإنشائية",
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuCvwblNQmF23c_-OuBV0Z0mf899U3_IkjyA5GnwYGAucjLJr5dMn4fIRHOfRhrQXKQp1a9UF4SKTzcHO07m1-nUIN8f_QUAjLWOljnWsKMOYjU7ZIn6cThWq5YIMviz3Qd7OUCZHsN6q0oRTv7_eVjGrBEZw7gJy4I-LzfztGObl7J5yG9JI_9gnbij6SjS2w2HIjWEm3bHFsUza4MeB5TPRd7ny3i0jgWuZ4MUHoJJl342TdyBkVCpsyd88Cfw5CrSk5MCpK67kb14",
+    "gallery": [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCvwblNQmF23c_-OuBV0Z0mf899U3_IkjyA5GnwYGAucjLJr5dMn4fIRHOfRhrQXKQp1a9UF4SKTzcHO07m1-nUIN8f_QUAjLWOljnWsKMOYjU7ZIn6cThWq5YIMviz3Qd7OUCZHsN6q0oRTv7_eVjGrBEZw7gJy4I-LzfztGObl7J5yG9JI_9gnbij6SjS2w2HIjWEm3bHFsUza4MeB5TPRd7ny3i0jgWuZ4MUHoJJl342TdyBkVCpsyd88Cfw5CrSk5MCpK67kb14",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDqlrwHcNt2VRqEMfO73px9Vmxt-L3lqQkb9Z9Ic8wI-Ni5nbyg3EdqYEcALDRyItBnvlZdhT3R0REdFKYGBxZ_dNQ7-q52XpgCuaoczp3r943lDomB3ge4cjixLDCBDVBTaJeRU3uCpEnAC8urEUKHRb-EsF0lCd_s4yBLak2G6eWTt1gDuhifEqG8bwolOmqlCludTY2XiyP0UU4trFEqMcXSvPqT3ISW-j6ikGon39ZKm0JfC22hGJUVpoZx6L0zBim6zzseeqJr"
+    ],
+    "challenge": "تنفيذ 45,000 م² من الواجهات الزجاجية الإنشائية في برج حكومي بارتفاع 60 طابقاً، مع الالتزام بأصعب متطلبات كود الطاقة الحراري SBC-601، وفق جدول زمني ضيق لا يتجاوز 18 شهراً.",
+    "solution": "اعتمدنا نظام جدار الستائر الوحدوي Unitized مع وحدات زجاجية معزولة مزدوجة مخصصة تحمل طلاء Low-E فضي، وزودنا الوحدات بحواجز حرارية عالية الأداء لتحقيق معامل U-value لا يتجاوز 1.8 وات/م²·كلفن. طورنا جدولاً محكماً للتصنيع والتركيب الميداني بالتوازي لضمان الالتزام بالموعد.",
+    "results": [
+      { "metric": "مساحة الواجهة المنجزة", "value": "45,000 م²" },
+      { "metric": "U-value المحقق", "value": "1.75 W/m²K" },
+      { "metric": "توفير الطاقة المقدر", "value": "38%" },
+      { "metric": "التزام بالجدول الزمني", "value": "100%" }
+    ],
+    "testimonial": {
+      "quote": "نفذت مؤسسة الفهد المشروع بمستوى احترافية نادر، مع التزام تام بالمواصفات التقنية والجدول الزمني.",
+      "author": "المهندس أحمد الحارثي",
+      "role": "مدير مشروع — وزارة المالية"
+    },
+    "technologies": ["Unitized Curtain Wall", "Low-E Double Glazing", "Thermal Break Profiles", "BIM Coordination", "ASTM E283/E331 Testing"],
+    "relatedServiceSlug": "glass-works",
+    "keywords": {
+      "ar": ["دراسة حالة برج زجاجي الرياض", "واجهة زجاجية برج حكومي", "Curtain Wall دراسة حالة"],
+      "en": ["glass tower case study Riyadh", "government building glass facade", "curtain wall case study Saudi Arabia"]
+    }
+  },
+  {
+    "id": "cs-2",
+    "slug": "neom-steel-structures",
+    "title": "دراسة حالة: مجمع بنيوم الإنشائي — الهياكل الفولاذية النمطية",
+    "client": "نيوم",
+    "year": 2024,
+    "location": "نيوم، المملكة العربية السعودية",
+    "scope": "120,000 م² من الهياكل الفولاذية النمطية",
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDMnLDv35oEIlyXRgKy3LWwpROa09JaxlklFhgfUcCYnJsXR5yE3do-MNglVqtnZyeOJ79ALeaMSwzMztQ2PO4W0RcFPVEaPzdd8t8Gw2mGbP8044xWAvpE-6-q1-J_nWPmoHhjof27zsYyk1erwGEC6iFXB2HVKXmEtsS5DiD8HrqTbBqRFtrPZa5-MAbLLjWu-fR_-fw3g0jgKdsr0ADAqFxuC8YZJ0p0taaMAr9xj3kPl-crFJZugJfvuNMC6ZSRQTxIIUZocJ4g",
+    "gallery": [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDMnLDv35oEIlyXRgKy3LWwpROa09JaxlklFhgfUcCYnJsXR5yE3do-MNglVqtnZyeOJ79ALeaMSwzMztQ2PO4W0RcFPVEaPzdd8t8Gw2mGbP8044xWAvpE-6-q1-J_nWPmoHhjof27zsYyk1erwGEC6iFXB2HVKXmEtsS5DiD8HrqTbBqRFtrPZa5-MAbLLjWu-fR_-fw3g0jgKdsr0ADAqFxuC8YZJ0p0taaMAr9xj3kPl-crFJZugJfvuNMC6ZSRQTxIIUZocJ4g"
+    ],
+    "challenge": "إنشاء 120,000 م² من الهياكل الفولاذية النمطية في بيئة صحراوية قاسية بأحمال رياح تتجاوز 160 كم/ساعة، مع متطلبات استدامة صارمة لمشروع نيوم ورؤية 2030.",
+    "solution": "طورنا نظام تجميع نمطي مقسى بوحدات قياسية مطلية بمنظومة حماية ثلاثية الطبقات (Zinc Rich + Epoxy + Polyurethane)، مع تنسيق BIM كامل لضمان دقة التركيب الميداني في ظروف الموقع الصعبة.",
+    "results": [
+      { "metric": "مساحة الهياكل المنجزة", "value": "120,000 م²" },
+      { "metric": "متطلبات الاستدامة", "value": "محققة 100%" },
+      { "metric": "وزن الفولاذ المصنع", "value": "4,200 طن" },
+      { "metric": "التزام بمتطلبات رؤية 2030", "value": "كامل" }
+    ],
+    "testimonial": null,
+    "technologies": ["Modular Steel Fabrication", "BIM Coordination", "Zinc-Rich Anti-Corrosion System", "Heavy Lift Equipment", "AISC Standards"],
+    "relatedServiceSlug": "steel-works",
+    "keywords": {
+      "ar": ["دراسة حالة هياكل فولاذية نيوم", "مشاريع رؤية 2030 الهياكل الحديدية"],
+      "en": ["NEOM steel structures case study", "Vision 2030 steel fabrication"]
+    }
+  },
+  {
+    "id": "cs-3",
+    "slug": "red-sea-pavilion-sustainable",
+    "title": "دراسة حالة: جناح البحر الأحمر العالمي — الواجهات المستدامة",
+    "client": "البحر الأحمر العالمي",
+    "year": 2023,
+    "location": "البحر الأحمر، المملكة العربية السعودية",
+    "scope": "18,500 م² من الواجهات الزجاجية المستدامة",
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuAeXd_bsxIZ523NTAhdnr374o56ikad_BtTVJwWIwQCADfORBs28IQcapnWhHr_d8K3amACjUId2MiQEKt6mA8zyS-TdAB9fCvMs594dvGZS9bolZzlz91PkS-Td1aFw4NKPRg0bpm_5SyyAsXRN1YO3Yrz2tP3xIFJoII2TZf2OM2aKTaIGiz-BplENh_XB6x63o1H_vO74XQ3RbFVyvb1PmWmzlRXd1UcIkFYKqDZ8h1AM_2f_clnNqGfnIB_ht46rUVTjNGdbF5H",
+    "gallery": [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAeXd_bsxIZ523NTAhdnr374o56ikad_BtTVJwWIwQCADfORBs28IQcapnWhHr_d8K3amACjUId2MiQEKt6mA8zyS-TdAB9fCvMs594dvGZS9bolZzlz91PkS-Td1aFw4NKPRg0bpm_5SyyAsXRN1YO3Yrz2tP3xIFJoII2TZf2OM2aKTaIGiz-BplENh_XB6x63o1H_vO74XQ3RbFVyvb1PmWmzlRXd1UcIkFYKqDZ8h1AM_2f_clnNqGfnIB_ht46rUVTjNGdbF5H"
+    ],
+    "challenge": "تنفيذ واجهات زجاجية معمارية في بيئة ساحلية بالغة الحساسية البيئية، مع متطلبات LEED Platinum وقيود صارمة على البصمة الكربونية وحماية النظام البيئي للبحر الأحمر.",
+    "solution": "اعتمدنا ألمنيوم منخفض الكربون معاد تدويره بنسبة 75%، وزجاجاً بارامترياً مصنعاً بـCNC، مع طلاءات صديقة للبيئة خالية من المركبات العضوية المتطايرة VOC. وثقنا جميع مواصفات المواد لملف LEED الكامل.",
+    "results": [
+      { "metric": "البصمة الكربونية للمواد", "value": "أقل بـ 60% من المعيار" },
+      { "metric": "نسبة إعادة تدوير الألمنيوم", "value": "75%" },
+      { "metric": "درجة LEED المحققة", "value": "Platinum" },
+      { "metric": "مساحة الواجهة المنجزة", "value": "18,500 م²" }
+    ],
+    "testimonial": {
+      "quote": "الفهد للمقاولات أثبتت أنها الشريك المثالي لمشاريع السياحة الفاخرة المستدامة في المملكة.",
+      "author": "المهندسة سارة العمري",
+      "role": "مدير مشروع — البحر الأحمر العالمي"
+    },
+    "technologies": ["Low-Carbon Aluminium", "CNC Parametric Fabrication", "LEED-Certified Materials", "VOC-Free Coatings", "BIM"],
+    "relatedServiceSlug": "glass-works",
+    "keywords": {
+      "ar": ["دراسة حالة واجهات مستدامة LEED", "مشاريع البحر الأحمر الواجهات"],
+      "en": ["LEED facade case study Saudi Arabia", "Red Sea sustainable facade"]
+    }
+  },
+  {
+    "id": "cs-4",
+    "slug": "rolls-royce-showroom-glass",
+    "title": "دراسة حالة: معرض رولز رويس — Spider Glass فائق الوضوح",
+    "client": "رولز رويس المملكة العربية السعودية",
+    "year": 2023,
+    "location": "الرياض، المملكة العربية السعودية",
+    "scope": "1,500 م² من الزجاج منخفض الحديد بنظام Spider",
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuCj6ujoVoJrgwr7_SM4IkWKmQ0g-6xEaO8h3m6OYGus18fY-bNHGDPAF4jph6YbhDIcjqZ67ek6D-cKKRsaZas0HJIsQyuWwGjY_luHLwyZze3kPRg0KQwcM7MLCcT0Hq0rAgrqDb485qtDrWPbt-Kz66pGU66ztQD0e5LFvGWmWdzxlpF7qcPsleej42OL-X2qgZrbYQKhQNZCxNte3z28ACD6e-G6Im9DEsSlXh4YPfk_-K0arDD5TVE0g1wvSkWC2oue_QRDN0co",
+    "gallery": [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCj6ujoVoJrgwr7_SM4IkWKmQ0g-6xEaO8h3m6OYGus18fY-bNHGDPAF4jph6YbhDIcjqZ67ek6D-cKKRsaZas0HJIsQyuWwGjY_luHLwyZze3kPRg0KQwcM7MLCcT0Hq0rAgrqDb485qtDrWPbt-Kz66pGU66ztQD0e5LFvGWmWdzxlpF7qcPsleej42OL-X2qgZrbYQKhQNZCxNte3z28ACD6e-G6Im9DEsSlXh4YPfk_-K0arDD5TVE0g1wvSkWC2oue_QRDN0co",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuBvNMXhx_PtZEjUvGER6vEwXdB5cRdkvrltMht8WC9l3SEbK28C07yPkcox9J-zjOUlBCKx9oW4smjdPDKeaXIpjWAgJy3ZnoCagzkfdJjlZ9bOviZBCRjR2Mz-JHQf6rpE0bA6Jf6NxI1oJDauUGz7QT3OxPTqIbJAc--XiSVUcy9fe_W0rzPOitHObQsXeDUscnLk143ZL-RXCIqLGuSOuaWtrpLFgC5Thy8YAJeu0ijswRmR5Uzmnybshd_sVTo8bBAcI0w6NkQY"
+    ],
+    "challenge": "تنفيذ واجهة زجاجية بدون إطارات بوضوح بصري مطلق يليق بعلامة رولز رويس، مع ألواح زجاجية كبيرة منخفضة الحديد يمكن رؤية ما خلفها بلا تشويه لوني، في جدول زمني لا يتجاوز 10 أسابيع.",
+    "solution": "اخترنا زجاج Extra-Clear منخفض الحديد بسماكة 12 مم مثبتاً بنظام Spider بوصلات من الفولاذ المقاوم للصدأ الأوستنيتي. عملنا على النموذج الأولي لأسبوعين قبل بدء التصنيع لضمان مطابقة المعيار البصري الصارم.",
+    "results": [
+      { "metric": "مساحة الواجهة المنجزة", "value": "1,500 م²" },
+      { "metric": "نفاذية ضوئية الزجاج", "value": "91.5%" },
+      { "metric": "التزام بالجدول الزمني", "value": "10 أسابيع" },
+      { "metric": "ملاحظات ما بعد التسليم", "value": "صفر" }
+    ],
+    "testimonial": {
+      "quote": "النتيجة تفوقت على توقعاتنا — مستوى الوضوح البصري يعكس بالضبط فلسفة العلامة التجارية لرولز رويس.",
+      "author": "مدير المعرض",
+      "role": "معرض رولز رويس — الرياض"
+    },
+    "technologies": ["Extra-Clear Low-Iron Glass", "Spider Point-Fixed System", "Austenitic SS Fittings", "Structural Silicone", "Laser Measurement"],
+    "relatedServiceSlug": "glass-works",
+    "keywords": {
+      "ar": ["دراسة حالة زجاج Spider الرياض", "واجهة معرض سيارات فاخرة"],
+      "en": ["Spider glass case study Riyadh", "luxury showroom glass facade"]
+    }
+  }
+]

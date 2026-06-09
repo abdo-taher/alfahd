@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#002868"/>
+
+  <!-- Subtle geometric accent lines -->
+  <line x1="0" y1="560" x2="1200" y2="560" stroke="#C8A75D" stroke-width="2" opacity="0.4"/>
+  <line x1="0" y1="70" x2="1200" y2="70" stroke="#C8A75D" stroke-width="1" opacity="0.2"/>
+
+  <!-- Gold accent bar -->
+  <rect x="540" y="220" width="120" height="4" fill="#C8A75D"/>
+
+  <!-- Main Arabic company name -->
+  <text
+    x="600"
+    y="310"
+    font-family="'IBM Plex Sans Arabic', 'Arial', sans-serif"
+    font-size="52"
+    font-weight="700"
+    fill="#ffffff"
+    text-anchor="middle"
+    direction="rtl"
+  >مؤسسة الفهد للمقاولات</text>
+
+  <!-- Tagline in brand gold -->
+  <text
+    x="600"
+    y="380"
+    font-family="'IBM Plex Sans Arabic', 'Arial', sans-serif"
+    font-size="28"
+    font-weight="400"
+    fill="#C8A75D"
+    text-anchor="middle"
+    direction="rtl"
+  >رواد هندسة الواجهات في المملكة</text>
+
+  <!-- URL footer -->
+  <text
+    x="600"
+    y="590"
+    font-family="'Arial', sans-serif"
+    font-size="18"
+    font-weight="400"
+    fill="#ffffff"
+    text-anchor="middle"
+    opacity="0.5"
+  >alfahd-contracting.com</text>
+</svg>

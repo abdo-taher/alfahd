@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 export function ContactClient() {
   const t = useTranslations("contact");
@@ -20,6 +21,7 @@ export function ContactClient() {
     setFormState("sending");
     await new Promise((r) => setTimeout(r, 1200));
     setFormState("success");
+    trackEvent("contact", { form: "contact" });
   }
 
   const ft = t.raw("form") as Record<string, string>;

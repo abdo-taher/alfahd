@@ -5,6 +5,7 @@ import { Providers } from "@/app/providers";
 import { Header } from "@/shared/components/layout/header";
 import { Footer } from "@/shared/components/layout/footer";
 import { WhatsAppButton } from "@/shared/components/layout/whatsapp-button";
+import { MobileCTABar } from "@/shared/components/layout/mobile-cta-bar";
 
 export async function generateMetadata({
   params,
@@ -53,11 +54,12 @@ export default async function LocaleLayout({
     <NextIntlClientProvider messages={messages}>
       <Providers locale={locale} dir={isRTL ? "rtl" : "ltr"}>
         <Header />
-        <main id="main-content" tabIndex={-1}>
+        <main id="main-content" tabIndex={-1} className="pb-16 md:pb-0">
           {children}
         </main>
         <Footer />
         <WhatsAppButton />
+        <MobileCTABar locale={locale} />
       </Providers>
     </NextIntlClientProvider>
   );

@@ -143,3 +143,137 @@ export type PageMeta = {
   keywords?: string[];
   ogImage?: string;
 };
+
+// ─── Sub-Service ──────────────────────────────────────────────────────────────
+
+export type SubService = {
+  id: string;
+  slug: string;
+  parentSlug: string;
+  title: string;
+  shortDescription: string;
+  description: string;
+  benefits: string[];
+  applications: string[];
+  process: ProcessStep[];
+  faq: FaqItem[];
+  keywords: { ar: string[]; en: string[] };
+  relatedProjectCategory: string;
+};
+
+// ─── Industry ─────────────────────────────────────────────────────────────────
+
+export type Industry = {
+  id: string;
+  slug: string;
+  title: string;
+  heroImage: string;
+  description: string;
+  shortDescription: string;
+  stats: { value: string; label: string }[];
+  servicesUsed: string[];
+  relatedProjectIds: string[];
+  certifications: string[];
+  faq: FaqItem[];
+  keywords: { ar: string[]; en: string[] };
+};
+
+// ─── Location ─────────────────────────────────────────────────────────────────
+
+export type Location = {
+  id: string;
+  slug: string;
+  city: string;
+  title: string;
+  description: string;
+  shortDescription: string;
+  heroImage: string;
+  address: string;
+  phone: string;
+  email: string;
+  services: string[];
+  projectSlugs: string[];
+  whyChooseUs: string[];
+  keywords: { ar: string[]; en: string[] };
+};
+
+// ─── Cost Guide ───────────────────────────────────────────────────────────────
+
+export type PricingFactor = {
+  factor: string;
+  description: string;
+  impact: "high" | "medium" | "low";
+};
+
+export type SystemTier = {
+  name: string;
+  description: string;
+  relativeRange: string;
+};
+
+export type CostGuide = {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  relatedServiceSlug: string;
+  pricingFactors: PricingFactor[];
+  systemTiers: SystemTier[];
+  howToGetBestPrice: string[];
+  faq: FaqItem[];
+  keywords: { ar: string[]; en: string[] };
+};
+
+// ─── Case Study ───────────────────────────────────────────────────────────────
+
+export type CaseStudyResult = {
+  metric: string;
+  value: string;
+};
+
+export type CaseStudy = {
+  id: string;
+  slug: string;
+  title: string;
+  client: string;
+  year: number;
+  location: string;
+  scope: string;
+  coverImage: string;
+  gallery: string[];
+  challenge: string;
+  solution: string;
+  results: CaseStudyResult[];
+  testimonial: { quote: string; author: string; role: string } | null;
+  technologies: string[];
+  relatedServiceSlug: string;
+  keywords: { ar: string[]; en: string[] };
+};
+
+// ─── FAQ Hub ──────────────────────────────────────────────────────────────────
+
+export type FaqCategory = {
+  id: string;
+  label: string;
+  questions: FaqItem[];
+};
+
+export type FaqHub = {
+  categories: FaqCategory[];
+};
+
+// ─── Team Member ──────────────────────────────────────────────────────────────
+
+export type TeamMember = {
+  id: string;
+  slug: string;
+  name: string;
+  nameEn: string;
+  jobTitle: string;
+  jobTitleEn: string;
+  yearsExperience: number;
+  bio: string;
+  specialisations: string[];
+  blogSlugs: string[];
+  avatar?: string;
+};

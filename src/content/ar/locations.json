@@ -1,0 +1,140 @@
+[
+  {
+    "id": "loc-1",
+    "slug": "riyadh",
+    "city": "الرياض",
+    "title": "أعمال الألمنيوم والزجاج في الرياض",
+    "description": "مؤسسة الفهد للمقاولات — رائدة أعمال الألمنيوم والزجاج والحديد في الرياض منذ 1999. نخدم العاصمة بكاملها من الشمال إلى الجنوب بأكثر من 200 مشروع منجز.",
+    "shortDescription": "خبرة 25+ عاماً في تنفيذ مشاريع الواجهات في عاصمة المملكة",
+    "heroImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuCvwblNQmF23c_-OuBV0Z0mf899U3_IkjyA5GnwYGAucjLJr5dMn4fIRHOfRhrQXKQp1a9UF4SKTzcHO07m1-nUIN8f_QUAjLWOljnWsKMOYjU7ZIn6cThWq5YIMviz3Qd7OUCZHsN6q0oRTv7_eVjGrBEZw7gJy4I-LzfztGObl7J5yG9JI_9gnbij6SjS2w2HIjWEm3bHFsUza4MeB5TPRd7ny3i0jgWuZ4MUHoJJl342TdyBkVCpsyd88Cfw5CrSk5MCpK67kb14",
+    "address": "أبراج العليا، برج ب، الطابق ١٤، الرياض ١٢٢١١",
+    "phone": "+966114459222",
+    "email": "riyadh@al-fahd.com.sa",
+    "services": ["أعمال الألمنيوم", "أعمال الزجاج", "أعمال الحديد", "جدران الستائر"],
+    "projectSlugs": ["king-salman-financial-tower", "commercial-crystal-tower", "smart-pedestrian-bridge"],
+    "whyChooseUs": [
+      "فريق هندسي متمركز في الرياض طوال أيام الأسبوع",
+      "استجابة ميدانية خلال 4 ساعات في حالات الطوارئ",
+      "أكثر من 200 مشروع منجز في الرياض"
+    ],
+    "keywords": {
+      "ar": ["أعمال ألمنيوم الرياض", "مقاول زجاج الرياض", "شركة ألمنيوم الرياض"],
+      "en": ["aluminum works Riyadh", "glass contractor Riyadh", "aluminum company Riyadh"]
+    }
+  },
+  {
+    "id": "loc-2",
+    "slug": "jeddah",
+    "city": "جدة",
+    "title": "أعمال الألمنيوم والزجاج في جدة",
+    "description": "نقدم خدماتنا في جدة والمنطقة الغربية لمشاريع الواجهات والأعمال المعدنية، بمواد مقاومة للرطوبة البحرية المميزة لمناخ جدة الساحلي.",
+    "shortDescription": "حلول واجهات متخصصة لمناخ جدة البحري",
+    "heroImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuAeXd_bsxIZ523NTAhdnr374o56ikad_BtTVJwWIwQCADfORBs28IQcapnWhHr_d8K3amACjUId2MiQEKt6mA8zyS-TdAB9fCvMs594dvGZS9bolZzlz91PkS-Td1aFw4NKPRg0bpm_5SyyAsXRN1YO3Yrz2tP3xIFJoII2TZf2OM2aKTaIGiz-BplENh_XB6x63o1H_vO74XQ3RbFVyvh1PmWmzlRXd1UcIkFYKqDZ8h1AM_2f_clnNqGfnIB_ht46rUVTjNGdbF5H",
+    "address": "طريق الأمير ماجد، جدة ٢٣٢١٤",
+    "phone": "+966112345678",
+    "email": "jeddah@al-fahd.com.sa",
+    "services": ["أعمال الألمنيوم", "أعمال الزجاج", "الهياكل المعدنية", "المداخل الزجاجية"],
+    "projectSlugs": ["al-nakheel-mall-atrium", "red-sea-global-pavilion"],
+    "whyChooseUs": [
+      "طلاءات مقاومة للملوحة والرطوبة البحرية",
+      "فريق جاهز في جدة لتسريع التنفيذ",
+      "خبرة واسعة في مشاريع المنطقة الغربية"
+    ],
+    "keywords": {
+      "ar": ["أعمال ألمنيوم جدة", "مقاول زجاج جدة", "شركة ألمنيوم جدة"],
+      "en": ["aluminum works Jeddah", "glass contractor Jeddah"]
+    }
+  },
+  {
+    "id": "loc-3",
+    "slug": "dammam",
+    "city": "الدمام",
+    "title": "أعمال الألمنيوم والزجاج في الدمام",
+    "description": "نخدم المنطقة الشرقية بما فيها الدمام والخبر والجبيل بحلول الواجهات المقاومة للرطوبة البحرية العالية، مع خبرة خاصة في المشاريع الصناعية والبتروكيماوية.",
+    "shortDescription": "حلول واجهات للمنطقة الشرقية تتحمل البيئة البتروكيماوية",
+    "heroImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDThd-WgATXSWPGf34k60Y9gU_Fp5HXLZf9TQfJZfcdJFAQ0FojZZnbYkHWv4XzgMCwt47kAawrCIcZWA01A9xFLFyfSk4-YUaFfVFG0wtYfufH5Qqc-nP_CicFqhX3L73xEnZYZpu1Vi-KCjyNmo9gEoHWaQLsv5XNYJvQqm9aRZJU7eorQiAJSfAVDXqPAUR7dC2GPLGPOj2UyMTaZetg_ih6B9GLc_uW9_gksFCeIUSxQtIP4CVgmIN2aeILdqSSflW2Z2g_P-Xa",
+    "address": "طريق الأمير محمد بن فهد، الدمام ٣٢٢٤٤",
+    "phone": "+966137654321",
+    "email": "dammam@al-fahd.com.sa",
+    "services": ["أعمال الألمنيوم", "الهياكل الفولاذية", "تكسية الألمنيوم الصناعية", "أعمال الزجاج"],
+    "projectSlugs": ["industrial-innovation-complex", "neom-infrastructure-hub"],
+    "whyChooseUs": [
+      "خبرة في مشاريع البتروكيماويات والصناعة الثقيلة",
+      "مواد مقاومة للتآكل الكيميائي والبحري",
+      "فريق مدرب على متطلبات أرامكو وسابك"
+    ],
+    "keywords": {
+      "ar": ["أعمال ألمنيوم الدمام", "مقاول زجاج الدمام", "هياكل حديدية الدمام"],
+      "en": ["aluminum works Dammam", "steel contractor Dammam"]
+    }
+  },
+  {
+    "id": "loc-4",
+    "slug": "neom",
+    "city": "نيوم",
+    "title": "أعمال الواجهات في نيوم",
+    "description": "نساهم في تشييد مشاريع نيوم المستقبلية بأحدث أنظمة الواجهات المستدامة التي تلتزم بأعلى معايير الاستدامة البيئية ورؤية 2030.",
+    "shortDescription": "حلول واجهات مستدامة لمشاريع نيوم ورؤية 2030",
+    "heroImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDMnLDv35oEIlyXRgKy3LWwpROa09JaxlklFhgfUcCYnJsXR5yE3do-MNglVqtnZyeOJ79ALeaMSwzMztQ2PO4W0RcFPVEaPzdd8t8Gw2mGbP8044xWAvpE-6-q1-J_nWPmoHhjof27zsYyk1erwGEC6iFXB2HVKXmEtsS5DiD8HrqTbBqRFtrPZa5-MAbLLjWu-fR_-fw3g0jgKdsr0ADAqFxuC8YZJ0p0taaMAr9xj3kPl-crFJZugJfvuNMC6ZSRQTxIIUZocJ4g",
+    "address": "منطقة نيوم، تبوك، المملكة العربية السعودية",
+    "phone": "+966114459222",
+    "email": "neom@al-fahd.com.sa",
+    "services": ["جدران الستائر الزجاجية", "الهياكل الفولاذية النمطية", "الألمنيوم منخفض الكربون", "أنظمة الطاقة الشمسية المدمجة"],
+    "projectSlugs": ["neom-infrastructure-hub", "red-sea-global-pavilion"],
+    "whyChooseUs": [
+      "خبرة في متطلبات مشاريع رؤية 2030",
+      "مواد بصمة كربونية منخفضة متوافقة مع LEED",
+      "سجل تنفيذ في مشاريع نيوم الكبرى"
+    ],
+    "keywords": {
+      "ar": ["مقاولات نيوم", "واجهات نيوم", "مشاريع رؤية 2030"],
+      "en": ["NEOM contractor", "NEOM facade works", "Vision 2030 contractor"]
+    }
+  },
+  {
+    "id": "loc-5",
+    "slug": "mecca",
+    "city": "مكة المكرمة",
+    "title": "أعمال الألمنيوم والزجاج في مكة المكرمة",
+    "description": "نقدم خدماتنا في مكة المكرمة للمشاريع الفندقية والتجارية والسكنية المحيطة بالحرم المكي الشريف، مع الالتزام الكامل بالضوابط والمتطلبات الخاصة بالمنطقة.",
+    "shortDescription": "حلول واجهات للمشاريع الفندقية والتجارية في مكة المكرمة",
+    "heroImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuBvNMXhx_PtZEjUvGER6vEwXdB5cRdkvrltMht8WC9l3SEbK28C07yPkcox9J-zjOUlBCKx9oW4smjdPDKeaXIpjWAgJy3ZnoCagzkfdJjlZ9bOviZBCRjR2Mz-JHQf6rpE0bA6Jf6NxI1oJDauUGz7QT3OxPTqIbJAc--XiSVUcy9fe_W0rzPOitHObQsXeDUscnLk143ZL-RXCIqLGuSOuaWtrpLFgC5Thy8YAJeu0ijswRmR5Uzmnybshd_sVTo8bBAcI0w6NkQY",
+    "address": "العزيزية، مكة المكرمة",
+    "phone": "+966125551234",
+    "email": "mecca@al-fahd.com.sa",
+    "services": ["أعمال الألمنيوم", "أعمال الزجاج", "جدران الستائر", "المداخل الفاخرة"],
+    "projectSlugs": ["king-salman-financial-tower"],
+    "whyChooseUs": [
+      "التزام تام بضوابط البناء في المنطقة المركزية",
+      "تنسيق محكم مع جهات الترخيص والرقابة",
+      "خبرة في المشاريع الفندقية عالية الكثافة"
+    ],
+    "keywords": {
+      "ar": ["أعمال ألمنيوم مكة المكرمة", "مقاول زجاج مكة", "واجهات فنادق مكة"],
+      "en": ["aluminum works Mecca", "facade contractor Mecca"]
+    }
+  },
+  {
+    "id": "loc-6",
+    "slug": "jubail",
+    "city": "الجبيل الصناعية",
+    "title": "أعمال الألمنيوم والهياكل الحديدية في الجبيل الصناعية",
+    "description": "نتخصص في تنفيذ مشاريع التكسية الصناعية والهياكل الفولاذية في مدينة الجبيل الصناعية، بمواد مقاومة للأجواء البتروكيماوية والبيئات الصناعية الخطرة.",
+    "shortDescription": "هياكل حديدية وتكسية ألمنيوم للمنشآت البتروكيماوية في الجبيل",
+    "heroImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDThd-WgATXSWPGf34k60Y9gU_Fp5HXLZf9TQfJZfcdJFAQ0FojZZnbYkHWv4XzgMCwt47kAawrCIcZWA01A9xFLFyfSk4-YUaFfVFG0wtYfufH5Qqc-nP_CicFqhX3L73xEnZYZpu1Vi-KCjyNmo9gEoHWaQLsv5XNYJvQqm9aRZJU7eorQiAJSfAVDXqPAUR7dC2GPLGPOj2UyMTaZetg_ih6B9GLc_uW9_gksFCeIUSxQtIP4CVgmIN2aeILdqSSflW2Z2g_P-Xa",
+    "address": "المنطقة الصناعية، الجبيل ٣١٩٦١",
+    "phone": "+966135551234",
+    "email": "jubail@al-fahd.com.sa",
+    "services": ["الهياكل الفولاذية الإنشائية", "تكسية ألمنيوم صناعية", "هياكل مقاومة للتآكل الكيميائي", "منصات الميزانين"],
+    "projectSlugs": ["industrial-innovation-complex", "neom-infrastructure-hub"],
+    "whyChooseUs": [
+      "سجل متميز مع هيئة الجبيل والينبع",
+      "مواد مطابقة لمتطلبات أرامكو وسابك",
+      "خبرة في أكواد السلامة الصناعية OSHA وSASO"
+    ],
+    "keywords": {
+      "ar": ["هياكل حديدية الجبيل", "تكسية صناعية الجبيل", "مقاولات صناعية الجبيل"],
+      "en": ["steel structures Jubail", "industrial cladding Jubail"]
+    }
+  }
+]

@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { generatePageMetadata } from "@/seo/metadata/page-metadata";
+import { contactPageSchema, breadcrumbSchema } from "@/seo/schema/organization";
 import { ContactClient } from "./contact-client";
+
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://alfahd-contracting.com";
 
 export async function generateMetadata({
   params,
@@ -43,8 +46,25 @@ export default async function ContactPage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  // params consumed to satisfy Next.js server component conventions;
-  // the client component reads locale via next-intl's useLocale()
-  await params;
-  return <ContactClient />;
+  const { locale } = await params;
+
+  const contactSd = contactPageSchema();
+  const breadcrumbs = breadcrumbSchema([
+    { name: locale === "ar" ? "الرئيسية" : "Home", url: `${BASE_URL}/${locale}` },
+    { name: locale === "ar" ? "تواصل معنا" : "Contact", url: `${BASE_URL}/${locale}/contact` },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSd).replace(/</g, "\\u003c") }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs).replace(/</g, "\\u003c") }}
+      />
+      <ContactClient />
+    </>
+  );
 }

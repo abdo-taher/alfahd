@@ -1,0 +1,128 @@
+[
+  {
+    "id": "cs-1",
+    "slug": "king-salman-tower-glass",
+    "title": "Case Study: King Salman Financial Tower — Glass Facade",
+    "client": "Saudi Arabian Government",
+    "year": 2024,
+    "location": "Riyadh, Saudi Arabia",
+    "scope": "45,000 m² of structural glass facades",
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuCvwblNQmF23c_-OuBV0Z0mf899U3_IkjyA5GnwYGAucjLJr5dMn4fIRHOfRhrQXKQp1a9UF4SKTzcHO07m1-nUIN8f_QUAjLWOljnWsKMOYjU7ZIn6cThWq5YIMviz3Qd7OUCZHsN6q0oRTv7_eVjGrBEZw7gJy4I-LzfztGObl7J5yG9JI_9gnbij6SjS2w2HIjWEm3bHFsUza4MeB5TPRd7ny3i0jgWuZ4MUHoJJl342TdyBkVCpsyd88Cfw5CrSk5MCpK67kb14",
+    "gallery": [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCvwblNQmF23c_-OuBV0Z0mf899U3_IkjyA5GnwYGAucjLJr5dMn4fIRHOfRhrQXKQp1a9UF4SKTzcHO07m1-nUIN8f_QUAjLWOljnWsKMOYjU7ZIn6cThWq5YIMviz3Qd7OUCZHsN6q0oRTv7_eVjGrBEZw7gJy4I-LzfztGObl7J5yG9JI_9gnbij6SjS2w2HIjWEm3bHFsUza4MeB5TPRd7ny3i0jgWuZ4MUHoJJl342TdyBkVCpsyd88Cfw5CrSk5MCpK67kb14",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDqlrwHcNt2VRqEMfO73px9Vmxt-L3lqQkb9Z9Ic8wI-Ni5nbyg3EdqYEcALDRyItBnvlZdhT3R0REdFKYGBxZ_dNQ7-q52XpgCuaoczp3r943lDomB3ge4cjixLDCBDVBTaJeRU3uCpEnAC8urEUKHRb-EsF0lCd_s4yBLak2G6eWTt1gDuhifEqG8bwolOmqlCludTY2XiyP0UU4trFEqMcXSvPqT3ISW-j6ikGon39ZKm0JfC22hGJUVpoZx6L0zBim6zzseeqJr"
+    ],
+    "challenge": "Executing 45,000 m² of structural glass facades on a 60-storey government tower, meeting the demanding SBC-601 thermal energy code requirements, within a tight 18-month schedule.",
+    "solution": "We adopted a Unitized Curtain Wall system with bespoke double-glazed insulated units carrying a silver Low-E coating, fitted with high-performance thermal barriers to achieve a U-value not exceeding 1.8 W/m²K. A precision parallel manufacturing and installation schedule ensured on-time delivery.",
+    "results": [
+      { "metric": "Facade Area Completed", "value": "45,000 m²" },
+      { "metric": "U-Value Achieved", "value": "1.75 W/m²K" },
+      { "metric": "Estimated Energy Savings", "value": "38%" },
+      { "metric": "Schedule Compliance", "value": "100%" }
+    ],
+    "testimonial": {
+      "quote": "Al Fahd Contracting delivered the project with rare professionalism, fully meeting technical specifications and schedule.",
+      "author": "Eng. Ahmed Al-Harthy",
+      "role": "Project Manager — Ministry of Finance"
+    },
+    "technologies": ["Unitized Curtain Wall", "Low-E Double Glazing", "Thermal Break Profiles", "BIM Coordination", "ASTM E283/E331 Testing"],
+    "relatedServiceSlug": "glass-works",
+    "keywords": {
+      "ar": ["دراسة حالة برج زجاجي الرياض"],
+      "en": ["glass tower case study Riyadh", "government building glass facade", "curtain wall case study Saudi Arabia"]
+    }
+  },
+  {
+    "id": "cs-2",
+    "slug": "neom-steel-structures",
+    "title": "Case Study: NEOM Infrastructure Hub — Modular Steel Structures",
+    "client": "NEOM",
+    "year": 2024,
+    "location": "NEOM, Saudi Arabia",
+    "scope": "120,000 m² of modular steel structures",
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDMnLDv35oEIlyXRgKy3LWwpROa09JaxlklFhgfUcCYnJsXR5yE3do-MNglVqtnZyeOJ79ALeaMSwzMztQ2PO4W0RcFPVEaPzdd8t8Gw2mGbP8044xWAvpE-6-q1-J_nWPmoHhjof27zsYyk1erwGEC6iFXB2HVKXmEtsS5DiD8HrqTbBqRFtrPZa5-MAbLLjWu-fR_-fw3g0jgKdsr0ADAqFxuC8YZJ0p0taaMAr9xj3kPl-crFJZugJfvuNMC6ZSRQTxIIUZocJ4g",
+    "gallery": [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDMnLDv35oEIlyXRgKy3LWwpROa09JaxlklFhgfUcCYnJsXR5yE3do-MNglVqtnZyeOJ79ALeaMSwzMztQ2PO4W0RcFPVEaPzdd8t8Gw2mGbP8044xWAvpE-6-q1-J_nWPmoHhjof27zsYyk1erwGEC6iFXB2HVKXmEtsS5DiD8HrqTbBqRFtrPZa5-MAbLLjWu-fR_-fw3g0jgKdsr0ADAqFxuC8YZJ0p0taaMAr9xj3kPl-crFJZugJfvuNMC6ZSRQTxIIUZocJ4g"
+    ],
+    "challenge": "Constructing 120,000 m² of modular steel structures in a harsh desert environment with wind loads exceeding 160 km/h, under strict NEOM and Vision 2030 sustainability requirements.",
+    "solution": "We developed a modular assembly system with standardised units coated with a three-layer protection system (Zinc Rich + Epoxy + Polyurethane), with full BIM coordination to ensure precision field erection in challenging site conditions.",
+    "results": [
+      { "metric": "Structures Area Completed", "value": "120,000 m²" },
+      { "metric": "Sustainability Requirements", "value": "100% Met" },
+      { "metric": "Steel Fabricated", "value": "4,200 tonnes" },
+      { "metric": "Vision 2030 Compliance", "value": "Full" }
+    ],
+    "testimonial": null,
+    "technologies": ["Modular Steel Fabrication", "BIM Coordination", "Zinc-Rich Anti-Corrosion System", "Heavy Lift Equipment", "AISC Standards"],
+    "relatedServiceSlug": "steel-works",
+    "keywords": {
+      "ar": ["دراسة حالة هياكل فولاذية نيوم"],
+      "en": ["NEOM steel structures case study", "Vision 2030 steel fabrication"]
+    }
+  },
+  {
+    "id": "cs-3",
+    "slug": "red-sea-pavilion-sustainable",
+    "title": "Case Study: Red Sea Global Pavilion — Sustainable Facades",
+    "client": "Red Sea Global",
+    "year": 2023,
+    "location": "Red Sea, Saudi Arabia",
+    "scope": "18,500 m² of sustainable glass facades",
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuAeXd_bsxIZ523NTAhdnr374o56ikad_BtTVJwWIwQCADfORBs28IQcapnWhHr_d8K3amACjUId2MiQEKt6mA8zyS-TdAB9fCvMs594dvGZS9bolZzlz91PkS-Td1aFw4NKPRg0bpm_5SyyAsXRN1YO3Yrz2tP3xIFJoII2TZf2OM2aKTaIGiz-BplENh_XB6x63o1H_vO74XQ3RbFVyvb1PmWmzlRXd1UcIkFYKqDZ8h1AM_2f_clnNqGfnIB_ht46rUVTjNGdbF5H",
+    "gallery": [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAeXd_bsxIZ523NTAhdnr374o56ikad_BtTVJwWIwQCADfORBs28IQcapnWhHr_d8K3amACjUId2MiQEKt6mA8zyS-TdAB9fCvMs594dvGZS9bolZzlz91PkS-Td1aFw4NKPRg0bpm_5SyyAsXRN1YO3Yrz2tP3xIFJoII2TZf2OM2aKTaIGiz-BplENh_XB6x63o1H_vO74XQ3RbFVyvb1PmWmzlRXd1UcIkFYKqDZ8h1AM_2f_clnNqGfnIB_ht46rUVTjNGdbF5H"
+    ],
+    "challenge": "Executing architectural glass facades in an environmentally sensitive coastal location, with LEED Platinum requirements and strict constraints on carbon footprint and Red Sea ecosystem protection.",
+    "solution": "We used 75% recycled low-carbon aluminium, CNC-parametric glass panels, and VOC-free eco-friendly coatings. All material specifications were fully documented for the complete LEED submission file.",
+    "results": [
+      { "metric": "Material Carbon Footprint", "value": "60% Below Benchmark" },
+      { "metric": "Aluminium Recycled Content", "value": "75%" },
+      { "metric": "LEED Rating Achieved", "value": "Platinum" },
+      { "metric": "Facade Area Completed", "value": "18,500 m²" }
+    ],
+    "testimonial": {
+      "quote": "Al Fahd Contracting proved to be the ideal partner for luxury sustainable tourism projects in Saudi Arabia.",
+      "author": "Eng. Sarah Al-Omari",
+      "role": "Project Manager — Red Sea Global"
+    },
+    "technologies": ["Low-Carbon Aluminium", "CNC Parametric Fabrication", "LEED-Certified Materials", "VOC-Free Coatings", "BIM"],
+    "relatedServiceSlug": "glass-works",
+    "keywords": {
+      "ar": ["دراسة حالة واجهات مستدامة LEED"],
+      "en": ["LEED facade case study Saudi Arabia", "Red Sea sustainable facade"]
+    }
+  },
+  {
+    "id": "cs-4",
+    "slug": "rolls-royce-showroom-glass",
+    "title": "Case Study: Rolls-Royce Showroom — Ultra-Clear Spider Glass",
+    "client": "Rolls-Royce Saudi Arabia",
+    "year": 2023,
+    "location": "Riyadh, Saudi Arabia",
+    "scope": "1,500 m² of low-iron glass in a Spider system",
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuCj6ujoVoJrgwr7_SM4IkWKmQ0g-6xEaO8h3m6OYGus18fY-bNHGDPAF4jph6YbhDIcjqZ67ek6D-cKKRsaZas0HJIsQyuWwGjY_luHLwyZze3kPRg0KQwcM7MLCcT0Hq0rAgrqDb485qtDrWPbt-Kz66pGU66ztQD0e5LFvGWmWdzxlpF7qcPsleej42OL-X2qgZrbYQKhQNZCxNte3z28ACD6e-G6Im9DEsSlXh4YPfk_-K0arDD5TVE0g1wvSkWC2oue_QRDN0co",
+    "gallery": [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCj6ujoVoJrgwr7_SM4IkWKmQ0g-6xEaO8h3m6OYGus18fY-bNHGDPAF4jph6YbhDIcjqZ67ek6D-cKKRsaZas0HJIsQyuWwGjY_luHLwyZze3kPRg0KQwcM7MLCcT0Hq0rAgrqDb485qtDrWPbt-Kz66pGU66ztQD0e5LFvGWmWdzxlpF7qcPsleej42OL-X2qgZrbYQKhQNZCxNte3z28ACD6e-G6Im9DEsSlXh4YPfk_-K0arDD5TVE0g1wvSkWC2oue_QRDN0co",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuBvNMXhx_PtZEjUvGER6vEwXdB5cRdkvrltMht8WC9l3SEbK28C07yPkcox9J-zjOUlBCKx9oW4smjdPDKeaXIpjWAgJy3ZnoCagzkfdJjlZ9bOviZBCRjR2Mz-JHQf6rpE0bA6Jf6NxI1oJDauUGz7QT3OxPTqIbJAc--XiSVUcy9fe_W0rzPOitHObQsXeDUscnLk143ZL-RXCIqLGuSOuaWtrpLFgC5Thy8YAJeu0ijswRmR5Uzmnybshd_sVTo8bBAcI0w6NkQY"
+    ],
+    "challenge": "Installing a frameless glass facade with absolute optical clarity befitting the Rolls-Royce brand — large low-iron glass panels with zero colour distortion — within a 10-week schedule.",
+    "solution": "We selected 12 mm Extra-Clear low-iron glass fixed with a Spider system using austenitic stainless steel fittings. A two-week prototype phase preceded manufacturing to confirm compliance with the strict optical quality standard.",
+    "results": [
+      { "metric": "Facade Area Completed", "value": "1,500 m²" },
+      { "metric": "Glass Light Transmittance", "value": "91.5%" },
+      { "metric": "Schedule Compliance", "value": "10 weeks" },
+      { "metric": "Post-Handover Observations", "value": "Zero" }
+    ],
+    "testimonial": {
+      "quote": "The result exceeded our expectations — the optical clarity perfectly reflects the Rolls-Royce brand philosophy.",
+      "author": "Showroom Manager",
+      "role": "Rolls-Royce Showroom — Riyadh"
+    },
+    "technologies": ["Extra-Clear Low-Iron Glass", "Spider Point-Fixed System", "Austenitic SS Fittings", "Structural Silicone", "Laser Measurement"],
+    "relatedServiceSlug": "glass-works",
+    "keywords": {
+      "ar": ["دراسة حالة زجاج Spider الرياض"],
+      "en": ["Spider glass case study Riyadh", "luxury showroom glass facade"]
+    }
+  }
+]

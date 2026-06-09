@@ -51,7 +51,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   // ── Service pillar pages (slugs match the actual route structure) ─────────
-  const serviceSlugs = ["aluminum", "glass", "steel"] as const;
+  const serviceSlugs = ["aluminum-works", "glass-works", "steel-works"] as const;
 
   const serviceUrls: MetadataRoute.Sitemap = LOCALES.flatMap((locale) =>
     serviceSlugs.map((slug) => ({
@@ -95,5 +95,104 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     )
   ).flat();
 
-  return [...staticUrls, ...serviceUrls, ...projectUrls, ...blogUrls];
+  // ── New static pages added ────────────────────────────────────────────────
+  const newStaticPaths: Array<{ path: string; priority: number; changeFrequency: ChangeFreq }> = [
+    { path: "/faq",            priority: 0.7,  changeFrequency: "monthly" },
+    { path: "/industries",     priority: 0.75, changeFrequency: "monthly" },
+    { path: "/locations",      priority: 0.75, changeFrequency: "monthly" },
+    { path: "/cost",           priority: 0.8,  changeFrequency: "monthly" },
+    { path: "/case-studies",   priority: 0.8,  changeFrequency: "monthly" },
+  ];
+  const newStaticUrls: MetadataRoute.Sitemap = LOCALES.flatMap((locale) =>
+    newStaticPaths.map(({ path, priority, changeFrequency }) => ({
+      url: `${BASE_URL}/${locale}${path}`,
+      lastModified: new Date(),
+      changeFrequency,
+      priority,
+      alternates: buildAlternates(path),
+    }))
+  );
+
+  // ── Sub-service pages ─────────────────────────────────────────────────────
+  const subServicePaths = [
+    "aluminum-works/curtain-wall-systems",
+    "aluminum-works/aluminum-windows-doors",
+    "aluminum-works/aluminum-cladding",
+    "aluminum-works/aluminum-facades",
+    "aluminum-works/structural-glazing",
+    "glass-works/structural-glass-facades",
+    "glass-works/spider-glass-systems",
+    "glass-works/fire-rated-glass",
+    "glass-works/insulating-glass-units",
+    "glass-works/low-iron-glass",
+    "steel-works/steel-structures",
+    "steel-works/steel-warehouses",
+    "steel-works/ornamental-iron",
+    "steel-works/steel-canopies",
+    "steel-works/pedestrian-bridges",
+  ] as const;
+  const subServiceUrls: MetadataRoute.Sitemap = LOCALES.flatMap((locale) =>
+    subServicePaths.map((path) => ({
+      url: `${BASE_URL}/${locale}/services/${path}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as ChangeFreq,
+      priority: 0.85,
+      alternates: buildAlternates(`/services/${path}`),
+    }))
+  );
+
+  // ── Industry pages ────────────────────────────────────────────────────────
+  const industrySlugs = ["government-projects", "real-estate-developers", "commercial-projects", "hospitality", "industrial", "residential"] as const;
+  const industryUrls: MetadataRoute.Sitemap = LOCALES.flatMap((locale) =>
+    industrySlugs.map((slug) => ({
+      url: `${BASE_URL}/${locale}/industries/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as ChangeFreq,
+      priority: 0.9,
+      alternates: buildAlternates(`/industries/${slug}`),
+    }))
+  );
+
+  // ── Location pages ────────────────────────────────────────────────────────
+  const locationSlugs = ["riyadh", "north-riyadh", "kafd-riyadh", "jeddah", "dammam", "jubail"] as const;
+  const locationUrls: MetadataRoute.Sitemap = LOCALES.flatMap((locale) =>
+    locationSlugs.map((slug) => ({
+      url: `${BASE_URL}/${locale}/locations/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as ChangeFreq,
+      priority: 0.85,
+      alternates: buildAlternates(`/locations/${slug}`),
+    }))
+  );
+
+  // ── Cost guide pages ──────────────────────────────────────────────────────
+  const costSlugs = ["aluminum-works", "glass-facades", "steel-structures", "curtain-wall"] as const;
+  const costUrls: MetadataRoute.Sitemap = LOCALES.flatMap((locale) =>
+    costSlugs.map((slug) => ({
+      url: `${BASE_URL}/${locale}/cost/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as ChangeFreq,
+      priority: 0.9,
+      alternates: buildAlternates(`/cost/${slug}`),
+    }))
+  );
+
+  // ── Case study pages ──────────────────────────────────────────────────────
+  const caseStudySlugs = ["king-salman-financial-tower", "neom-infrastructure-hub", "red-sea-global-pavilion", "kafd-pedestrian-bridge"] as const;
+  const caseStudyUrls: MetadataRoute.Sitemap = LOCALES.flatMap((locale) =>
+    caseStudySlugs.map((slug) => ({
+      url: `${BASE_URL}/${locale}/case-studies/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as ChangeFreq,
+      priority: 0.8,
+      alternates: buildAlternates(`/case-studies/${slug}`),
+    }))
+  );
+
+  return [
+    ...staticUrls, ...serviceUrls,
+    ...newStaticUrls, ...subServiceUrls, ...industryUrls,
+    ...locationUrls, ...costUrls, ...caseStudyUrls,
+    ...projectUrls, ...blogUrls,
+  ];
 }

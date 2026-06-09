@@ -1,11 +1,11 @@
 {
   "meta": {
     "siteTitle": "Al Fahd Contracting | Aluminum, Glass & Steel Works Riyadh",
-    "siteDescription": "Al Fahd Contracting — specialists in aluminum works, glass facades, and steel structures in Riyadh, Saudi Arabia. 15+ years experience, 500+ projects, ISO certified. Free quotes.",
+    "siteDescription": "Al Fahd Contracting — specialists in aluminum works, glass facades, and steel structures in Riyadh, Saudi Arabia. 25+ years experience, 500+ projects, ISO certified. Free quotes.",
     "homeTitle": "Al Fahd Contracting | Aluminum, Glass & Steel Contractor Riyadh",
     "homeDescription": "Al Fahd Contracting — leading aluminum contractor, glass facade, and steel structure company in Riyadh, Saudi Arabia. 500+ completed projects, ISO certified, free consultation.",
     "aboutTitle": "About Us | Al Fahd Contracting — Aluminum & Glass Contractor Riyadh",
-    "aboutDescription": "Al Fahd Contracting, founded in Riyadh, specializes in aluminum, glass and steel works for 15+ years. 500+ completed projects, 200+ satisfied clients, ISO 9001 certified.",
+    "aboutDescription": "Al Fahd Contracting, founded in Riyadh, specializes in aluminum, glass and steel works for 25+ years. 500+ completed projects, 200+ satisfied clients, ISO 9001 certified.",
     "servicesTitle": "Our Services | Aluminum, Glass & Steel Works | Al Fahd Contracting",
     "servicesDescription": "Complete aluminum, structural glass and steel structure services in Riyadh and Saudi Arabia. Certified contractor, premium quality, on-time delivery.",
     "projectsTitle": "Projects | Portfolio | Al Fahd Contracting Riyadh",
@@ -161,7 +161,7 @@
   },
   "about": {
     "title": "About Us",
-    "description": "Al Fahd Contracting is a leading Saudi company specializing in Aluminum, Glass & Steel works. With over 15 years of experience delivering residential, commercial, and industrial projects to the highest quality standards.",
+    "description": "Al Fahd Contracting is a leading Saudi company specializing in Aluminum, Glass & Steel works. With over 25 years of experience delivering residential, commercial, and industrial projects to the highest quality standards.",
     "mission": "Our Mission",
     "missionText": "To provide comprehensive contracting solutions that combine quality, innovation, and commitment — being the first partner our clients choose when building their future.",
     "vision": "Our Vision",
@@ -284,7 +284,7 @@
     "certBadge1": "ISO 9001:2015",
     "certBadge2": "Class T1 Certified",
     "hqTitle": "Riyadh Hub (HQ)",
-    "hqAddress": "Olaya Towers, Block B, Floor 14",
+    "hqAddress": "Olaya Towers, Block B, Floor 14, Riyadh, Saudi Arabia",
     "phoneTitle": "Central Operations",
     "phoneNumber": "+966 11 445 9222",
     "emailTitle": "Engineering Inquiries",
@@ -337,5 +337,50 @@
       "3": { "title": "Technical Review", "desc": "Determining exact lamination layers, thermal break profiles and extrusions." },
       "4": { "title": "Proposal Dispatched", "desc": "Commercial quotation pack and project breakdown sent." }
     }
+  },
+  "industries": {
+    "title": "Industries We Serve",
+    "description": "Specialised solutions for every construction sector",
+    "learnMore": "Learn More",
+    "getQuote": "Get a Quote"
+  },
+  "locations": {
+    "title": "We Serve All of Saudi Arabia",
+    "description": "Field teams and certified suppliers in every city",
+    "contact": "Contact us in",
+    "projects": "Our projects in"
+  },
+  "cost": {
+    "title": "Price Guide",
+    "disclaimer": "Prices vary by project specifications — request a free quote for an accurate estimate",
+    "factors": "Pricing Factors",
+    "tiers": "System Tiers",
+    "cta": "Get a Free Quote"
+  },
+  "caseStudies": {
+    "title": "Case Studies",
+    "description": "Real projects, measurable results",
+    "challenge": "The Challenge",
+    "solution": "Our Solution",
+    "results": "Results & Metrics",
+    "downloadSummary": "Download Project Summary",
+    "startSimilar": "Start a Similar Project"
+  },
+  "faqPage": {
+    "title": "Frequently Asked Questions",
+    "description": "Comprehensive answers to our most common client questions",
+    "notFound": "Didn't find your answer?",
+    "contactUs": "Contact Us Directly"
+  },
+  "team": {
+    "title": "Our Engineering Team",
+    "articles": "Engineer's Articles",
+    "specialisations": "Specialisations"
+  },
+  "thankYou": {
+    "headline": "Thank You — Request Received",
+    "subheading": "Our engineering team will contact you within 24 business hours",
+    "whatsapp": "Chat on WhatsApp for Faster Response",
+    "explore": "Explore our services while you wait"
   }
 }

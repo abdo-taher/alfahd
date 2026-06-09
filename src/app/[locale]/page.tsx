@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { organizationSchema, websiteSchema } from "@/seo/schema/organization";
+import { organizationSchema, websiteSchema, videoObjectSchema } from "@/seo/schema/organization";
 import { generatePageMetadata } from "@/seo/metadata/page-metadata";
 import { HeroSection } from "@/features/home/components/hero-section";
 import { CredibilityStrip } from "@/features/home/components/credibility-strip";
@@ -67,6 +67,7 @@ export async function generateMetadata({
 export default function HomePage() {
   const orgSchema = organizationSchema();
   const siteSchema = websiteSchema();
+  const videoSchema = videoObjectSchema();
 
   return (
     <>
@@ -78,6 +79,10 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema).replace(/</g, "\\u003c") }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema).replace(/</g, "\\u003c") }}
       />
 
       {/* 1. Hero — full-viewport video bg, gradient, stats row */}

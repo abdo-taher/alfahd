@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { generatePageMetadata } from "@/seo/metadata/page-metadata";
+import { itemListSchema, breadcrumbSchema } from "@/seo/schema/organization";
 import { contentRepository } from "@/lib/content/content-repository";
+
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://alfahd-contracting.com";
 
 export async function generateMetadata({
   params,
@@ -53,8 +56,33 @@ export default async function ServicesPage({
   const t = await getTranslations({ locale, namespace: "services" });
   const services = await contentRepository.getServices(locale);
 
+  const servicesSlugs = ["aluminum-works", "glass-works", "steel-works"];
+  const itemList = itemListSchema(
+    servicesSlugs.map((slug) => ({
+      name: slug
+        .replace("aluminum-works", locale === "ar" ? "أعمال الألمنيوم" : "Aluminum Works")
+        .replace("glass-works", locale === "ar" ? "أعمال الزجاج" : "Glass Works")
+        .replace("steel-works", locale === "ar" ? "أعمال الحديد" : "Steel Works"),
+      url: `${BASE_URL}/${locale}/services/${slug}`,
+    }))
+  );
+
+  const breadcrumbs = breadcrumbSchema([
+    { name: locale === "ar" ? "الرئيسية" : "Home", url: `${BASE_URL}/${locale}` },
+    { name: locale === "ar" ? "خدماتنا" : "Services", url: `${BASE_URL}/${locale}/services` },
+  ]);
+
   return (
     <div className="pt-20">
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList).replace(/</g, "\\u003c") }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs).replace(/</g, "\\u003c") }}
+      />
       {/* ── Hero ──────────────────────────────────────────────── */}
       <section className="enterprise-gradient py-24 text-white">
         <div className="container-brand">

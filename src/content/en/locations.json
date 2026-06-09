@@ -1,0 +1,140 @@
+[
+  {
+    "id": "loc-1",
+    "slug": "riyadh",
+    "city": "Riyadh",
+    "title": "Aluminium & Glass Works in Riyadh",
+    "description": "Al Fahd Contracting — leaders in aluminium, glass, and steel works in Riyadh since 1999. We serve the entire capital from north to south with more than 200 completed projects.",
+    "shortDescription": "25+ years of facade project execution in the Kingdom's capital",
+    "heroImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuCvwblNQmF23c_-OuBV0Z0mf899U3_IkjyA5GnwYGAucjLJr5dMn4fIRHOfRhrQXKQp1a9UF4SKTzcHO07m1-nUIN8f_QUAjLWOljnWsKMOYjU7ZIn6cThWq5YIMviz3Qd7OUCZHsN6q0oRTv7_eVjGrBEZw7gJy4I-LzfztGObl7J5yG9JI_9gnbij6SjS2w2HIjWEm3bHFsUza4MeB5TPRd7ny3i0jgWuZ4MUHoJJl342TdyBkVCpsyd88Cfw5CrSk5MCpK67kb14",
+    "address": "Al-Olaya Towers, Tower B, Floor 14, Riyadh 12211",
+    "phone": "+966114459222",
+    "email": "riyadh@al-fahd.com.sa",
+    "services": ["Aluminium Works", "Glass Works", "Steel Works", "Curtain Wall Systems"],
+    "projectSlugs": ["king-salman-financial-tower", "commercial-crystal-tower", "smart-pedestrian-bridge"],
+    "whyChooseUs": [
+      "Engineering team based in Riyadh throughout the week",
+      "Field response within 4 hours in emergencies",
+      "Over 200 completed projects in Riyadh"
+    ],
+    "keywords": {
+      "ar": ["أعمال ألمنيوم الرياض"],
+      "en": ["aluminum works Riyadh", "glass contractor Riyadh", "aluminum company Riyadh"]
+    }
+  },
+  {
+    "id": "loc-2",
+    "slug": "jeddah",
+    "city": "Jeddah",
+    "title": "Aluminium & Glass Works in Jeddah",
+    "description": "We provide services in Jeddah and the Western Region for facade and metalwork projects, using materials resistant to the marine humidity typical of Jeddah's coastal climate.",
+    "shortDescription": "Specialist facade solutions for Jeddah's marine climate",
+    "heroImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuAeXd_bsxIZ523NTAhdnr374o56ikad_BtTVJwWIwQCADfORBs28IQcapnWhHr_d8K3amACjUId2MiQEKt6mA8zyS-TdAB9fCvMs594dvGZS9bolZzlz91PkS-Td1aFw4NKPRg0bpm_5SyyAsXRN1YO3Yrz2tP3xIFJoII2TZf2OM2aKTaIGiz-BplENh_XB6x63o1H_vO74XQ3RbFVyvh1PmWmzlRXd1UcIkFYKqDZ8h1AM_2f_clnNqGfnIB_ht46rUVTjNGdbF5H",
+    "address": "Prince Majid Road, Jeddah 23214",
+    "phone": "+966112345678",
+    "email": "jeddah@al-fahd.com.sa",
+    "services": ["Aluminium Works", "Glass Works", "Steel Structures", "Glass Entrances"],
+    "projectSlugs": ["al-nakheel-mall-atrium", "red-sea-global-pavilion"],
+    "whyChooseUs": [
+      "Coatings resistant to marine salinity and humidity",
+      "Team ready in Jeddah for faster execution",
+      "Wide experience in Western Region projects"
+    ],
+    "keywords": {
+      "ar": ["أعمال ألمنيوم جدة"],
+      "en": ["aluminum works Jeddah", "glass contractor Jeddah"]
+    }
+  },
+  {
+    "id": "loc-3",
+    "slug": "dammam",
+    "city": "Dammam",
+    "title": "Aluminium & Glass Works in Dammam",
+    "description": "We serve the Eastern Province — including Dammam, Khobar, and Jubail — with marine- and chemical-resistant facade solutions, with special expertise in industrial and petrochemical projects.",
+    "shortDescription": "Facade solutions for the Eastern Province in petrochemical environments",
+    "heroImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDThd-WgATXSWPGf34k60Y9gU_Fp5HXLZf9TQfJZfcdJFAQ0FojZZnbYkHWv4XzgMCwt47kAawrCIcZWA01A9xFLFyfSk4-YUaFfVFG0wtYfufH5Qqc-nP_CicFqhX3L73xEnZYZpu1Vi-KCjyNmo9gEoHWaQLsv5XNYJvQqm9aRZJU7eorQiAJSfAVDXqPAUR7dC2GPLGPOj2UyMTaZetg_ih6B9GLc_uW9_gksFCeIUSxQtIP4CVgmIN2aeILdqSSflW2Z2g_P-Xa",
+    "address": "Prince Mohammed bin Fahd Road, Dammam 32244",
+    "phone": "+966137654321",
+    "email": "dammam@al-fahd.com.sa",
+    "services": ["Aluminium Works", "Steel Structures", "Industrial Aluminium Cladding", "Glass Works"],
+    "projectSlugs": ["industrial-innovation-complex", "neom-infrastructure-hub"],
+    "whyChooseUs": [
+      "Experience in petrochemical and heavy-industry projects",
+      "Chemical- and marine-corrosion-resistant materials",
+      "Team trained to Aramco and SABIC requirements"
+    ],
+    "keywords": {
+      "ar": ["أعمال ألمنيوم الدمام"],
+      "en": ["aluminum works Dammam", "steel contractor Dammam"]
+    }
+  },
+  {
+    "id": "loc-4",
+    "slug": "neom",
+    "city": "NEOM",
+    "title": "Facade Works in NEOM",
+    "description": "We contribute to building NEOM's future-oriented projects with the latest sustainable facade systems aligned with the highest environmental sustainability standards and Vision 2030.",
+    "shortDescription": "Sustainable facade solutions for NEOM and Vision 2030 projects",
+    "heroImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDMnLDv35oEIlyXRgKy3LWwpROa09JaxlklFhgfUcCYnJsXR5yE3do-MNglVqtnZyeOJ79ALeaMSwzMztQ2PO4W0RcFPVEaPzdd8t8Gw2mGbP8044xWAvpE-6-q1-J_nWPmoHhjof27zsYyk1erwGEC6iFXB2HVKXmEtsS5DiD8HrqTbBqRFtrPZa5-MAbLLjWu-fR_-fw3g0jgKdsr0ADAqFxuC8YZJ0p0taaMAr9xj3kPl-crFJZugJfvuNMC6ZSRQTxIIUZocJ4g",
+    "address": "NEOM Region, Tabuk, Saudi Arabia",
+    "phone": "+966114459222",
+    "email": "neom@al-fahd.com.sa",
+    "services": ["Glass Curtain Wall Systems", "Modular Steel Structures", "Low-Carbon Aluminium", "BIPV-Integrated Systems"],
+    "projectSlugs": ["neom-infrastructure-hub", "red-sea-global-pavilion"],
+    "whyChooseUs": [
+      "Experience with Vision 2030 project requirements",
+      "LEED-compatible low-carbon footprint materials",
+      "Execution record on major NEOM projects"
+    ],
+    "keywords": {
+      "ar": ["مقاولات نيوم"],
+      "en": ["NEOM contractor", "NEOM facade works", "Vision 2030 contractor"]
+    }
+  },
+  {
+    "id": "loc-5",
+    "slug": "mecca",
+    "city": "Mecca",
+    "title": "Aluminium & Glass Works in Mecca",
+    "description": "We serve Mecca for hotel, commercial, and residential projects surrounding the Grand Mosque, in full compliance with the specific regulations and requirements of the area.",
+    "shortDescription": "Facade solutions for hotel and commercial projects in Mecca",
+    "heroImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuBvNMXhx_PtZEjUvGER6vEwXdB5cRdkvrltMht8WC9l3SEbK28C07yPkcox9J-zjOUlBCKx9oW4smjdPDKeaXIpjWAgJy3ZnoCagzkfdJjlZ9bOviZBCRjR2Mz-JHQf6rpE0bA6Jf6NxI1oJDauUGz7QT3OxPTqIbJAc--XiSVUcy9fe_W0rzPOitHObQsXeDUscnLk143ZL-RXCIqLGuSOuaWtrpLFgC5Thy8YAJeu0ijswRmR5Uzmnybshd_sVTo8bBAcI0w6NkQY",
+    "address": "Al-Aziziya, Mecca",
+    "phone": "+966125551234",
+    "email": "mecca@al-fahd.com.sa",
+    "services": ["Aluminium Works", "Glass Works", "Curtain Wall Systems", "Luxury Entrances"],
+    "projectSlugs": ["king-salman-financial-tower"],
+    "whyChooseUs": [
+      "Full compliance with Central Area building controls",
+      "Tight coordination with licensing and oversight bodies",
+      "Experience in high-density hotel projects"
+    ],
+    "keywords": {
+      "ar": ["أعمال ألمنيوم مكة المكرمة"],
+      "en": ["aluminum works Mecca", "facade contractor Mecca"]
+    }
+  },
+  {
+    "id": "loc-6",
+    "slug": "jubail",
+    "city": "Jubail Industrial City",
+    "title": "Aluminium Works & Steel Structures in Jubail Industrial City",
+    "description": "We specialise in industrial cladding and steel structure projects in Jubail Industrial City, with materials resistant to petrochemical environments and hazardous industrial conditions.",
+    "shortDescription": "Steel structures and aluminium cladding for petrochemical facilities in Jubail",
+    "heroImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDThd-WgATXSWPGf34k60Y9gU_Fp5HXLZf9TQfJZfcdJFAQ0FojZZnbYkHWv4XzgMCwt47kAawrCIcZWA01A9xFLFyfSk4-YUaFfVFG0wtYfufH5Qqc-nP_CicFqhX3L73xEnZYZpu1Vi-KCjyNmo9gEoHWaQLsv5XNYJvQqm9aRZJU7eorQiAJSfAVDXqPAUR7dC2GPLGPOj2UyMTaZetg_ih6B9GLc_uW9_gksFCeIUSxQtIP4CVgmIN2aeILdqSSflW2Z2g_P-Xa",
+    "address": "Industrial Zone, Jubail 31961",
+    "phone": "+966135551234",
+    "email": "jubail@al-fahd.com.sa",
+    "services": ["Structural Steel Works", "Industrial Aluminium Cladding", "Chemical-Resistant Structures", "Mezzanine Platforms"],
+    "projectSlugs": ["industrial-innovation-complex", "neom-infrastructure-hub"],
+    "whyChooseUs": [
+      "Distinguished track record with the Royal Commission for Jubail and Yanbu",
+      "Materials meeting Aramco and SABIC specifications",
+      "Experience with OSHA and SASO industrial safety codes"
+    ],
+    "keywords": {
+      "ar": ["هياكل حديدية الجبيل"],
+      "en": ["steel structures Jubail", "industrial cladding Jubail"]
+    }
+  }
+]

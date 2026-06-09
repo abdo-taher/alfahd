@@ -36,6 +36,13 @@ export function Footer() {
     { label: locale === "ar" ? "تواصل معنا" : "Contact",  href: `/${locale}/contact` },
   ];
 
+  const resourceLinks = [
+    { label: locale === "ar" ? "الأسئلة الشائعة" : "FAQ",                  href: `/${locale}/faq` },
+    { label: locale === "ar" ? "دليل الأسعار"    : "Price Guides",          href: `/${locale}/cost/aluminum-works` },
+    { label: locale === "ar" ? "دراسات الحالة"   : "Case Studies",          href: `/${locale}/case-studies/king-salman-financial-tower` },
+    { label: locale === "ar" ? "القطاعات"         : "Industries",            href: `/${locale}/industries/government-projects` },
+  ];
+
   return (
     <footer
       className="bg-gray-950 text-gray-300 font-sans border-t-2 pt-16 pb-8"
@@ -43,7 +50,7 @@ export function Footer() {
       role="contentinfo"
     >
       <div className="max-w-[1280px] mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
 
           {/* Brand & Description */}
           <div className="space-y-4">
@@ -137,6 +144,38 @@ export function Footer() {
                 >
                   {nt("portal")}
                 </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div className="space-y-3">
+            <h4
+              className="text-xs font-bold uppercase tracking-widest"
+              style={{ color: "#C5A880" }}
+            >
+              {locale === "ar" ? "الموارد" : "Resources"}
+            </h4>
+            <ul className="space-y-2 text-xs">
+              {resourceLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-400 hover:text-amber-400 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <a
+                  href="https://g.page/alfahd-contracting"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-amber-400 transition-colors"
+                >
+                  {locale === "ar" ? "موقعنا على الخريطة" : "Find Us on Maps"}
+                </a>
               </li>
             </ul>
           </div>

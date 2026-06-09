@@ -128,11 +128,42 @@ export function generateServiceMetadata({
     : `${service} in Riyadh | ${companyName}`;
 
   const description = isAr
-    ? `${service} — تنفيذ احترافي في الرياض والمملكة العربية السعودية. خبرة 15+ عاماً، جودة معتمدة، وعروض أسعار مجانية. ${companyName}`
-    : `${service} in Riyadh & Saudi Arabia — professional execution, 15+ years experience, certified quality, free quotes. ${companyName}`;
+    ? `${service} — تنفيذ احترافي في الرياض والمملكة العربية السعودية. خبرة 25+ عاماً، جودة معتمدة، وعروض أسعار مجانية. ${companyName}`
+    : `${service} in Riyadh & Saudi Arabia — professional execution, 25+ years experience, certified quality, free quotes. ${companyName}`;
 
   const keywordMap = isAr ? SERVICE_KEYWORDS_AR : SERVICE_KEYWORDS_EN;
   const keywords = keywordMap[slug] ?? [service, isAr ? "مقاولات الرياض" : "contracting Riyadh"];
 
+  return generatePageMetadata({ title, description, path, locale, keywords });
+}
+
+export function generateSubServiceMetadata({
+  subServiceTitle,
+  parentServiceTitle,
+  slug,
+  parentSlug,
+  locale,
+  path,
+  keywords,
+}: {
+  subServiceTitle: string;
+  parentServiceTitle: string;
+  slug: string;
+  parentSlug: string;
+  locale: string;
+  path: string;
+  keywords: string[];
+}): Metadata {
+  const isAr = locale === "ar";
+  const company = isAr ? "مؤسسة الفهد للمقاولات" : "Al Fahd Contracting";
+  const title = isAr
+    ? `${subServiceTitle} | ${parentServiceTitle} بالرياض | ${company}`
+    : `${subServiceTitle} | ${parentServiceTitle} Riyadh | ${company}`;
+  const description = isAr
+    ? `${subServiceTitle} — خدمة متخصصة من مؤسسة الفهد للمقاولات في الرياض. خبرة 25+ عاماً، جودة معتمدة ISO، عروض أسعار مجانية.`
+    : `${subServiceTitle} — specialised service from Al Fahd Contracting in Riyadh. 25+ years experience, ISO certified quality, free quotes.`;
+  // parentSlug and slug are used in the path already, suppressing unused-var lint
+  void parentSlug;
+  void slug;
   return generatePageMetadata({ title, description, path, locale, keywords });
 }

@@ -52,7 +52,7 @@ export function generatePageMetadata({
 
   const ogImageUrl = ogImage
     ? `${BASE_URL}${ogImage}`
-    : `${BASE_URL}/images/og-default.jpg`;
+    : `${BASE_URL}/images/og-default.svg`;
 
   return {
     title,

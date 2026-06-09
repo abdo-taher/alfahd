@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { contentRepository } from "@/lib/content/content-repository";
@@ -72,11 +73,14 @@ export default async function ServiceDetailPage({
         {/* ── Hero ──────────────────────────────────────────────── */}
         <section className="relative h-[60vh] min-h-[420px] flex items-end overflow-hidden bg-gray-950">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={service.image}
             alt={service.title}
-            referrerPolicy="no-referrer"
+            fill
             className="absolute inset-0 w-full h-full object-cover opacity-50"
+            sizes="100vw"
+            priority
+            referrerPolicy="no-referrer"
           />
           <div
             className="absolute inset-0"
@@ -127,6 +131,30 @@ export default async function ServiceDetailPage({
                   {service.description}
                 </p>
 
+                {/* Cross-service links */}
+                <div className="mt-6 p-4 bg-white border border-gray-100 rounded-lg">
+                  <p className="text-sm text-[#747783] mb-3">
+                    {locale === "ar" ? "خدماتنا الأخرى:" : "Our other services:"}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      { s: "aluminum-works", ar: "أعمال الألمنيوم", en: "Aluminium Works" },
+                      { s: "glass-works", ar: "أعمال الزجاج", en: "Glass Works" },
+                      { s: "steel-works", ar: "أعمال الحديد", en: "Steel Works" },
+                    ]
+                      .filter((x) => x.s !== slug)
+                      .map((x) => (
+                        <Link
+                          key={x.s}
+                          href={`/${locale}/services/${x.s}`}
+                          className="px-3 py-1.5 border border-[#002868]/30 text-[#002868] rounded text-xs font-bold hover:bg-[#002868] hover:text-white transition-colors"
+                        >
+                          {locale === "ar" ? x.ar : x.en}
+                        </Link>
+                      ))}
+                  </div>
+                </div>
+
                 {/* Applications */}
                 {service.applications && service.applications.length > 0 && (
                   <div>
@@ -171,7 +199,7 @@ export default async function ServiceDetailPage({
                       {t("getQuote")}
                     </Link>
                     <a
-                      href="https://wa.me/966500000000"
+                      href="https://wa.me/966114459222"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 border border-white/20 text-white py-3 rounded-lg text-sm font-semibold hover:bg-white/10 transition-all"
@@ -347,12 +375,13 @@ async function RelatedProjects({
               href={`/${locale}/projects/${project.slug}`}
               className="group relative rounded-lg overflow-hidden h-64 bg-gray-900 shadow-sm"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={project.coverImage}
                 alt={project.title}
-                referrerPolicy="no-referrer"
+                fill
                 className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
+                sizes="(max-width:768px) 100vw, 33vw"
+                referrerPolicy="no-referrer"
               />
               <div
                 className="absolute inset-0"

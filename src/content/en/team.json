@@ -1,0 +1,74 @@
+[
+  {
+    "id": "tm-1",
+    "slug": "khalid-al-fahad",
+    "name": "المهندس خالد الفهد",
+    "nameEn": "Eng. Khalid Al-Fahad",
+    "jobTitle": "المؤسس والرئيس التنفيذي",
+    "jobTitleEn": "Founder & CEO",
+    "yearsExperience": 25,
+    "bio": "Eng. Khalid Al-Fahad founded the company in 1999 following extensive experience with international facade companies in Europe and the Gulf. He has 25 years of experience in facade engineering and major construction project management, leading landmark projects including the King Salman Financial Tower and NEOM developments. He holds a BSc in Civil Engineering from King Fahd University of Petroleum and Minerals.",
+    "specialisations": [
+      "Architectural Facade Engineering",
+      "Construction Project Management",
+      "Glass Curtain Wall Systems",
+      "Structural Steel Works"
+    ],
+    "blogSlugs": [],
+    "avatar": "/images/team/khalid-al-fahad.jpg"
+  },
+  {
+    "id": "tm-2",
+    "slug": "ahmed-al-rashidi",
+    "name": "المهندس أحمد الرشيدي",
+    "nameEn": "Eng. Ahmed Al-Rashidi",
+    "jobTitle": "مدير الهندسة",
+    "jobTitleEn": "Engineering Director",
+    "yearsExperience": 18,
+    "bio": "Eng. Ahmed specialises in structural design of architectural facade systems and SBC-601 energy code calculations. He has supervised the engineering aspect of over 150 projects in the Kingdom and led the design team for the Red Sea Global projects. He holds an MSc in Structural Engineering from Cairo University and is a member of the American Society of Civil Engineers (ASCE).",
+    "specialisations": [
+      "Structural Facade Design",
+      "SBC-601 Energy Code Calculations",
+      "BIM Modelling with Revit",
+      "Thermal Performance Testing"
+    ],
+    "blogSlugs": [],
+    "avatar": "/images/team/ahmed-al-rashidi.jpg"
+  },
+  {
+    "id": "tm-3",
+    "slug": "omar-al-subhi",
+    "name": "المهندس عمر الصبحي",
+    "nameEn": "Eng. Omar Al-Subhi",
+    "jobTitle": "مدير مشاريع أول",
+    "jobTitleEn": "Senior Project Manager",
+    "yearsExperience": 14,
+    "bio": "Eng. Omar specialises in managing large facade projects and coordinating multiple contractors. He has extensive field experience in curtain wall and complex steel structure execution. He holds a PMP from the Project Management Institute and a LEED AP credential for green building design.",
+    "specialisations": [
+      "Project Management (PMP)",
+      "Project Scheduling and Critical Path Analysis",
+      "Contract Management and Dispute Resolution",
+      "Vision 2030 Projects"
+    ],
+    "blogSlugs": [],
+    "avatar": "/images/team/omar-al-subhi.jpg"
+  },
+  {
+    "id": "tm-4",
+    "slug": "faisal-al-ghamdi",
+    "name": "المهندس فيصل الغامدي",
+    "nameEn": "Eng. Faisal Al-Ghamdi",
+    "jobTitle": "مهندس الهياكل الفولاذية",
+    "jobTitleEn": "Structural Steel Engineer",
+    "yearsExperience": 12,
+    "bio": "Eng. Faisal specialises in designing and fabricating structural steel works. He is proficient in STAAD.Pro, SAP2000, and AutoCAD shop drawings. He has overseen the fabrication of over 8,000 tonnes of steel structures in the company's workshops, with documented experience in infrastructure and industrial complex projects.",
+    "specialisations": [
+      "Steel Structure Design (AISC)",
+      "Steel Shop Drawings",
+      "Quality Control and NDT Testing",
+      "Dynamic Load Analysis"
+    ],
+    "blogSlugs": [],
+    "avatar": "/images/team/faisal-al-ghamdi.jpg"
+  }
+]

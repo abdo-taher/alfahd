@@ -1,13 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter, useParams } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
+import { trackEvent } from "@/lib/analytics";
 
 type ServiceKey = "aluminum" | "glass" | "steel" | "other";
 
 export function QuoteClient() {
   const t = useTranslations("quote");
   const locale = useLocale();
+  const router = useRouter();
+  const params = useParams();
+  const routeLocale = (params?.locale as string) ?? locale ?? "ar";
   const [formState, setFormState] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [form, setForm] = useState({
     name: "",
@@ -64,6 +69,8 @@ export function QuoteClient() {
     }
 
     setFormState("success");
+    router.push(`/${routeLocale}/thank-you`);
+    trackEvent("generate_lead", { form: "request_quote" });
   }
 
   return (
@@ -86,6 +93,26 @@ export function QuoteClient() {
       <section className="section-py bg-surface dark:bg-gray-950">
         <div className="container-brand">
           <div className="max-w-3xl mx-auto">
+            {/* Trust bar */}
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
+              {[
+                { value: "500+", label: locale === "ar" ? "مشروع منجز" : "Completed Projects" },
+                { value: "25+", label: locale === "ar" ? "عاماً من الخبرة" : "Years Experience" },
+                { value: "ISO", label: locale === "ar" ? "معتمدون دولياً" : "Internationally Certified" },
+              ].map((stat) => (
+                <div key={stat.label} className="flex flex-col items-center bg-white border border-gray-100 rounded-xl px-6 py-4 shadow-sm">
+                  <span className="text-2xl font-extrabold text-[#002868]">{stat.value}</span>
+                  <span className="text-xs text-[#747783] mt-1">{stat.label}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Response promise badge */}
+            <div className="flex items-center justify-center gap-2 mb-6 text-sm text-green-700 font-medium">
+              <span className="material-symbols-outlined" style={{ fontSize: "18px" }} aria-hidden="true">schedule</span>
+              {locale === "ar" ? "رد خلال 24 ساعة من ساعات العمل" : "Response within 24 business hours"}
+            </div>
+
             {formState === "success" ? (
               <div className="bg-surface-container-low dark:bg-gray-800 border border-outline-variant dark:border-gray-700 rounded-lg p-16 text-center">
                 <div className="w-16 h-16 rounded-full enterprise-gradient flex items-center justify-center text-white text-3xl mx-auto mb-6">

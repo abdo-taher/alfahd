@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { generatePageMetadata } from "@/seo/metadata/page-metadata";
-import { breadcrumbSchema } from "@/seo/schema/organization";
+import { breadcrumbSchema, itemListSchema } from "@/seo/schema/organization";
+import { contentRepository } from "@/lib/content/content-repository";
 import { ProjectsClient } from "./projects-client";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://alfahd-contracting.com";
@@ -52,6 +53,14 @@ export default async function ProjectsPage({
 }) {
   const { locale } = await params;
 
+  const projects = await contentRepository.getProjects(locale);
+  const itemList = itemListSchema(
+    projects.map((p) => ({
+      name: p.title,
+      url: `${BASE_URL}/${locale}/projects/${p.slug}`,
+    }))
+  );
+
   const breadcrumbs = breadcrumbSchema([
     { name: locale === "ar" ? "الرئيسية" : "Home", url: `${BASE_URL}/${locale}` },
     { name: locale === "ar" ? "مشاريعنا" : "Projects", url: `${BASE_URL}/${locale}/projects` },
@@ -59,6 +68,10 @@ export default async function ProjectsPage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList).replace(/</g, "\\u003c") }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs).replace(/</g, "\\u003c") }}

@@ -26,8 +26,12 @@ export class JsonProvider implements ContentProvider {
 
     let value: T;
 
-    // Domain collections: services, projects, testimonials, blog
-    const COLLECTIONS = ["services", "projects", "testimonials", "blog"];
+    // Domain collections: services, projects, testimonials, blog + extended SEO collections
+    const COLLECTIONS = [
+      "services", "projects", "testimonials", "blog",
+      "sub-services", "industries", "locations", "cost-guides",
+      "case-studies", "faq-hub", "team",
+    ];
 
     if (COLLECTIONS.includes(key)) {
       const module = await import(

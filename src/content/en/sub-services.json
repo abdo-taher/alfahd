@@ -1,0 +1,170 @@
+[
+  {
+    "id": "ss-1",
+    "slug": "curtain-wall",
+    "parentSlug": "aluminum-works",
+    "title": "Glass Curtain Wall Systems",
+    "shortDescription": "High-performance curtain wall systems for commercial buildings and towers with superior thermal efficiency.",
+    "description": "We specialise in designing and installing glass curtain wall systems for commercial buildings and towers. We use top-grade thermally broken aluminium profiles with Low-E double glazing to achieve the highest energy efficiency and environmental performance standards compliant with the Saudi Building Code.",
+    "benefits": [
+      "Superior energy efficiency reducing A/C loads by up to 40%",
+      "Excellent thermal and acoustic insulation",
+      "Premium contemporary architectural appearance",
+      "High resistance to wind and pressure",
+      "Easy maintenance and panel replacement",
+      "Compliant with Saudi Energy Code SBC-601"
+    ],
+    "applications": [
+      "Commercial towers",
+      "Shopping centres",
+      "Government buildings",
+      "Luxury hotels",
+      "Hospitals",
+      "Administrative complexes"
+    ],
+    "process": [
+      { "step": 1, "title": "Engineering Study", "description": "Load analysis and thermal performance calculations" },
+      { "step": 2, "title": "Design & Detailing", "description": "Detailed shop drawings approved by the consultant" },
+      { "step": 3, "title": "Precision Manufacturing", "description": "CNC-machined profiles in our workshop" },
+      { "step": 4, "title": "Installation & Testing", "description": "Professional installation with air and water leakage tests" }
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between a curtain wall and other facade systems?",
+        "answer": "A curtain wall is a non-structural external facade system fixed to the building's main structure. It carries wind loads and its own weight only. It offers design flexibility, faster installation, and superior thermal performance compared to traditional wall systems."
+      },
+      {
+        "question": "How long does it take to install a curtain wall system?",
+        "answer": "Execution typically ranges from 8 to 20 weeks depending on area and design complexity. Manufacturing takes 4–8 weeks and site installation varies with building height and access conditions."
+      }
+    ],
+    "keywords": {
+      "ar": ["جدران الستائر الرياض", "Curtain Wall الرياض", "واجهات زجاجية للأبراج"],
+      "en": ["curtain wall Riyadh", "curtain wall system Saudi Arabia", "glass curtain wall contractor"]
+    },
+    "relatedProjectCategory": "glass"
+  },
+  {
+    "id": "ss-2",
+    "slug": "aluminum-windows",
+    "parentSlug": "aluminum-works",
+    "title": "Aluminium Windows & Doors",
+    "shortDescription": "Custom aluminium windows and doors for residential and commercial projects with premium finishes.",
+    "description": "We provide comprehensive custom aluminium window and door solutions in any size, design, or finish. We use thermally broken aluminium profiles with double glazing to ensure the highest thermal and acoustic insulation, paired with a wide range of international hardware.",
+    "benefits": [
+      "Unlimited design options",
+      "Excellent thermal and acoustic insulation",
+      "Durability exceeding 30 years",
+      "Resistance to corrosion and UV rays",
+      "Easy cleaning and maintenance",
+      "Multiple finishes to match any décor"
+    ],
+    "applications": [
+      "Residential villas and homes",
+      "Residential towers",
+      "Offices and administration",
+      "Schools and universities",
+      "Hospitals and healthcare facilities",
+      "Hotels and resorts"
+    ],
+    "process": [
+      { "step": 1, "title": "Site Survey", "description": "Laser-accurate measurements of all openings" },
+      { "step": 2, "title": "Design & Selection", "description": "Type and finish selection with physical samples" },
+      { "step": 3, "title": "Manufacturing", "description": "CNC cutting and workshop assembly" },
+      { "step": 4, "title": "Installation & Sealing", "description": "Professional installation with full weatherproofing" }
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between standard and thermally broken aluminium windows?",
+        "answer": "Thermally broken aluminium windows contain a non-conductive plastic barrier separating the inner and outer profiles, preventing heat transfer and reducing internal condensation in hot and cold climates alike."
+      }
+    ],
+    "keywords": {
+      "ar": ["نوافذ ألمنيوم الرياض", "أبواب ألمنيوم الرياض"],
+      "en": ["aluminum windows Riyadh", "aluminum doors Saudi Arabia", "custom aluminum windows"]
+    },
+    "relatedProjectCategory": "aluminum"
+  },
+  {
+    "id": "ss-3",
+    "slug": "structural-glazing",
+    "parentSlug": "glass-works",
+    "title": "Structural Silicone Glazing",
+    "shortDescription": "Frameless glass facades using structural silicone for a sleek, contemporary architectural appearance.",
+    "description": "We design and install structural silicone glazing (SSG) systems that give buildings a smooth, contemporary look without visible frames. We use certified structural silicone from Dow Corning and Sika with rigorous quality checks on every joint.",
+    "benefits": [
+      "Modern and clean architectural appearance",
+      "Superior visual transparency",
+      "Reduced thermal loss at frame junctions",
+      "High weathering resistance",
+      "Easy cleaning and maintenance",
+      "Architectural design flexibility"
+    ],
+    "applications": [
+      "Office towers",
+      "Luxury hotels",
+      "Shopping centres",
+      "Government buildings",
+      "Conference halls",
+      "Airports and stations"
+    ],
+    "process": [
+      { "step": 1, "title": "Engineering Design", "description": "Structural silicone calculations and wind load analysis" },
+      { "step": 2, "title": "Supplier Approval", "description": "Silicone testing and recipe approval with the supplier" },
+      { "step": 3, "title": "Workshop Assembly", "description": "Glass bonding in a climate-controlled workshop" },
+      { "step": 4, "title": "Site Installation", "description": "Panel installation and field joint sealing" }
+    ],
+    "faq": [
+      {
+        "question": "Is structural glazing safe in high-wind conditions?",
+        "answer": "Yes, when properly designed. Certified structural silicone can withstand tensile and shear stresses from wind pressure per ASCE 7 or BS 6262. We provide bonded length and thickness calculations for each project based on location and height."
+      }
+    ],
+    "keywords": {
+      "ar": ["زجاج إنشائي لاصق الرياض", "SSG الواجهات الزجاجية"],
+      "en": ["structural glazing Riyadh", "SSG facade Saudi Arabia", "frameless glass facade"]
+    },
+    "relatedProjectCategory": "glass"
+  },
+  {
+    "id": "ss-4",
+    "slug": "steel-structures",
+    "parentSlug": "steel-works",
+    "title": "Structural Steel Works",
+    "shortDescription": "Design, fabrication, and erection of structural steel frames for factories, warehouses, and large commercial buildings.",
+    "description": "We specialise in designing, fabricating, and erecting structural steel frames for factories, warehouses, and large commercial buildings. We comply with AISC and AWS D1.1 standards and provide documented structural calculations approved by Saudi-licensed engineers.",
+    "benefits": [
+      "Faster execution compared to concrete",
+      "High durability and long service life",
+      "Seismic and dynamic load resistance",
+      "Future expansion and modification flexibility",
+      "Light weight with superior strength",
+      "Reusability and sustainability"
+    ],
+    "applications": [
+      "Factories and warehouses",
+      "Logistics distribution centres",
+      "Aircraft hangars",
+      "Power stations",
+      "Sports facilities",
+      "Elevated bridges and walkways"
+    ],
+    "process": [
+      { "step": 1, "title": "Structural Study", "description": "Load analysis and structural calculations" },
+      { "step": 2, "title": "Shop Drawings", "description": "Detailed drawings for every steel element" },
+      { "step": 3, "title": "Fabrication", "description": "Manufacturing and assembly in our equipped workshop" },
+      { "step": 4, "title": "Site Erection", "description": "Professional lifting and erection with weld inspection" }
+    ],
+    "faq": [
+      {
+        "question": "How long does it take to fabricate and erect a medium-sized steel warehouse?",
+        "answer": "A warehouse of 1,000–2,000 m² typically takes 6–10 weeks: 2 weeks for design and approval, 3–4 weeks for fabrication, and 2 weeks for site erection. We provide a detailed Gantt Chart schedule at project inception."
+      }
+    ],
+    "keywords": {
+      "ar": ["هياكل حديدية الرياض", "مستودعات حديدية السعودية"],
+      "en": ["steel structures Riyadh", "steel warehouse Saudi Arabia", "industrial steel works"]
+    },
+    "relatedProjectCategory": "steel"
+  }
+]

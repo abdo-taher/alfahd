@@ -1,12 +1,30 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { generateArticleMetadata } from "@/seo/metadata/article-metadata";
-import { articleSchema, breadcrumbSchema } from "@/seo/schema/organization";
+import { articleSchema, breadcrumbSchema, personSchema } from "@/seo/schema/organization";
 import { ShareButtons } from "@/shared/components/ui/share-buttons";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://alfahd-contracting.com";
+
+// ─── Author slug map ──────────────────────────────────────────────────────────
+
+const AUTHOR_SLUG_MAP: Record<string, string> = {
+  "م. أحمد الشمري": "ahmed-al-shamri",
+  "م. سعد العتيبي": "saad-al-otaibi",
+  "م. خالد الزهراني": "khalid-al-zahrani",
+  "م. فهد الدوسري": "fahad-al-dosari",
+  "م. نورة الغامدي": "noura-al-ghamdi",
+  "م. عبدالله الرشيد": "abdallah-al-rashid",
+  "م. محمد العنزي": "mohammad-al-anzi",
+  "م. سلطان الحارثي": "sultan-al-harthi",
+};
+
+function resolveAuthorSlug(authorName: string): string | null {
+  return AUTHOR_SLUG_MAP[authorName] ?? null;
+}
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -92,13 +110,24 @@ export default async function BlogPostPage({
   const isAr = locale === "ar";
 
   // JSON-LD structured data
+  const authorSlug = resolveAuthorSlug(post.author);
   const articleSd = articleSchema({
     title: post.title,
     description: post.excerpt,
     url: `${BASE_URL}/${locale}/blog/${slug}`,
     publishedAt: post.publishedAt,
     image: post.coverImage,
+    authorName: post.author,
+    authorSlug: authorSlug ?? undefined,
   });
+
+  const personSd = authorSlug
+    ? personSchema({
+        name: post.author,
+        jobTitle: locale === "ar" ? "مهندس" : "Engineer",
+        slug: authorSlug,
+      })
+    : null;
 
   const breadcrumbs = breadcrumbSchema([
     { name: isAr ? "الرئيسية" : "Home", url: `${BASE_URL}/${locale}` },
@@ -128,15 +157,23 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs).replace(/</g, "\\u003c") }}
       />
+      {personSd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSd).replace(/</g, "\\u003c") }}
+        />
+      )}
       {/* Hero */}
       <section className="relative bg-gray-950 overflow-hidden">
         {/* Cover image */}
         <div className="absolute inset-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={post.coverImage}
             alt={post.title}
+            fill
             className="w-full h-full object-cover opacity-30"
+            sizes="100vw"
+            priority
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/70 to-transparent" />
@@ -260,11 +297,12 @@ export default async function BlogPostPage({
                   className="group flex gap-4 items-start p-4 rounded-lg hover:bg-gray-50 transition-colors border border-gray-100"
                 >
                   <div className="relative w-24 h-20 flex-shrink-0 overflow-hidden rounded">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={rel.coverImage}
                       alt={rel.title}
+                      fill
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="96px"
                       referrerPolicy="no-referrer"
                     />
                   </div>

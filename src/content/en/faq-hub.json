@@ -1,0 +1,98 @@
+{
+  "categories": [
+    {
+      "id": "general",
+      "label": "General Questions",
+      "questions": [
+        {
+          "question": "What are Al Fahd Contracting's areas of specialisation?",
+          "answer": "Al Fahd Contracting specialises in three core areas: aluminium works (facades, windows, doors, curtain walls), glass works (glass facades, partitions, structural glazing), and steel works (structural frames, warehouses, stairs, decorative metalwork). We execute residential, commercial, government, and industrial projects in Riyadh and across Saudi Arabia."
+        },
+        {
+          "question": "How many years of experience does Al Fahd have?",
+          "answer": "The company was founded in 1999 and has more than 25 years of field experience, during which we have executed over 300 strategic projects in Saudi Arabia and the GCC."
+        },
+        {
+          "question": "What certifications and accreditations do you hold?",
+          "answer": "We hold ISO 9001:2015 for quality management systems, ISO 14001:2015 for environmental management, SASO compliance for Saudi specifications, AISC and AWS D1.1 standards for steel structures, and our engineers are registered with the Saudi Engineers Association (SES)."
+        },
+        {
+          "question": "Which geographic areas do you serve?",
+          "answer": "Our main office is in Riyadh and we serve all regions of Saudi Arabia. We have a field presence in Jeddah, Dammam, and Jubail, and accept GCC projects under special arrangements."
+        }
+      ]
+    },
+    {
+      "id": "aluminum",
+      "label": "Aluminium Works",
+      "questions": [
+        {
+          "question": "What is the minimum size of aluminium project you accept?",
+          "answer": "We welcome projects of all sizes, from replacing a single villa window to full tower facades. For small projects we offer a fast supply-and-install service; for large projects we assemble a full project team."
+        },
+        {
+          "question": "How long is the aluminium works warranty?",
+          "answer": "We provide a comprehensive 5-year warranty covering materials and installation, including any manufacturing or material defects. We also offer optional annual maintenance contracts after the warranty period."
+        },
+        {
+          "question": "Do you use local or imported aluminium?",
+          "answer": "We use aluminium profiles in 6063-T5 and 6061-T6 alloys from approved suppliers in Europe and Turkey. All materials are tested to EN 755 and ASTM B221 and carry SASO compliance certificates."
+        }
+      ]
+    },
+    {
+      "id": "glass",
+      "label": "Glass Works",
+      "questions": [
+        {
+          "question": "What glass types do you supply?",
+          "answer": "We supply a wide range including: double-glazed IGU with air or argon gas gap, heat-tempered glass, laminated glass, Low-E glass, smart switchable-tint glass, and ultra-clear low-iron glass."
+        },
+        {
+          "question": "How do you ensure installation safety at height?",
+          "answer": "We follow a comprehensive safety protocol including full-body harnesses, inertia reels, approved anchor points, and a site-specific installation methodology approved by the safety officer before work commences."
+        },
+        {
+          "question": "What is the glass and installation warranty?",
+          "answer": "We provide a 10-year warranty on the thermal seal of double-glazed units, a 5-year warranty on sealants and weatherproofing materials, and a 2-year warranty on labour and installation."
+        }
+      ]
+    },
+    {
+      "id": "steel",
+      "label": "Steel Works",
+      "questions": [
+        {
+          "question": "What quality standards apply to steel structure fabrication?",
+          "answer": "We comply with AISC standards for steel construction, AWS D1.1 for structural welding, and the Saudi Building Code SBC-301. All steel materials carry ASTM A36/A572 compliance certificates."
+        },
+        {
+          "question": "Do you provide certified structural engineering calculations?",
+          "answer": "Yes, all structural calculations are reviewed and signed by engineers registered with the Saudi Engineers Association (SES), providing the official documentation required for building permits."
+        },
+        {
+          "question": "Do you offer periodic maintenance for steel structures?",
+          "answer": "Yes, we provide three-tier maintenance programmes: annual visual inspection, non-destructive testing (NDT) every 3 years, and full coating renewal every 5–7 years."
+        }
+      ]
+    },
+    {
+      "id": "commercial",
+      "label": "Commercial & Contractual",
+      "questions": [
+        {
+          "question": "How long does it take to prepare a quotation?",
+          "answer": "We provide a preliminary quote within 48 hours of receiving complete drawings and specifications. For larger projects requiring a site visit, it takes 3–5 business days."
+        },
+        {
+          "question": "Do you work as a subcontractor?",
+          "answer": "Yes, we provide services to main contractors and other contracting companies as a specialist nominated sub-contractor, with broad experience in multi-contractor projects."
+        },
+        {
+          "question": "What payment methods are available?",
+          "answer": "We accept cash, bank transfer, and letters of credit. Project contracts include milestone-linked payment schedules to ensure balanced cash flow for both parties."
+        }
+      ]
+    }
+  ]
+}

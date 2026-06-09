@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { generatePageMetadata } from "@/seo/metadata/page-metadata";
+import { aboutPageSchema, breadcrumbSchema } from "@/seo/schema/organization";
+
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://alfahd-contracting.com";
 
 export async function generateMetadata({
   params,
@@ -46,6 +50,12 @@ export default async function AboutPage({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "about" });
 
+  const aboutSd = aboutPageSchema(locale);
+  const breadcrumbs = breadcrumbSchema([
+    { name: locale === "ar" ? "الرئيسية" : "Home", url: `${BASE_URL}/${locale}` },
+    { name: locale === "ar" ? "من نحن" : "About", url: `${BASE_URL}/${locale}/about` },
+  ]);
+
   const values = [
     {
       title: locale === "ar" ? "الجودة" : "Quality",
@@ -83,12 +93,12 @@ export default async function AboutPage({
 
   const timeline = [
     {
-      year: "2008",
+      year: "1999",
       title: locale === "ar" ? "التأسيس" : "Founded",
       desc:
         locale === "ar"
-          ? "تأسست مؤسسة الفهد للمقاولات في الرياض"
-          : "Al Fahd Contracting was founded in Riyadh",
+          ? "تأسست مؤسسة الفهد للمقاولات في الرياض عام ١٩٩٩"
+          : "Al Fahd Contracting was founded in Riyadh in 1999",
     },
     {
       year: "2012",
@@ -125,6 +135,16 @@ export default async function AboutPage({
   ];
 
   return (
+    <>
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSd).replace(/</g, "\\u003c") }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs).replace(/</g, "\\u003c") }}
+      />
     <div className="pt-20">
       {/* Hero */}
       <section className="enterprise-gradient py-24 text-white">
@@ -248,7 +268,7 @@ export default async function AboutPage({
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { value: "500+", label: locale === "ar" ? "مشروع منجز" : "Projects Completed" },
-              { value: "15+",  label: locale === "ar" ? "سنة خبرة" : "Years Experience" },
+              { value: "25+",  label: locale === "ar" ? "سنة خبرة" : "Years Experience" },
               { value: "200+", label: locale === "ar" ? "عميل راضٍ" : "Satisfied Clients" },
               { value: "98%",  label: locale === "ar" ? "نسبة رضا" : "Satisfaction Rate" },
             ].map((stat) => (
@@ -260,6 +280,27 @@ export default async function AboutPage({
           </div>
         </div>
       </section>
+
+      {/* Internal links section */}
+      <section className="section-py bg-surface dark:bg-gray-950">
+        <div className="container-brand">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <Link href={`/${locale}/services`} className="group block bg-white border border-gray-100 rounded-xl p-6 hover:border-[#002868] transition-colors text-center">
+              <span className="material-symbols-outlined text-[#002868] text-3xl mb-3 block">construction</span>
+              <h3 className="font-bold text-[#002868] group-hover:text-[#C5A880] transition-colors">{locale === "ar" ? "خدماتنا" : "Our Services"}</h3>
+            </Link>
+            <Link href={`/${locale}/projects`} className="group block bg-white border border-gray-100 rounded-xl p-6 hover:border-[#002868] transition-colors text-center">
+              <span className="material-symbols-outlined text-[#002868] text-3xl mb-3 block">apartment</span>
+              <h3 className="font-bold text-[#002868] group-hover:text-[#C5A880] transition-colors">{locale === "ar" ? "مشاريعنا" : "Our Projects"}</h3>
+            </Link>
+            <Link href={`/${locale}/request-quote`} className="group block bg-[#002868] rounded-xl p-6 transition-colors text-center">
+              <span className="material-symbols-outlined text-[#C5A880] text-3xl mb-3 block">request_quote</span>
+              <h3 className="font-bold text-white">{locale === "ar" ? "طلب عرض سعر" : "Request a Quote"}</h3>
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
+    </>
   );
 }
