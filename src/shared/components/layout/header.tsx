@@ -132,13 +132,40 @@ export function Header() {
           {locale === "ar" ? "انتقل للمحتوى" : "Skip to content"}
         </a>
 
-        <div className="max-w-[1280px] mx-auto px-6 h-full flex items-center justify-between gap-4">
+        <div className="relative max-w-[1280px] mx-auto px-6 h-full flex items-center justify-between gap-4">
 
-          {/* ── Logo ──────────────────────────────────────────── */}
+          {/* ── Logo (centered on mobile, left on desktop) ────── */}
+          {/* Mobile: absolute center trick — logo is position:absolute center, hamburger stays in flow */}
+          <div className="lg:hidden absolute left-1/2 -translate-x-1/2 pointer-events-none">
+            <Link
+              href={`/${locale}`}
+              aria-label={locale === "ar" ? "مؤسسة الفهد للمقاولات — الرئيسية" : "Al Fahd Contracting — Home"}
+              className="pointer-events-auto flex items-center gap-2 shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-950 rounded group"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={!isTransparent ? "/images/logo-dark.png" : "/images/logo-white.png"}
+                alt="Al-Fahd Logo"
+                className="h-10 w-auto object-contain transition-all duration-300 group-hover:scale-105"
+                width={40}
+                height={40}
+              />
+              <span
+                className={[
+                  "font-bold text-sm leading-tight tracking-tight select-none whitespace-nowrap transition-colors duration-300",
+                  isTransparent ? "text-white" : "text-[#002868] dark:text-white",
+                ].join(" ")}
+              >
+                مؤسسة الفهد للمقاولات
+              </span>
+            </Link>
+          </div>
+
+          {/* ── Logo (desktop only, left-aligned) ────────────── */}
           <Link
             href={`/${locale}`}
             aria-label={locale === "ar" ? "مؤسسة الفهد للمقاولات — الرئيسية" : "Al Fahd Contracting — Home"}
-            className="flex items-center gap-3 shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-950 rounded group"
+            className="hidden lg:flex items-center gap-3 shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-950 rounded group"
           >
             {/* Logo — white when header is transparent (over dark hero), blue/black when scrolled */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
