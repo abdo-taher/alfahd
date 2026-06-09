@@ -4,7 +4,11 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import "@/app/globals.css";
 
 if (process.env.NODE_ENV === "production" && !process.env.NEXT_PUBLIC_SITE_URL) {
-  throw new Error("[SEO] NEXT_PUBLIC_SITE_URL must be set in production builds.");
+  console.warn(
+    "[SEO] NEXT_PUBLIC_SITE_URL is not set. " +
+    "Canonical URLs, sitemap, and OG tags will fall back to https://alfahd-contracting.com. " +
+    "Set this environment variable in your Vercel project settings."
+  );
 }
 
 const ibmPlexArabic = IBM_Plex_Sans_Arabic({
