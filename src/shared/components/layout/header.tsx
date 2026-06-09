@@ -149,6 +149,15 @@ export function Header() {
               width={80}
               height={80}
             />
+            {/* Wordmark next to logo */}
+            <span
+              className={[
+                "font-bold text-base leading-tight tracking-tight select-none whitespace-nowrap transition-colors duration-300",
+                isTransparent ? "text-white" : "text-[#002868] dark:text-white",
+              ].join(" ")}
+            >
+              مؤسسة الفهد للمقاولات
+            </span>
           </Link>
 
           {/* ── Desktop Nav ───────────────────────────────────── */}
@@ -216,12 +225,12 @@ export function Header() {
             </Link>
           </div>
 
-          {/* ── Mobile: Search + Language + Hamburger ────────── */}
-          <div className="lg:hidden flex items-center gap-2">
+          {/* ── Mobile: Search + Theme + Hamburger ───────────── */}
+          <div className="lg:hidden flex items-center gap-1">
             <button
               onClick={() => setSearchOpen(true)}
               className={[
-                "p-2 rounded-sm transition-colors",
+                "p-2.5 rounded-lg transition-colors",
                 isTransparent
                   ? "text-white/80 hover:text-white hover:bg-white/10"
                   : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800",
@@ -230,9 +239,6 @@ export function Header() {
             >
               <Search className="w-4 h-4" aria-hidden="true" />
             </button>
-            <div className="hidden sm:flex">
-              <LanguageSwitcher />
-            </div>
             <ThemeToggle />
             <MobileMenu navLinks={navLinks} onOpenChange={setMobileMenuOpen} isTransparent={isTransparent} />
           </div>

@@ -31,11 +31,16 @@ export function MobileMenu({
     onOpenChange?.(value);
   };
 
-  // Close on outside click
+  // Close on outside click (backdrop click is handled separately)
   useEffect(() => {
     if (!open) return;
     const handler = (e: MouseEvent) => {
-      if (drawerRef.current && !drawerRef.current.contains(e.target as Node)) {
+      if (
+        drawerRef.current &&
+        !drawerRef.current.contains(e.target as Node) &&
+        triggerRef.current &&
+        !triggerRef.current.contains(e.target as Node)
+      ) {
         handleOpen(false);
       }
     };
@@ -87,40 +92,57 @@ export function MobileMenu({
   useEffect(() => {
     if (open) {
       const firstLink = drawerRef.current?.querySelector("a");
-      setTimeout(() => (firstLink as HTMLElement)?.focus(), 100);
+      setTimeout(() => (firstLink as HTMLElement)?.focus(), 150);
     }
   }, [open]);
 
+  // Nav link icon map
+  const navIcons: Record<string, string> = {
+    home: "home",
+    about: "info",
+    services: "construction",
+    projects: "business_center",
+    blog: "article",
+    contact: "call",
+    portal: "lock",
+  };
+
   return (
     <div className="lg:hidden">
-      {/* Hamburger trigger */}
+      {/* ── Hamburger trigger ───────────────────────────────── */}
       <button
         ref={triggerRef}
-        onClick={() => handleOpen(true)}
+        onClick={() => handleOpen(!open)}
         aria-expanded={open}
         aria-controls="mobile-nav-drawer"
-        aria-label={t("menu")}
+        aria-label={open ? t("closeMenu") : t("menu")}
         className={[
           "flex h-10 w-10 items-center justify-center rounded-xl transition-colors focus-visible:outline-2",
           isTransparent
             ? "text-white/90 hover:bg-white/10 focus-visible:outline-white"
-            : "text-[#002868] hover:bg-[#002868]/5 focus-visible:outline-[#002868]",
+            : "text-[#002868] dark:text-white hover:bg-[#002868]/5 dark:hover:bg-white/10 focus-visible:outline-[#002868]",
         ].join(" ")}
       >
-        <span className="material-symbols-outlined" aria-hidden="true">menu</span>
+        <span
+          className="material-symbols-outlined transition-all duration-200"
+          aria-hidden="true"
+          style={{ fontSize: "22px" }}
+        >
+          {open ? "close" : "menu"}
+        </span>
       </button>
 
-      {/* Backdrop */}
+      {/* ── Backdrop ────────────────────────────────────────── */}
       <div
         aria-hidden="true"
         onClick={() => handleOpen(false)}
         className={[
-          "fixed inset-0 z-40 bg-[#002868]/60 backdrop-blur-sm transition-opacity duration-300",
+          "fixed inset-0 z-40 bg-[#001947]/70 backdrop-blur-sm transition-opacity duration-300",
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
         ].join(" ")}
       />
 
-      {/* Drawer */}
+      {/* ── Drawer ──────────────────────────────────────────── */}
       <div
         ref={drawerRef}
         id="mobile-nav-drawer"
@@ -128,9 +150,11 @@ export function MobileMenu({
         aria-modal="true"
         aria-label={t("menu")}
         className={[
-          "fixed top-0 z-50 h-full w-[300px] sm:w-[340px]",
-          "flex flex-col bg-white dark:bg-gray-900 shadow-2xl",
-          "transition-transform duration-300 ease-in-out",
+          // Full height, max 85vw so the backdrop always peeks on the other side
+          "fixed top-0 z-50 h-[100dvh] w-[85vw] max-w-[340px]",
+          "flex flex-col bg-white dark:bg-gray-900",
+          "shadow-[0_0_60px_rgba(0,40,104,0.25)]",
+          "transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]",
           isRTL ? "right-0" : "left-0",
           open
             ? "translate-x-0"
@@ -139,92 +163,198 @@ export function MobileMenu({
             : "-translate-x-full",
         ].join(" ")}
       >
-        {/* ── Drawer Header ─────────────────────────────────── */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-[#c4c6d3]/40 bg-[#002868]">
-          <div className="flex flex-col leading-none">
-            <span className="text-lg font-bold text-white tracking-tight">الفهد</span>
-            <span className="text-[11px] text-white/60 tracking-widest uppercase">للمقاولات</span>
+        {/* ── Header ──────────────────────────────────────────── */}
+        <div className="flex items-center justify-between px-5 py-4 bg-[#002868] shrink-0">
+          {/* Brand mark */}
+          <div className="flex items-center gap-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/logo-white.png"
+              alt="Al-Fahad Logo"
+              className="h-10 w-auto object-contain"
+              width={40}
+              height={40}
+            />
+            <div className="flex flex-col leading-none">
+              <span className="text-base font-bold text-white tracking-tight">الفهد</span>
+              <span className="text-[10px] text-white/50 tracking-widest uppercase mt-0.5">
+                للمقاولات
+              </span>
+            </div>
           </div>
+
+          {/* Close button */}
           <button
             onClick={() => handleOpen(false)}
             aria-label={t("closeMenu")}
-            className="flex h-9 w-9 items-center justify-center rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+            className="flex h-9 w-9 items-center justify-center rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors"
           >
-            <span className="material-symbols-outlined text-xl" aria-hidden="true">close</span>
+            <span
+              className="material-symbols-outlined"
+              aria-hidden="true"
+              style={{ fontSize: "20px" }}
+            >
+              close
+            </span>
           </button>
         </div>
 
-        {/* ── Nav Links ─────────────────────────────────────── */}
-        <nav
-          className="flex flex-col flex-1 overflow-y-auto px-4 py-4"
-          role="navigation"
-          aria-label={t("menu")}
-        >
-          {navLinks.map((link, i) => {
-            const isActive =
-              link.href === `/${locale}`
-                ? pathname === link.href
-                : pathname.startsWith(link.href);
+        {/* ── Scrollable body ─────────────────────────────────── */}
+        <div className="flex flex-col flex-1 min-h-0 overflow-y-auto overscroll-contain">
+          {/* Nav links */}
+          <nav
+            className="flex flex-col px-3 pt-3 pb-2"
+            role="navigation"
+            aria-label={t("menu")}
+          >
+            {navLinks.map((link, i) => {
+              const isActive =
+                link.href === `/${locale}`
+                  ? pathname === link.href
+                  : pathname.startsWith(link.href);
 
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => handleOpen(false)}
-                aria-current={isActive ? "page" : undefined}
-                className={[
-                  "flex items-center gap-3 px-4 py-3.5 rounded-xl text-sm font-semibold uppercase tracking-wider transition-all duration-200",
-                  isActive
-                    ? "bg-[#002868] text-white"
-                    : "text-[#434652] dark:text-gray-300 hover:bg-[#002868]/5 dark:hover:bg-gray-800 hover:text-[#002868] dark:hover:text-white",
-                ].join(" ")}
-                style={{ transitionDelay: open ? `${i * 30}ms` : "0ms" }}
-              >
-                {isActive && (
+              // Derive icon key from the href segment
+              const segment = link.href.split("/").pop() || "home";
+              const iconName = navIcons[segment] ?? "chevron_right";
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => handleOpen(false)}
+                  aria-current={isActive ? "page" : undefined}
+                  className={[
+                    "flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200",
+                    // Stagger in on open
+                    open ? "opacity-100 translate-x-0" : "opacity-0",
+                    isActive
+                      ? "bg-[#002868] text-white"
+                      : "text-[#434652] dark:text-gray-300 hover:bg-[#002868]/8 dark:hover:bg-gray-800 hover:text-[#002868] dark:hover:text-white",
+                  ].join(" ")}
+                  style={{
+                    transitionDelay: open ? `${i * 35}ms` : "0ms",
+                  }}
+                >
+                  {/* Icon container */}
                   <span
-                    className="w-1.5 h-1.5 rounded-full bg-[#C8A75D] shrink-0"
+                    className={[
+                      "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors",
+                      isActive
+                        ? "bg-white/15"
+                        : "bg-[#002868]/8 dark:bg-white/5",
+                    ].join(" ")}
                     aria-hidden="true"
-                  />
-                )}
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
+                  >
+                    <span
+                      className={[
+                        "material-symbols-outlined",
+                        isActive ? "text-[#C8A75D]" : "text-[#002868] dark:text-gray-400",
+                      ].join(" ")}
+                      style={{ fontSize: "16px" }}
+                    >
+                      {iconName}
+                    </span>
+                  </span>
 
-        {/* ── Contact Info ──────────────────────────────────── */}
-        <div className="px-6 py-4 border-t border-[#c4c6d3]/30 dark:border-gray-800 bg-[#f3f3fb] dark:bg-gray-800">
-          <a
-            href="tel:+966920000000"
-            className="flex items-center gap-3 text-sm text-[#002868] dark:text-blue-300 font-semibold hover:text-[#C8A75D] transition-colors"
-            dir="ltr"
-          >
-            <span className="material-symbols-outlined text-[#C8A75D] text-base" aria-hidden="true">phone</span>
-            +966 92 000 0000
-          </a>
-          <a
-            href="mailto:info@alfahd-contracting.com"
-            className="flex items-center gap-3 text-sm text-[#434652] dark:text-gray-400 mt-2 hover:text-[#002868] dark:hover:text-white transition-colors"
-          >
-            <span className="material-symbols-outlined text-[#C8A75D] text-base" aria-hidden="true">mail</span>
-            info@alfahd-contracting.com
-          </a>
+                  <span className="flex-1 tracking-wide">{link.label}</span>
+
+                  {/* Active indicator */}
+                  {isActive && (
+                    <span
+                      className="w-1.5 h-1.5 rounded-full bg-[#C8A75D] shrink-0"
+                      aria-hidden="true"
+                    />
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Divider */}
+          <div className="mx-5 my-1 h-px bg-[#c4c6d3]/30 dark:bg-gray-700" aria-hidden="true" />
+
+          {/* Quick contact info */}
+          <div className="px-5 py-3 space-y-2">
+            <p className="text-[10px] font-bold tracking-widest uppercase text-[#747783] dark:text-gray-500 mb-3">
+              {locale === "ar" ? "تواصل معنا" : "Contact"}
+            </p>
+            <a
+              href="tel:+966920000000"
+              className="flex items-center gap-3 py-2 text-sm text-[#002868] dark:text-blue-300 font-semibold hover:text-[#C8A75D] transition-colors"
+              dir="ltr"
+            >
+              <span
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#C8A75D]/10"
+                aria-hidden="true"
+              >
+                <span
+                  className="material-symbols-outlined text-[#C8A75D]"
+                  style={{ fontSize: "16px" }}
+                >
+                  phone
+                </span>
+              </span>
+              +966 92 000 0000
+            </a>
+            <a
+              href="mailto:info@alfahd-contracting.com"
+              className="flex items-center gap-3 py-2 text-sm text-[#434652] dark:text-gray-400 hover:text-[#002868] dark:hover:text-white transition-colors"
+            >
+              <span
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#C8A75D]/10"
+                aria-hidden="true"
+              >
+                <span
+                  className="material-symbols-outlined text-[#C8A75D]"
+                  style={{ fontSize: "16px" }}
+                >
+                  mail
+                </span>
+              </span>
+              <span className="truncate text-xs">info@alfahd-contracting.com</span>
+            </a>
+          </div>
         </div>
 
-        {/* ── Bottom: CTA + Language ────────────────────────── */}
-        <div className="px-5 py-5 border-t border-[#c4c6d3]/30 flex flex-col gap-3">
+        {/* ── Footer: CTA + Language ───────────────────────────── */}
+        <div className="px-4 py-4 border-t border-[#c4c6d3]/30 dark:border-gray-700 space-y-3 shrink-0 bg-white dark:bg-gray-900">
           <Link
             href={`/${locale}/request-quote`}
             onClick={() => handleOpen(false)}
-            className="flex w-full items-center justify-center gap-2 bg-[#C8A75D] text-[#001947] py-3.5 rounded-xl font-bold text-sm hover:brightness-110 active:scale-95 transition-all duration-200"
+            className="flex w-full items-center justify-center gap-2 bg-[#C8A75D] text-[#001947] py-3 rounded-xl font-bold text-sm hover:brightness-110 active:scale-95 transition-all duration-200"
           >
-            <span className="material-symbols-outlined text-base" aria-hidden="true">description</span>
+            <span
+              className="material-symbols-outlined"
+              aria-hidden="true"
+              style={{ fontSize: "18px" }}
+            >
+              description
+            </span>
             {t("requestQuote")}
           </Link>
 
-          {/* Language switcher */}
-          <div className="flex justify-center">
+          <div className="flex items-center justify-between gap-3">
+            {/* Language switcher */}
             <LanguageSwitcher />
+
+            {/* Social links */}
+            <div className="flex items-center gap-2">
+              {[
+                { href: "https://twitter.com", icon: "X", label: "Twitter" },
+                { href: "https://linkedin.com", icon: "in", label: "LinkedIn" },
+              ].map(({ href, icon, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#c4c6d3]/50 dark:border-gray-700 text-[#747783] dark:text-gray-500 hover:text-[#002868] hover:border-[#002868] dark:hover:text-white dark:hover:border-white transition-colors text-xs font-bold"
+                >
+                  {icon}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
