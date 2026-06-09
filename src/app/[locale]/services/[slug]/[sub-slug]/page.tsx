@@ -8,14 +8,39 @@ import { serviceSchema, faqSchema, breadcrumbSchema } from "@/seo/schema/organiz
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://alfahd-contracting.com";
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
-  const subServices = await contentRepository.getSubServices("ar");
+  // Hardcoded to avoid dynamic import failures at build time.
+  // Add new sub-service slugs here when content is added.
+  const subServiceMap: Record<string, string[]> = {
+    "aluminum-works": [
+      "curtain-wall-systems",
+      "aluminum-windows-doors",
+      "aluminum-cladding",
+      "aluminum-facades",
+      "structural-glazing",
+    ],
+    "glass-works": [
+      "structural-glass-facades",
+      "spider-glass-systems",
+      "fire-rated-glass",
+      "insulating-glass-units",
+      "low-iron-glass",
+    ],
+    "steel-works": [
+      "steel-structures",
+      "steel-warehouses",
+      "ornamental-iron",
+      "steel-canopies",
+      "pedestrian-bridges",
+    ],
+  };
+
   return ["ar", "en"].flatMap((locale) =>
-    subServices.map((s) => ({
-      locale,
-      slug: s.parentSlug,
-      "sub-slug": s.slug,
-    }))
+    Object.entries(subServiceMap).flatMap(([slug, subSlugs]) =>
+      subSlugs.map((subSlug) => ({ locale, slug, "sub-slug": subSlug }))
+    )
   );
 }
 

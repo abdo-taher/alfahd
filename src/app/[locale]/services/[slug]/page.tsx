@@ -10,6 +10,8 @@ import { serviceSchema, faqSchema, breadcrumbSchema } from "@/seo/schema/organiz
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://alfahd-contracting.com";
 
 // ── Static params for all service slugs ────────────────────────────────────
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const slugs = ["aluminum-works", "glass-works", "steel-works"];
   const locales = ["ar", "en"];
