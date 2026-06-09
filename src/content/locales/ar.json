@@ -59,25 +59,25 @@
       "viewAll": "عرض جميع الخدمات",
       "items": [
         {
-          "id": "aluminum",
+          "id": "aluminum-works",
           "title": "أنظمة الألمنيوم",
           "description": "حلول النوافذ والأبواب والقطاعات الخاصة بأعلى درجات العزل الحراري والصوتي",
           "icon": "architecture"
         },
         {
-          "id": "glass",
+          "id": "glass-works",
           "title": "الزجاج الإنشائي",
           "description": "استخدام الزجاج كعنصر حامل في التصاميم الجريئة والقباب السماوية وواجهات الأبراج",
           "icon": "window"
         },
         {
-          "id": "curtain-wall",
+          "id": "aluminum-works",
           "title": "جدران الستائر",
           "description": "تصميم وتنفيذ واجهات زجاجية مستمرة للأبراج والمباني الإدارية الكبرى",
           "icon": "domain"
         },
         {
-          "id": "steel",
+          "id": "steel-works",
           "title": "الهياكل المعدنية",
           "description": "تركيب وتصنيع الهياكل الحديدية المعقدة للمصانع والمستودعات والمباني الهجينة",
           "icon": "format_shapes"
