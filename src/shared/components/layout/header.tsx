@@ -177,7 +177,7 @@ export function Header() {
                   isTransparent ? "text-white" : "text-[#002868] dark:text-white",
                 ].join(" ")}
               >
-                مؤسسة الفهد للمقاولات
+                {locale === "ar" ? "مؤسسة الفهد للمقاولات" : "Al Fahd Contracting"}
               </span>
             </Link>
           </div>
@@ -207,7 +207,7 @@ export function Header() {
                 isTransparent ? "text-white" : "text-[#002868] dark:text-white",
               ].join(" ")}
             >
-              مؤسسة الفهد للمقاولات
+              {locale === "ar" ? "مؤسسة الفهد للمقاولات" : "Al Fahd Contracting"}
             </span>
           </Link>
 
