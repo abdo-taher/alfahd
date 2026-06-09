@@ -24,10 +24,10 @@ export function Footer() {
   };
 
   const serviceLinks = [
-    { label: locale === "ar" ? "أنظمة الألمنيوم"  : "Aluminum Systems",  href: `/${locale}/services/aluminum` },
-    { label: locale === "ar" ? "جدران الستائر"    : "Curtain Walls",     href: `/${locale}/services/curtain-wall` },
-    { label: locale === "ar" ? "الزجاج الإنشائي"  : "Structural Glass",  href: `/${locale}/services/glass` },
-    { label: locale === "ar" ? "الهياكل المعدنية" : "Steel Structures",  href: `/${locale}/services/steel` },
+    { label: locale === "ar" ? "أعمال الألمنيوم"  : "Aluminium Works",   href: `/${locale}/services/aluminum-works` },
+    { label: locale === "ar" ? "جدران الستائر"    : "Curtain Walls",     href: `/${locale}/services/aluminum-works/curtain-wall-systems` },
+    { label: locale === "ar" ? "الزجاج الإنشائي"  : "Structural Glass",  href: `/${locale}/services/glass-works` },
+    { label: locale === "ar" ? "الهياكل المعدنية" : "Steel Structures",  href: `/${locale}/services/steel-works` },
   ];
 
   const companyLinks = [
