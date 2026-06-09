@@ -6,13 +6,6 @@ import { Header } from "@/shared/components/layout/header";
 import { Footer } from "@/shared/components/layout/footer";
 import { ContactBubble } from "@/shared/components/layout/contact-bubble";
 
-// Tell Next.js which locale segments to pre-render at build time.
-// Without this every page under [locale] becomes server-rendered (ƒ)
-// instead of statically generated (●), causing 404s on first load.
-export function generateStaticParams() {
-  return [{ locale: "ar" }, { locale: "en" }];
-}
-
 export async function generateMetadata({
   params,
 }: {

@@ -59,25 +59,25 @@
       "viewAll": "View All Services",
       "items": [
         {
-          "id": "aluminum-works",
+          "id": "aluminum",
           "title": "Aluminium Systems",
           "description": "Premium window, door and curtain-wall aluminium profiles with top-grade thermal and acoustic insulation",
           "icon": "architecture"
         },
         {
-          "id": "glass-works",
+          "id": "glass",
           "title": "Structural Glass",
           "description": "Continuous glass facade systems for towers and major administrative buildings, frameless and point-fixed",
           "icon": "window"
         },
         {
-          "id": "aluminum-works",
+          "id": "curtain-wall",
           "title": "Curtain Walls",
           "description": "Design and installation of seamless glazed curtain-wall systems for high-rise buildings and corporate headquarters",
           "icon": "domain"
         },
         {
-          "id": "steel-works",
+          "id": "steel",
           "title": "Steel Structures",
           "description": "Fabrication and erection of complex steel structures for factories, warehouses and hybrid buildings",
           "icon": "format_shapes"
@@ -209,8 +209,7 @@
       "building-regulations": "Building Regulations",
       "case-studies": "Case Studies",
       "technical-studies": "Technical Studies",
-      "company-news": "Company News",
-      "industry-insights": "Industry Insights"
+      "company-news": "Company News"
     }
   },
   "contact": {
