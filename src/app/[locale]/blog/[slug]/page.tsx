@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
+import { ImageWithSkeleton } from "@/shared/components/ui/image-with-skeleton";
 import { getTranslations } from "next-intl/server";
 import { generateArticleMetadata } from "@/seo/metadata/article-metadata";
 import { articleSchema, breadcrumbSchema, personSchema } from "@/seo/schema/organization";
@@ -167,14 +167,13 @@ export default async function BlogPostPage({
       <section className="relative bg-gray-950 overflow-hidden">
         {/* Cover image */}
         <div className="absolute inset-0">
-          <Image
+          <ImageWithSkeleton
             src={post.coverImage}
             alt={post.title}
             fill
             className="w-full h-full object-cover opacity-30"
             sizes="100vw"
             priority
-            referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/70 to-transparent" />
         </div>
@@ -297,13 +296,12 @@ export default async function BlogPostPage({
                   className="group flex gap-4 items-start p-4 rounded-lg hover:bg-gray-50 transition-colors border border-gray-100"
                 >
                   <div className="relative w-24 h-20 flex-shrink-0 overflow-hidden rounded">
-                    <Image
+                    <ImageWithSkeleton
                       src={rel.coverImage}
                       alt={rel.title}
                       fill
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="96px"
-                      referrerPolicy="no-referrer"
                     />
                   </div>
                   <div className="flex-1 min-w-0">

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import { ImageWithSkeleton } from "@/shared/components/ui/image-with-skeleton";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { contentRepository } from "@/lib/content/content-repository";
@@ -73,14 +73,13 @@ export default async function ServiceDetailPage({
         {/* ── Hero ──────────────────────────────────────────────── */}
         <section className="relative h-[60vh] min-h-[420px] flex items-end overflow-hidden bg-gray-950">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <Image
+          <ImageWithSkeleton
             src={service.image}
             alt={service.title}
             fill
             className="absolute inset-0 w-full h-full object-cover opacity-50"
             sizes="100vw"
             priority
-            referrerPolicy="no-referrer"
           />
           <div
             className="absolute inset-0"
@@ -375,13 +374,12 @@ async function RelatedProjects({
               href={`/${locale}/projects/${project.slug}`}
               className="group relative rounded-lg overflow-hidden h-64 bg-gray-900 shadow-sm"
             >
-              <Image
+              <ImageWithSkeleton
                 src={project.coverImage}
                 alt={project.title}
                 fill
                 className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
                 sizes="(max-width:768px) 100vw, 33vw"
-                referrerPolicy="no-referrer"
               />
               <div
                 className="absolute inset-0"

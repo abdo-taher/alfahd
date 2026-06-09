@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import { ImageWithSkeleton } from "@/shared/components/ui/image-with-skeleton";
 import { notFound } from "next/navigation";
 import { contentRepository } from "@/lib/content/content-repository";
 import { generateCaseStudyMetadata } from "@/seo/metadata/case-study-metadata";
@@ -72,14 +72,13 @@ export default async function CaseStudyPage({
       <div className="pt-20">
         {/* Hero */}
         <section className="relative h-[60vh] min-h-[440px] flex items-end overflow-hidden bg-gray-950">
-          <Image
+          <ImageWithSkeleton
             src={study.coverImage}
             alt={study.title}
             fill
             className="object-cover opacity-45"
             sizes="100vw"
             priority
-            referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to top,rgba(0,20,70,0.95) 0%,rgba(0,20,70,0.5) 60%,transparent 100%)" }} aria-hidden="true" />
           <div className="relative z-10 container-brand pb-14 w-full">
@@ -208,13 +207,12 @@ export default async function CaseStudyPage({
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {study.gallery.map((img, i) => (
                   <div key={i} className="relative aspect-video rounded-lg overflow-hidden bg-gray-100">
-                    <Image
+                    <ImageWithSkeleton
                       src={img}
                       alt={`${study.title} — ${i + 1}`}
                       fill
                       className="object-cover hover:scale-105 transition-transform duration-700"
                       sizes="(max-width:768px) 100vw,(max-width:1280px) 50vw,33vw"
-                      referrerPolicy="no-referrer"
                     />
                   </div>
                 ))}
@@ -225,13 +223,12 @@ export default async function CaseStudyPage({
           <section className="section-py bg-white">
             <div className="container-brand">
               <div className="relative aspect-video max-w-4xl mx-auto rounded-lg overflow-hidden bg-gray-100">
-                <Image
+                <ImageWithSkeleton
                   src={study.coverImage}
                   alt={study.title}
                   fill
                   className="object-cover"
                   sizes="(max-width:1280px) 100vw,1024px"
-                  referrerPolicy="no-referrer"
                 />
               </div>
             </div>

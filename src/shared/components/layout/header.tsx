@@ -351,7 +351,6 @@ export function Header() {
                             src={item.image}
                             alt={locale === "ar" ? item.titleAR : item.titleEN}
                             className="w-10 h-10 object-cover rounded-md shrink-0"
-                            referrerPolicy="no-referrer"
                           />
                           <div>
                             <p className="font-sans font-semibold text-sm text-gray-900 dark:text-gray-100 group-hover:text-amber-700 dark:group-hover:text-[#C5A880] transition-colors">

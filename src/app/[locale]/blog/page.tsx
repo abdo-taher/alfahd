@@ -140,7 +140,6 @@ export default async function BlogPage({
                   src={featured.coverImage}
                   alt={featured.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-950/70 to-transparent" aria-hidden="true" />
                 <div className="absolute bottom-0 start-0 p-6 z-10">
@@ -203,7 +202,6 @@ export default async function BlogPage({
                     src={post.coverImage}
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-950/50 to-transparent" aria-hidden="true" />
                   <div className="absolute bottom-0 start-0 p-4 z-10">

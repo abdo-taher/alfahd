@@ -258,7 +258,6 @@ export function ProjectsClient() {
                         src={project.image}
                         alt={title}
                         className="w-full h-auto object-cover transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105"
-                        referrerPolicy="no-referrer"
                         style={{ aspectRatio: "4/3" }}
                       />
                       <div

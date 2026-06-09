@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import { ImageWithSkeleton } from "@/shared/components/ui/image-with-skeleton";
 import { notFound } from "next/navigation";
 import { contentRepository } from "@/lib/content/content-repository";
 import { generateSubServiceMetadata } from "@/seo/metadata/service-metadata";
@@ -80,14 +80,13 @@ export default async function SubServicePage({
       <div className="pt-20">
         {/* Hero */}
         <section className="relative h-[50vh] min-h-[380px] flex items-end overflow-hidden bg-gray-950">
-          <Image
+          <ImageWithSkeleton
             src={parentService.image}
             alt={subService.title}
             fill
             className="object-cover opacity-40"
             sizes="100vw"
             priority
-            referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to top,rgba(0,20,70,0.95) 0%,rgba(0,20,70,0.5) 60%,transparent 100%)" }} aria-hidden="true" />
           <div className="relative z-10 container-brand pb-14 w-full">
@@ -189,13 +188,12 @@ export default async function SubServicePage({
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {relatedProjects.map((p) => (
                   <Link key={p.slug} href={`/${locale}/projects/${p.slug}`} className="group relative rounded-lg overflow-hidden h-56 bg-gray-900">
-                    <Image
+                    <ImageWithSkeleton
                       src={p.coverImage}
                       alt={p.title}
                       fill
                       className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                       sizes="(max-width:768px) 100vw,33vw"
-                      referrerPolicy="no-referrer"
                     />
                     <div className="absolute inset-0" style={{ background: "linear-gradient(to top,rgba(0,20,70,0.9) 0%,transparent 60%)" }} aria-hidden="true" />
                     <div className="absolute bottom-0 start-0 p-4 text-white">

@@ -75,7 +75,6 @@ export async function FeaturedProjects() {
                 src={mainProject.coverImage}
                 alt={mainProject.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
-                referrerPolicy="no-referrer"
               />
               <div
                 className="absolute inset-0"
@@ -127,7 +126,6 @@ export async function FeaturedProjects() {
                 src={secondProject.coverImage}
                 alt={secondProject.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
-                referrerPolicy="no-referrer"
               />
               <div
                 className="absolute inset-0"

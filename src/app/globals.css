@@ -620,3 +620,16 @@
   .dark .text-on-surface-variant     { color: #c4c6d3; }
   .dark .text-primary                { color: #b1c5ff; }
 }
+
+/* ─── Skeleton shimmer animation ─────────────────────────────────────────────
+   Used by ImageWithSkeleton component.
+   animate-shimmer slides a light gradient left-to-right to imply loading.
+   ─────────────────────────────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.6s ease-in-out infinite;
+}

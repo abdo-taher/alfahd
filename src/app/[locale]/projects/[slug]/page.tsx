@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
+import { ImageWithSkeleton } from "@/shared/components/ui/image-with-skeleton";
 import { getTranslations } from "next-intl/server";
 import { generateProjectMetadata } from "@/seo/metadata/project-metadata";
 import { projectSchema, breadcrumbSchema } from "@/seo/schema/organization";
@@ -139,14 +139,13 @@ export default async function ProjectPage({
       {/* Hero */}
       <section className="relative bg-gray-950 overflow-hidden min-h-[480px] flex items-end">
         <div className="absolute inset-0">
-          <Image
+          <ImageWithSkeleton
             src={project.coverImage}
             alt={project.title}
             fill
             className="w-full h-full object-cover opacity-40"
             sizes="100vw"
             priority
-            referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/60 to-transparent" />
         </div>
@@ -367,13 +366,12 @@ export default async function ProjectPage({
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {project.gallery.map((img, i) => (
                 <div key={i} className="relative overflow-hidden rounded-lg aspect-video bg-gray-100">
-                  <Image
+                  <ImageWithSkeleton
                     src={img}
                     alt={`${project.title} — ${i + 1}`}
                     fill
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                     sizes="(max-width:768px) 100vw, 33vw"
-                    referrerPolicy="no-referrer"
                   />
                 </div>
               ))}
@@ -400,13 +398,12 @@ export default async function ProjectPage({
                   className="group block overflow-hidden rounded-lg border border-gray-100 hover:shadow-md transition-all duration-300"
                 >
                   <div className="relative h-40 overflow-hidden bg-gray-100">
-                    <Image
+                    <ImageWithSkeleton
                       src={rel.coverImage}
                       alt={rel.title}
                       fill
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                       sizes="(max-width:768px) 100vw, 33vw"
-                      referrerPolicy="no-referrer"
                     />
                   </div>
                   <div className="p-4">
