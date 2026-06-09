@@ -132,15 +132,36 @@ export function Header() {
           {locale === "ar" ? "انتقل للمحتوى" : "Skip to content"}
         </a>
 
-        <div className="relative max-w-[1280px] mx-auto px-6 h-full flex items-center justify-between gap-4">
+        <div className="relative max-w-[1280px] mx-auto px-4 h-full flex items-center justify-between gap-4">
 
-          {/* ── Logo (centered on mobile, left on desktop) ────── */}
-          {/* Mobile: absolute center trick — logo is position:absolute center, hamburger stays in flow */}
-          <div className="lg:hidden absolute left-1/2 -translate-x-1/2 pointer-events-none">
+          {/* ══════════════════════════════════════════════════
+              MOBILE HEADER  — 3-column grid
+              [search+theme] | [logo+wordmark] | [hamburger]
+          ══════════════════════════════════════════════════ */}
+
+          {/* Mobile left: search + theme */}
+          <div className="lg:hidden flex items-center gap-1 w-20 shrink-0">
+            <button
+              onClick={() => setSearchOpen(true)}
+              className={[
+                "p-2 rounded-lg transition-colors",
+                isTransparent
+                  ? "text-white/80 hover:text-white hover:bg-white/10"
+                  : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800",
+              ].join(" ")}
+              aria-label={t("search")}
+            >
+              <Search className="w-4 h-4" aria-hidden="true" />
+            </button>
+            <ThemeToggle />
+          </div>
+
+          {/* Mobile center: logo + wordmark (truly centered via flex-1) */}
+          <div className="lg:hidden flex flex-1 justify-center">
             <Link
               href={`/${locale}`}
               aria-label={locale === "ar" ? "مؤسسة الفهد للمقاولات — الرئيسية" : "Al Fahd Contracting — Home"}
-              className="pointer-events-auto flex items-center gap-2 shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-950 rounded group"
+              className="flex items-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-950 rounded group"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -161,13 +182,17 @@ export function Header() {
             </Link>
           </div>
 
-          {/* ── Logo (desktop only, left-aligned) ────────────── */}
+          {/* Mobile right: hamburger */}
+          <div className="lg:hidden flex items-center w-20 shrink-0 justify-end">
+            <MobileMenu navLinks={navLinks} onOpenChange={setMobileMenuOpen} isTransparent={isTransparent} />
+          </div>
+
+          {/* ── Desktop Logo (left-aligned) ───────────────────── */}
           <Link
             href={`/${locale}`}
             aria-label={locale === "ar" ? "مؤسسة الفهد للمقاولات — الرئيسية" : "Al Fahd Contracting — Home"}
             className="hidden lg:flex items-center gap-3 shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-950 rounded group"
           >
-            {/* Logo — white when header is transparent (over dark hero), blue/black when scrolled */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={!isTransparent ? "/images/logo-dark.png" : "/images/logo-white.png"}
@@ -176,7 +201,6 @@ export function Header() {
               width={80}
               height={80}
             />
-            {/* Wordmark next to logo */}
             <span
               className={[
                 "font-bold text-base leading-tight tracking-tight select-none whitespace-nowrap transition-colors duration-300",
@@ -252,24 +276,7 @@ export function Header() {
             </Link>
           </div>
 
-          {/* ── Mobile: Search + Theme + Hamburger ───────────── */}
-          <div className="lg:hidden flex items-center gap-1">
-            <button
-              onClick={() => setSearchOpen(true)}
-              className={[
-                "p-2.5 rounded-lg transition-colors",
-                isTransparent
-                  ? "text-white/80 hover:text-white hover:bg-white/10"
-                  : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800",
-              ].join(" ")}
-              aria-label={t("search")}
-            >
-              <Search className="w-4 h-4" aria-hidden="true" />
-            </button>
-            <ThemeToggle />
-            <MobileMenu navLinks={navLinks} onOpenChange={setMobileMenuOpen} isTransparent={isTransparent} />
-          </div>
-
+        
         </div>
       </header>
 
