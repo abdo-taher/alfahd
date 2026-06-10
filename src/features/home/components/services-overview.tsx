@@ -3,20 +3,20 @@ import { getTranslations, getLocale } from "next-intl/server";
 import { ServiceCardImage } from "./service-card-image";
 
 const serviceIconMap: Record<string, string> = {
-  aluminum:       "architecture",
-  glass:          "window",
-  "curtain-wall": "domain",
-  steel:          "format_shapes",
+  "aluminum-works": "architecture",
+  "glass-works":    "window",
+  "curtain-wall":   "domain",   // fallback for legacy IDs
+  "steel-works":    "format_shapes",
 };
 
 const serviceImageMap: Record<string, string> = {
-  aluminum:
+  "aluminum-works":
     "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80",
-  glass:
+  "glass-works":
     "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?w=800&q=80",
   "curtain-wall":
     "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
-  steel:
+  "steel-works":
     "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
 };
 
