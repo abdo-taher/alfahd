@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
 import { trackEvent } from "@/lib/analytics";
@@ -24,12 +24,49 @@ export function ContactBubble() {
   const locale = useLocale();
   const pathname = usePathname();
   const isRTL = locale === "ar";
+
   const [open, setOpen] = useState(false);
+  // visible = the entire widget is shown vs hidden (scroll/touch hide)
+  const [visible, setVisible] = useState(true);
+
   const ref = useRef<HTMLDivElement>(null);
+  const scrollTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastScrollY = useRef(0);
 
   const hidden =
     pathname.includes("portal") || pathname.includes("request-quote");
 
+  // ── Hide on scroll / touch ────────────────────────────────────────────
+  const handleHide = useCallback(() => {
+    setVisible(false);
+    setOpen(false);
+    if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
+    scrollTimerRef.current = setTimeout(() => setVisible(true), 1500);
+  }, []);
+
+  useEffect(() => {
+    function onScroll() {
+      const currentY = window.scrollY;
+      // only hide when actually scrolling (delta > 4px to avoid micro-jitter)
+      if (Math.abs(currentY - lastScrollY.current) > 4) {
+        lastScrollY.current = currentY;
+        handleHide();
+      }
+    }
+    function onTouchMove() {
+      handleHide();
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("touchmove", onTouchMove);
+      if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
+    };
+  }, [handleHide]);
+
+  // ── Close on outside click ────────────────────────────────────────────
   useEffect(() => {
     function onOutside(e: MouseEvent) {
       if (ref.current && !ref.current.contains(e.target as Node)) {
@@ -42,12 +79,9 @@ export function ContactBubble() {
 
   if (hidden) return null;
 
-  // ── Desktop: original floating green WhatsApp circle ──────────────────
-  // ── Mobile: half-hidden trigger icon, expands to show WA + Call ───────
-
   return (
     <>
-      {/* ── DESKTOP only ─────────────────────────────────────────────── */}
+      {/* ── DESKTOP: green WhatsApp FAB ───────────────────────────────── */}
       <a
         href={`https://wa.me/${WHATSAPP_NUMBER}`}
         target="_blank"
@@ -65,41 +99,45 @@ export function ContactBubble() {
         <WhatsAppSVG size={28} />
       </a>
 
-      {/* ── MOBILE only ──────────────────────────────────────────────── */}
+      {/* ── MOBILE: half-hidden pill ─────────────────────────────────── */}
       {/*
-        Layout:
-          Arabic (RTL)  → anchored RIGHT edge, half-hidden to the right
-          English (LTR) → anchored LEFT  edge, half-hidden to the left
-
-        Closed: trigger icon is 50% off-screen (translate ±50%)
-        Open:   trigger hides, WA + Call icons slide fully into view
+        RTL (Arabic)  → right-0, closed = translateX(+50%) so right-half is hidden
+        LTR (English) → left-0,  closed = translateX(-50%) so left-half is hidden
+        On scroll/touch → entire widget fades out + slides off edge, reappears after 1.5s
       */}
       <div
         ref={ref}
         className={[
           "md:hidden fixed z-50",
-          "bottom-1/3",                  // vertically centered-ish
-          isRTL ? "right-0" : "left-0",  // anchor edge
+          "bottom-1/3",
+          isRTL ? "right-0" : "left-0",
         ].join(" ")}
+        style={{
+          // Scroll/touch hide: fade + extra edge slide
+          opacity: visible ? 1 : 0,
+          transform: visible
+            ? "translateY(0)"
+            : isRTL
+            ? "translateX(30%)"
+            : "translateX(-30%)",
+          transition: "opacity 350ms ease, transform 350ms ease",
+          pointerEvents: visible ? "auto" : "none",
+        }}
       >
-        {/* Container that slides in/out */}
+        {/* Sliding inner container */}
         <div
           style={{
-            transition: "transform 300ms cubic-bezier(0.34,1.2,0.64,1)",
-            // Closed: shift so only half the trigger is visible
-            // Open: fully on screen
+            transition: "transform 380ms cubic-bezier(0.34,1.2,0.64,1)",
             transform: open
               ? "translateX(0)"
               : isRTL
-              ? "translateX(50%)"   // RTL: slide right (off right edge)
-              : "translateX(-50%)", // LTR: slide left  (off left edge)
+              ? "translateX(50%)"
+              : "translateX(-50%)",
           }}
-          className={[
-            "flex flex-col items-center gap-2 py-3 px-2",
-            // No background — icons only, as requested
-          ].join(" ")}
+          className="flex flex-col items-center gap-3 py-4 px-1"
         >
-          {/* WhatsApp icon — visible only when open */}
+
+          {/* ── WhatsApp action ── */}
           <a
             href={`https://wa.me/${WHATSAPP_NUMBER}`}
             target="_blank"
@@ -108,48 +146,64 @@ export function ContactBubble() {
             tabIndex={open ? 0 : -1}
             onClick={() => {
               trackEvent("click_whatsapp", { location: "mobile_bubble" });
-              setOpen(false); // collapse after tap
+              setOpen(false);
             }}
             style={{
-              transition: "opacity 200ms ease, transform 250ms cubic-bezier(0.34,1.4,0.64,1)",
-              transitionDelay: open ? "60ms" : "0ms",
+              transition: "opacity 220ms ease, transform 280ms cubic-bezier(0.34,1.5,0.64,1)",
+              transitionDelay: open ? "80ms" : "0ms",
               opacity: open ? 1 : 0,
-              transform: open ? "scale(1)" : "scale(0.4)",
+              transform: open ? "scale(1) translateY(0)" : "scale(0.3) translateY(12px)",
               pointerEvents: open ? "auto" : "none",
             }}
-            className="flex size-12 items-center justify-center text-[#25D366] drop-shadow-lg active:scale-90"
+            className="group relative flex size-12 items-center justify-center active:scale-90"
           >
-            <WhatsAppSVG size={44} />
+            {/* Glow ring */}
+            <span
+              className="absolute inset-0 rounded-full bg-[#25D366]/20 scale-0 group-active:scale-150 transition-transform duration-300"
+              aria-hidden="true"
+            />
+            {/* Icon circle */}
+            <span className="relative flex size-11 items-center justify-center rounded-full bg-white shadow-[0_4px_20px_rgba(37,211,102,0.35)] border border-[#25D366]/30 text-[#25D366]">
+              <WhatsAppSVG size={26} />
+            </span>
           </a>
 
-          {/* Call icon — visible only when open */}
+          {/* ── Call action ── */}
           <a
             href={`tel:${PHONE_NUMBER}`}
             aria-label={isRTL ? "اتصل الآن" : "Call Now"}
             tabIndex={open ? 0 : -1}
             onClick={() => {
               trackEvent("click_call", { location: "mobile_bubble" });
-              setOpen(false); // collapse after tap
+              setOpen(false);
             }}
             style={{
-              transition: "opacity 200ms ease, transform 250ms cubic-bezier(0.34,1.4,0.64,1)",
-              transitionDelay: open ? "0ms" : "60ms",
+              transition: "opacity 220ms ease, transform 280ms cubic-bezier(0.34,1.5,0.64,1)",
+              transitionDelay: open ? "0ms" : "80ms",
               opacity: open ? 1 : 0,
-              transform: open ? "scale(1)" : "scale(0.4)",
+              transform: open ? "scale(1) translateY(0)" : "scale(0.3) translateY(12px)",
               pointerEvents: open ? "auto" : "none",
             }}
-            className="flex size-12 items-center justify-center text-primary drop-shadow-lg active:scale-90"
+            className="group relative flex size-12 items-center justify-center active:scale-90"
           >
+            {/* Glow ring */}
             <span
-              className="material-symbols-outlined"
-              style={{ fontSize: "44px", fontVariationSettings: "'FILL' 1, 'wght' 400" }}
+              className="absolute inset-0 rounded-full bg-[#002868]/15 scale-0 group-active:scale-150 transition-transform duration-300"
               aria-hidden="true"
-            >
-              call
+            />
+            {/* Icon circle */}
+            <span className="relative flex size-11 items-center justify-center rounded-full bg-white shadow-[0_4px_20px_rgba(0,40,104,0.25)] border border-[#002868]/20">
+              <span
+                className="material-symbols-outlined text-[#002868]"
+                style={{ fontSize: "24px", fontVariationSettings: "'FILL' 1, 'wght' 400" }}
+                aria-hidden="true"
+              >
+                call
+              </span>
             </span>
           </a>
 
-          {/* Trigger icon — always visible (half-hidden when closed) */}
+          {/* ── Trigger button ── */}
           <button
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
@@ -161,24 +215,36 @@ export function ContactBubble() {
             style={{
               opacity: open ? 0 : 1,
               pointerEvents: open ? "none" : "auto",
-              transition: "opacity 200ms ease",
+              transition: "opacity 200ms ease, transform 200ms ease",
+              transform: open ? "scale(0.7)" : "scale(1)",
             }}
-            className="flex size-12 items-center justify-center text-primary drop-shadow-lg active:scale-90 transition-transform duration-200"
+            className="group relative flex size-12 items-center justify-center active:scale-90"
           >
-            <span
-              className="material-symbols-outlined"
-              style={{
-                fontSize: "40px",
-                fontVariationSettings: "'FILL' 1, 'wght' 400",
-                transition: "transform 300ms ease",
-                transform: open ? "rotate(45deg)" : "rotate(0deg)",
-                display: "block",
-              }}
-              aria-hidden="true"
-            >
-              {open ? "close" : "add_comment"}
+            {/* Pulsing halo — only when closed */}
+            {!open && (
+              <span
+                className="absolute inset-0 rounded-full animate-ping bg-[#002868]/20"
+                aria-hidden="true"
+              />
+            )}
+            {/* Main circle */}
+            <span className="relative flex size-11 items-center justify-center rounded-full bg-[#002868] shadow-[0_6px_24px_rgba(0,40,104,0.45)]">
+              <span
+                className="material-symbols-outlined text-white"
+                style={{
+                  fontSize: "22px",
+                  fontVariationSettings: "'FILL' 1, 'wght' 500",
+                  transition: "transform 300ms cubic-bezier(0.34,1.2,0.64,1)",
+                  transform: open ? "rotate(45deg)" : "rotate(0deg)",
+                  display: "block",
+                }}
+                aria-hidden="true"
+              >
+                chat
+              </span>
             </span>
           </button>
+
         </div>
       </div>
     </>
