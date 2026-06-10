@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { generatePageMetadata } from "@/seo/metadata/page-metadata";
 import { itemListSchema, breadcrumbSchema } from "@/seo/schema/organization";
 import { contentRepository } from "@/lib/content/content-repository";
+import { ServiceImageWithFallback } from "@/shared/components/ui/service-image-with-fallback";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://alfahd-contracting.com";
 
@@ -55,6 +56,12 @@ export default async function ServicesPage({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "services" });
   const services = await contentRepository.getServices(locale);
+
+  const serviceIconMap: Record<string, string> = {
+    "1": "architecture",    // aluminum-works
+    "2": "window",          // glass-works
+    "3": "format_shapes",   // steel-works
+  };
 
   const servicesSlugs = ["aluminum-works", "glass-works", "steel-works"];
   const itemList = itemListSchema(
@@ -116,11 +123,10 @@ export default async function ServicesPage({
                     }`}
                   >
                     {/* Real service image */}
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <ServiceImageWithFallback
                       src={service.image}
                       alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      icon={serviceIconMap[service.id] ?? "construction"}
                     />
                     {/* Overlay */}
                     <div

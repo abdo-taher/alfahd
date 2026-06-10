@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getTranslations, getLocale } from "next-intl/server";
+import { ServiceCardImage } from "./service-card-image";
 
 const serviceIconMap: Record<string, string> = {
   aluminum:       "architecture",
@@ -64,12 +65,7 @@ export async function ServicesOverview() {
               >
                 {/* Image — left half */}
                 <div className="md:w-1/2 h-64 md:h-auto overflow-hidden shrink-0">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={img}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
+                  <ServiceCardImage src={img} alt={item.title} icon={icon} />
                 </div>
 
                 {/* Content — right half */}
