@@ -110,7 +110,7 @@ export function ContactBubble() {
         className={[
           "md:hidden fixed z-50",
           "bottom-1/3",
-          isRTL ? "right-0" : "left-0",
+          isRTL ? "left-0" : "right-0",  // Arabic → left edge, English → right edge
         ].join(" ")}
         style={{
           // Scroll/touch hide: fade + extra edge slide
@@ -118,8 +118,8 @@ export function ContactBubble() {
           transform: visible
             ? "translateY(0)"
             : isRTL
-            ? "translateX(30%)"
-            : "translateX(-30%)",
+            ? "translateX(-30%)"   // Arabic: slides off LEFT edge
+            : "translateX(30%)",   // English: slides off RIGHT edge
           transition: "opacity 350ms ease, transform 350ms ease",
           pointerEvents: visible ? "auto" : "none",
         }}
@@ -131,8 +131,8 @@ export function ContactBubble() {
             transform: open
               ? "translateX(0)"
               : isRTL
-              ? "translateX(50%)"
-              : "translateX(-50%)",
+              ? "translateX(-50%)"  // Arabic: half-hidden off LEFT edge
+              : "translateX(50%)",  // English: half-hidden off RIGHT edge
           }}
           className="flex flex-col items-center gap-3 py-4 px-1"
         >
